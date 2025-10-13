@@ -11,22 +11,21 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
         {!isLoggedIn && (
           <div className="inline-block bg-white rounded-full px-3 py-1 mb-6 shadow-sm">
             <span className="text-sm font-semibold uppercase bg-gradient-to-r from-orange-500 to-green-500 bg-clip-text text-transparent">
-              Trusted by 350,000+ users
+              Vertraut von über 350.000 Nutzern
             </span>
           </div>
         )}
         <h1 className="text-4xl font-bold text-slate-900">
-          Humanize AI Text & Outsmart AI Detectors
+          KI-Texte humanisieren & KI-Detektoren überlisten
         </h1>
         <p className="text-muted-foreground mb-6 mt-4 text-slate-500 max-w-xl mx-auto">
-          Natural Write converts your AI-generated content into fully humanized, undetectable
-          writing - ensuring it passes every AI detection tool
+          EchtSchreib verwandelt Ihre KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren
         </p>
         <Link
           href={isLoggedIn ? '/pricing' : '/api/auth/signin'}
           className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
         >
-          {isLoggedIn ? 'Get more words' : 'Start for free'}
+          {isLoggedIn ? 'Mehr Wörter kaufen' : 'Kostenlos starten'}
         </Link>
       </div>
     </section>

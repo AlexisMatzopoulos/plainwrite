@@ -3,7 +3,6 @@
 import { useSession, signOut } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -22,14 +21,19 @@ interface Profile {
   subscription_valid_until: string | null
 }
 
+interface PaymentHistory {
+  id: string
+  amount: number
+  date: string
+  description: string
+}
+
 export default function ProfilePage() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [paymentHistory, setPaymentHistory] = useState<PaymentHistory[]>([])
   const [loading, setLoading] = useState(true)
-  const [saving, setSaving] = useState(false)
-  const [userStyle, setUserStyle] = useState('')
-  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -50,41 +54,13 @@ export default function ProfilePage() {
 
       if (response.ok) {
         setProfile(data.profile)
-        setUserStyle(data.profile.userStyle || '')
+        // TODO: Fetch payment history from API
+        setPaymentHistory([])
       }
     } catch (error) {
       console.error('Error fetching profile:', error)
     } finally {
       setLoading(false)
-    }
-  }
-
-  const handleUpdateStyle = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSaving(true)
-    setMessage(null)
-
-    try {
-      const response = await fetch('/api/profile', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userStyle: userStyle || null,
-        }),
-      })
-
-      if (response.ok) {
-        setMessage({ type: 'success', text: 'Style preference saved successfully!' })
-        await fetchProfile()
-      } else {
-        setMessage({ type: 'error', text: 'Failed to save style preference' })
-      }
-    } catch (error) {
-      setMessage({ type: 'error', text: 'An error occurred while saving' })
-    } finally {
-      setSaving(false)
     }
   }
 
@@ -94,14 +70,14 @@ export default function ProfilePage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex flex-col min-h-screen">
-        <Header isLoggedIn={false} />
-        <main className="flex-1 flex items-center justify-center">
+      <div className="flex flex-col min-h-[calc(100vh-0px)]">
+        <Header isLoggedIn={!!session} />
+        <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading profile...</p>
+            <p className="mt-4 text-gray-600">Profil wird geladen...</p>
           </div>
-        </main>
+        </div>
         <Footer />
       </div>
     )
@@ -112,182 +88,148 @@ export default function ProfilePage() {
   }
 
   const totalBalance = profile.words_balance + profile.extra_words_balance
-  const userInitial = session.user?.name?.charAt(0).toUpperCase() || session.user?.email?.charAt(0).toUpperCase() || 'U'
+  const subscriptionPlanDisplay = profile.subscription_plan
+    ? profile.subscription_plan.charAt(0).toUpperCase() + profile.subscription_plan.slice(1) + '-Plan'
+    : 'Basis-Plan'
+
+  const wordsPerMonth = profile.words_limit || 5000
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-[calc(100vh-0px)]">
       <Header isLoggedIn={true} />
-
-      <main className="flex-1 bg-gray-50 py-12">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-8">Account Settings</h1>
-
-          {/* Profile Info Card */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
-
-            <div className="flex items-center gap-4 mb-6">
-              {session.user?.image ? (
-                <Image
-                  src={session.user.image}
-                  alt="Profile"
-                  width={80}
-                  height={80}
-                  className="rounded-full"
-                />
-              ) : (
-                <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
-                  <span className="text-2xl font-medium text-green-600">{userInitial}</span>
+      <div className="w-full" style={{
+        backgroundImage: 'url(/images/gradient.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="container mx-auto px-4 py-8 max-w-6xl">
+          {/* Account and Balance Cards - 2 Column Grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Account Card */}
+            <div className="border text-card-foreground bg-white rounded-[16px] shadow-lg">
+              <div className="flex flex-col space-y-1.5 p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <h1 className="text-2xl font-semibold">Konto</h1>
+                  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-red-500 hover:text-red-600 hover:bg-red-50 bg-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-log-out w-4 h-4">
+                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                      <polyline points="16 17 21 12 16 7"></polyline>
+                      <line x1="21" x2="9" y1="12" y2="12"></line>
+                    </svg>
+                    Abmelden
+                  </button>
                 </div>
-              )}
-
-              <div>
-                <h3 className="text-lg font-medium">{session.user?.name || 'User'}</h3>
-                <p className="text-gray-600">{session.user?.email}</p>
+              </div>
+              <div className="p-6 pt-0">
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-sm text-gray-500">Name</label>
+                    <p className="text-lg font-medium">{session.user?.name || 'Benutzer'}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm text-gray-500">E-Mail</label>
+                    <p className="text-lg font-medium">{session.user?.email}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="border-t pt-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500">Member Since</p>
-                  <p className="font-medium">{new Date(profile.createdAt).toLocaleDateString()}</p>
+            {/* Balance Card */}
+            <div className="border text-card-foreground bg-white rounded-[16px] shadow-lg">
+              <div className="flex flex-col space-y-1.5 p-6">
+                <div className="flex items-center gap-2">
+                  <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                  </svg>
+                  <h2 className="text-xl font-semibold">Guthaben</h2>
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500">Account ID</p>
-                  <p className="font-mono text-sm">{profile.id.substring(0, 8)}...</p>
-                </div>
+              </div>
+              <div className="p-6 pt-0">
+                <p className="text-3xl font-bold">{totalBalance.toLocaleString()} Wörter</p>
+                <p className="text-sm text-gray-500 mb-4">&nbsp;</p>
+                <a
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-full md:w-auto px-8 py-6 bg-green-500 text-white hover:bg-green-600 rounded-[10px] text-base"
+                  href="/pricing"
+                >
+                  Mehr Wörter erhalten
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Word Balance Card */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Word Balance</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-green-50 rounded-lg p-4">
-                <p className="text-sm text-gray-600 mb-1">Total Balance</p>
-                <p className="text-3xl font-bold text-green-600">{totalBalance.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 mt-1">words available</p>
-              </div>
-
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="text-sm text-gray-600 mb-1">Main Balance</p>
-                <p className="text-2xl font-bold text-blue-600">{profile.words_balance.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 mt-1">words</p>
-              </div>
-
-              <div className="bg-purple-50 rounded-lg p-4">
-                <p className="text-sm text-gray-600 mb-1">Bonus Balance</p>
-                <p className="text-2xl font-bold text-purple-600">{profile.extra_words_balance.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 mt-1">words</p>
+          {/* Purchase History Card */}
+          <div className="border text-card-foreground mb-8 bg-white rounded-[16px] shadow-lg">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <div className="flex items-center gap-2">
+                <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <h2 className="text-xl font-semibold">Kaufhistorie</h2>
               </div>
             </div>
-
-            <div className="mt-4 pt-4 border-t">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-sm text-gray-600">Words per request limit</p>
-                  <p className="font-medium">{profile.words_per_request.toLocaleString()} words</p>
+            <div className="p-6 pt-0">
+              {paymentHistory.length === 0 ? (
+                <p className="text-gray-500">Keine Zahlungshistorie gefunden.</p>
+              ) : (
+                <div className="space-y-3">
+                  {paymentHistory.map((payment) => (
+                    <div key={payment.id} className="flex justify-between items-center border-b pb-3">
+                      <div>
+                        <p className="font-medium">{payment.description}</p>
+                        <p className="text-sm text-gray-500">{new Date(payment.date).toLocaleDateString()}</p>
+                      </div>
+                      <p className="font-semibold">${payment.amount.toFixed(2)}</p>
+                    </div>
+                  ))}
                 </div>
-                <a
-                  href="/pricing"
-                  className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                >
-                  Get More Words
-                </a>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Subscription Card */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Subscription</h2>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Current Plan</p>
-                <p className="text-lg font-medium">
-                  {profile.subscription_plan ? profile.subscription_plan.toUpperCase() : 'Free'}
-                </p>
-                {profile.subscription_status && (
-                  <p className="text-sm text-gray-500 mt-1">
-                    Status: <span className="capitalize">{profile.subscription_status}</span>
-                  </p>
-                )}
+          <div className="border text-card-foreground bg-white rounded-[16px] shadow-lg">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                  <h2 className="text-xl font-semibold">Abonnement</h2>
+                </div>
               </div>
-
-              {!profile.subscription_plan && (
+            </div>
+            <div className="p-6 pt-0">
+              <p className="text-3xl font-bold">{subscriptionPlanDisplay}</p>
+              <p className="text-sm text-gray-500 mb-4">{wordsPerMonth.toLocaleString()} Wörter pro Monat.</p>
+              <div className="flex gap-2 flex-col md:flex-row">
+                {profile.subscription_plan && (
+                  <a
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-green-100 text-green-700 hover:bg-green-200 rounded-[10px] text-[16px] w-full md:w-auto"
+                    href="/manage-subscription"
+                  >
+                    Abonnement verwalten
+                  </a>
+                )}
                 <a
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-green-500 text-green-50 hover:bg-green-600 rounded-[10px] text-[16px] w-full md:w-auto"
                   href="/pricing"
-                  className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
                 >
-                  Upgrade Plan
+                  {profile.subscription_plan ? 'Abonnement upgraden' : 'Abonnement erhalten'}
                 </a>
-              )}
+              </div>
             </div>
           </div>
-
-          {/* Writing Style Preference */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Writing Style Preference</h2>
-
-            {message && (
-              <div className={`mb-4 p-3 rounded ${
-                message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-              }`}>
-                {message.text}
-              </div>
-            )}
-
-            <form onSubmit={handleUpdateStyle}>
-              <div className="mb-4">
-                <label htmlFor="userStyle" className="block text-sm font-medium text-gray-700 mb-2">
-                  Default Style
-                </label>
-                <select
-                  id="userStyle"
-                  value={userStyle}
-                  onChange={(e) => setUserStyle(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="">Standard (Default)</option>
-                  <option value="academic">Academic</option>
-                  <option value="casual">Casual</option>
-                  <option value="professional">Professional</option>
-                  <option value="creative">Creative</option>
-                  <option value="technical">Technical</option>
-                </select>
-                <p className="text-sm text-gray-500 mt-1">
-                  This style will be used by default when humanizing text
-                </p>
-              </div>
-
-              <button
-                type="submit"
-                disabled={saving}
-                className="inline-flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {saving ? 'Saving...' : 'Save Preference'}
-              </button>
-            </form>
-          </div>
-
-          {/* Danger Zone */}
-          <div className="bg-white rounded-lg shadow-md p-6 border-2 border-red-200">
-            <h2 className="text-xl font-semibold mb-4 text-red-600">Account Actions</h2>
-
-            <button
-              onClick={handleSignOut}
-              className="inline-flex items-center justify-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-            >
-              Sign Out
-            </button>
-          </div>
         </div>
-      </main>
-
+      </div>
       <Footer />
     </div>
   )

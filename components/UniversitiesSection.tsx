@@ -11,7 +11,7 @@ export default function UniversitiesSection() {
   return (
     <div className="w-full text-center py-16">
       <h2 className="text-4xl font-bold mb-8 text-slate-950 text-center">
-        Supporting writers at top institutions
+        Unterstützung für Autoren an führenden Institutionen
       </h2>
       <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-4 px-4 max-w-6xl mx-auto">
         {universities.map((university) => (

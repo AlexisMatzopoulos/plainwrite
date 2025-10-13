@@ -5,19 +5,19 @@ export default function FeaturesSection() {
     {
       title: (
         <>
-          Built on Science,
+          Auf Wissenschaft aufgebaut,
           <br />
-          Powered by Precision
+          mit Präzision betrieben
         </>
       ),
       description: (
         <>
-          Our rewriting engine is trained on over 1.2 million samples of academic writing,
-          essays, and AI-generated text.
+          Unsere Umschreibungs-Engine wurde mit über 1,2 Millionen Proben akademischer Texte,
+          Essays und KI-generierter Inhalte trainiert.
           <br />
           <br />
-          Using advanced linguistic modeling, we analyze syntax, tone, and word patterns commonly
-          flagged by detection systems.
+          Mit fortschrittlicher linguistischer Modellierung analysieren wir Syntax, Ton und Wortmuster,
+          die häufig von Erkennungssystemen markiert werden.
         </>
       ),
       imagePosition: 'right',
@@ -26,19 +26,19 @@ export default function FeaturesSection() {
     {
       title: (
         <>
-          Tested and Proven
+          Getestet und bewährt
           <br />
-          Across All AI-Detectors
+          bei allen KI-Detektoren
         </>
       ),
       description: (
         <>
-          We test every rewrite against leading detection tools like GPTZero, Turnitin, ZeroGPT,
-          Quillbot and more.
+          Wir testen jede Umschreibung gegen führende Erkennungstools wie GPTZero, Turnitin, ZeroGPT,
+          Quillbot und mehr.
           <br />
           <br />
-          Our system is updated weekly to adapt to new detection methods and eliminate flagged
-          patterns like burstiness, perplexity, and unnatural phrasing.
+          Unser System wird wöchentlich aktualisiert, um sich an neue Erkennungsmethoden anzupassen und
+          markierte Muster wie Burst-Verhalten, Perplexität und unnatürliche Formulierungen zu eliminieren.
         </>
       ),
       imagePosition: 'left',
@@ -47,19 +47,19 @@ export default function FeaturesSection() {
     {
       title: (
         <>
-          Trusted by 350,000+
+          Vertraut von über 350.000
           <br />
-          Writers Worldwide
+          Autoren weltweit
         </>
       ),
       description: (
         <>
-          Students polish their writing to sound more natural, marketers improve content for
-          better engagement and SEO, and businesses send emails that feel personal — not robotic.
+          Studenten verfeinern ihre Texte, um natürlicher zu klingen, Marketer verbessern Inhalte für
+          besseres Engagement und SEO, und Unternehmen versenden E-Mails, die persönlich wirken – nicht roboterhaft.
           <br />
           <br />
-          Natural Write adapts to each use case, delivering clear, human-sounding text that reads
-          like it was written by you.
+          EchtSchreib passt sich jedem Anwendungsfall an und liefert klare, menschlich klingende Texte,
+          die sich lesen, als hätten Sie sie selbst geschrieben.
         </>
       ),
       imagePosition: 'right',

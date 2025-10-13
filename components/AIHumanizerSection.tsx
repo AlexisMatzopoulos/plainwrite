@@ -73,7 +73,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
 
   const handleHumanize = async () => {
     if (!inputText.trim()) {
-      setError('Please enter some text to humanize')
+      setError('Bitte geben Sie Text ein, der humanisiert werden soll')
       return
     }
 
@@ -105,7 +105,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
           setInsufficientBalance(true)
           await fetchProfile() // Refresh profile to get updated balance
         } else {
-          setError(data.error || 'Failed to humanize text')
+          setError(data.error || 'Text konnte nicht humanisiert werden')
         }
         return
       }
@@ -115,7 +115,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       const decoder = new TextDecoder()
 
       if (!reader) {
-        throw new Error('Unable to read response stream')
+        throw new Error('Antwort-Stream konnte nicht gelesen werden')
       }
 
       let accumulatedText = ''
@@ -140,7 +140,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       // Refresh profile to get updated balance
       await fetchProfile()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
     } finally {
       setIsHumanizing(false)
     }
@@ -150,7 +150,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
     const textToCheck = outputText || inputText
 
     if (!textToCheck.trim()) {
-      setError('Please enter some text to check')
+      setError('Bitte geben Sie Text ein, der überprüft werden soll')
       return
     }
 
@@ -171,12 +171,12 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to check for AI')
+        throw new Error(data.error || 'KI-Prüfung fehlgeschlagen')
       }
 
       setAiScore(data.aiScore)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
     } finally {
       setIsCheckingAI(false)
     }
@@ -188,7 +188,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       setCopySuccess(true)
       setTimeout(() => setCopySuccess(false), 2000)
     } catch (err) {
-      setError('Failed to copy text')
+      setError('Text konnte nicht kopiert werden')
     }
   }
 
@@ -206,7 +206,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Your Text</h2>
+            <h2 className="font-semibold">Ihr Text</h2>
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setStyleDropdownOpen(!styleDropdownOpen)}
@@ -231,7 +231,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                   <path d="M4 17v2"></path>
                   <path d="M5 18H3"></path>
                 </svg>
-                {selectedStyle === 'default' ? 'Default' : 'My Style'}
+                {selectedStyle === 'default' ? 'Standard' : 'Mein Stil'}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -274,8 +274,8 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <div className="font-medium">Default</div>
-                      <div className="text-sm text-gray-500">Text copies input tone</div>
+                      <div className="font-medium">Standard</div>
+                      <div className="text-sm text-gray-500">Text übernimmt Eingabeton</div>
                     </div>
                   </div>
 
@@ -299,15 +299,15 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <div className="font-medium">My Style</div>
-                      <div className="text-sm text-gray-500">Text sounds like you</div>
+                      <div className="font-medium">Mein Stil</div>
+                      <div className="text-sm text-gray-500">Text klingt wie Sie</div>
                     </div>
                     <div className="flex items-center gap-2 ml-auto">
                       <Link
                         href="/pricing"
                         className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-9 rounded-md text-xs px-3 py-1 bg-green-500 text-white hover:bg-green-600 border border-green-500"
                       >
-                        Upgrade
+                        Upgraden
                       </Link>
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
 
           <div className="px-4 flex-1 relative">
             <textarea
-              placeholder="Paste your text here..."
+              placeholder="Fügen Sie hier Ihren Text ein..."
               className="w-full border-none outline-none focus:outline-none resize-none min-h-[405px] ms-0 ps-0 text-sm"
               value={inputText}
               onChange={handleInputChange}
@@ -329,7 +329,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
           <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div className="flex items-center mb-4 md:mb-0">
               <span className="text-sm text-gray-500">
-                {wordCount} / {wordsLimit} words
+                {wordCount} / {wordsLimit} Wörter
               </span>
             </div>
             <div className="flex gap-2 w-full sm:w-auto">
@@ -338,7 +338,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                 disabled={isCheckingAI}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto bg-green-100 text-green-600 hover:bg-green-200 border border-green-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isCheckingAI ? 'Checking...' : 'Check for AI'}
+                {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
               </button>
               <button
                 onClick={handleHumanize}
@@ -363,7 +363,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                   <path d="M4 17v2"></path>
                   <path d="M5 18H3"></path>
                 </svg>
-                {isHumanizing ? 'Humanizing...' : 'Humanize'}
+                {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
               </button>
             </div>
           </div>
@@ -373,7 +373,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           <div className="p-4">
             <h2 className="font-semibold flex items-center justify-between">
-              <div>Result</div>
+              <div>Ergebnis</div>
               {aiScore !== null && (
                 <div className="px-4 flex items-center mb-2">
                   <svg
@@ -392,7 +392,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                     <path d="m9 11 3 3L22 4"></path>
                   </svg>
                   <span className={`text-sm font-medium ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
-                    {aiScore}% AI detected
+                    {aiScore}% KI erkannt
                   </span>
                 </div>
               )}
@@ -403,16 +403,16 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
             {insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
-                  You need more words to humanize your text
+                  Sie benötigen mehr Wörter, um Ihren Text zu humanisieren
                 </div>
                 <div className="text-slate-950 mb-2">
-                  Current balance: {totalBalance}/{wordsLimit}
+                  Aktuelles Guthaben: {totalBalance}/{wordsLimit}
                 </div>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-green-500 hover:bg-green-600 text-white rounded-md px-4"
                 >
-                  Get more credits
+                  Mehr Guthaben kaufen
                 </Link>
               </div>
             ) : (
@@ -427,7 +427,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                 </div>
 
                 <div className="mt-auto px-4 py-3 flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{countWords(outputText)} words</span>
+                  <span className="text-sm text-gray-500">{countWords(outputText)} Wörter</span>
                   <button
                     onClick={handleCopy}
                     disabled={!outputText}
@@ -450,7 +450,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                           <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                           <path d="m9 11 3 3L22 4"></path>
                         </svg>
-                        <span className="text-green-500">Copied!</span>
+                        <span className="text-green-500">Kopiert!</span>
                       </>
                     ) : (
                       <svg

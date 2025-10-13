@@ -6,18 +6,18 @@ export default function TestimonialsSection({ isLoggedIn = false }: Testimonials
   const testimonials = [
     {
       quote:
-        'NaturalWrite helped me humanize AI text from ChatGPT in seconds. It made my writing sound real and passed Turnitin easily. This tool saved my grade.',
-      author: 'Julia K., Student',
+        'EchtSchreib hat mir geholfen, KI-Text von ChatGPT in Sekunden zu humanisieren. Es ließ mein Schreiben echt klingen und bestand Turnitin problemlos. Dieses Tool hat meine Note gerettet.',
+      author: 'Julia K., Studentin',
     },
     {
       quote:
-        "I've tried several tools to bypass AI detectors, but nothing compares to NaturalWrite. It's fast, accurate, and the free humanize AI text feature is a lifesaver.",
-      author: 'Liam R., Content Writer',
+        "Ich habe mehrere Tools ausprobiert, um KI-Detektoren zu umgehen, aber nichts ist mit EchtSchreib vergleichbar. Es ist schnell, präzise, und die kostenlose Humanisierungs-Funktion ist ein Lebensretter.",
+      author: 'Liam R., Content-Autor',
     },
     {
       quote:
-        'The best thing about NaturalWrite? I can humanize my text and rewrite AI drafts without losing quality. It feels like a real editor polished it.',
-      author: 'Sophie M., Freelancer',
+        'Das Beste an EchtSchreib? Ich kann meinen Text humanisieren und KI-Entwürfe umschreiben, ohne Qualität zu verlieren. Es fühlt sich an, als hätte ein echter Redakteur es überarbeitet.',
+      author: 'Sophie M., Freelancerin',
     },
   ]
 
@@ -38,7 +38,7 @@ export default function TestimonialsSection({ isLoggedIn = false }: Testimonials
       )}
       <div className="relative z-10 container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-10 text-slate-950">
-          What our users say
+          Was unsere Nutzer sagen
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (

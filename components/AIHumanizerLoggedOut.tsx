@@ -21,7 +21,7 @@ export default function AIHumanizerLoggedOut() {
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Paste your text here..."
+            placeholder="Fügen Sie hier Ihren Text ein..."
             className="w-full min-h-[400px] p-6 border border-slate-300 rounded-[16px] resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
           />
           {!text && (
@@ -45,7 +45,7 @@ export default function AIHumanizerLoggedOut() {
                   <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
                   <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                 </svg>
-                Paste Text
+                Text einfügen
               </button>
             </div>
           )}

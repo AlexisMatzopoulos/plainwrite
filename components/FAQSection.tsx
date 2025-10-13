@@ -7,49 +7,49 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: 'How does Natural Write work?',
+      question: 'Wie funktioniert EchtSchreib?',
       answer:
-        'Natural Write uses advanced AI technology to rewrite your text in a more natural, human-like style. It analyzes patterns that AI detectors look for and restructures your content to bypass them while maintaining the original meaning.',
+        'EchtSchreib verwendet fortschrittliche KI-Technologie, um Ihren Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert Ihre Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
     },
     {
-      question: 'Does Natural Write bypass Turnitin and other AI checkers?',
+      question: 'Umgeht EchtSchreib Turnitin und andere KI-Prüfer?',
       answer:
-        'Yes, Natural Write is specifically designed to help your content pass AI detection tools including Turnitin, GPTZero, ZeroGPT, Copyleaks, and others. Our system is regularly updated to adapt to new detection methods.',
+        'Ja, EchtSchreib wurde speziell entwickelt, um Ihre Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
     },
     {
-      question: 'How much does Natural Write cost?',
+      question: 'Wie viel kostet EchtSchreib?',
       answer:
-        'Natural Write offers both free and premium plans. Free users get a limited number of words per month, while premium plans offer unlimited humanization with advanced features.',
+        'EchtSchreib bietet sowohl kostenlose als auch Premium-Pläne an. Kostenlose Nutzer erhalten eine begrenzte Anzahl von Wörtern pro Monat, während Premium-Pläne unbegrenzte Humanisierung mit erweiterten Funktionen bieten.',
     },
     {
-      question: 'What languages does Natural Write support?',
+      question: 'Welche Sprachen unterstützt EchtSchreib?',
       answer:
-        'Currently, Natural Write primarily supports English. We are working on adding support for more languages in the future.',
+        'Derzeit unterstützt EchtSchreib hauptsächlich Englisch. Wir arbeiten daran, in Zukunft Unterstützung für weitere Sprachen hinzuzufügen.',
     },
     {
-      question: 'I want to humanize a long essay. Is it possible?',
+      question: 'Ich möchte einen langen Aufsatz humanisieren. Ist das möglich?',
       answer:
-        'Yes! You can humanize essays of any length. Premium users have access to unlimited word counts, making it easy to humanize longer documents.',
+        'Ja! Sie können Aufsätze jeder Länge humanisieren. Premium-Nutzer haben Zugang zu unbegrenzter Wortanzahl, was es einfach macht, längere Dokumente zu humanisieren.',
     },
     {
-      question: 'I reached my word limit. How can I extend it?',
+      question: 'Ich habe mein Wortlimit erreicht. Wie kann ich es erweitern?',
       answer:
-        'You can upgrade to a premium plan to get more words or unlimited access. Visit our pricing page to see available options.',
+        'Sie können auf einen Premium-Plan upgraden, um mehr Wörter oder unbegrenzten Zugang zu erhalten. Besuchen Sie unsere Preisseite, um verfügbare Optionen zu sehen.',
     },
     {
-      question: 'Can I see previous humanizations?',
+      question: 'Kann ich frühere Humanisierungen sehen?',
       answer:
-        'Yes, all your previous humanizations are saved in your account history. You can access them anytime from your dashboard.',
+        'Ja, alle Ihre früheren Humanisierungen werden in Ihrem Konto-Verlauf gespeichert. Sie können jederzeit von Ihrem Dashboard darauf zugreifen.',
     },
     {
-      question: 'How do I cancel my subscription?',
+      question: 'Wie kündige ich mein Abonnement?',
       answer:
-        'You can cancel your subscription at any time from your account settings. Your access will continue until the end of your billing period.',
+        'Sie können Ihr Abonnement jederzeit in Ihren Kontoeinstellungen kündigen. Ihr Zugang bleibt bis zum Ende Ihres Abrechnungszeitraums bestehen.',
     },
     {
-      question: 'Does Google penalize AI-generated content?',
+      question: 'Bestraft Google KI-generierte Inhalte?',
       answer:
-        "Google's focus is on content quality, not whether it's AI-generated. However, humanized content tends to perform better as it reads more naturally and engages readers more effectively.",
+        'Googles Fokus liegt auf der Inhaltsqualität, nicht darauf, ob sie KI-generiert sind. Humanisierte Inhalte schneiden jedoch tendenziell besser ab, da sie natürlicher lesen und Leser effektiver ansprechen.',
     },
   ]
 

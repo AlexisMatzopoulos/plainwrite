@@ -12,7 +12,7 @@ export default function DetectorsSection() {
 
   return (
     <div className="container mx-auto px-4 text-center py-16">
-      <h2 className="text-2xl font-bold mb-8 text-slate-950">Bypass AI content detectors</h2>
+      <h2 className="text-2xl font-bold mb-8 text-slate-950">KI-Inhaltsdetektoren umgehen</h2>
       <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-4 px-4 max-w-6xl mx-auto">
         {detectors.map((detector) => (
           <div key={detector.name} className="flex items-center text-slate-700">

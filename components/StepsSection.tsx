@@ -4,20 +4,20 @@ export default function StepsSection() {
   const steps = [
     {
       step: 1,
-      title: 'Paste Your Text',
-      description: 'Paste any content — homework, assignment, or AI-generated draft',
+      title: 'Text einfügen',
+      description: 'Fügen Sie beliebige Inhalte ein — Hausaufgaben, Aufgaben oder KI-generierte Entwürfe',
       image: '/images/step1.webp',
     },
     {
       step: 2,
-      title: 'Check AI Score',
-      description: 'See how much of your text is considered human-written',
+      title: 'KI-Score prüfen',
+      description: 'Sehen Sie, wie viel von Ihrem Text als menschlich geschrieben gilt',
       image: '/images/step2.webp',
     },
     {
       step: 3,
-      title: 'Humanize',
-      description: 'Rewrite your text to sound 100% human-written and pass AI detection',
+      title: 'Humanisieren',
+      description: 'Schreiben Sie Ihren Text um, damit er zu 100% menschlich klingt und KI-Erkennung besteht',
       image: '/images/step3.webp',
     },
   ]
@@ -27,10 +27,10 @@ export default function StepsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 text-slate-950">
-            Humanize AI Writing in 3 Simple Steps
+            KI-Texte in 3 einfachen Schritten humanisieren
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-lg">
-            Perfect for essays, assignments, blog posts and research papers
+            Perfekt für Essays, Aufgaben, Blogbeiträge und Forschungsarbeiten
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export default function StepsSection() {
               </div>
               <div className="inline-block bg-green-100 rounded-full px-3 py-1 mb-4">
                 <span className="text-sm font-semibold text-green-600 uppercase">
-                  Step {step.step}
+                  Schritt {step.step}
                 </span>
               </div>
               <h3 className="text-2xl font-bold mb-2 text-slate-900">{step.title}</h3>

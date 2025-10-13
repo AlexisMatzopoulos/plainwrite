@@ -45,27 +45,27 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/logo.fd02a639.svg"
-                alt="Natural Write Logo"
+                alt="EchtSchreib Logo"
                 width={32}
                 height={32}
               />
-              <span className="font-bold text-xl hidden md:block">Natural Write</span>
+              <span className="font-bold text-xl hidden md:block">EchtSchreib</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 ml-8">
             <span className="text-sm font-medium text-slate-700 hover:underline cursor-pointer">
-              AI Humanizer
+              KI-Humanisierer
             </span>
             <Link href="/blog" className="text-sm font-medium text-slate-700 hover:underline">
               Blog
             </Link>
-            <Link href="mailto:hello.naturalwrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
-              Contact
+            <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+              Kontakt
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
-              Pricing
+              Preise
             </Link>
             <a
               href="https://forms.gle/gWSc869rNh3FusGR6"
@@ -85,13 +85,13 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-4">
                   <div className="hidden md:block">
-                    <span>Balance: {totalBalance} words</span>
+                    <span>Guthaben: {totalBalance} Wörter</span>
                   </div>
                   <Link
                     href="/pricing"
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
                   >
-                    Get more words
+                    Mehr Wörter kaufen
                   </Link>
                   <Link
                     href="/history"
@@ -138,13 +138,13 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   onClick={() => signIn('google')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
-                  Log in
+                  Anmelden
                 </button>
                 <button
                   onClick={() => signIn('google')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
                 >
-                  Try for free
+                  Kostenlos testen
                 </button>
               </div>
             )}
@@ -155,12 +155,12 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <>
               <div className="hidden sm:flex lg:hidden items-center justify-center md:justify-end flex-1">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="text-sm text-center">Balance: {totalBalance} words</div>
+                  <div className="text-sm text-center">Guthaben: {totalBalance} Wörter</div>
                   <Link
                     href="/pricing"
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
                   >
-                    Get more words
+                    Mehr Wörter kaufen
                   </Link>
                 </div>
               </div>
@@ -233,13 +233,13 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 onClick={() => signIn('google')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
               >
-                Log in
+                Anmelden
               </button>
               <button
                 onClick={() => signIn('google')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
               >
-                Try for free
+                Kostenlos testen
               </button>
               <button
                 className="inline-flex items-center justify-center h-10 w-10"
@@ -271,7 +271,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <>
               <div className="flex sm:hidden items-center justify-center flex-1">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="text-sm text-center">Balance: {totalBalance}</div>
+                  <div className="text-sm text-center">Guthaben: {totalBalance}</div>
                   <Link
                     href="/pricing"
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
@@ -327,13 +327,13 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   onClick={() => signIn('google')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
-                  Log in
+                  Anmelden
                 </button>
                 <button
                   onClick={() => signIn('google')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
                 >
-                  Try for free
+                  Kostenlos testen
                 </button>
               </div>
 
@@ -377,30 +377,30 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             {isLoggedIn && (
               <>
                 <Link href="/history" className="text-sm font-medium text-slate-700 hover:underline md:hidden">
-                  History
+                  Verlauf
                 </Link>
                 <Link href="/profile" className="text-sm font-medium text-slate-700 hover:underline md:hidden">
-                  Account
+                  Konto
                 </Link>
                 <button
                   onClick={() => signOut()}
                   className="text-sm font-medium text-slate-700 hover:underline md:hidden"
                 >
-                  Sign Out
+                  Abmelden
                 </button>
               </>
             )}
             <span className="text-sm font-medium text-slate-700 hover:underline cursor-pointer">
-              AI Humanizer
+              KI-Humanisierer
             </span>
             <Link href="/blog" className="text-sm font-medium text-slate-700 hover:underline">
               Blog
             </Link>
-            <Link href="mailto:hello.naturalwrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
-              Contact
+            <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+              Kontakt
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
-              Pricing
+              Preise
             </Link>
             <a
               href="https://forms.gle/gWSc869rNh3FusGR6"
