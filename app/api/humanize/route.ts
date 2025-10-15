@@ -135,7 +135,7 @@ export async function POST(req: Request) {
             original_text: text,
             humanized_text: fullText,
             words_count: wordsProcessed,
-            style_used: style || user.profile.userStyle,
+            style_used: style || user.profile?.userStyle || "default",
           },
         });
 

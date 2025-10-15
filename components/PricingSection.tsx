@@ -12,6 +12,7 @@ export default function PricingSection() {
       {
         name: 'Basis',
         wordsPerMonth: '5.000 Wörter pro Monat',
+        originalPrice: undefined,
         price: 'R79.99',
         features: [
           '500 Wörter pro Anfrage',
@@ -27,6 +28,7 @@ export default function PricingSection() {
       {
         name: 'Pro',
         wordsPerMonth: '15.000 Wörter pro Monat',
+        originalPrice: undefined,
         price: 'R239.99',
         isPopular: true,
         features: [
@@ -48,6 +50,7 @@ export default function PricingSection() {
       {
         name: 'Ultra',
         wordsPerMonth: '30.000 Wörter pro Monat',
+        originalPrice: undefined,
         price: 'R479.99',
         features: [
           '3.000 Wörter pro Anfrage',

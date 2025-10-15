@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 export default function UniversitiesSection() {
   const universities = [
-    { name: 'Harvard', image: '/images/harvard-university.webp' },
-    { name: 'Oregon', image: '/images/university-of-oregon.webp' },
-    { name: 'Leeds', image: '/images/university-of-leeds.webp' },
-    { name: 'Ateneo', image: '/images/ateneo-university.webp' },
+    { name: 'LMU', image: '/images/LMU.png' },
+    { name: 'Humboldt', image: '/images/humboldt.png' },
+    { name: 'TUM', image: '/images/TUM.jpg' },
+    { name: 'Heidelberg', image: '/images/heidelberg university.jpg' },
   ]
 
   return (
