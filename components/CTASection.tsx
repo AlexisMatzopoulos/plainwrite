@@ -10,10 +10,10 @@ export default function CTASection() {
     >
       <div className="lg:container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-slate-950 mb-4">
-          Lassen Sie Ihren Text menschlich klingen — sofort
+          Lass deinen Text menschlich klingen — sofort
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto mb-8">
-          Verwandeln Sie roboterhafte, KI-generierte Inhalte in klares, natürliches Schreiben, das jeden KI-Detektor besteht. Mit EchtSchreib können Sie Ihren Text in Sekunden humanisieren — keine Bearbeitungsfähigkeiten erforderlich.
+          Verwandle roboterhafte, KI-generierte Inhalte in klares, natürliches Schreiben, das jeden KI-Detektor besteht. Mit EchtSchreib kannst du deinen Text in Sekunden humanisieren — keine Bearbeitungsfähigkeiten erforderlich.
         </p>
         <Link
           href="/api/auth/signin"

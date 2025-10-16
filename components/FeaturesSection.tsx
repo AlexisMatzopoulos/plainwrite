@@ -47,7 +47,7 @@ export default function FeaturesSection() {
     {
       title: (
         <>
-          Vertraut von über 350.000
+          Vertraut von über 100.000
           <br />
           Autoren weltweit
         </>
@@ -59,7 +59,7 @@ export default function FeaturesSection() {
           <br />
           <br />
           EchtSchreib passt sich jedem Anwendungsfall an und liefert klare, menschlich klingende Texte,
-          die sich lesen, als hätten Sie sie selbst geschrieben.
+          die sich lesen, als hättest du sie selbst geschrieben.
         </>
       ),
       imagePosition: 'right',

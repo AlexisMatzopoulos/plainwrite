@@ -40,7 +40,7 @@
 - Humanizer → Humanisierer
 
 ## Hero Section
-- "Trusted by 350,000+ users" → "Vertraut von über 350.000 Nutzern"
+- "Trusted by 350,000+ users" → "Vertraut von über 100.000 Nutzern"
 - "Humanize AI Text & Outsmart AI Detectors" → "KI-Texte humanisieren & KI-Detektoren überlisten"
 - "Natural Write converts your AI-generated content into fully humanized, undetectable writing - ensuring it passes every AI detection tool" → "Echtschrift verwandelt Ihre KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren"
 

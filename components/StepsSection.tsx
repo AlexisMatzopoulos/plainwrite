@@ -5,19 +5,19 @@ export default function StepsSection() {
     {
       step: 1,
       title: 'Text einfügen',
-      description: 'Fügen Sie beliebige Inhalte ein — Hausaufgaben, Aufgaben oder KI-generierte Entwürfe',
+      description: 'Füge beliebige Inhalte ein — Hausaufgaben, Aufgaben oder KI-generierte Entwürfe',
       image: '/images/step1.webp',
     },
     {
       step: 2,
       title: 'KI-Score prüfen',
-      description: 'Sehen Sie, wie viel von Ihrem Text als menschlich geschrieben gilt',
+      description: 'Sieh, wie viel von deinem Text als menschlich geschrieben gilt',
       image: '/images/step2.webp',
     },
     {
       step: 3,
       title: 'Humanisieren',
-      description: 'Schreiben Sie Ihren Text um, damit er zu 100% menschlich klingt und KI-Erkennung besteht',
+      description: 'Schreibe deinen Text um, damit er zu 100% menschlich klingt und KI-Erkennung besteht',
       image: '/images/step3.webp',
     },
   ]

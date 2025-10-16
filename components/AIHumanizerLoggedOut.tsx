@@ -26,7 +26,7 @@ export default function AIHumanizerLoggedOut() {
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           {/* Header with style dropdown */}
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Ihr Text</h2>
+            <h2 className="font-semibold">Dein Text</h2>
             <div className="relative">
               <button
                 onClick={() => setShowStyleDropdown(!showStyleDropdown)}
@@ -121,7 +121,7 @@ export default function AIHumanizerLoggedOut() {
                     </div>
                     <div className="flex-1">
                       <div className="font-medium">Mein Stil</div>
-                      <div className="text-sm text-gray-500">Text klingt wie Sie</div>
+                      <div className="text-sm text-gray-500">Text klingt wie du</div>
                     </div>
                     <div className="flex items-center gap-2 ml-auto">
                       <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input h-9 rounded-md text-xs px-3 py-1 bg-green-500 text-white hover:bg-green-600 hover:text-white">
@@ -139,7 +139,7 @@ export default function AIHumanizerLoggedOut() {
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Fügen Sie hier Ihren Text ein..."
+              placeholder="Füge hier deinen Text ein..."
               className="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 w-full border-none outline-none focus:outline-none resize-none min-h-[405px]"
               style={{ minHeight: '406px', height: '400px' }}
             />

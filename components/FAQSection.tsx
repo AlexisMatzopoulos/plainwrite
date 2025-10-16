@@ -9,12 +9,12 @@ export default function FAQSection() {
     {
       question: 'Wie funktioniert EchtSchreib?',
       answer:
-        'EchtSchreib verwendet fortschrittliche KI-Technologie, um Ihren Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert Ihre Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
+        'EchtSchreib verwendet fortschrittliche KI-Technologie, um deinen Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert deine Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
     },
     {
       question: 'Umgeht EchtSchreib Turnitin und andere KI-Prüfer?',
       answer:
-        'Ja, EchtSchreib wurde speziell entwickelt, um Ihre Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
+        'Ja, EchtSchreib wurde speziell entwickelt, um deine Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
     },
     {
       question: 'Wie viel kostet EchtSchreib?',
@@ -29,22 +29,22 @@ export default function FAQSection() {
     {
       question: 'Ich möchte einen langen Aufsatz humanisieren. Ist das möglich?',
       answer:
-        'Ja! Sie können Aufsätze jeder Länge humanisieren. Premium-Nutzer haben Zugang zu unbegrenzter Wortanzahl, was es einfach macht, längere Dokumente zu humanisieren.',
+        'Ja! Du kannst Aufsätze jeder Länge humanisieren. Premium-Nutzer haben Zugang zu unbegrenzter Wortanzahl, was es einfach macht, längere Dokumente zu humanisieren.',
     },
     {
       question: 'Ich habe mein Wortlimit erreicht. Wie kann ich es erweitern?',
       answer:
-        'Sie können auf einen Premium-Plan upgraden, um mehr Wörter oder unbegrenzten Zugang zu erhalten. Besuchen Sie unsere Preisseite, um verfügbare Optionen zu sehen.',
+        'Du kannst auf einen Premium-Plan upgraden, um mehr Wörter oder unbegrenzten Zugang zu erhalten. Besuche unsere Preisseite, um verfügbare Optionen zu sehen.',
     },
     {
       question: 'Kann ich frühere Humanisierungen sehen?',
       answer:
-        'Ja, alle Ihre früheren Humanisierungen werden in Ihrem Konto-Verlauf gespeichert. Sie können jederzeit von Ihrem Dashboard darauf zugreifen.',
+        'Ja, alle deine früheren Humanisierungen werden in deinem Konto-Verlauf gespeichert. Du kannst jederzeit von deinem Dashboard darauf zugreifen.',
     },
     {
       question: 'Wie kündige ich mein Abonnement?',
       answer:
-        'Sie können Ihr Abonnement jederzeit in Ihren Kontoeinstellungen kündigen. Ihr Zugang bleibt bis zum Ende Ihres Abrechnungszeitraums bestehen.',
+        'Du kannst dein Abonnement jederzeit in deinen Kontoeinstellungen kündigen. Dein Zugang bleibt bis zum Ende deines Abrechnungszeitraums bestehen.',
     },
     {
       question: 'Bestraft Google KI-generierte Inhalte?',

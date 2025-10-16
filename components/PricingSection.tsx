@@ -151,7 +151,7 @@ export default function PricingSection() {
       <div className="lg:container mx-auto px-4 py-16">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-semibold text-[#0F172A] mb-6">
-            Flexible Preispläne für Sie
+            Flexible Preispläne für dich
           </h1>
 
           {/* Billing Toggle */}
@@ -203,13 +203,13 @@ export default function PricingSection() {
         {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-sm text-slate-950 font-semibold mb-2">
-            Benötigen Sie mehr?{' '}
+            Benötigst du mehr?{' '}
             <a href="mailto:hello.naturalwrite@gmail.com" className="text-emerald-500 underline">
-              Kontaktieren Sie uns
+              Kontaktiere uns
             </a>
           </p>
           <p className="text-sm text-slate-500">
-            Durch Klicken auf die Schaltfläche Abonnieren stimmen Sie unseren{' '}
+            Durch Klicken auf die Schaltfläche Abonnieren stimmst du unseren{' '}
             <Link href="/terms-of-service" className="underline">
               Nutzungsbedingungen
             </Link>{' '}

@@ -73,7 +73,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
 
   const handleHumanize = async () => {
     if (!inputText.trim()) {
-      setError('Bitte geben Sie Text ein, der humanisiert werden soll')
+      setError('Bitte gib Text ein, der humanisiert werden soll')
       return
     }
 
@@ -150,7 +150,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
     const textToCheck = outputText || inputText
 
     if (!textToCheck.trim()) {
-      setError('Bitte geben Sie Text ein, der überprüft werden soll')
+      setError('Bitte gib Text ein, der überprüft werden soll')
       return
     }
 
@@ -206,7 +206,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Ihr Text</h2>
+            <h2 className="font-semibold">Dein Text</h2>
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setStyleDropdownOpen(!styleDropdownOpen)}
@@ -300,7 +300,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                     </div>
                     <div className="flex-1">
                       <div className="font-medium">Mein Stil</div>
-                      <div className="text-sm text-gray-500">Text klingt wie Sie</div>
+                      <div className="text-sm text-gray-500">Text klingt wie du</div>
                     </div>
                     <div className="flex items-center gap-2 ml-auto">
                       <Link
@@ -318,7 +318,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
 
           <div className="px-4 flex-1 relative">
             <textarea
-              placeholder="Fügen Sie hier Ihren Text ein..."
+              placeholder="Füge hier deinen Text ein..."
               className="w-full border-none outline-none focus:outline-none resize-none min-h-[405px] ms-0 ps-0 text-sm"
               value={inputText}
               onChange={handleInputChange}
@@ -403,7 +403,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
             {insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
-                  Sie benötigen mehr Wörter, um Ihren Text zu humanisieren
+                  Du benötigst mehr Wörter, um deinen Text zu humanisieren
                 </div>
                 <div className="text-slate-950 mb-2">
                   Aktuelles Guthaben: {totalBalance}/{wordsLimit}

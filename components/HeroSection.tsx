@@ -11,7 +11,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
         {!isLoggedIn && (
           <div className="inline-block bg-white rounded-full px-3 py-1 mb-6 shadow-sm">
             <span className="text-sm font-semibold uppercase bg-gradient-to-r from-orange-500 to-green-500 bg-clip-text text-transparent">
-              Vertraut von über 350.000 Nutzern
+              Vertraut von über 100.000 Nutzern
             </span>
           </div>
         )}
@@ -19,7 +19,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
           KI-Texte humanisieren & KI-Detektoren überlisten
         </h1>
         <p className="text-muted-foreground mb-6 mt-4 text-slate-500 max-w-xl mx-auto">
-          EchtSchreib verwandelt Ihre KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren
+          EchtSchreib verwandelt deine KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren
         </p>
         <Link
           href={isLoggedIn ? '/pricing' : '/api/auth/signin'}

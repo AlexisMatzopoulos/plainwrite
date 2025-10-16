@@ -3,9 +3,9 @@ import Image from 'next/image'
 export default function DetectorsSection() {
   const detectors = [
     { name: 'Turnitin', image: '/images/turnitin.webp' },
-    { name: 'Copyleaks', image: '/images/copyleaks.webp' },
-    { name: 'ZeroGPT', image: '/images/zerogpt.webp' },
-    { name: 'Quillbot', image: '/images/quillbot.webp' },
+    { name: 'Ouriginal', image: '/images/ouriginal.jpg' },
+    { name: 'Plagscan', image: '/images/plagscan.png' },
+    { name: 'Plagaware', image: '/images/plagaware.png' },
     { name: 'Grammarly', image: '/images/grammarly.webp' },
     { name: 'GPTZero', image: '/images/gptzero.webp' },
   ]
