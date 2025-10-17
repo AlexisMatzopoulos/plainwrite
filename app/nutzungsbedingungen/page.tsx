@@ -1,6 +1,17 @@
+'use client'
+
+import { useSession } from 'next-auth/react'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
 export default function TermsOfService() {
+  const { status } = useSession()
+  const isLoggedIn = status === 'authenticated'
+
   return (
-    <div className="max-w-4xl mx-auto px-4 flex flex-col gap-4 mt-10">
+    <div className="flex flex-col min-h-screen">
+      <Header isLoggedIn={isLoggedIn} />
+      <div className="max-w-4xl mx-auto px-4 flex flex-col gap-4 mt-10 mb-10">
       <h1 className="text-4xl font-extrabold">Nutzungsbedingungen</h1>
       <div className="max-w-4xl">
         <p className="text-sm text-gray-500">
@@ -695,13 +706,15 @@ export default function TermsOfService() {
         </section>
       </main>
 
-      <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
-        <p>EchtSchreib</p>
-        <p>
-          Dieses Dokument dient als rechtsverbindliche Vereinbarung zwischen dir und EchtSchreib bezüglich der Nutzung
-          unserer Dienste.
-        </p>
+        <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
+          <p>EchtSchreib</p>
+          <p>
+            Dieses Dokument dient als rechtsverbindliche Vereinbarung zwischen dir und EchtSchreib bezüglich der Nutzung
+            unserer Dienste.
+          </p>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Home() {
       <main className="w-full">
         <div
           className="w-full bg-cover bg-top md:bg-top bg-no-repeat"
-          style={{ backgroundImage: "url('/images/gradient.webp')" }}
+          style={{ backgroundImage: "url('/images/gradient2.webp')" }}
         >
           <HeroSection isLoggedIn={isLoggedIn} />
           {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} /> : <AIHumanizerLoggedOut />}

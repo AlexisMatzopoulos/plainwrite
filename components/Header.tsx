@@ -38,7 +38,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
 
   return (
     <header className="relative">
-      <div className="py-4 border-b border-slate-300">
+      <div className=" py-2 border-b border-slate-300">
         <div className="lg:container mx-auto px-4 flex items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -49,8 +49,8 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 width={32}
                 height={32}
               />
-              <span className="font-bold text-xl hidden md:block">
-                Echt<span style={{ fontFamily: 'Strings, sans-serif' }}>Schreib</span>
+              <span className="font-bold hidden md:block" style={{ fontSize: 24, fontWeight: 'normal'}}>
+                Echt<span style={{ fontFamily: 'Strings, sans-serif', fontSize: 36, fontWeight:'lighter' }}>Schreib</span>
               </span>
             </Link>
           </div>
