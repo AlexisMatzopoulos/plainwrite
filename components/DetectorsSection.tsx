@@ -4,10 +4,10 @@ export default function DetectorsSection() {
   const detectors = [
     { name: 'Turnitin', image: '/images/turnitin.webp' },
     { name: 'Ouriginal', image: '/images/ouriginal.jpg' },
-    { name: 'Plagscan', image: '/images/plagscan.png' },
+    { name: 'Compilatio', image: '/images/compilatio.png' },
     { name: 'Plagaware', image: '/images/plagaware.png' },
     { name: 'Grammarly', image: '/images/grammarly.webp' },
-    { name: 'GPTZero', image: '/images/gptzero.webp' },
+    { name: 'Plagscan', image: '/images/plagscan.png' },
   ]
 
   return (
@@ -20,8 +20,8 @@ export default function DetectorsSection() {
               <Image
                 src={detector.image}
                 alt={detector.name}
-                width={132}
-                height={100}
+                width={detector.name === 'Compilatio' ? 160 : 132}
+                height={detector.name === 'Compilatio' ? 120 : 100}
                 className="object-contain"
               />
             </div>

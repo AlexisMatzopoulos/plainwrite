@@ -49,32 +49,20 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 width={32}
                 height={32}
               />
-              <span className="font-bold text-xl hidden md:block">EchtSchreib</span>
+              <span className="font-bold text-xl hidden md:block">
+                Echt<span style={{ fontFamily: 'Strings, sans-serif' }}>Schreib</span>
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 ml-8">
-            <span className="text-sm font-medium text-slate-700 hover:underline cursor-pointer">
-              KI-Humanisierer
-            </span>
-            <Link href="/blog" className="text-sm font-medium text-slate-700 hover:underline">
-              Blog
-            </Link>
             <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
               Kontakt
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
               Preise
             </Link>
-            <a
-              href="https://forms.gle/gWSc869rNh3FusGR6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-700 hover:underline"
-            >
-              API
-            </a>
           </nav>
 
           <div className="flex-grow hidden lg:block"></div>
@@ -390,26 +378,12 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 </button>
               </>
             )}
-            <span className="text-sm font-medium text-slate-700 hover:underline cursor-pointer">
-              KI-Humanisierer
-            </span>
-            <Link href="/blog" className="text-sm font-medium text-slate-700 hover:underline">
-              Blog
-            </Link>
             <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
               Kontakt
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
               Preise
             </Link>
-            <a
-              href="https://forms.gle/gWSc869rNh3FusGR6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-700 hover:underline"
-            >
-              API
-            </a>
           </nav>
         </div>
       </div>

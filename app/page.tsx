@@ -41,7 +41,7 @@ export default function Home() {
         <FeaturesSection />
         <UniversitiesSection />
         <TestimonialsSection isLoggedIn={isLoggedIn} />
-        {!isLoggedIn && <CTASection />}
+        {/* {!isLoggedIn && <CTASection />} */}
         <FAQSection />
       </main>
 

@@ -8,13 +8,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4 text-center">
-        {!isLoggedIn && (
-          <div className="inline-block bg-white rounded-full px-3 py-1 mb-6 shadow-sm">
-            <span className="text-sm font-semibold uppercase bg-gradient-to-r from-orange-500 to-green-500 bg-clip-text text-transparent">
-              Vertraut von über 100.000 Nutzern
-            </span>
-          </div>
-        )}
         <h1 className="text-4xl font-bold text-slate-900">
           KI-Texte humanisieren & KI-Detektoren überlisten
         </h1>
@@ -28,7 +21,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
           {isLoggedIn ? 'Mehr Wörter kaufen' : 'Kostenlos starten'}
         </Link>
         {!isLoggedIn && (
-          <div className="text-sm text-muted-foreground mt-2">
+          <div className="text-sm mt-2" style={{ color: 'rgb(100, 116, 139)' }}>
             Keine Kreditkarte erforderlich
           </div>
         )}
