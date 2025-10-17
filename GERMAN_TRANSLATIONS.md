@@ -2,7 +2,7 @@
 
 ## Brand & Company
 - Natural Write → Echtschrift
-- hello.naturalwrite@gmail.com → kontakt@echtschrift.de
+- echtschreib@gmail.com → kontakt@echtschrift.de
 - naturalwrite.com → echtschrift.de
 
 ## Common UI Elements

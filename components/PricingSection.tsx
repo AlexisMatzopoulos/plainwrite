@@ -204,7 +204,7 @@ export default function PricingSection() {
         <div className="text-center mt-8">
           <p className="text-sm text-slate-950 font-semibold mb-2">
             Benötigst du mehr?{' '}
-            <a href="mailto:hello.naturalwrite@gmail.com" className="text-emerald-500 underline">
+            <a href="mailto:echtschreib@gmail.com" className="text-emerald-500 underline">
               Kontaktiere uns
             </a>
           </p>

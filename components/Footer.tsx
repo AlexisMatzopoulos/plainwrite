@@ -79,10 +79,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm mb-4 md:mb-0 font-bold">© 2025 EchtSchreib</p>
           <div className="flex space-x-6">
-            <Link href="/privacy-policy" className="text-sm hover:underline">
+            <Link href="/datenschutz" className="text-sm hover:underline">
               Datenschutz
             </Link>
-            <Link href="/terms-of-service" className="text-sm hover:underline">
+            <Link href="/nutzungsbedingungen" className="text-sm hover:underline">
               Nutzungsbedingungen
             </Link>
           </div>
