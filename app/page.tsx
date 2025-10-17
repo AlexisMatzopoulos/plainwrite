@@ -33,8 +33,14 @@ export default function Home() {
           className="w-full bg-cover bg-top md:bg-top bg-no-repeat"
           style={{ backgroundImage: "url('/images/gradient2.webp')" }}
         >
-          <HeroSection isLoggedIn={isLoggedIn} />
-          {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} /> : <AIHumanizerLoggedOut />}
+          <div className="container mx-auto px-4 py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+              <HeroSection isLoggedIn={isLoggedIn} />
+              <div className="lg:pl-8">
+                {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} /> : <AIHumanizerLoggedOut />}
+              </div>
+            </div>
+          </div>
         </div>
         <DetectorsSection />
         <StepsSection />

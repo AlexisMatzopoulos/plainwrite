@@ -13,7 +13,7 @@ export default function PricingSection() {
         name: 'Basis',
         wordsPerMonth: '5.000 Wörter pro Monat',
         originalPrice: undefined,
-        price: 'R79.99',
+        price: '€5.99',
         features: [
           '500 Wörter pro Anfrage',
           'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
@@ -29,7 +29,7 @@ export default function PricingSection() {
         name: 'Pro',
         wordsPerMonth: '15.000 Wörter pro Monat',
         originalPrice: undefined,
-        price: 'R239.99',
+        price: '€19.99',
         isPopular: true,
         features: [
           '1.500 Wörter pro Anfrage',
@@ -51,7 +51,7 @@ export default function PricingSection() {
         name: 'Ultra',
         wordsPerMonth: '30.000 Wörter pro Monat',
         originalPrice: undefined,
-        price: 'R479.99',
+        price: '€39.99',
         features: [
           '3.000 Wörter pro Anfrage',
           'Mein Schreibstil',
@@ -75,8 +75,8 @@ export default function PricingSection() {
       {
         name: 'Basis',
         wordsPerMonth: '5.000 Wörter pro Monat',
-        originalPrice: 'R79.99',
-        price: 'R39.99',
+        originalPrice: '€5.99',
+        price: '€2.99',
         features: [
           '500 Wörter pro Anfrage',
           'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
@@ -91,8 +91,8 @@ export default function PricingSection() {
       {
         name: 'Pro',
         wordsPerMonth: '15.000 Wörter pro Monat',
-        originalPrice: 'R239.99',
-        price: 'R119.99',
+        originalPrice: '€19.99',
+        price: '€9.99',
         isPopular: true,
         features: [
           '1.500 Wörter pro Anfrage',
@@ -113,8 +113,8 @@ export default function PricingSection() {
       {
         name: 'Ultra',
         wordsPerMonth: '30.000 Wörter pro Monat',
-        originalPrice: 'R479.99',
-        price: 'R239.99',
+        originalPrice: '€39.99',
+        price: '€19.99',
         features: [
           '3.000 Wörter pro Anfrage',
           'Mein Schreibstil',

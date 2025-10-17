@@ -21,8 +21,8 @@ export default function AIHumanizerLoggedOut() {
   }
 
   return (
-    <section className="container mx-auto px-4 mb-12">
-      <div className="grid grid-cols-1 gap-6 max-w-6xl mx-auto">
+    <section>
+      <div className="grid grid-cols-1 gap-6">
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           {/* Header with style dropdown */}
           <div className="p-4 flex justify-between items-center">

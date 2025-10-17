@@ -196,13 +196,13 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
   const wordsLimit = profile?.words_limit || 500
 
   return (
-    <section className="container mx-auto px-4 mb-12">
+    <section>
       {error && !insufficientBalance && (
-        <div className="max-w-6xl mx-auto mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
           {error}
         </div>
       )}
-      <div className="grid grid-cols-1 gap-6 max-w-6xl mx-auto lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] shadow-lg overflow-hidden flex flex-col">
           <div className="p-4 flex justify-between items-center">
