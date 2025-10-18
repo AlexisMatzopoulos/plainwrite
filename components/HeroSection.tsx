@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { signIn } from 'next-auth/react'
 
 interface HeroSectionProps {
   isLoggedIn?: boolean
@@ -122,12 +123,21 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </div>
           </div>
 
-          <Link
-            href={isLoggedIn ? '/pricing' : '/api/auth/signin'}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
-          >
-            {isLoggedIn ? 'Mehr Wörter kaufen' : 'Kostenlos starten'}
-          </Link>
+          {isLoggedIn ? (
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
+            >
+              Mehr Wörter kaufen
+            </Link>
+          ) : (
+            <button
+              onClick={() => signIn('google')}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
+            >
+              Kostenlos starten
+            </button>
+          )}
           {!isLoggedIn && (
             <div className="text-sm mt-2" style={{ color: 'rgb(100, 116, 139)' }}>
               Keine Kreditkarte erforderlich
