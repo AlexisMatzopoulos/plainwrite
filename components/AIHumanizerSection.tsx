@@ -291,7 +291,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="h-4 w-4 text-green-500"
+                        className="h-4 w-4 text-rose-500"
                       >
                         <path d="M2 21a8 8 0 0 1 10.821-7.487"></path>
                         <path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path>
@@ -305,7 +305,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                     <div className="flex items-center gap-2 ml-auto">
                       <Link
                         href="/pricing"
-                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-9 rounded-md text-xs px-3 py-1 bg-green-500 text-white hover:bg-green-600 border border-green-500"
+                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-9 rounded-md text-xs px-3 py-1 bg-rose-400 text-white hover:bg-rose-500 border border-rose-400"
                       >
                         Upgraden
                       </Link>
@@ -336,14 +336,14 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
               <button
                 onClick={handleCheckAI}
                 disabled={isCheckingAI}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto bg-green-100 text-green-600 hover:bg-green-200 border border-green-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto bg-rose-100 text-rose-600 hover:bg-rose-200 border border-rose-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
               </button>
               <button
                 onClick={handleHumanize}
                 disabled={isHumanizing}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-green-500 hover:bg-green-600 text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-rose-400 hover:bg-rose-500 text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -386,12 +386,12 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={`h-5 w-5 mr-2 ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}
+                    className={`h-5 w-5 mr-2 ${aiScore < 30 ? 'text-rose-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}
                   >
                     <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                     <path d="m9 11 3 3L22 4"></path>
                   </svg>
-                  <span className={`text-sm font-medium ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
+                  <span className={`text-sm font-medium ${aiScore < 30 ? 'text-rose-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
                     {aiScore}% KI erkannt
                   </span>
                 </div>
@@ -410,7 +410,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                 </div>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-green-500 hover:bg-green-600 text-white rounded-md px-4"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-rose-400 hover:bg-rose-500 text-white rounded-md px-4"
                 >
                   Mehr Guthaben kaufen
                 </Link>
@@ -445,12 +445,12 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="h-5 w-5 text-green-500"
+                          className="h-5 w-5 text-rose-500"
                         >
                           <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                           <path d="m9 11 3 3L22 4"></path>
                         </svg>
-                        <span className="text-green-500">Kopiert!</span>
+                        <span className="text-rose-500">Kopiert!</span>
                       </>
                     ) : (
                       <svg

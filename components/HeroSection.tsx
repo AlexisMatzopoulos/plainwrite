@@ -119,21 +119,21 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               ))}
             </div>
             <div className="text-sm text-slate-700">
-              Vertraut von <span className="font-semibold text-green-600">100k+ Autoren</span>
+              Vertraut von <span className="font-semibold text-rose-600">100k+ Autoren</span>
             </div>
           </div>
 
           {isLoggedIn ? (
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-rose-400 hover:bg-rose-500 text-white text-lg rounded-[14px]"
             >
               Mehr Wörter kaufen
             </Link>
           ) : (
             <button
               onClick={() => signIn('google')}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-rose-400 hover:bg-rose-500 text-white text-lg rounded-[14px]"
             >
               Kostenlos starten
             </button>

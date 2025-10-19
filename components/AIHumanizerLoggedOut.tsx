@@ -66,7 +66,7 @@ export default function AIHumanizerLoggedOut() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="h-4 w-4 text-green-500"
+                        className="h-4 w-4 text-rose-500"
                       >
                         <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
                       </svg>
@@ -86,7 +86,7 @@ export default function AIHumanizerLoggedOut() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="h-4 w-4 text-green-500 ml-auto mt-0.5"
+                        className="h-4 w-4 text-rose-500 ml-auto mt-0.5"
                       >
                         <path d="M20 6 9 17l-5-5"></path>
                       </svg>
@@ -124,7 +124,7 @@ export default function AIHumanizerLoggedOut() {
                       <div className="text-sm text-gray-500">Text klingt wie du</div>
                     </div>
                     <div className="flex items-center gap-2 ml-auto">
-                      <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input h-9 rounded-md text-xs px-3 py-1 bg-green-500 text-white hover:bg-green-600 hover:text-white">
+                      <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input h-9 rounded-md text-xs px-3 py-1 bg-rose-400 text-white hover:bg-rose-500 hover:text-white">
                         Upgrade
                       </button>
                     </div>
@@ -147,7 +147,7 @@ export default function AIHumanizerLoggedOut() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <button
                   onClick={handlePasteClick}
-                  className="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-9 flex items-center gap-2 rounded-full px-4 py-2 border-green-500 text-green-500 hover:bg-green-50 hover:text-green-600 pointer-events-auto"
+                  className="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-9 flex items-center gap-2 rounded-full px-4 py-2 border-rose-400 text-rose-500 hover:bg-rose-50 hover:text-rose-600 pointer-events-auto"
                 >
                   <Clipboard className="h-4 w-4" />
                   Text einfügen
@@ -165,13 +165,13 @@ export default function AIHumanizerLoggedOut() {
             </div>
             <div className="flex gap-2 w-full sm:w-auto">
               <button
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground h-9 rounded-[10px] px-4 w-full sm:w-auto bg-green-100 text-green-600 hover:bg-green-200"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground h-9 rounded-[10px] px-4 w-full sm:w-auto bg-rose-100 text-rose-600 hover:bg-rose-200"
                 disabled={wordCount === 0}
               >
                 Auf KI prüfen
               </button>
               <button
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-green-500 hover:bg-green-600 text-white rounded-[10px] px-4 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-rose-400 hover:bg-rose-500 text-white rounded-[10px] px-4 w-full sm:w-auto"
                 disabled={wordCount === 0}
               >
                 <Sparkles className="h-4 w-4 mr-2" />

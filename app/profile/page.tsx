@@ -74,7 +74,7 @@ export default function ProfilePage() {
         <Header isLoggedIn={!!session} />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-400 mx-auto"></div>
             <p className="mt-4 text-gray-600">Profil wird geladen...</p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function ProfilePage() {
                 <p className="text-3xl font-bold">{totalBalance.toLocaleString()} Wörter</p>
                 <p className="text-sm text-gray-500 mb-4">&nbsp;</p>
                 <a
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-full md:w-auto px-8 py-6 bg-green-500 text-white hover:bg-green-600 rounded-[10px] text-base"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-full md:w-auto px-8 py-6 bg-rose-400 text-white hover:bg-rose-500 rounded-[10px] text-base"
                   href="/pricing"
                 >
                   Mehr Wörter erhalten
@@ -213,14 +213,14 @@ export default function ProfilePage() {
               <div className="flex gap-2 flex-col md:flex-row">
                 {profile.subscription_plan && (
                   <a
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-green-100 text-green-700 hover:bg-green-200 rounded-[10px] text-[16px] w-full md:w-auto"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-rose-100 text-rose-600 hover:bg-rose-200 rounded-[10px] text-[16px] w-full md:w-auto"
                     href="/manage-subscription"
                   >
                     Abonnement verwalten
                   </a>
                 )}
                 <a
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-green-500 text-green-50 hover:bg-green-600 rounded-[10px] text-[16px] w-full md:w-auto"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-rose-400 text-rose-50 hover:bg-rose-500 rounded-[10px] text-[16px] w-full md:w-auto"
                   href="/pricing"
                 >
                   {profile.subscription_plan ? 'Abonnement upgraden' : 'Abonnement erhalten'}

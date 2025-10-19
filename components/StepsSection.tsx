@@ -38,7 +38,7 @@ export default function StepsSection() {
           {steps.map((step) => (
             <div
               key={step.step}
-              className="bg-white rounded-[16px] overflow-hidden hover:ring-1 hover:ring-green-500 p-6 shadow-lg"
+              className="bg-white rounded-[16px] overflow-hidden hover:ring-1 hover:ring-rose-400 p-6 shadow-lg"
             >
               <div className="w-full h-52 rounded-lg mb-4 relative overflow-hidden">
                 <Image
@@ -48,8 +48,8 @@ export default function StepsSection() {
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block bg-green-100 rounded-full px-3 py-1 mb-4">
-                <span className="text-sm font-semibold text-green-600 uppercase">
+              <div className="inline-block bg-rose-100 rounded-full px-3 py-1 mb-4">
+                <span className="text-sm font-semibold text-rose-600 uppercase">
                   Schritt {step.step}
                 </span>
               </div>

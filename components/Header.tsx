@@ -37,8 +37,8 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
   const userInitial = session?.user?.name?.charAt(0).toUpperCase() || session?.user?.email?.charAt(0).toUpperCase() || 'U'
 
   return (
-    <header className="relative">
-      <div className=" py-2 border-b border-slate-300">
+    <header className="sticky top-0 z-50">
+      <div className="backdrop-blur-md bg-white/70 py-2 border-b border-white/20 shadow-sm">
         <div className="lg:container mx-auto px-4 flex items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -77,7 +77,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   </div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-rose-400 text-white hover:bg-rose-500 rounded-lg"
                   >
                     Mehr Wörter kaufen
                   </Link>
@@ -130,7 +130,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 </button>
                 <button
                   onClick={() => signIn('google')}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-rose-400 text-white hover:bg-rose-500 rounded-lg"
                 >
                   Kostenlos testen
                 </button>
@@ -146,7 +146,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {totalBalance} Wörter</div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-rose-400 text-white hover:bg-rose-500"
                   >
                     Mehr Wörter kaufen
                   </Link>
@@ -225,7 +225,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
               </button>
               <button
                 onClick={() => signIn('google')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-rose-400 text-white hover:bg-rose-500 rounded-lg"
               >
                 Kostenlos testen
               </button>
@@ -262,7 +262,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {totalBalance}</div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-rose-400 text-white hover:bg-rose-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -319,7 +319,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 </button>
                 <button
                   onClick={() => signIn('google')}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-rose-400 text-white hover:bg-rose-500 rounded-lg"
                 >
                   Kostenlos testen
                 </button>

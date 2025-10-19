@@ -28,12 +28,6 @@ export default function TestimonialsSection({ isLoggedIn = false }: Testimonials
       ) : (
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{
-            background:
-              'radial-gradient(ellipse at center, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,1) 75%), url(/images/gradient.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
         ></div>
       )}
       <div className="relative z-10 container mx-auto px-4">
@@ -53,7 +47,7 @@ export default function TestimonialsSection({ isLoggedIn = false }: Testimonials
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-green-500 w-8 h-8 mb-4 fill-green-500 stroke-1 transform -rotate-180"
+                className="text-rose-500 w-8 h-8 mb-4 fill-rose-500 stroke-1 transform -rotate-180"
               >
                 <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
                 <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
