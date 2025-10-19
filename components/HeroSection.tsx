@@ -9,13 +9,14 @@ interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
-const adjectives = ['natürlich', 'authentisch', 'echt']
+const adjectives = ['authentisch', 'natürlich', 'original', 'unentdeckbar']
 
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(150)
+  const [isFlipped, setIsFlipped] = useState(false)
 
   useEffect(() => {
     const currentAdjective = adjectives[currentAdjectiveIndex]
@@ -47,8 +48,15 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
     return () => clearTimeout(timer)
   }, [displayedText, isDeleting, currentAdjectiveIndex, typingSpeed])
 
+  useEffect(() => {
+    const flipInterval = setInterval(() => {
+      setIsFlipped((prev) => !prev)
+    }, 3000)
+    return () => clearInterval(flipInterval)
+  }, [])
+
   return (
-    <section className="min-h-[80vh] flex flex-col">
+    <section className="min-h-[70vh] flex flex-col">
       <div className="flex flex-col h-full justify-between">
         <div>
           <h1 className="text-5xl font-bold text-theme-text mb-6">
@@ -63,10 +71,10 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               {displayedText}
               <span className="animate-pulse">|</span>
             </span>
-            {' '}wirkt
+            {' '}ist
           </h1>
           <p className="text-slate-500 mb-6 text-lg">
-            EchtSchreib macht aus deinen KI-generierten Inhalten vollständig humanisiertes, nicht erkennbares Schreiben, das jedes KI-Erkennungstool übersteht.
+            Verwandle jeden KI-Text in eine authentische Arbeit. Unsere KI, trainiert an über einer Million Essays, umgeht Detektoren wie Turnitin garantiert.
           </p>
 
           {/* Key features summary */}

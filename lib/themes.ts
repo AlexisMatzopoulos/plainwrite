@@ -12,14 +12,14 @@ export interface Theme {
 
 export const themes: Theme[] = [
   {
-    name: 'Deep Navy Blue',
+    name: 'German Gold',
     colors: {
-      primary: '#1a2b4a',
-      primaryHover: '#0f1a2f',
-      background: '#fafaf8',
-      accent: '#d4af37',
-      text: '#1a2b4a',
-      textMuted: '#64748b',
+      primary: '#FFCE00',
+      primaryHover: '#DAA520',
+      background: '#ffffff',
+      accent: '#DD0000',
+      text: '#000000',
+      textMuted: '#4a4a4a',
     },
   },
   {

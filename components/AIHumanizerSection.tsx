@@ -209,42 +209,40 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
             />
           </div>
 
-          <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
-            <div className="flex gap-2 w-full sm:w-auto">
-              <button
-                onClick={handleCheckAI}
-                disabled={isCheckingAI}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
+          <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <button
+              onClick={handleCheckAI}
+              disabled={isCheckingAI}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
+            >
+              {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
+            </button>
+            <button
+              onClick={handleHumanize}
+              disabled={isHumanizing}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 mr-2"
               >
-                {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
-              </button>
-              <button
-                onClick={handleHumanize}
-                disabled={isHumanizing}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-4 w-4 mr-2"
-                >
-                  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
-                  <path d="M20 3v4"></path>
-                  <path d="M22 5h-4"></path>
-                  <path d="M4 17v2"></path>
-                  <path d="M5 18H3"></path>
-                </svg>
-                {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
-              </button>
-            </div>
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+                <path d="M20 3v4"></path>
+                <path d="M22 5h-4"></path>
+                <path d="M4 17v2"></path>
+                <path d="M5 18H3"></path>
+              </svg>
+              {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
+            </button>
           </div>
         </div>
 

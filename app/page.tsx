@@ -30,7 +30,7 @@ export default function Home() {
 
       <main className="w-full relative overflow-hidden bg-white">
         <div className="w-full">
-          <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="container mx-auto px-4 py-32 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
               <HeroSection isLoggedIn={isLoggedIn} />
               <div className="lg:pl-8">

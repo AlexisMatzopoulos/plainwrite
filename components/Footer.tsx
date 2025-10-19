@@ -27,26 +27,6 @@ export default function Footer() {
                   Preise
                 </Link>
               </li>
-              <li>
-                <Link href="/affiliate" className="text-sm hover:underline">
-                  Partnerprogramm
-                </Link>
-              </li>
-              <li>
-                <Link href="/ip-checker" className="text-sm hover:underline">
-                  IP-Prüfer
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://forms.gle/gWSc869rNh3FusGR6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:underline"
-                >
-                  API
-                </a>
-              </li>
             </ul>
           </div>
 
