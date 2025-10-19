@@ -327,22 +327,27 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
           </div>
 
           <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-            <div className="flex items-center mb-4 md:mb-0">
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
               <span className="text-sm text-gray-500">
                 {wordCount} / {wordsLimit} Wörter
               </span>
+              {wordCount > 0 && wordCount < 50 && (
+                <span className="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-md border border-red-200 whitespace-nowrap">
+                  Min. 50 Wörter
+                </span>
+              )}
             </div>
             <div className="flex gap-2 w-full sm:w-auto">
               <button
                 onClick={handleCheckAI}
-                disabled={isCheckingAI}
+                disabled={isCheckingAI || wordCount < 50}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto bg-green-100 text-green-600 hover:bg-green-200 border border-green-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
               </button>
               <button
                 onClick={handleHumanize}
-                disabled={isHumanizing}
+                disabled={isHumanizing || wordCount < 50}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-green-500 hover:bg-green-600 text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <svg

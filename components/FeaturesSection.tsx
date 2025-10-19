@@ -44,27 +44,6 @@ export default function FeaturesSection() {
       imagePosition: 'left',
       image: '/images/feature2.webp',
     },
-    {
-      title: (
-        <>
-          Vertraut von über 100.000
-          <br />
-          Autoren weltweit
-        </>
-      ),
-      description: (
-        <>
-          Studenten verfeinern ihre Texte, um natürlicher zu klingen, Marketer verbessern Inhalte für
-          besseres Engagement und SEO, und Unternehmen versenden E-Mails, die persönlich wirken – nicht roboterhaft.
-          <br />
-          <br />
-          EchtSchreib passt sich jedem Anwendungsfall an und liefert klare, menschlich klingende Texte,
-          die sich lesen, als hättest du sie selbst geschrieben.
-        </>
-      ),
-      imagePosition: 'right',
-      image: '/images/feature3.webp',
-    },
   ]
 
   return (

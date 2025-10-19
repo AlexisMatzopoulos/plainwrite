@@ -158,21 +158,26 @@ export default function AIHumanizerLoggedOut() {
 
           {/* Footer with word count and buttons */}
           <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-            <div className="flex items-center mb-4 md:mb-0">
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
               <span className="text-sm text-gray-500">
                 {wordCount} / {maxWords} Wörter
               </span>
+              {wordCount > 0 && wordCount < 50 && (
+                <span className="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-md border border-red-200 whitespace-nowrap">
+                  Min. 50 Wörter
+                </span>
+              )}
             </div>
             <div className="flex gap-2 w-full sm:w-auto">
               <button
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground h-9 rounded-[10px] px-4 w-full sm:w-auto bg-green-100 text-green-600 hover:bg-green-200"
-                disabled={wordCount === 0}
+                disabled={wordCount < 50}
               >
                 Auf KI prüfen
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-green-500 hover:bg-green-600 text-white rounded-[10px] px-4 w-full sm:w-auto"
-                disabled={wordCount === 0}
+                disabled={wordCount < 50}
               >
                 <Sparkles className="h-4 w-4 mr-2" />
                 Humanisieren

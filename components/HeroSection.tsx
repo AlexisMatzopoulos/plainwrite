@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signIn } from 'next-auth/react'
 
@@ -98,31 +97,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Bottom section with trusted users, CTA, and credit card text */}
+        {/* Bottom section with CTA and credit card text */}
         <div className="pb-8">
-          {/* Trusted users section */}
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
-                >
-                  <Image
-                    src={`/images/students/student${i}.${i === 2 ? 'png' : 'jpg'}`}
-                    alt={`Student ${i}`}
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="text-sm text-slate-700">
-              Vertraut von <span className="font-semibold text-green-600">100k+ Autoren</span>
-            </div>
-          </div>
-
           {isLoggedIn ? (
             <Link
               href="/pricing"
