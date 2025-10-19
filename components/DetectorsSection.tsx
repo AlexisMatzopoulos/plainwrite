@@ -12,16 +12,16 @@ export default function DetectorsSection() {
 
   return (
     <div className="container mx-auto px-4 text-center py-16">
-      <h2 className="text-2xl font-bold mb-8 text-slate-950">KI-Inhaltsdetektoren umgehen</h2>
+      <h2 className="text-2xl font-bold mb-8 text-theme-text">KI-Inhaltsdetektoren umgehen</h2>
       <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-4 px-4 max-w-6xl mx-auto">
         {detectors.map((detector) => (
           <div key={detector.name} className="flex items-center text-slate-700">
-            <div className="w-32 h-24 flex items-center justify-center">
+            <div className="w-40 h-28 flex items-center justify-center">
               <Image
                 src={detector.image}
                 alt={detector.name}
-                width={detector.name === 'Compilatio' ? 160 : 132}
-                height={detector.name === 'Compilatio' ? 120 : 100}
+                width={detector.name === 'Compilatio' || detector.name === 'Grammarly' ? 180 : 132}
+                height={detector.name === 'Compilatio' || detector.name === 'Grammarly' ? 135 : 100}
                 className="object-contain"
               />
             </div>

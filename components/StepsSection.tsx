@@ -26,7 +26,7 @@ export default function StepsSection() {
     <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-slate-950">
+          <h2 className="text-4xl font-bold mb-4 text-theme-text">
             KI-Texte in 3 einfachen Schritten humanisieren
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-lg">
@@ -48,12 +48,12 @@ export default function StepsSection() {
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block bg-green-100 rounded-full px-3 py-1 mb-4">
-                <span className="text-sm font-semibold text-green-600 uppercase">
+              <div className="inline-block rounded-full px-3 py-1 mb-4" style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}>
+                <span className="text-sm font-semibold text-theme-primary uppercase">
                   Schritt {step.step}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-slate-900">{step.title}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-theme-text">{step.title}</h3>
               <p className="text-slate-500 text-md">{step.description}</p>
             </div>
           ))}
