@@ -45,7 +45,10 @@ export default function AIHumanizerLoggedOut() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <button
                   onClick={handlePasteClick}
-                  className="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-9 flex items-center gap-2 rounded-full px-4 py-2 border-green-500 text-green-500 hover:bg-green-50 hover:text-green-600 pointer-events-auto"
+                  className="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-9 flex items-center gap-2 rounded-full px-4 py-2 border-theme-primary text-theme-primary pointer-events-auto"
+                  style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(var(--color-primary-rgb), 0.2)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(var(--color-primary-rgb), 0.1)'}
                 >
                   <Clipboard className="h-4 w-4" />
                   Text einfügen

@@ -9,13 +9,14 @@ interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
-const adjectives = ['natürlich', 'authentisch', 'echt']
+const adjectives = ['authentisch', 'natürlich', 'original', 'unentdeckbar']
 
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(150)
+  const [isFlipped, setIsFlipped] = useState(false)
 
   useEffect(() => {
     const currentAdjective = adjectives[currentAdjectiveIndex]
@@ -47,6 +48,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
     return () => clearTimeout(timer)
   }, [displayedText, isDeleting, currentAdjectiveIndex, typingSpeed])
 
+
   return (
     <section className="min-h-[80vh] flex flex-col">
       <div className="flex flex-col h-full justify-between">
@@ -63,10 +65,10 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               {displayedText}
               <span className="animate-pulse">|</span>
             </span>
-            {' '}wirkt
+            {' '}ist
           </h1>
           <p className="text-slate-500 mb-6 text-lg">
-            EchtSchreib macht aus deinen KI-generierten Inhalten vollständig humanisiertes, nicht erkennbares Schreiben, das jedes KI-Erkennungstool übersteht.
+            Verwandle jeden KI-Text in eine authentische Arbeit. Unsere KI, trainiert an über einer Million Essays, umgeht Detektoren wie Turnitin garantiert.
           </p>
 
           {/* Key features summary */}
@@ -82,6 +84,69 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="text-slate-600">Getestet gegen Turnitin, Compilatio, Ouriginal und weitere Detektoren</span>
+            </div>
+          </div>
+
+          {/* Achievement Badge */}
+          <div className="flex justify-center my-8">
+            <div className="flex items-center gap-12">
+              {/* Left Wreath */}
+              <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'unset' }}>
+                <Image
+                  src="/svg/left_wreath.svg"
+                  alt=""
+                  width={20}
+                  height={47}
+                />
+              </div>
+
+              {/* Flipping Card */}
+              <div
+                style={{ perspective: '1000px', height: '47px', width: '160px' }}
+                onMouseEnter={() => setIsFlipped(true)}
+                onMouseLeave={() => setIsFlipped(false)}
+              >
+                <div
+                  className="relative h-full w-full transition-transform duration-700 ease-out"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    color: '#FFCE00'
+                  }}
+                >
+                  {/* Front Side */}
+                  <div
+                    className="absolute flex h-full w-full items-center justify-center"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <div className="w-full text-center">
+                      <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%' }}>No.1</div>
+                      <div style={{ fontWeight: 500, fontSize: '16px' }}>Humanisierer</div>
+                    </div>
+                  </div>
+
+                  {/* Back Side */}
+                  <div
+                    className="absolute flex h-full w-full items-center justify-center"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <div className="w-full text-center">
+                      <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%' }}>100K+</div>
+                      <div style={{ fontWeight: 500, fontSize: '16px' }}>Nutzer</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Wreath */}
+              <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
+                <Image
+                  src="/svg/left_wreath.svg"
+                  alt=""
+                  width={20}
+                  height={47}
+                />
+              </div>
             </div>
           </div>
 
@@ -124,11 +189,11 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                     transform: translateX(0);
                   }
                   100% {
-                    transform: translateX(-33.333%);
+                    transform: translateX(-50%);
                   }
                 }
                 .animate-scroll {
-                  animation: scroll 30s linear infinite;
+                  animation: scroll 15s linear infinite;
                 }
                 .animate-scroll:hover {
                   animation-play-state: paused;
@@ -136,7 +201,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               `}</style>
               <div className="flex animate-scroll">
                 {[
-                  ...Array(3).fill([
+                  ...Array(6).fill([
                     { name: 'LMU', image: '/images/LMU.png' },
                     { name: 'Humboldt', image: '/images/humboldt.png' },
                     { name: 'TUM', image: '/images/TUM.jpg' },
