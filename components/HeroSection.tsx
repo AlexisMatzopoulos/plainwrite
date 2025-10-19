@@ -63,7 +63,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               }}
             >
               {displayedText}
-              <span className="animate-pulse">|</span>
             </span>
             {' '}ist
           </h1>
@@ -77,7 +76,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-slate-600">Trainiert mit über 1,2 Millionen akademischen Texten und Essays</span>
+              <span className="text-slate-600">Das einzige Tool, das ausschließlich auf deutschen Texten trainiert wurde.</span>
             </div>
             <div className="flex items-start gap-3">
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -87,22 +86,57 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Achievement Badge */}
-          <div className="flex justify-center my-8">
-            <div className="flex items-center gap-12">
+          {/* Badges Section */}
+          <div className="flex gap-8 my-8 pt-8">
+            {/* Training Data Badge */}
+            <div className="flex">
+              <div className="flex items-center">
+                {/* Left Wreath */}
+                <div className="flex-shrink-0 flex items-center justify-center">
+                  <Image
+                    src="/svg/left_wreath.svg"
+                    alt=""
+                    width={30}
+                    height={70}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex items-center justify-center px-4">
+                  <div className="text-center">
+                    <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trainiert auf</div>
+                    <div style={{ fontWeight: 500, fontSize: '16px', color: '#FFCE00' }}>700.000+ dokumenten</div>
+                  </div>
+                </div>
+
+                {/* Right Wreath */}
+                <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
+                  <Image
+                    src="/svg/left_wreath.svg"
+                    alt=""
+                    width={30}
+                    height={70}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Achievement Badge */}
+            <div className="flex">
+            <div className="flex items-center">
               {/* Left Wreath */}
               <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'unset' }}>
                 <Image
                   src="/svg/left_wreath.svg"
                   alt=""
-                  width={20}
-                  height={47}
+                  width={30}
+                  height={70}
                 />
               </div>
 
               {/* Flipping Card */}
               <div
-                style={{ perspective: '1000px', height: '47px', width: '160px' }}
+                style={{ perspective: '1000px', height: '70px', width: '160px' }}
                 onMouseEnter={() => setIsFlipped(true)}
                 onMouseLeave={() => setIsFlipped(false)}
               >
@@ -120,8 +154,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                     style={{ backfaceVisibility: 'hidden' }}
                   >
                     <div className="w-full text-center">
-                      <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%' }}>No.1</div>
-                      <div style={{ fontWeight: 500, fontSize: '16px' }}>Humanisierer</div>
+                      <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%' }}>Nr. 1</div>
+                      <div style={{ fontWeight: 500, fontSize: '16px' }}>deutscher Humanisierer</div>
                     </div>
                   </div>
 
@@ -143,19 +177,40 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 <Image
                   src="/svg/left_wreath.svg"
                   alt=""
-                  width={20}
-                  height={47}
+                  width={30}
+                  height={70}
                 />
               </div>
+            </div>
             </div>
           </div>
 
         </div>
 
         {/* Bottom section with trusted users, CTA, and credit card text */}
-        <div className="temp">
+        <div className="pb-8">
           {/* Trusted users section */}
-
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div
+                  key={i}
+                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
+                >
+                  <Image
+                    src={`/images/students/student${i}.${i === 2 ? 'png' : 'jpg'}`}
+                    alt={`Student ${i}`}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="text-sm text-slate-700">
+              Vertraut von <span className="font-semibold text-theme-primary">100k+ Autoren</span>
+            </div>
+          </div>
 
           {isLoggedIn ? (
             <Link
@@ -189,11 +244,11 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                     transform: translateX(0);
                   }
                   100% {
-                    transform: translateX(-50%);
+                    transform: translateX(-33.333%);
                   }
                 }
                 .animate-scroll {
-                  animation: scroll 15s linear infinite;
+                  animation: scroll 30s linear infinite;
                 }
                 .animate-scroll:hover {
                   animation-play-state: paused;
@@ -201,7 +256,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               `}</style>
               <div className="flex animate-scroll">
                 {[
-                  ...Array(6).fill([
+                  ...Array(3).fill([
                     { name: 'LMU', image: '/images/LMU.png' },
                     { name: 'Humboldt', image: '/images/humboldt.png' },
                     { name: 'TUM', image: '/images/TUM.jpg' },
