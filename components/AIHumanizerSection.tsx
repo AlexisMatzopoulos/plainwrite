@@ -192,7 +192,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
           {error}
         </div>
       )}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 flex-1">
+      <div className={`grid grid-cols-1 gap-6 ${showResult ? 'lg:grid-cols-2' : ''} flex-1`}>
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4 flex justify-between items-center">
