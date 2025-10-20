@@ -32,13 +32,13 @@ export default function Home() {
       <main className="w-full relative overflow-hidden bg-white">
         <div className="w-full" /* style={{ backgroundColor: '#ffe699' }} */>
           <div className="container mx-auto px-4 py-16 relative z-10">
-            <div className={`grid grid-cols-1 gap-8 items-stretch transition-all duration-500 ${!isLoggedIn ? 'lg:grid-cols-2' : ''}`}>
+            <div className={`grid grid-cols-1 gap-8 items-stretch transition-all duration-500 ${showResult ? '' : 'lg:grid-cols-2'}`}>
               {(!isLoggedIn || !showResult) && (
                 <div className={`transition-all duration-500 ${showResult ? 'opacity-0 -translate-x-full absolute' : 'opacity-100 translate-x-0'}`}>
                   <HeroSection isLoggedIn={isLoggedIn} />
                 </div>
               )}
-              <div className={`transition-all duration-500 ${isLoggedIn && !showResult ? '' : 'lg:pl-8'}`}>
+              <div className={`${showResult ? '' : 'lg:pl-8'}`}>
                 {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} showResult={showResult} setShowResult={setShowResult} /> : <AIHumanizerLoggedOut />}
               </div>
             </div>
