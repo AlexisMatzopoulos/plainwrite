@@ -25,6 +25,23 @@ export default function Home() {
     setRefreshKey(prev => prev + 1)
   }
 
+  // Prevent layout shift during auth check
+  if (status === 'loading') {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header isLoggedIn={false} refreshKey={0} />
+        <main className="w-full relative overflow-hidden bg-white">
+          <div className="container mx-auto px-4 py-16">
+            <div className="flex items-center justify-center min-h-[400px]">
+              <div className="text-gray-500">Wird geladen...</div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header isLoggedIn={isLoggedIn} refreshKey={refreshKey} />
