@@ -20,8 +20,8 @@ export default function DetectorsSection() {
               <Image
                 src={detector.image}
                 alt={detector.name}
-                width={detector.name === 'Compilatio' || detector.name === 'Grammarly' ? 180 : 132}
-                height={detector.name === 'Compilatio' || detector.name === 'Grammarly' ? 135 : 100}
+                width={detector.name === 'Compilatio' || detector.name === 'Plagaware' ? 200 : detector.name === 'Grammarly' ? 180 : 132}
+                height={detector.name === 'Compilatio' || detector.name === 'Plagaware' ? 150 : detector.name === 'Grammarly' ? 135 : 100}
                 className="object-contain"
               />
             </div>
