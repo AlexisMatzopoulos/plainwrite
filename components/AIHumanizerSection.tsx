@@ -146,10 +146,19 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
       return
     }
 
+    // Check word balance before proceeding
+    const wordsProcessed = countWords(textToCheck)
+    if (totalBalance < wordsProcessed) {
+      setShowResult(true)
+      setInsufficientBalance(true)
+      return
+    }
+
     setShowResult(true) // Show result panel
     setShowingAIResults(true) // Mark that we're showing AI results
     setIsCheckingAI(true)
     setError(null)
+    setInsufficientBalance(false)
 
     try {
       const response = await fetch('/api/ai-check', {
@@ -170,7 +179,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
 
       setAiScore(data.aiScore)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
+      setError(err instanceof Error ? err.message : 'Ein Fehler is aufgetreten')
     } finally {
       setIsCheckingAI(false)
     }
