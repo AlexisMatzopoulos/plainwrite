@@ -161,9 +161,6 @@ demzufolge
       config: {
         systemInstruction,
         temperature: 0.7,
-        thinkingConfig: {
-          thinkingBudget: 0, // Disable thinking for faster response
-        },
       },
     });
 
