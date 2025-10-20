@@ -42,7 +42,7 @@ export default function Home() {
         <StepsSection />
         <FeaturesSection />
         <DetectorsSection />
-        {/* {!isLoggedIn && <CTASection />} */}
+        {!isLoggedIn && <CTASection />}
         <FAQSection />
       </main>
 

@@ -17,7 +17,7 @@ export default function CTASection() {
         </p>
         <Link
           href="/api/auth/signin"
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-12 px-8 bg-green-500 hover:bg-green-600 text-white text-lg rounded-[14px]"
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-12 px-8 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
         >
           Kostenlos starten
         </Link>
