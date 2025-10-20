@@ -34,11 +34,11 @@ export default function Home() {
           <div className="container mx-auto px-4 py-16 relative z-10">
             <div className={`grid grid-cols-1 gap-8 items-stretch transition-all duration-500 ${showResult ? '' : 'lg:grid-cols-2'}`}>
               {(!isLoggedIn || !showResult) && (
-                <div className={`transition-all duration-500 ${showResult ? 'opacity-0 -translate-x-full absolute' : 'opacity-100 translate-x-0'}`}>
+                <div className={`h-full transition-all duration-500 ${showResult ? 'opacity-0 -translate-x-full absolute' : 'opacity-100 translate-x-0'}`}>
                   <HeroSection isLoggedIn={isLoggedIn} />
                 </div>
               )}
-              <div className={`${showResult ? '' : 'lg:pl-8'}`}>
+              <div className={`h-full ${showResult ? '' : 'lg:pl-8'}`}>
                 {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} showResult={showResult} setShowResult={setShowResult} /> : <AIHumanizerLoggedOut />}
               </div>
             </div>
