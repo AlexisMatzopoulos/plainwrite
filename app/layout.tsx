@@ -3,6 +3,7 @@ import './globals.css'
 import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXTAUTH_URL || 'https://echtschreib.de'),
   title: 'EchtSchreib: KI-Humanisierer kostenlos, KI-Detektoren umgehen',
   description: 'Umgehen Sie KI-Detektoren mit EchtSchreib – dem führenden KI-Humanisierer-Tool. Machen Sie KI-generierte ChatGPT-Texte nicht erkennbar und lassen Sie sie zu 100% menschlich klingen.',
   openGraph: {

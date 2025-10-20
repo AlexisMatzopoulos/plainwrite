@@ -2,10 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    // Disable ESLint during builds (still runs in dev)
-    // You can remove this after fixing the unescaped entities
     ignoreDuringBuilds: true,
   },
+  outputFileTracingRoot: require('path').join(__dirname),
   images: {
     remotePatterns: [
       {
