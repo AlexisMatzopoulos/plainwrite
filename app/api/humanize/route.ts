@@ -2,8 +2,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { countWords } from "@/lib/wordCounter";
-import { streamText } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { GoogleGenAI } from "@google/genai";
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+});
 
 export async function POST(req: Request) {
   try {
@@ -98,24 +101,76 @@ export async function POST(req: Request) {
       },
     });
 
-    // 8. Prepare AI prompt - Each request is a fresh conversation
-    const styleInstruction = style ? ` in a ${style} style` : "";
-    const systemPrompt = `Paraphrase the following text${styleInstruction}. Maintain the original meaning while using different words and sentence structures.`;
+    // 8. Prepare custom prompt
+    const systemInstruction = `<goal> To convert the user's essay into human written German text that bypasses AI detectors. </goal>
 
-    // 9. Stream the response from OpenAI (fresh conversation each time)
-    const result = streamText({
-      model: openai("gpt-4o-mini"),
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: text },
-      ],
-      temperature: 0.7,
+Paraphrase and humanise the user's essay. Ensure you avoid phrases and words used in the <Avoid> list below. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
+
+NEVER use commas or create sentences that require the use of commas.
+IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
+
+IMPORTANT: Each output sentence should have:
+a 45% chance of being 6 or less
+40% chance of having 7-12 words
+15% chance of being longer than 12 words
+This should be selected randomly
+
+Output should NEVER contain dashes. Use parentheses instead.
+
+Additionally:
+
+Use transitions that feel organic rather than formulaic, e.g. at the same time, by this logic, in this regard, instead of standard connectors.
+
+Allow for slight lexical imperfection, occasional repetition or near-syndromes used naturally rather than perfectly optimized wording.
+
+Use transitions that feel organic rather than formulaic, e.g. "at the same time", "by this logic", "in this regard", instead of standard connectors.
+
+Integrate evaluative language like, "Arguably, it seems likely that one might contend."
+
+Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
+
+Output must ALWAYS be German
+
+<Avoid>
+es ist wichtig zu beachten
+darüber hinaus
+jedoch
+daher
+außerdem
+insbesondere
+weiterhin
+folglich
+zudem
+dennoch
+schließlich
+zusammenfassend
+im Gegensatz dazu
+infolgedessen
+des Weiteren
+insofern
+dementsprechend
+nichtsdestotrotz
+diesbezüglich
+demzufolge
+</Avoid>`;
+
+    // 9. Stream response from Gemini 2.5 Pro
+    const result = await ai.models.generateContentStream({
+      model: "gemini-2.5-pro",
+      contents: text,
+      config: {
+        systemInstruction,
+        temperature: 0.7,
+        thinkingConfig: {
+          thinkingBudget: 0, // Disable thinking for faster response
+        },
+      },
     });
 
     // Buffer the complete response for history
     let fullText = "";
 
-    // Create a transform stream to capture the complete text
+    // Create a transform stream to capture and forward the text
     const { readable, writable } = new TransformStream();
     const writer = writable.getWriter();
     const encoder = new TextEncoder();
@@ -123,9 +178,10 @@ export async function POST(req: Request) {
     // Process the stream in the background
     (async () => {
       try {
-        for await (const chunk of result.textStream) {
-          fullText += chunk;
-          await writer.write(encoder.encode(chunk));
+        for await (const chunk of result) {
+          const chunkText = chunk.text;
+          fullText += chunkText;
+          await writer.write(encoder.encode(chunkText));
         }
 
         // Save to history after streaming completes
