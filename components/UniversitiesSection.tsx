@@ -14,7 +14,7 @@ export default function UniversitiesSection() {
 
   return (
     <div className="w-full text-center py-4">
-      <h2 className="text-2xl font-bold mb-8 text-slate-950 text-center">
+      <h2 className="text-2xl font-bold mb-8 text-theme-text text-center">
         Unterstützung für Autoren an führenden Institutionen
       </h2>
       <div className="container mx-auto px-4">

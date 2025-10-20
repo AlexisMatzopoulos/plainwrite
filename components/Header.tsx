@@ -77,7 +77,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   </div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                   >
                     Mehr Wörter kaufen
                   </Link>
@@ -130,7 +130,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 </button>
                 <button
                   onClick={() => signIn('google')}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
                   Kostenlos testen
                 </button>
@@ -146,7 +146,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {totalBalance} Wörter</div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                   >
                     Mehr Wörter kaufen
                   </Link>
@@ -225,7 +225,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
               </button>
               <button
                 onClick={() => signIn('google')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
               >
                 Kostenlos testen
               </button>
@@ -262,7 +262,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {totalBalance}</div>
                   <Link
                     href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-green-500 text-white hover:bg-green-600"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -319,7 +319,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                 </button>
                 <button
                   onClick={() => signIn('google')}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-green-500 text-white hover:bg-green-600 rounded-lg"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
                   Kostenlos testen
                 </button>

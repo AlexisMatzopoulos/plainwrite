@@ -12,8 +12,54 @@
 
 :root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  /* Theme colors - German national colors */
+  --color-primary: #FFCE00;
+  --color-primary-rgb: 255, 206, 0;
+  --color-primary-hover: #DAA520;
+  --color-background: #ffffff;
+  --color-accent: #DD0000;
+  --color-text: #000000;
+  --color-text-muted: #4a4a4a;
 }
 
 body {
   font-family: var(--font-sans);
+  background-color: var(--color-background);
+}
+
+/* Theme utility classes */
+.bg-theme-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-theme-primary-hover:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.text-theme-primary {
+  color: var(--color-primary) !important;
+}
+
+.text-theme-text {
+  color: var(--color-text) !important;
+}
+
+.border-theme-primary {
+  border-color: var(--color-primary) !important;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
