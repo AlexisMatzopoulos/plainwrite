@@ -6,6 +6,8 @@ import Link from 'next/link'
 
 interface AIHumanizerSectionProps {
   onBalanceUpdate?: () => void
+  showResult: boolean
+  setShowResult: (show: boolean) => void
 }
 
 interface Profile {
@@ -14,7 +16,7 @@ interface Profile {
   words_limit: number
 }
 
-export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSectionProps) {
+export default function AIHumanizerSection({ onBalanceUpdate, showResult, setShowResult }: AIHumanizerSectionProps) {
   const { data: session } = useSession()
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')
@@ -27,7 +29,6 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('default')
-  const [showResult, setShowResult] = useState(false)
 
   useEffect(() => {
     if (session?.user) {
