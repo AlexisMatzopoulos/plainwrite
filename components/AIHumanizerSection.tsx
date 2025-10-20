@@ -295,7 +295,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                 </div>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-green-500 hover:bg-green-600 text-white rounded-md px-4"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-theme-primary bg-theme-primary-hover text-white rounded-md px-4"
                 >
                   Mehr Guthaben kaufen
                 </Link>
