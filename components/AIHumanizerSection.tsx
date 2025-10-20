@@ -26,6 +26,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
   const [profile, setProfile] = useState<Profile | null>(null)
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
+  const [selectedStyle, setSelectedStyle] = useState('default')
 
   useEffect(() => {
     if (session?.user) {
