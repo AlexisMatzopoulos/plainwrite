@@ -27,6 +27,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('default')
+  const [showResult, setShowResult] = useState(false)
 
   useEffect(() => {
     if (session?.user) {
@@ -64,6 +65,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       return
     }
 
+    setShowResult(true) // Show result panel
     setIsHumanizing(true)
     setError(null)
     setInsufficientBalance(false)
@@ -141,6 +143,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
       return
     }
 
+    setShowResult(true) // Show result panel
     setIsCheckingAI(true)
     setError(null)
 
@@ -249,7 +252,8 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
           </div>
         </div>
 
-        {/* Output Panel */}
+        {/* Output Panel - Only show after user interaction */}
+        {showResult && (
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4">
             <h2 className="font-semibold flex items-center justify-between">
@@ -354,6 +358,7 @@ export default function AIHumanizerSection({ onBalanceUpdate }: AIHumanizerSecti
             )}
           </div>
         </div>
+        )}
       </div>
     </section>
   )
