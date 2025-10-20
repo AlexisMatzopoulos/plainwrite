@@ -29,6 +29,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('default')
+  const [showingAIResults, setShowingAIResults] = useState(false)
 
   useEffect(() => {
     if (session?.user) {
@@ -67,6 +68,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     }
 
     setShowResult(true) // Show result panel
+    setShowingAIResults(false) // Clear AI results when humanizing
     setIsHumanizing(true)
     setError(null)
     setInsufficientBalance(false)
@@ -145,6 +147,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     }
 
     setShowResult(true) // Show result panel
+    setShowingAIResults(true) // Mark that we're showing AI results
     setIsCheckingAI(true)
     setError(null)
 
@@ -299,6 +302,20 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                 >
                   Mehr Guthaben kaufen
                 </Link>
+              </div>
+            ) : showingAIResults && aiScore !== null ? (
+              <div className="flex-1 flex flex-col items-center justify-center px-4">
+                <div className="text-center">
+                  <div className={`text-6xl font-bold mb-4 ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
+                    {aiScore}%
+                  </div>
+                  <div className="text-lg text-slate-700 mb-2">
+                    {aiScore < 30 ? 'Kaum KI erkannt' : aiScore < 60 ? 'Möglicherweise KI' : 'Wahrscheinlich KI'}
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Der Text wurde auf KI-generierte Inhalte überprüft
+                  </div>
+                </div>
               </div>
             ) : (
               <>
