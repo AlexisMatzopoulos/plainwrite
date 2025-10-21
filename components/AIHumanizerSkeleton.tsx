@@ -1,6 +1,6 @@
 export default function AIHumanizerSkeleton() {
   return (
-    <section className="h-full flex flex-col">
+    <section className="flex flex-col" style={{ height: '80vh' }}>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 flex-1">
         {/* Input Panel Skeleton */}
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
@@ -22,7 +22,7 @@ export default function AIHumanizerSkeleton() {
           </div>
 
           {/* Text Area */}
-          <div className="px-4 flex-1 relative flex" style={{ minHeight: '400px' }}>
+          <div className="px-4 flex-1 relative flex">
             <div className="w-full h-full bg-slate-100 rounded animate-pulse"></div>
           </div>
 
@@ -40,7 +40,7 @@ export default function AIHumanizerSkeleton() {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 flex flex-col" style={{ minHeight: '400px' }}>
+          <div className="flex-1 flex flex-col">
             <div className="px-4 flex-1 relative flex">
               <div className="w-full h-full bg-slate-100 rounded animate-pulse"></div>
             </div>

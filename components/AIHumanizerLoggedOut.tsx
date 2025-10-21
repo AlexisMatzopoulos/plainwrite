@@ -22,7 +22,7 @@ export default function AIHumanizerLoggedOut() {
   }
 
   return (
-    <section className="h-full flex flex-col">
+    <section className="flex flex-col" style={{ height: '80vh' }}>
       <div className="grid grid-cols-1 gap-6 flex-1">
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           {/* Header with word count */}

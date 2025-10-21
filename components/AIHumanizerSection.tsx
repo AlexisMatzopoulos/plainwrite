@@ -224,7 +224,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const wordLimitDisplay = hasUnlimitedAccess ? '∞' : wordsLimit
 
   return (
-    <section className="h-full flex flex-col">
+    <section className="flex flex-col" style={{ height: '80vh' }}>
       {error && !insufficientBalance && (
         <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
           {error}
