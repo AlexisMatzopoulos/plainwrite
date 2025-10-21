@@ -32,11 +32,11 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [userRole, setUserRole] = useState<UserRole>('USER')
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
-  const [selectedStyle, setSelectedStyle] = useState('Academic')
+  const [selectedStyle, setSelectedStyle] = useState('Akademisch')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
 
-  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
+  const writingStyles = ['Akademisch', 'Kreativ', 'Formal', 'Locker']
 
   useEffect(() => {
     if (session?.user) {
