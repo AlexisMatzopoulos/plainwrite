@@ -50,7 +50,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
 
 
   return (
-    <section className="min-h-[80vh] flex flex-col">
+    <section className="h-[80vh] flex flex-col">
       <div className="flex flex-col h-full justify-between">
         <div>
           <h1 className="text-5xl font-bold text-theme-text mb-6">
@@ -85,8 +85,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               <span className="text-slate-600">Wähle aus verschiedenen Schreibstilen für jede Situation</span>
             </div>
           </div>
-
-          {/* Badges Section */}
+         {/* Badges Section */}
           <div className="flex gap-8 my-8 pt-8">
             {/* Training Data Badge */}
             <div className="flex">
@@ -183,6 +182,9 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
         </div>
 
         {/* Bottom section with trusted users, CTA, and credit card text */}
+        <div className="bottom-section">
+          
+ 
         <div className="pb-8">
           {/* Trusted users section */}
           {/* <div className="flex items-center gap-3 mb-6">
@@ -274,6 +276,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               </div>
             </div>
           </div> */}
+        </div>
         </div>
       </div>
     </section>
