@@ -52,10 +52,10 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/images/logo.fd02a639.svg"
+                src="/images/echtschreb_logo_compressed.png"
                 alt="EchtSchreib Logo"
-                width={32}
-                height={32}
+                width={40}
+                height={40}
               />
               <span className="font-bold hidden md:block" style={{ fontSize: 24, fontWeight: 'normal'}}>
                 Echt<span style={{ fontFamily: 'Strings, sans-serif', fontSize: 36, fontWeight:'lighter' }}>Schreib</span>
