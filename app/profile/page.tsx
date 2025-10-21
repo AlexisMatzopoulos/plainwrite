@@ -73,12 +73,7 @@ export default function ProfilePage() {
     return (
       <div className="flex flex-col min-h-[calc(100vh-0px)]">
         <Header isLoggedIn={!!session} />
-        <div className="w-full" style={{
-          backgroundImage: 'url(/images/gradient.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          backgroundRepeat: 'no-repeat'
-        }}>
+        <div className="w-full">
           <ProfileSkeleton />
         </div>
         <Footer />
@@ -100,12 +95,7 @@ export default function ProfilePage() {
   return (
     <div className="flex flex-col min-h-[calc(100vh-0px)]">
       <Header isLoggedIn={true} />
-      <div className="w-full" style={{
-        backgroundImage: 'url(/images/gradient.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <div className="w-full">
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           {/* Account and Balance Cards - 2 Column Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">

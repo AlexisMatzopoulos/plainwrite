@@ -132,12 +132,7 @@ export default function HistoryPage() {
     return (
       <div className="flex flex-col min-h-screen">
         <Header isLoggedIn={!!session} />
-        <div className="w-full flex-1" style={{
-          backgroundImage: 'url(/images/gradient.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          backgroundRepeat: 'no-repeat'
-        }}>
+        <div className="w-full flex-1">
           <HistorySkeleton />
         </div>
         <Footer />
@@ -152,12 +147,7 @@ export default function HistoryPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header isLoggedIn={true} />
-      <div className="w-full flex-1" style={{
-        backgroundImage: 'url(/images/gradient.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <div className="w-full flex-1">
         <div className="container mx-auto px-4 py-16 max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="text-4xl font-bold mb-2 text-theme-text">Verlauf</h1>

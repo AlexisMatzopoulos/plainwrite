@@ -10,9 +10,9 @@ export default function PricingPage() {
   const isLoggedIn = status === 'authenticated'
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Header isLoggedIn={isLoggedIn} />
-      <main className="flex-1">
+      <main className="flex-1 bg-white">
         <PricingSection />
       </main>
       <Footer />

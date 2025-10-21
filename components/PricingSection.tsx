@@ -140,13 +140,7 @@ export default function PricingSection() {
 
   return (
     <div
-      className="w-full"
-      style={{
-        backgroundImage: "url('/images/gradient.webp')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className="w-full bg-white"
     >
       <div className="lg:container mx-auto px-4 py-16">
         <div className="text-center mb-8">
