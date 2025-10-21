@@ -6,9 +6,11 @@ import { signIn } from 'next-auth/react'
 
 export default function AIHumanizerLoggedOut() {
   const [text, setText] = useState('')
+  const [selectedStyle, setSelectedStyle] = useState('Akademisch')
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
+  const writingStyles = ['Akademisch', 'Kreativ', 'Formal', 'Locker']
 
   const handlePasteClick = async () => {
     try {
@@ -30,6 +32,26 @@ export default function AIHumanizerLoggedOut() {
               <span className="text-sm text-gray-500">
                 {wordCount} / {maxWords} Wörter
               </span>
+            </div>
+          </div>
+
+          {/* Writing Style Selector */}
+          <div className="px-4 pb-3">
+            <label className="text-sm text-gray-600 mb-2 block">Schreibstil wählen:</label>
+            <div className="flex gap-2 flex-wrap">
+              {writingStyles.map((style) => (
+                <button
+                  key={style}
+                  onClick={() => setSelectedStyle(style)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    selectedStyle === style
+                      ? 'bg-theme-primary text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {style}
+                </button>
+              ))}
             </div>
           </div>
 
