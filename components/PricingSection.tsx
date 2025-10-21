@@ -16,12 +16,8 @@ export default function PricingSection() {
         price: '€5.99',
         features: [
           '500 Wörter pro Anfrage',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Basis-Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           '20 unterstützte Sprachen',
         ],
       },
@@ -34,15 +30,9 @@ export default function PricingSection() {
         features: [
           '1.500 Wörter pro Anfrage',
           'Mein Schreibstil',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Erweiterte Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           'Über 50 unterstützte Sprachen',
-          'Erweiterte Turnitin-Bypass-Engine',
-          'Menschenähnliche Ergebnisse',
           'Unbegrenzte Grammatikprüfungen',
           'Schnellmodus',
         ],
@@ -55,18 +45,11 @@ export default function PricingSection() {
         features: [
           '3.000 Wörter pro Anfrage',
           'Mein Schreibstil',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Erweiterte Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           'Über 50 unterstützte Sprachen',
-          'Erweiterte Turnitin-Bypass-Engine',
-          'Menschenähnliche Ergebnisse',
           'Unbegrenzte Grammatikprüfungen',
           'Schnellmodus',
-          'Ultra-menschliche Schreibausgabe',
           'Prioritätssupport',
         ],
       },
@@ -79,12 +62,8 @@ export default function PricingSection() {
         price: '€2.99',
         features: [
           '500 Wörter pro Anfrage',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Basis-Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           '20 unterstützte Sprachen',
         ],
       },
@@ -97,15 +76,9 @@ export default function PricingSection() {
         features: [
           '1.500 Wörter pro Anfrage',
           'Mein Schreibstil',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Erweiterte Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           'Über 50 unterstützte Sprachen',
-          'Erweiterte Turnitin-Bypass-Engine',
-          'Menschenähnliche Ergebnisse',
           'Unbegrenzte Grammatikprüfungen',
           'Schnellmodus',
         ],
@@ -118,18 +91,11 @@ export default function PricingSection() {
         features: [
           '3.000 Wörter pro Anfrage',
           'Mein Schreibstil',
-          'Umgeht alle KI-Detektoren (inkl. Turnitin & GPTZero)',
-          'Erweiterte Humanisierungs-Engine',
           'Plagiatsfrei',
           'Fehlerfreie Umformulierung',
-          'Nicht nachweisbare Ergebnisse',
-          'Unbegrenzte KI-Erkennung',
           'Über 50 unterstützte Sprachen',
-          'Erweiterte Turnitin-Bypass-Engine',
-          'Menschenähnliche Ergebnisse',
           'Unbegrenzte Grammatikprüfungen',
           'Schnellmodus',
-          'Ultra-menschliche Schreibausgabe',
           'Prioritätssupport',
         ],
       },
@@ -180,7 +146,7 @@ export default function PricingSection() {
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {currentPricing.map((plan, index) => (
+          {currentPricing.map((plan) => (
             <PricingCard
               key={plan.name}
               name={plan.name}
