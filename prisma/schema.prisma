@@ -9,8 +9,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // NextAuth.js Models
@@ -71,22 +72,29 @@ enum UserRole {
 
 // Application Models
 model Profile {
-  id                       String    @id @default(uuid())
-  createdAt                DateTime  @default(now())
-  updatedAt                DateTime  @updatedAt
-  user_id                  String    @unique
-  subscription_plan        String?
-  subscription_status      String?
-  words_balance            Int       @default(500)
-  extra_words_balance      Int       @default(0)
-  stripe_customer_id       String?
-  subscription_canceled    Boolean   @default(false)
-  userStyle                String?
-  undetectable_style_id    String?
-  words_limit              Int       @default(500)
-  words_per_request        Int       @default(500)
-  subscription_paused      Boolean   @default(false)
-  subscription_valid_until DateTime?
+  id                          String    @id @default(uuid())
+  createdAt                   DateTime  @default(now())
+  updatedAt                   DateTime  @updatedAt
+  user_id                     String    @unique
+  subscription_plan           String?
+  subscription_status         String?
+  words_balance               Int       @default(500)
+  extra_words_balance         Int       @default(0)
+  stripe_customer_id          String?
+  subscription_canceled       Boolean   @default(false)
+  userStyle                   String?
+  undetectable_style_id       String?
+  words_limit                 Int       @default(500)
+  words_per_request           Int       @default(500)
+  subscription_paused         Boolean   @default(false)
+  subscription_valid_until    DateTime?
+
+  // Paystack fields
+  paystack_customer_code      String?
+  paystack_subscription_code  String?
+  paystack_authorization_code String?
+  paystack_plan_code          String?
+  billing_period              String?   // 'month' or 'year'
 
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }

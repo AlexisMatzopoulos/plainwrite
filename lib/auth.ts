@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { prisma } from "./prisma"
 
 export const authOptions: NextAuthOptions = {
+  debug: true, // Enable debug logging
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({

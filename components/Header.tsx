@@ -80,7 +80,12 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             {isLoggedIn ? (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-4">
-                  <div className="hidden md:block">
+                  <div className="hidden md:flex items-center gap-2">
+                    {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
+                      <span className="px-2 py-1 rounded-md text-xs font-medium bg-theme-primary text-white">
+                        {profile.subscription_plan.toUpperCase()}
+                      </span>
+                    )}
                     <span>Guthaben: {balanceDisplay}</span>
                   </div>
                   {!hasUnlimitedAccess && (
@@ -153,6 +158,11 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <>
               <div className="hidden sm:flex lg:hidden items-center justify-center md:justify-end flex-1">
                 <div className="flex items-center justify-center gap-3">
+                  {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
+                    <span className="px-2 py-1 rounded-md text-xs font-medium bg-theme-primary text-white">
+                      {profile.subscription_plan.toUpperCase()}
+                    </span>
+                  )}
                   <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
@@ -270,7 +280,12 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
           {isLoggedIn ? (
             <>
               <div className="flex sm:hidden items-center justify-center flex-1">
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-2">
+                  {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
+                    <span className="px-1.5 py-0.5 rounded-md text-xs font-medium bg-theme-primary text-white">
+                      {profile.subscription_plan.substring(0, 3).toUpperCase()}
+                    </span>
+                  )}
                   <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
