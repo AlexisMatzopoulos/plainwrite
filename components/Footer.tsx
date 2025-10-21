@@ -13,7 +13,7 @@ export default function Footer() {
 
         <hr className="border-slate-300 mb-4 mt-4" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 w-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 w-auto">
           <div>
             <h3 className="font-semibold text-slate-900 mb-4">Produkt</h3>
             <ul className="space-y-2">
@@ -25,22 +25,6 @@ export default function Footer() {
               <li>
                 <Link href="/pricing" className="text-sm hover:underline">
                   Preise
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-slate-900 mb-4">Ressourcen</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/blog" className="text-sm hover:underline">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-sm hover:underline">
-                  FAQ
                 </Link>
               </li>
             </ul>

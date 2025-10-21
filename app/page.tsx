@@ -12,7 +12,6 @@ import StepsSection from '@/components/StepsSection'
 import FeaturesSection from '@/components/FeaturesSection'
 import UniversitiesSection from '@/components/UniversitiesSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
-import CTASection from '@/components/CTASection'
 import FAQSection from '@/components/FAQSection'
 import Footer from '@/components/Footer'
 
@@ -65,7 +64,6 @@ export default function Home() {
         {/* <StepsSection /> */}
         {!isLoading && <FeaturesSection />}
         {/* <DetectorsSection /> */}
-        {!isLoggedIn && !isLoading && <CTASection />}
         {/* <FAQSection /> */}
       </main>
 
