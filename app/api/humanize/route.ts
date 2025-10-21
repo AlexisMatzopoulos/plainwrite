@@ -33,7 +33,11 @@ export async function POST(req: Request) {
     // 3. Get user and profile
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
-      include: { profile: true },
+      select: {
+        id: true,
+        role: true,
+        profile: true,
+      },
     });
 
     if (!user || !user.profile) {
