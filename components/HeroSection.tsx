@@ -211,7 +211,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
 
           {isLoggedIn ? (
             <Link
-              href="/pricing"
+              href="/preise"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
             >
               Mehr Wörter kaufen

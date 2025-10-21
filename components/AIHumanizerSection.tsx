@@ -355,7 +355,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                   Aktuelles Guthaben: {totalBalance}/{wordsLimit}
                 </div>
                 <Link
-                  href="/pricing"
+                  href="/preise"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-theme-primary bg-theme-primary-hover text-white rounded-md px-4"
                 >
                   Mehr Guthaben kaufen

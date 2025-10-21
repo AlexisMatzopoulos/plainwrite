@@ -116,7 +116,7 @@ export default function PricingSection() {
 
           {/* Billing Toggle */}
           <div className="w-fit mx-auto">
-            <div className="h-13 items-center justify-center rounded-[14px] p-1 text-muted-foreground grid w-[360px] grid-cols-2 bg-white">
+            <div className="h-13 items-center justify-center rounded-[14px] p-1 text-muted-foreground grid w-[360px] grid-cols-2 bg-slate-100 border-2 border-slate-200">
               <button
                 onClick={() => setBillingPeriod('month')}
                 className={`inline-flex items-center justify-center whitespace-nowrap rounded-[10px] px-3 py-1.5 text-sm font-medium transition-all ${

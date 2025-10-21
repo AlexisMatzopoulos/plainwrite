@@ -68,7 +68,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
               Kontakt
             </Link>
-            <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
+            <Link href="/preise" className="text-sm font-medium text-slate-700 hover:underline">
               Preise
             </Link>
           </nav>
@@ -85,7 +85,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   </div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/pricing"
+                      href="/preise"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                     >
                       Mehr Wörter kaufen
@@ -156,7 +156,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/pricing"
+                      href="/preise"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                     >
                       Mehr Wörter kaufen
@@ -274,7 +274,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
                   <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/pricing"
+                      href="/preise"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                     >
                       <svg
@@ -395,7 +395,7 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
               Kontakt
             </Link>
-            <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
+            <Link href="/preise" className="text-sm font-medium text-slate-700 hover:underline">
               Preise
             </Link>
           </nav>
