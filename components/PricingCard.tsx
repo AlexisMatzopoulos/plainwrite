@@ -19,8 +19,8 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`border text-card-foreground relative bg-white hover:border-emerald-500 transition-all duration-200 rounded-[16px] shadow-lg min-w-[340px] ${
-        isPopular ? 'border-emerald-500' : ''
+      className={`border text-card-foreground relative bg-white transition-all duration-200 rounded-[16px] shadow-lg min-w-[340px] ${
+        isPopular ? 'border-theme-primary hover:border-theme-primary' : 'hover:border-theme-primary'
       }`}
     >
       {isPopular && (
@@ -33,7 +33,7 @@ export default function PricingCard({
 
       <div className="flex flex-col space-y-1.5 p-12 pb-6">
         <div className="tracking-tight text-3xl font-semibold text-[#0F172A]">{name}</div>
-        <div className="text-sm text-emerald-500">{wordsPerMonth}</div>
+        <div className="text-sm text-theme-primary">{wordsPerMonth}</div>
 
         <div className="mt-2 space-y-1 flex items-end gap-4">
           <div className="flex items-baseline lg:items-baseline md:items-center gap-4 flex-row lg:flex-row md:flex-col w-full flex-grow">
@@ -58,7 +58,7 @@ export default function PricingCard({
         </div>
 
         <div className="pt-6">
-          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg hover:bg-green-600 border bg-green-500">
+          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-theme-primary bg-theme-primary-hover border">
             Abonnieren
           </button>
           <hr className="mt-6 border-t border-slate-300" />
@@ -79,7 +79,7 @@ export default function PricingCard({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-4 w-4 text-emerald-500 mt-0.5 shrink-0"
+                className="h-4 w-4 text-theme-primary mt-0.5 shrink-0"
               >
                 <path d="M20 6 9 17l-5-5"></path>
               </svg>

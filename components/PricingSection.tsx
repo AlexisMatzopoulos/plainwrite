@@ -155,7 +155,7 @@ export default function PricingSection() {
                 onClick={() => setBillingPeriod('month')}
                 className={`inline-flex items-center justify-center whitespace-nowrap rounded-[10px] px-3 py-1.5 text-sm font-medium transition-all ${
                   billingPeriod === 'month'
-                    ? 'bg-green-500 text-white shadow-sm'
+                    ? 'bg-theme-primary text-white shadow-sm'
                     : 'hover:bg-slate-100'
                 }`}
               >
@@ -165,7 +165,7 @@ export default function PricingSection() {
                 onClick={() => setBillingPeriod('year')}
                 className={`justify-center whitespace-nowrap rounded-[10px] px-3 py-1.5 text-sm font-medium transition-all flex items-center gap-1 ${
                   billingPeriod === 'year'
-                    ? 'bg-green-500 text-white shadow-sm'
+                    ? 'bg-theme-primary text-white shadow-sm'
                     : 'hover:bg-slate-100'
                 }`}
               >
