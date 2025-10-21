@@ -44,11 +44,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <StepsSection />
+        {/* <StepsSection /> */}
         <FeaturesSection />
-        <DetectorsSection />
+        {/* <DetectorsSection /> */}
         {!isLoggedIn && <CTASection />}
-        <FAQSection />
+        {/* <FAQSection /> */}
       </main>
 
       <Footer />

@@ -9,7 +9,7 @@ interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
-const adjectives = ['authentisch', 'natürlich', 'original', 'unentdeckbar']
+const adjectives = ['professionell', 'kreativ', 'formal', 'persönlich']
 
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
@@ -64,10 +64,10 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             >
               {displayedText}
             </span>
-            {' '}ist
+            {' '}wirkt
           </h1>
           <p className="text-slate-500 mb-6 text-lg">
-            Verwandle jeden KI-Text in eine authentische Arbeit. Unsere KI, trainiert an über einer Million Essays, umgeht Detektoren wie Turnitin garantiert.
+            Wandle deinen Text in jeden gewünschten Schreibstil um. Unsere KI passt deine Texte perfekt an akademische, kreative, formelle oder lockere Anforderungen an.
           </p>
 
           {/* Key features summary */}
@@ -76,13 +76,13 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-slate-600">Das einzige Tool, das ausschließlich auf deutschen Texten trainiert wurde.</span>
+              <span className="text-slate-600">Speziell trainiert auf deutschen Texten für natürliche Ergebnisse.</span>
             </div>
             <div className="flex items-start gap-3">
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-slate-600">Getestet gegen Turnitin, Compilatio, Ouriginal und weitere Detektoren</span>
+              <span className="text-slate-600">Wähle aus verschiedenen Schreibstilen für jede Situation</span>
             </div>
           </div>
 
@@ -122,9 +122,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </div>
 
             {/* Achievement Badge */}
-            <div className="flex">
+            {/* <div className="flex">
             <div className="flex items-center">
-              {/* Left Wreath */}
               <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'unset' }}>
                 <Image
                   src="/svg/left_wreath.svg"
@@ -134,7 +133,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 />
               </div>
 
-              {/* Flipping Card */}
               <div
                 style={{ perspective: '1000px', height: '70px', width: '160px' }}
                 onMouseEnter={() => setIsFlipped(true)}
@@ -148,7 +146,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                     color: '#FFCE00'
                   }}
                 >
-                  {/* Front Side */}
                   <div
                     className="absolute flex h-full w-full items-center justify-center"
                     style={{ backfaceVisibility: 'hidden' }}
@@ -159,7 +156,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                     </div>
                   </div>
 
-                  {/* Back Side */}
                   <div
                     className="absolute flex h-full w-full items-center justify-center"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
@@ -172,7 +168,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 </div>
               </div>
 
-              {/* Right Wreath */}
               <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
                 <Image
                   src="/svg/left_wreath.svg"
@@ -182,7 +177,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 />
               </div>
             </div>
-            </div>
+            </div> */}
           </div>
 
         </div>
@@ -190,7 +185,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
         {/* Bottom section with trusted users, CTA, and credit card text */}
         <div className="pb-8">
           {/* Trusted users section */}
-          <div className="flex items-center gap-3 mb-6">
+          {/* <div className="flex items-center gap-3 mb-6">
             <div className="flex -space-x-2">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div
@@ -210,7 +205,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             <div className="text-sm text-slate-700">
               Vertraut von <span className="font-semibold text-theme-primary">100k+ Autoren</span>
             </div>
-          </div>
+          </div> */}
 
           {isLoggedIn ? (
             <Link
@@ -234,7 +229,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
           )}
 
           {/* University carousel */}
-          <div className="mt-8">
+          {/* <div className="mt-8">
             <div className="relative w-full overflow-hidden">
               <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
               <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
@@ -278,7 +273,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

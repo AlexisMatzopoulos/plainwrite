@@ -32,9 +32,11 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [userRole, setUserRole] = useState<UserRole>('USER')
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
-  const [selectedStyle, setSelectedStyle] = useState('default')
+  const [selectedStyle, setSelectedStyle] = useState('Academic')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
+
+  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
 
   useEffect(() => {
     if (session?.user) {
@@ -71,7 +73,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
 
   const handleHumanize = async () => {
     if (!inputText.trim()) {
-      setError('Bitte gib Text ein, der humanisiert werden soll')
+      setError('Bitte gib Text ein, um den Schreibstil anzuwenden')
       return
     }
 
@@ -91,7 +93,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
         },
         body: JSON.stringify({
           text: inputText,
-          style: selectedStyle === 'default' ? undefined : selectedStyle,
+          style: selectedStyle,
         }),
       })
 
@@ -106,7 +108,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
           setInsufficientBalance(true)
           await fetchProfile() // Refresh profile to get updated balance
         } else {
-          setError(data.error || 'Text konnte nicht humanisiert werden')
+          setError(data.error || 'Schreibstil konnte nicht angewendet werden')
         }
         setIsLoadingResult(false) // Hide loading animation on error
         return
@@ -240,6 +242,26 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
             </div>
           </div>
 
+          {/* Writing Style Selector */}
+          <div className="px-4 pb-3">
+            <label className="text-sm text-gray-600 mb-2 block">Schreibstil wählen:</label>
+            <div className="flex gap-2 flex-wrap">
+              {writingStyles.map((style) => (
+                <button
+                  key={style}
+                  onClick={() => setSelectedStyle(style)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    selectedStyle === style
+                      ? 'bg-theme-primary text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {style}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="px-4 flex-1 relative flex">
             <textarea
               placeholder="Füge hier deinen Text ein..."
@@ -251,14 +273,14 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
 
           <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
             <div className="flex gap-2 w-full sm:w-auto">
-              <button
+              {/* <button
                 onClick={handleCheckAI}
                 disabled={isCheckingAI}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
               >
                 {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
-              </button>
+              </button> */}
               <button
                 onClick={handleHumanize}
                 disabled={isHumanizing}
@@ -282,7 +304,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                   <path d="M4 17v2"></path>
                   <path d="M5 18H3"></path>
                 </svg>
-                {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
+                {isHumanizing ? 'Schreibstil wird angewendet...' : 'Schreibstil anwenden'}
               </button>
             </div>
           </div>
@@ -327,7 +349,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
             ) : insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
-                  Du benötigst mehr Wörter, um deinen Text zu humanisieren
+                  Du benötigst mehr Wörter, um den Schreibstil anzuwenden
                 </div>
                 <div className="text-slate-950 mb-2">
                   Aktuelles Guthaben: {totalBalance}/{wordsLimit}
