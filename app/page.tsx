@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
@@ -20,6 +20,15 @@ export default function Home() {
   const isLoggedIn = status === 'authenticated'
   const [refreshKey, setRefreshKey] = useState(0)
   const [showResult, setShowResult] = useState(false)
+
+  // Automatically show result panel when user is logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      setShowResult(true)
+    } else {
+      setShowResult(false)
+    }
+  }, [isLoggedIn])
 
   const handleBalanceUpdate = () => {
     setRefreshKey(prev => prev + 1)
