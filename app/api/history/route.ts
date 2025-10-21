@@ -30,6 +30,7 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const limit = parseInt(searchParams.get("limit") || "10");
     const offset = parseInt(searchParams.get("offset") || "0");
+    const search = searchParams.get("search") || "";
 
     // Validate parameters
     if (limit < 1 || limit > 100) {
@@ -46,10 +47,20 @@ export async function GET(req: Request) {
       );
     }
 
-    // 4. Fetch history with pagination
+    // 4. Build where clause with optional search
+    const whereClause: any = { user_id: user.id };
+
+    if (search) {
+      whereClause.OR = [
+        { original_text: { contains: search, mode: "insensitive" } },
+        { humanized_text: { contains: search, mode: "insensitive" } },
+      ];
+    }
+
+    // 5. Fetch history with pagination and search
     const [history, total] = await Promise.all([
       prisma.history.findMany({
-        where: { user_id: user.id },
+        where: whereClause,
         orderBy: { createdAt: "desc" },
         skip: offset,
         take: limit,
@@ -63,16 +74,17 @@ export async function GET(req: Request) {
         },
       }),
       prisma.history.count({
-        where: { user_id: user.id },
+        where: whereClause,
       }),
     ]);
 
-    // 5. Return response
+    // 6. Return response
     return NextResponse.json({
       history,
       total,
       limit,
       offset,
+      search,
     });
   } catch (error) {
     console.error("Error in /api/history:", error);

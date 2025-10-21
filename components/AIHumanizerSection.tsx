@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import ResultLoadingAnimation from './ResultLoadingAnimation'
 
 interface AIHumanizerSectionProps {
   onBalanceUpdate?: () => void
@@ -16,6 +17,8 @@ interface Profile {
   words_limit: number
 }
 
+type UserRole = 'USER' | 'ADMIN' | 'TESTER'
+
 export default function AIHumanizerSection({ onBalanceUpdate, showResult, setShowResult }: AIHumanizerSectionProps) {
   const { data: session } = useSession()
   const [inputText, setInputText] = useState('')
@@ -26,10 +29,12 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [error, setError] = useState<string | null>(null)
   const [insufficientBalance, setInsufficientBalance] = useState(false)
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [userRole, setUserRole] = useState<UserRole>('USER')
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('default')
   const [showingAIResults, setShowingAIResults] = useState(false)
+  const [isLoadingResult, setIsLoadingResult] = useState(false)
 
   useEffect(() => {
     if (session?.user) {
@@ -43,6 +48,9 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
       const data = await response.json()
       if (response.ok) {
         setProfile(data.profile)
+        if (data.role) {
+          setUserRole(data.role)
+        }
       }
     } catch (error) {
       console.error('Error fetching profile:', error)
@@ -70,6 +78,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     setShowResult(true) // Show result panel
     setShowingAIResults(false) // Clear AI results when humanizing
     setIsHumanizing(true)
+    setIsLoadingResult(true) // Show loading animation
     setError(null)
     setInsufficientBalance(false)
     setOutputText('') // Clear previous output
@@ -99,6 +108,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
         } else {
           setError(data.error || 'Text konnte nicht humanisiert werden')
         }
+        setIsLoadingResult(false) // Hide loading animation on error
         return
       }
 
@@ -111,6 +121,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
       }
 
       let accumulatedText = ''
+      let isFirstChunk = true
 
       while (true) {
         const { done, value } = await reader.read()
@@ -121,6 +132,13 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
 
         const chunk = decoder.decode(value, { stream: true })
         accumulatedText += chunk
+
+        // Hide loading animation when first chunk arrives
+        if (isFirstChunk) {
+          setIsLoadingResult(false)
+          isFirstChunk = false
+        }
+
         setOutputText(accumulatedText)
       }
 
@@ -157,6 +175,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     setShowResult(true) // Show result panel
     setShowingAIResults(true) // Mark that we're showing AI results
     setIsCheckingAI(true)
+    setIsLoadingResult(true) // Show loading animation
     setError(null)
     setInsufficientBalance(false)
 
@@ -178,8 +197,10 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
       }
 
       setAiScore(data.aiScore)
+      setIsLoadingResult(false) // Hide loading animation when results arrive
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ein Fehler is aufgetreten')
+      setIsLoadingResult(false) // Hide loading animation on error
     } finally {
       setIsCheckingAI(false)
     }
@@ -195,8 +216,10 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     }
   }
 
+  const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 0
   const wordsLimit = profile?.words_limit || 500
+  const wordLimitDisplay = hasUnlimitedAccess ? '∞' : wordsLimit
 
   return (
     <section className="h-full flex flex-col">
@@ -212,7 +235,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
             <h2 className="font-semibold">Dein Text</h2>
             <div className="flex items-center">
               <span className="text-sm text-gray-500">
-                {wordCount} / {wordsLimit} Wörter
+                {wordCount} / {wordLimitDisplay} Wörter
               </span>
             </div>
           </div>
@@ -297,7 +320,11 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
           </div>
 
           <div className="flex-1 flex flex-col" style={{ minHeight: '400px' }}>
-            {insufficientBalance ? (
+            {isLoadingResult ? (
+              <ResultLoadingAnimation
+                loadingType={showingAIResults ? 'ai-checking' : 'humanizing'}
+              />
+            ) : insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
                   Du benötigst mehr Wörter, um deinen Text zu humanisieren
@@ -313,12 +340,44 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                 </Link>
               </div>
             ) : showingAIResults && aiScore !== null ? (
-              <div className="flex-1 flex flex-col items-center justify-center px-4">
+              <div className="flex-1 flex flex-col items-center justify-center px-4 py-8">
                 <div className="text-center">
-                  <div className={`text-6xl font-bold mb-4 ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
-                    {aiScore}%
+                  {/* Circular Progress Indicator */}
+                  <div className="relative inline-flex items-center justify-center mb-6">
+                    <svg className="transform -rotate-90" width="200" height="200">
+                      {/* Background circle */}
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="85"
+                        stroke="#e5e7eb"
+                        strokeWidth="12"
+                        fill="none"
+                      />
+                      {/* Progress circle */}
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="85"
+                        stroke={aiScore < 30 ? '#22c55e' : aiScore < 60 ? '#eab308' : '#ef4444'}
+                        strokeWidth="12"
+                        fill="none"
+                        strokeDasharray={`${(aiScore / 100) * (2 * Math.PI * 85)} ${2 * Math.PI * 85}`}
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+                    </svg>
+                    {/* Percentage text in center */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className={`text-5xl font-bold ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
+                        {aiScore}%
+                      </div>
+                      <div className="text-sm text-slate-500 mt-1">KI erkannt</div>
+                    </div>
                   </div>
-                  <div className="text-lg text-slate-700 mb-2">
+
+                  {/* Status text */}
+                  <div className="text-xl font-semibold text-slate-700 mb-2">
                     {aiScore < 30 ? 'Kaum KI erkannt' : aiScore < 60 ? 'Möglicherweise KI' : 'Wahrscheinlich KI'}
                   </div>
                   <div className="text-sm text-slate-500">

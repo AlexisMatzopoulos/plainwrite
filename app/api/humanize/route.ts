@@ -43,6 +43,13 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check if user has unlimited access (ADMIN or TESTER role)
+    const hasUnlimitedAccess = user.role === 'ADMIN' || user.role === 'TESTER';
+
+    console.log('User email:', session.user.email);
+    console.log('User role:', user.role);
+    console.log('Has unlimited access:', hasUnlimitedAccess);
+
     // 4. Count words in input text
     const wordsProcessed = countWords(text);
 
@@ -53,8 +60,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Check words_per_request limit
-    if (wordsProcessed > user.profile.words_per_request) {
+    // 5. Check words_per_request limit (skip for ADMIN/TESTER users)
+    if (!hasUnlimitedAccess && wordsProcessed > user.profile.words_per_request) {
       return new Response(
         JSON.stringify({
           error: `Text exceeds your limit of ${user.profile.words_per_request} words per request. Your text has ${wordsProcessed} words.`,
@@ -63,11 +70,11 @@ export async function POST(req: Request) {
       );
     }
 
-    // 6. Check sufficient balance
+    // 6. Check sufficient balance (skip for ADMIN/TESTER users)
     const totalBalance =
       user.profile.words_balance + user.profile.extra_words_balance;
 
-    if (totalBalance < wordsProcessed) {
+    if (!hasUnlimitedAccess && totalBalance < wordsProcessed) {
       return new Response(
         JSON.stringify({
           error: `Insufficient word balance. You need ${wordsProcessed} words but only have ${totalBalance} words available.`,
@@ -78,33 +85,36 @@ export async function POST(req: Request) {
       );
     }
 
-    // 7. Deduct words from balance immediately
-    let remainingWords = wordsProcessed;
+    // 7. Deduct words from balance immediately (skip for ADMIN/TESTER users)
     let newWordsBalance = user.profile.words_balance;
     let newExtraWordsBalance = user.profile.extra_words_balance;
 
-    if (user.profile.words_balance >= remainingWords) {
-      newWordsBalance = user.profile.words_balance - remainingWords;
-    } else {
-      const fromMainBalance = user.profile.words_balance;
-      remainingWords -= fromMainBalance;
-      newWordsBalance = 0;
-      newExtraWordsBalance = user.profile.extra_words_balance - remainingWords;
-    }
+    if (!hasUnlimitedAccess) {
+      let remainingWords = wordsProcessed;
 
-    // Update balance in database
-    await prisma.profile.update({
-      where: { user_id: user.id },
-      data: {
-        words_balance: newWordsBalance,
-        extra_words_balance: newExtraWordsBalance,
-      },
-    });
+      if (user.profile.words_balance >= remainingWords) {
+        newWordsBalance = user.profile.words_balance - remainingWords;
+      } else {
+        const fromMainBalance = user.profile.words_balance;
+        remainingWords -= fromMainBalance;
+        newWordsBalance = 0;
+        newExtraWordsBalance = user.profile.extra_words_balance - remainingWords;
+      }
+
+      // Update balance in database
+      await prisma.profile.update({
+        where: { user_id: user.id },
+        data: {
+          words_balance: newWordsBalance,
+          extra_words_balance: newExtraWordsBalance,
+        },
+      });
+    }
 
     // 8. Prepare custom prompt
     const systemInstruction = `<goal> To convert the user's essay into human written German text that bypasses AI detectors. </goal>
 
-Paraphrase and humanise the user's essay. Ensure you avoid phrases and words used in the <Avoid> list below. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
+Paraphrase and humanise the user's essay. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
 
 NEVER use commas or create sentences that require the use of commas.
 IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
@@ -130,29 +140,8 @@ Integrate evaluative language like, "Arguably, it seems likely that one might co
 Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
 
 Output must ALWAYS be German
-
-<Avoid>
-es ist wichtig zu beachten
-darüber hinaus
-jedoch
-daher
-außerdem
-insbesondere
-weiterhin
-folglich
-zudem
-dennoch
-schließlich
-zusammenfassend
-im Gegensatz dazu
-infolgedessen
-des Weiteren
-insofern
-dementsprechend
-nichtsdestotrotz
-diesbezüglich
-demzufolge
-</Avoid>`;
+Output ONLY the transformed text without any additional commentary or information.
+`
 
     // 9. Stream response from Gemini 2.5 Pro
     const result = await ai.models.generateContentStream({
@@ -160,7 +149,7 @@ demzufolge
       contents: text,
       config: {
         systemInstruction,
-        temperature: 0.7,
+        temperature: 1,
       },
     });
 

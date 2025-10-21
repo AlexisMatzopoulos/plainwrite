@@ -14,20 +14,26 @@ export async function GET() {
       )
     }
 
-    const profile = await prisma.profile.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
-        user_id: session.user.id,
+        id: session.user.id,
+      },
+      include: {
+        profile: true,
       },
     })
 
-    if (!profile) {
+    if (!user || !user.profile) {
       return NextResponse.json(
         { error: "Profile not found" },
         { status: 404 }
       )
     }
 
-    return NextResponse.json({ profile })
+    return NextResponse.json({
+      profile: user.profile,
+      role: user.role
+    })
   } catch (error) {
     console.error("Error fetching profile:", error)
     return NextResponse.json(

@@ -15,10 +15,13 @@ interface Profile {
   extra_words_balance: number
 }
 
+type UserRole = 'USER' | 'ADMIN' | 'TESTER'
+
 export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { data: session } = useSession()
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [userRole, setUserRole] = useState<UserRole>('USER')
 
   useEffect(() => {
     if (session?.user) {
@@ -28,12 +31,17 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
           if (data.profile) {
             setProfile(data.profile)
           }
+          if (data.role) {
+            setUserRole(data.role)
+          }
         })
         .catch(console.error)
     }
   }, [session, refreshKey])
 
+  const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 500
+  const balanceDisplay = hasUnlimitedAccess ? '∞' : `${totalBalance} Wörter`
   const userInitial = session?.user?.name?.charAt(0).toUpperCase() || session?.user?.email?.charAt(0).toUpperCase() || 'U'
 
   return (
@@ -73,14 +81,16 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-4">
                   <div className="hidden md:block">
-                    <span>Guthaben: {totalBalance} Wörter</span>
+                    <span>Guthaben: {balanceDisplay}</span>
                   </div>
-                  <Link
-                    href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
-                  >
-                    Mehr Wörter kaufen
-                  </Link>
+                  {!hasUnlimitedAccess && (
+                    <Link
+                      href="/pricing"
+                      className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
+                    >
+                      Mehr Wörter kaufen
+                    </Link>
+                  )}
                   <Link
                     href="/history"
                     aria-label="View generation history"
@@ -143,13 +153,15 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <>
               <div className="hidden sm:flex lg:hidden items-center justify-center md:justify-end flex-1">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="text-sm text-center">Guthaben: {totalBalance} Wörter</div>
-                  <Link
-                    href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
-                  >
-                    Mehr Wörter kaufen
-                  </Link>
+                  <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
+                  {!hasUnlimitedAccess && (
+                    <Link
+                      href="/pricing"
+                      className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
+                    >
+                      Mehr Wörter kaufen
+                    </Link>
+                  )}
                 </div>
               </div>
 
@@ -259,27 +271,29 @@ export default function Header({ isLoggedIn = false, refreshKey = 0 }: HeaderPro
             <>
               <div className="flex sm:hidden items-center justify-center flex-1">
                 <div className="flex items-center justify-center gap-3">
-                  <div className="text-sm text-center">Guthaben: {totalBalance}</div>
-                  <Link
-                    href="/pricing"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4"
+                  <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
+                  {!hasUnlimitedAccess && (
+                    <Link
+                      href="/pricing"
+                      className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                     >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5v14"></path>
-                    </svg>
-                  </Link>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path>
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               </div>
 

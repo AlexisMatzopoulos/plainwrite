@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ProfileSkeleton from '@/components/ProfileSkeleton'
 
 interface Profile {
   id: string
@@ -72,11 +73,13 @@ export default function ProfilePage() {
     return (
       <div className="flex flex-col min-h-[calc(100vh-0px)]">
         <Header isLoggedIn={!!session} />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Profil wird geladen...</p>
-          </div>
+        <div className="w-full" style={{
+          backgroundImage: 'url(/images/gradient.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat'
+        }}>
+          <ProfileSkeleton />
         </div>
         <Footer />
       </div>
