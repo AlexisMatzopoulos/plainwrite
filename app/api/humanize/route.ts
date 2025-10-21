@@ -112,13 +112,24 @@ export async function POST(req: Request) {
     }
 
     // 8. Prepare custom prompt
+    // Map German style names to English adjectives
+    const styleMap: Record<string, string> = {
+      'Akademisch': 'academic',
+      'Kreativ': 'creative',
+      'Formal': 'formal',
+      'Locker': 'casual'
+    };
+
+    // Get the English style name, default to 'academic' if not found
+    const writingStyle = style && styleMap[style] ? styleMap[style] : 'academic';
+
     const systemInstruction = `<goal> To convert the user's essay into human written German text that bypasses AI detectors. </goal>
 
 Paraphrase and humanise the user's essay. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
 
 NEVER use commas or create sentences that require the use of commas.
 IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
-
+IMPORTANT: Use a ${writingStyle} writing style.
 IMPORTANT: Each output sentence should have:
 a 45% chance of being 6 or less
 40% chance of having 7-12 words
