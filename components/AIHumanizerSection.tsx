@@ -4,23 +4,16 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import ResultLoadingAnimation from './ResultLoadingAnimation'
+import { useProfileStore } from '@/store/profileStore'
 
 interface AIHumanizerSectionProps {
-  onBalanceUpdate?: () => void
   showResult: boolean
   setShowResult: (show: boolean) => void
 }
 
-interface Profile {
-  words_balance: number
-  extra_words_balance: number
-  words_limit: number
-}
-
-type UserRole = 'USER' | 'ADMIN' | 'TESTER'
-
-export default function AIHumanizerSection({ onBalanceUpdate, showResult, setShowResult }: AIHumanizerSectionProps) {
+export default function AIHumanizerSection({ showResult, setShowResult }: AIHumanizerSectionProps) {
   const { data: session } = useSession()
+  const { profile, userRole, fetchProfile, updateBalance } = useProfileStore()
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')
   const [wordCount, setWordCount] = useState(0)
@@ -28,36 +21,20 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [isCheckingAI, setIsCheckingAI] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [insufficientBalance, setInsufficientBalance] = useState(false)
-  const [profile, setProfile] = useState<Profile | null>(null)
-  const [userRole, setUserRole] = useState<UserRole>('USER')
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('Akademisch')
+  const [usedStyle, setUsedStyle] = useState<string | null>(null) // Track which style was used for the current output
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
 
   const writingStyles = ['Akademisch', 'Kreativ', 'Formal', 'Locker']
 
   useEffect(() => {
-    if (session?.user) {
+    if (session?.user && !profile) {
       fetchProfile()
     }
-  }, [session])
-
-  const fetchProfile = async () => {
-    try {
-      const response = await fetch('/api/profile')
-      const data = await response.json()
-      if (response.ok) {
-        setProfile(data.profile)
-        if (data.role) {
-          setUserRole(data.role)
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching profile:', error)
-    }
-  }
+  }, [session, profile, fetchProfile])
 
   const countWords = (text: string) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length
@@ -84,6 +61,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
     setError(null)
     setInsufficientBalance(false)
     setOutputText('') // Clear previous output
+    setUsedStyle(selectedStyle) // Remember which style is being used
 
     try {
       const response = await fetch('/api/humanize', {
@@ -144,13 +122,8 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
         setOutputText(accumulatedText)
       }
 
-      // Trigger balance update in header
-      if (onBalanceUpdate) {
-        onBalanceUpdate()
-      }
-
-      // Refresh profile to get updated balance
-      await fetchProfile()
+      // Update balance instantly in the store (no refetch needed)
+      updateBalance(wordsProcessed)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
     } finally {
@@ -418,7 +391,14 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
                 </div>
 
                 <div className="mt-auto px-4 py-3 flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{countWords(outputText)} Wörter</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-gray-500">{countWords(outputText)} Wörter</span>
+                    {usedStyle && (
+                      <span className="text-xs px-2 py-1 rounded" style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)', color: 'var(--color-primary)' }}>
+                        {usedStyle}
+                      </span>
+                    )}
+                  </div>
                   <button
                     onClick={handleCopy}
                     disabled={!outputText}

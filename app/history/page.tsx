@@ -131,7 +131,7 @@ export default function HistoryPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="flex flex-col min-h-screen">
-        <Header isLoggedIn={!!session} />
+        <Header />
         <div className="w-full flex-1">
           <HistorySkeleton />
         </div>
@@ -146,7 +146,7 @@ export default function HistoryPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isLoggedIn={true} />
+      <Header />
       <div className="w-full flex-1">
         <div className="container mx-auto px-4 py-16 max-w-6xl">
           <div className="mb-8 text-center">

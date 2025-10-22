@@ -19,7 +19,6 @@ export default function Home() {
   const { data: session, status } = useSession()
   const isLoggedIn = status === 'authenticated'
   const isLoading = status === 'loading'
-  const [refreshKey, setRefreshKey] = useState(0)
   const [showResult, setShowResult] = useState(false)
 
   // Automatically show result panel when user is logged in
@@ -31,13 +30,9 @@ export default function Home() {
     }
   }, [isLoggedIn])
 
-  const handleBalanceUpdate = () => {
-    setRefreshKey(prev => prev + 1)
-  }
-
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isLoggedIn={isLoggedIn} refreshKey={refreshKey} />
+      <Header />
 
       <main className="w-full relative overflow-hidden bg-white">
         <div className="w-full" /* style={{ backgroundColor: '#ffe699' }} */>
@@ -55,7 +50,7 @@ export default function Home() {
                   </div>
                 )}
                 <div className={`h-full ${showResult ? '' : 'lg:pl-8'}`}>
-                  {isLoggedIn ? <AIHumanizerSection onBalanceUpdate={handleBalanceUpdate} showResult={showResult} setShowResult={setShowResult} /> : <AIHumanizerLoggedOut />}
+                  {isLoggedIn ? <AIHumanizerSection showResult={showResult} setShowResult={setShowResult} /> : <AIHumanizerLoggedOut />}
                 </div>
               </div>
             )}

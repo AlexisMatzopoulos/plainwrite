@@ -61,11 +61,9 @@ function CallbackContent() {
     }
   }, [searchParams, router, status])
 
-  const isLoggedIn = status === 'authenticated'
-
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isLoggedIn={isLoggedIn} />
+      <Header />
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           {verifying && (

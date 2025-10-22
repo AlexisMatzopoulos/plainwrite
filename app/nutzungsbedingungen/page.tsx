@@ -1,16 +1,10 @@
-'use client'
-
-import { useSession } from 'next-auth/react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function TermsOfService() {
-  const { status } = useSession()
-  const isLoggedIn = status === 'authenticated'
-
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isLoggedIn={isLoggedIn} />
+      <Header />
       <div className="max-w-4xl mx-auto px-4 flex flex-col gap-4 mt-10 mb-10">
       <h1 className="text-4xl font-extrabold">Nutzungsbedingungen</h1>
       <div className="max-w-4xl">
