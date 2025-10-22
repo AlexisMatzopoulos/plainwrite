@@ -13,6 +13,8 @@ interface HeaderProps {
 interface Profile {
   words_balance: number
   extra_words_balance: number
+  subscription_plan?: string | null
+  subscription_status?: string | null
 }
 
 type UserRole = 'USER' | 'ADMIN' | 'TESTER'
