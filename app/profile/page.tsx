@@ -7,7 +7,26 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ProfileSkeleton from '@/components/ProfileSkeleton'
 import Link from 'next/link'
-import { useProfileStore, type Profile } from '@/store/profileStore'
+
+interface Profile {
+  id: string
+  createdAt: string
+  words_balance: number
+  extra_words_balance: number
+  words_limit: number
+  words_per_request: number
+  subscription_plan: string | null
+  subscription_status: string | null
+  userStyle: string | null
+  subscription_canceled: boolean
+  subscription_paused: boolean
+  subscription_valid_until: string | null
+  paystack_customer_code: string | null
+  paystack_subscription_code: string | null
+  paystack_authorization_code: string | null
+  paystack_plan_code: string | null
+  billing_period: string | null
+}
 
 interface PaymentHistory {
   id: string
@@ -227,8 +246,9 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
 export default function ProfilePage() {
   const { data: session, status } = useSession()
   const router = useRouter()
-  const { profile, fetchProfile, isLoading } = useProfileStore()
+  const [profile, setProfile] = useState<Profile | null>(null)
   const [paymentHistory, setPaymentHistory] = useState<PaymentHistory[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -237,20 +257,37 @@ export default function ProfilePage() {
   }, [status, router])
 
   useEffect(() => {
-    if (session?.user && !profile) {
+    if (session?.user) {
       fetchProfile()
     }
-  }, [session, profile, fetchProfile])
+  }, [session])
+
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch('/api/profile')
+      const data = await response.json()
+
+      if (response.ok) {
+        setProfile(data.profile)
+        // TODO: Fetch payment history from API
+        setPaymentHistory([])
+      }
+    } catch (error) {
+      console.error('Error fetching profile:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const handleSignOut = () => {
     signOut({ callbackUrl: '/' })
   }
 
-  if (status === 'loading' || isLoading) {
+  if (status === 'loading' || loading) {
     return (
       <div className="flex flex-col min-h-[calc(100vh-0px)]">
-        <Header />
-        <div className="w-full flex-grow">
+        <Header isLoggedIn={!!session} />
+        <div className="w-full">
           <ProfileSkeleton />
         </div>
         <Footer />
@@ -271,7 +308,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-0px)]">
-      <Header />
+      <Header isLoggedIn={true} />
       <div className="w-full">
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           {/* Account and Balance Cards - 2 Column Grid */}
