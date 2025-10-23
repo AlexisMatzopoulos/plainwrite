@@ -78,14 +78,14 @@ export default function SignInPageClient() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4">
       <div className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
-            <h1 className="text-3xl font-bold text-theme-primary mb-2">EchtSchreib</h1>
-          </Link>
-          <p className="text-gray-600">Melden Sie sich an, um fortzufahren</p>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white rounded-2xl p-8" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
+          {/* Header inside the card */}
+          <div className="text-center mb-8">
+            <Link href="/" className="inline-block">
+              <h1 className="text-3xl font-bold text-theme-primary mb-2">EchtSchreib</h1>
+            </Link>
+            <p className="text-gray-600">Melden Sie sich an, um fortzufahren</p>
+          </div>
           {/* Google Sign-In */}
           <button
             onClick={handleGoogleSignIn}
