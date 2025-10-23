@@ -68,14 +68,14 @@ export default function ResultLoadingAnimation({
       className="relative p-8 min-h-[400px] flex flex-col items-center justify-center"
       role="status"
       aria-live="polite"
-      aria-label={isHumanizing ? "Ihr Text wird humanisiert" : "Text wird auf KI geprüft"}
+      aria-label={isHumanizing ? "Schreibstil wird angewendet" : "Text wird auf KI geprüft"}
     >
       {/* Main content */}
       <div className="relative z-10 w-full max-w-lg">
         {/* Main heading */}
         <div className="text-center mb-8">
           <h3 className="text-xl font-semibold text-slate-800 mb-2">
-            {isHumanizing ? 'Text wird humanisiert' : 'KI-Prüfung läuft'}
+            {isHumanizing ? 'Schreibstil wird angewendet' : 'KI-Prüfung läuft'}
           </h3>
         </div>
 
@@ -100,7 +100,7 @@ export default function ResultLoadingAnimation({
       {/* Screen reader only text */}
       <span className="sr-only">
         {isHumanizing
-          ? 'Ihr Text wird gerade humanisiert. Bitte warten Sie einen Moment.'
+          ? 'Schreibstil wird angewendet. Bitte warten Sie einen Moment.'
           : 'Ihr Text wird auf künstliche Intelligenz geprüft. Bitte warten Sie einen Moment.'}
       </span>
     </div>
