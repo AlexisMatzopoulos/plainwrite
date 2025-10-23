@@ -185,7 +185,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
         <div className="bottom-section">
           
  
-        <div className="pb-8">
+        <div className="cta">
           {/* Trusted users section */}
           {/* <div className="flex items-center gap-3 mb-6">
             <div className="flex -space-x-2">

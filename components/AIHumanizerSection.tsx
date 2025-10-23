@@ -1,26 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import ResultLoadingAnimation from './ResultLoadingAnimation'
+import { useProfileStore } from '@/store/profileStore'
 
 interface AIHumanizerSectionProps {
-  onBalanceUpdate?: () => void
   showResult: boolean
   setShowResult: (show: boolean) => void
 }
 
-interface Profile {
-  words_balance: number
-  extra_words_balance: number
-  words_limit: number
-}
-
-type UserRole = 'USER' | 'ADMIN' | 'TESTER'
-
-export default function AIHumanizerSection({ onBalanceUpdate, showResult, setShowResult }: AIHumanizerSectionProps) {
+export default function AIHumanizerSection({ showResult, setShowResult }: AIHumanizerSectionProps) {
   const { data: session } = useSession()
+  const { profile, userRole, updateBalance, refreshProfile } = useProfileStore()
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')
   const [wordCount, setWordCount] = useState(0)
@@ -28,8 +21,6 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [isCheckingAI, setIsCheckingAI] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [insufficientBalance, setInsufficientBalance] = useState(false)
-  const [profile, setProfile] = useState<Profile | null>(null)
-  const [userRole, setUserRole] = useState<UserRole>('USER')
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
   const [selectedStyle, setSelectedStyle] = useState('Akademisch')
@@ -37,27 +28,6 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
   const [isLoadingResult, setIsLoadingResult] = useState(false)
 
   const writingStyles = ['Akademisch', 'Kreativ', 'Formal', 'Locker']
-
-  useEffect(() => {
-    if (session?.user) {
-      fetchProfile()
-    }
-  }, [session])
-
-  const fetchProfile = async () => {
-    try {
-      const response = await fetch('/api/profile')
-      const data = await response.json()
-      if (response.ok) {
-        setProfile(data.profile)
-        if (data.role) {
-          setUserRole(data.role)
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching profile:', error)
-    }
-  }
 
   const countWords = (text: string) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length
@@ -106,7 +76,7 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
         // Check if it's an insufficient balance error
         if (data.error?.includes('Insufficient word balance')) {
           setInsufficientBalance(true)
-          await fetchProfile() // Refresh profile to get updated balance
+          await refreshProfile() // Refresh profile to get updated balance
         } else {
           setError(data.error || 'Schreibstil konnte nicht angewendet werden')
         }
@@ -144,13 +114,12 @@ export default function AIHumanizerSection({ onBalanceUpdate, showResult, setSho
         setOutputText(accumulatedText)
       }
 
-      // Trigger balance update in header
-      if (onBalanceUpdate) {
-        onBalanceUpdate()
-      }
+      // Optimistic update: instantly update balance in Zustand store
+      const wordsProcessed = countWords(inputText)
+      updateBalance(wordsProcessed)
 
-      // Refresh profile to get updated balance
-      await fetchProfile()
+      // Refresh profile from server to ensure accuracy
+      await refreshProfile()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
     } finally {
