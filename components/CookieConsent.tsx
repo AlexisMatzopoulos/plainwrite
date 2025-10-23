@@ -36,16 +36,17 @@ export function CookieConsent() {
   if (!showBanner) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl z-50 animate-fade-in">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex-1">
-            <p className="text-sm text-gray-700">
+            <h3 className="text-base font-semibold text-gray-900 mb-2">Cookie-Einstellungen</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
               Wir verwenden Cookies und ähnliche Technologien, um die Nutzung unserer Website zu analysieren und zu verbessern.
               Weitere Informationen finden Sie in unserer{' '}
               <a
                 href="/datenschutz"
-                className="text-blue-600 hover:text-blue-700 underline"
+                className="text-theme-primary hover:underline font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -56,13 +57,13 @@ export function CookieConsent() {
           <div className="flex gap-3 shrink-0">
             <button
               onClick={rejectCookies}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors"
             >
               Ablehnen
             </button>
             <button
               onClick={acceptCookies}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
             >
               Akzeptieren
             </button>

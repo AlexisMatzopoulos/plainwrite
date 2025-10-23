@@ -65,7 +65,7 @@ export default function SignInPageClient() {
                 setEmailSent(false)
                 setEmail('')
               }}
-              className="text-theme-primary hover:underline text-sm"
+              className="px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
             >
               Andere E-Mail verwenden
             </button>
