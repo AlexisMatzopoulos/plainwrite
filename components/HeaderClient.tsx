@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { signIn, signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useProfileStore, type Profile, type UserRole } from '@/store/profileStore'
 
 interface HeaderClientProps {
@@ -23,6 +24,7 @@ export default function HeaderClient({
   userName,
   userImage,
 }: HeaderClientProps) {
+  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { profile, userRole, isInitialized, initialize } = useProfileStore()
 
@@ -132,13 +134,13 @@ export default function HeaderClient({
             ) : (
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => signIn('google')}
+                  onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
                   Anmelden
                 </button>
                 <button
-                  onClick={() => signIn('google')}
+                  onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
                   Kostenlos testen
@@ -234,13 +236,13 @@ export default function HeaderClient({
           ) : (
             <div className="hidden sm:flex lg:hidden items-center justify-end flex-1 gap-3">
               <button
-                onClick={() => signIn('google')}
+                onClick={() => router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
               >
                 Anmelden
               </button>
               <button
-                onClick={() => signIn('google')}
+                onClick={() => router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
               >
                 Kostenlos testen
@@ -335,13 +337,13 @@ export default function HeaderClient({
             <>
               <div className="flex sm:hidden items-center justify-center flex-1 gap-2">
                 <button
-                  onClick={() => signIn('google')}
+                  onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
                   Anmelden
                 </button>
                 <button
-                  onClick={() => signIn('google')}
+                  onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
                   Kostenlos testen

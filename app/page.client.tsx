@@ -2,18 +2,30 @@
 
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 import HeroSection from '@/components/HeroSection'
 import AIHumanizerSection from '@/components/AIHumanizerSection'
 import AIHumanizerLoggedOut from '@/components/AIHumanizerLoggedOut'
 import AIHumanizerSkeleton from '@/components/AIHumanizerSkeleton'
 import FeaturesSection from '@/components/FeaturesSection'
 import Footer from '@/components/Footer'
+import PaymentSuccessModal from '@/components/PaymentSuccessModal'
+import PaymentErrorModal from '@/components/PaymentErrorModal'
 
 export default function HomeClient() {
   const { data: session, status } = useSession()
+  const searchParams = useSearchParams()
   const isLoggedIn = status === 'authenticated'
   const isLoading = status === 'loading'
   const [showResult, setShowResult] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showErrorModal, setShowErrorModal] = useState(false)
+  const [paymentDetails, setPaymentDetails] = useState({
+    plan: '',
+    words: 0,
+    period: ''
+  })
+  const [errorMessage, setErrorMessage] = useState('')
 
   // Automatically show result panel when user is logged in
   useEffect(() => {
@@ -24,8 +36,46 @@ export default function HomeClient() {
     }
   }, [isLoggedIn])
 
+  // Check for payment status in URL params
+  useEffect(() => {
+    const paymentStatus = searchParams.get('payment')
+
+    if (paymentStatus === 'success') {
+      const plan = searchParams.get('plan') || 'pro'
+      const words = parseInt(searchParams.get('words') || '0')
+      const period = searchParams.get('period') || 'month'
+
+      setPaymentDetails({ plan, words, period })
+      setShowSuccessModal(true)
+
+      // Clean URL params
+      window.history.replaceState({}, '', window.location.pathname)
+    } else if (paymentStatus === 'error') {
+      const message = searchParams.get('message') || 'Es gab ein Problem bei der Verarbeitung Ihrer Zahlung.'
+      setErrorMessage(decodeURIComponent(message))
+      setShowErrorModal(true)
+
+      // Clean URL params
+      window.history.replaceState({}, '', window.location.pathname)
+    }
+  }, [searchParams])
+
   return (
     <>
+      {/* Payment Modals */}
+      <PaymentSuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        plan={paymentDetails.plan}
+        words={paymentDetails.words}
+        billingPeriod={paymentDetails.period}
+      />
+
+      <PaymentErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        message={errorMessage}
+      />
 
       <main className="w-full relative overflow-hidden bg-white">
         <div className="w-full" /* style={{ backgroundColor: '#ffe699' }} */>

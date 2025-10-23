@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 interface PricingCardProps {
   name: string
@@ -23,13 +23,14 @@ export default function PricingCard({
   isPopular = false,
   billingPeriod,
 }: PricingCardProps) {
+  const router = useRouter()
   const { data: session } = useSession()
   const [loading, setLoading] = useState(false)
 
   const handleSubscribe = async () => {
     if (!session) {
       // Redirect to sign in
-      signIn('google')
+      router.push('/signin')
       return
     }
 

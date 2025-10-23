@@ -156,9 +156,21 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
         <p className="text-3xl font-bold">{subscriptionPlanDisplay}</p>
         <p className="text-sm text-gray-500 mb-2">{wordsPerMonth.toLocaleString()} Wörter pro Monat</p>
         {profile.billing_period && (
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-gray-600">
             Abrechnung: {profile.billing_period === 'month' ? 'Monatlich' : 'Jährlich'}
           </p>
+        )}
+        {profile.subscription_valid_until && (
+          <p className="text-sm text-gray-600 mb-4">
+            Nächste Abrechnung: {new Date(profile.subscription_valid_until).toLocaleDateString('de-DE', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric'
+            })}
+          </p>
+        )}
+        {!profile.subscription_valid_until && profile.billing_period && (
+          <div className="mb-4"></div>
         )}
 
         {profile.subscription_status === 'attention' && (

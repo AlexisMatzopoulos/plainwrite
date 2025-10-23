@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { Sparkles, Clipboard } from 'lucide-react'
-import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function AIHumanizerLoggedOut() {
+  const router = useRouter()
   const [text, setText] = useState('')
   const [selectedStyle, setSelectedStyle] = useState('Akademisch')
 
@@ -83,7 +84,7 @@ export default function AIHumanizerLoggedOut() {
           <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
             <div className="flex gap-2 w-full sm:w-auto">
               {/* <button
-                onClick={() => wordCount > 0 && signIn('google')}
+                onClick={() => wordCount > 0 && router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border-theme-primary"
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
                 disabled={wordCount === 0}
@@ -91,7 +92,7 @@ export default function AIHumanizerLoggedOut() {
                 Auf KI prüfen
               </button> */}
               <button
-                onClick={() => wordCount > 0 && signIn('google')}
+                onClick={() => wordCount > 0 && router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto"
                 disabled={wordCount === 0}
               >

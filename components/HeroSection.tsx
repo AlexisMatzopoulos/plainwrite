@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 interface HeroSectionProps {
   isLoggedIn?: boolean
@@ -12,6 +12,7 @@ interface HeroSectionProps {
 const adjectives = ['professionell', 'kreativ', 'formal', 'persönlich']
 
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
+  const router = useRouter()
   const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -218,7 +219,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </Link>
           ) : (
             <button
-              onClick={() => signIn('google')}
+              onClick={() => router.push('/signin')}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
             >
               Kostenlos starten
