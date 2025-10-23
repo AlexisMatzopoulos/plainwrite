@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { analytics } from '@/lib/analytics'
 
 function CallbackContent() {
   const searchParams = useSearchParams()
@@ -33,6 +34,18 @@ function CallbackContent() {
         const plan = data.subscription?.plan || 'pro'
         const words = data.subscription?.wordsLimit || 0
         const period = data.subscription?.period || 'month'
+
+        // Track successful payment
+        analytics.track('payment_completed', {
+          plan,
+          words_limit: words,
+          billing_period: period,
+        })
+        analytics.track('subscription_started', {
+          plan,
+          words_limit: words,
+          billing_period: period,
+        })
 
         const successUrl = `${decodeURIComponent(returnTo)}?payment=success&plan=${plan}&words=${words}&period=${period}`
         router.push(successUrl)

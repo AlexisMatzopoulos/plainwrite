@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import ResultLoadingAnimation from './ResultLoadingAnimation'
 import { useProfileStore } from '@/store/profileStore'
+import { analytics } from '@/lib/analytics'
 
 interface AIHumanizerSectionProps {
   showResult: boolean
@@ -47,6 +48,12 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       return
     }
 
+    // Track conversion start
+    analytics.track('text_conversion_started', {
+      style: selectedStyle,
+      word_count: wordCount,
+    })
+
     setShowResult(true) // Show result panel
     setShowingAIResults(false) // Clear AI results when humanizing
     setIsHumanizing(true)
@@ -72,6 +79,13 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
       if (!response.ok || contentType?.includes('application/json')) {
         const data = await response.json()
+
+        // Track conversion failure
+        analytics.track('text_conversion_failed', {
+          style: selectedStyle,
+          word_count: wordCount,
+          error: data.error,
+        })
 
         // Check if it's an insufficient balance error
         if (data.error?.includes('Insufficient word balance')) {
@@ -117,6 +131,12 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       // Optimistic update: instantly update balance in Zustand store
       const wordsProcessed = countWords(inputText)
       updateBalance(wordsProcessed)
+
+      // Track successful conversion
+      analytics.track('text_conversion_completed', {
+        style: selectedStyle,
+        word_count: wordsProcessed,
+      })
 
       // Refresh profile from server to ensure accuracy
       await refreshProfile()
@@ -182,6 +202,12 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       await navigator.clipboard.writeText(outputText)
       setCopySuccess(true)
       setTimeout(() => setCopySuccess(false), 2000)
+
+      // Track copy action
+      analytics.track('copy_result', {
+        style: selectedStyle,
+        word_count: countWords(outputText),
+      })
     } catch (err) {
       setError('Text konnte nicht kopiert werden')
     }
@@ -218,7 +244,10 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
               {writingStyles.map((style) => (
                 <button
                   key={style}
-                  onClick={() => setSelectedStyle(style)}
+                  onClick={() => {
+                    setSelectedStyle(style)
+                    analytics.track('style_selected', { style })
+                  }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     selectedStyle === style
                       ? 'bg-theme-primary text-white'

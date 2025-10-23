@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { analytics } from '@/lib/analytics'
 
 interface PricingCardProps {
   name: string
@@ -34,6 +35,12 @@ export default function PricingCard({
       return
     }
 
+    // Track payment initiation
+    analytics.track('payment_initiated', {
+      plan: name,
+      billing_period: billingPeriod,
+    })
+
     setLoading(true)
 
     try {
@@ -59,6 +66,11 @@ export default function PricingCard({
       const data = await response.json()
 
       if (!response.ok) {
+        analytics.track('payment_failed', {
+          plan: name,
+          billing_period: billingPeriod,
+          error: data.error,
+        })
         throw new Error(data.error || 'Failed to initialize payment')
       }
 
