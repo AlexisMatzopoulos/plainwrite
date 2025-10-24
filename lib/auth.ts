@@ -101,23 +101,19 @@ export const authOptions: NextAuthOptions = {
 
       // Create profile for new users (after user is created in DB)
       if (user?.id) {
-        const existingProfile = await prisma.profile.findUnique({
+        await prisma.profile.upsert({
           where: { user_id: user.id },
+          update: {}, // Don't update if profile exists
+          create: {
+            user_id: user.id,
+            words_balance: 500,
+            extra_words_balance: 0,
+            words_limit: 500,
+            words_per_request: 500,
+            subscription_canceled: false,
+            subscription_paused: false,
+          },
         })
-
-        if (!existingProfile) {
-          await prisma.profile.create({
-            data: {
-              user_id: user.id,
-              words_balance: 500,
-              extra_words_balance: 0,
-              words_limit: 500,
-              words_per_request: 500,
-              subscription_canceled: false,
-              subscription_paused: false,
-            },
-          })
-        }
       }
 
       return session
