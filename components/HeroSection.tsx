@@ -9,7 +9,7 @@ interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
-const adjectives = ['professionell', 'kreativ', 'formal', 'persönlich']
+const adjectives = ['professional', 'creative', 'formal', 'personal']
 
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const router = useRouter()
@@ -55,7 +55,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
       <div className="flex flex-col h-full justify-between">
         <div>
           <h1 className="text-5xl font-bold text-theme-text mb-6">
-            Schreiben, das{' '}
+            Writing that feels{' '}
             <span
               style={{
                 fontFamily: 'Strings, sans-serif',
@@ -65,10 +65,9 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             >
               {displayedText}
             </span>
-            {' '}wirkt
           </h1>
           <p className="text-slate-500 mb-6 text-lg">
-            Wandle deinen Text in jeden gewünschten Schreibstil um. Unsere KI passt deine Texte perfekt an akademische, kreative, formelle oder lockere Anforderungen an.
+            Transform your text into any desired writing style. Our AI perfectly adapts your texts to academic, creative, formal, or casual requirements.
           </p>
 
           {/* Key features summary */}
@@ -77,13 +76,13 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-slate-600">Speziell trainiert auf deutschen Texten für natürliche Ergebnisse.</span>
+              <span className="text-slate-600">Specially trained on German texts for natural results.</span>
             </div>
             <div className="flex items-start gap-3">
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-slate-600">Wähle aus verschiedenen Schreibstilen für jede Situation</span>
+              <span className="text-slate-600">Choose from various writing styles for every situation</span>
             </div>
           </div>
          {/* Badges Section */}
@@ -104,8 +103,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 {/* Content */}
                 <div className="flex items-center justify-center px-4">
                   <div className="text-center">
-                    <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trainiert auf</div>
-                    <div style={{ fontWeight: 500, fontSize: '16px', color: '#FFCE00' }}>700.000+ dokumenten</div>
+                    <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trained on</div>
+                    <div style={{ fontWeight: 500, fontSize: '16px', color: '#FFCE00' }}>700,000+ documents</div>
                   </div>
                 </div>
 
@@ -212,22 +211,22 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
 
           {isLoggedIn ? (
             <Link
-              href="/preise"
+              href="/pricing"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
             >
-              Mehr Wörter kaufen
+              Buy More Words
             </Link>
           ) : (
             <button
               onClick={() => router.push('/signin')}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
             >
-              Kostenlos starten
+              Get Started Free
             </button>
           )}
           {!isLoggedIn && (
             <div className="text-sm mt-2" style={{ color: 'rgb(100, 116, 139)' }}>
-              Keine Kreditkarte erforderlich
+              No credit card required
             </div>
           )}
 

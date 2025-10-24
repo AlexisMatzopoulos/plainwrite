@@ -64,7 +64,7 @@ export default function HistoryPageClient() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Möchtest du diesen Eintrag wirklich löschen?')) {
+    if (!confirm('Do you really want to delete this entry?')) {
       return
     }
 
@@ -77,11 +77,11 @@ export default function HistoryPageClient() {
         // Refresh the history list
         fetchHistory()
       } else {
-        alert('Fehler beim Löschen des Eintrags')
+        alert('Error deleting entry')
       }
     } catch (error) {
       console.error('Error deleting history entry:', error)
-      alert('Fehler beim Löschen des Eintrags')
+      alert('Error deleting entry')
     }
   }
 
@@ -112,7 +112,7 @@ export default function HistoryPageClient() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return new Intl.DateTimeFormat('de-DE', {
+    return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -143,8 +143,8 @@ export default function HistoryPageClient() {
       <div className="w-full flex-1">
         <div className="container mx-auto px-4 py-16 max-w-6xl">
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-bold mb-2 text-theme-text">Verlauf</h1>
-            <p className="text-slate-500 text-lg">Hier findest du alle deine humanisierten Texte</p>
+            <h1 className="text-4xl font-bold mb-2 text-theme-text">History</h1>
+            <p className="text-slate-500 text-lg">Find all your humanized texts here</p>
           </div>
 
           {/* Search Bar */}
@@ -152,7 +152,7 @@ export default function HistoryPageClient() {
             <div className="relative max-w-2xl mx-auto">
               <input
                 type="text"
-                placeholder="Suche in deinem Verlauf..."
+                placeholder="Search your history..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-3 pl-12 border border-slate-300 rounded-[14px] focus:outline-none focus:ring-2 focus:ring-theme-primary bg-white shadow-sm"
@@ -192,12 +192,12 @@ export default function HistoryPageClient() {
                 />
               </svg>
               <h3 className="text-xl font-semibold text-slate-700 mb-2">
-                {searchTerm ? 'Keine Ergebnisse gefunden' : 'Noch keine Einträge'}
+                {searchTerm ? 'No results found' : 'No entries yet'}
               </h3>
               <p className="text-slate-500">
                 {searchTerm
-                  ? 'Versuche es mit einem anderen Suchbegriff'
-                  : 'Humanisiere deinen ersten Text, um ihn hier zu sehen'}
+                  ? 'Try a different search term'
+                  : 'Humanize your first text to see it here'}
               </p>
             </div>
           ) : (
@@ -230,7 +230,7 @@ export default function HistoryPageClient() {
                           </span>
                         </div>
                         <div className="flex items-center gap-4 text-sm text-slate-500">
-                          <span>{entry.words_count} Wörter</span>
+                          <span>{entry.words_count} Words</span>
                           {entry.style_used && entry.style_used !== 'default' && (
                             <span className="px-2 py-1 rounded" style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)', color: 'var(--color-primary)' }}>
                               {entry.style_used}
@@ -241,7 +241,7 @@ export default function HistoryPageClient() {
                       <button
                         onClick={() => handleDelete(entry.id)}
                         className="text-red-500 hover:text-red-700 p-2"
-                        aria-label="Löschen"
+                        aria-label="Delete"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +269,7 @@ export default function HistoryPageClient() {
                           <button
                             onClick={() => handleCopy(entry.original_text, entry.id, 'original')}
                             className="text-slate-500 hover:text-slate-700 p-1"
-                            aria-label="Kopieren"
+                            aria-label="Copy"
                           >
                             {copiedId === `${entry.id}-original` ? (
                               <svg
@@ -314,11 +314,11 @@ export default function HistoryPageClient() {
                       {/* Humanized Text */}
                       <div className="border rounded-[10px] p-4" style={{ borderColor: 'rgba(var(--color-primary-rgb), 0.3)', backgroundColor: 'rgba(var(--color-primary-rgb), 0.05)' }}>
                         <div className="flex justify-between items-center mb-2">
-                          <h3 className="font-semibold text-slate-700">Humanisierter Text</h3>
+                          <h3 className="font-semibold text-slate-700">Humanized Text</h3>
                           <button
                             onClick={() => handleCopy(entry.humanized_text, entry.id, 'humanized')}
                             className="text-slate-500 hover:text-slate-700 p-1"
-                            aria-label="Kopieren"
+                            aria-label="Copy"
                           >
                             {copiedId === `${entry.id}-humanized` ? (
                               <svg
@@ -369,7 +369,7 @@ export default function HistoryPageClient() {
                       >
                         {expandedId === entry.id ? (
                           <>
-                            Weniger anzeigen
+                            Show Less
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="h-4 w-4"
@@ -387,7 +387,7 @@ export default function HistoryPageClient() {
                           </>
                         ) : (
                           <>
-                            Mehr anzeigen
+                            Show More
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="h-4 w-4"
@@ -420,17 +420,17 @@ export default function HistoryPageClient() {
                 disabled={currentPage === 1}
                 className="px-6 py-2 border border-slate-300 rounded-[10px] hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 font-medium bg-white shadow-sm"
               >
-                Zurück
+                Previous
               </button>
               <span className="px-4 py-2 text-slate-600 font-medium">
-                Seite {currentPage} von {totalPages}
+                Page {currentPage} of {totalPages}
               </span>
               <button
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
                 className="px-6 py-2 border border-slate-300 rounded-[10px] hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 font-medium bg-white shadow-sm"
               >
-                Weiter
+                Next
               </button>
             </div>
           )}

@@ -28,12 +28,12 @@ export default function SignInPageClient() {
       })
 
       if (result?.error) {
-        setError('Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es erneut.')
+        setError('There was a problem sending the email. Please try again.')
       } else {
         setEmailSent(true)
       }
     } catch (err) {
-      setError('Es gab ein Problem beim Senden der E-Mail. Bitte versuchen Sie es erneut.')
+      setError('There was a problem sending the email. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -53,12 +53,12 @@ export default function SignInPageClient() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">E-Mail gesendet!</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Email Sent!</h2>
             <p className="text-gray-600 mb-6">
-              Wir haben einen Anmeldelink an <strong>{email}</strong> gesendet.
+              We sent a sign-in link to <strong>{email}</strong>.
             </p>
             <p className="text-gray-500 text-sm mb-6">
-              Klicken Sie auf den Link in der E-Mail, um sich anzumelden. Der Link ist 24 Stunden gültig.
+              Click the link in the email to sign in. The link is valid for 24 hours.
             </p>
             <button
               onClick={() => {
@@ -67,7 +67,7 @@ export default function SignInPageClient() {
               }}
               className="px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
             >
-              Andere E-Mail verwenden
+              Use Different Email
             </button>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function SignInPageClient() {
             <Link href="/" className="inline-block">
               <h1 className="text-3xl font-bold text-theme-primary mb-2">EchtSchreib</h1>
             </Link>
-            <p className="text-gray-600">Melden Sie sich an, um fortzufahren</p>
+            <p className="text-gray-600">Sign in to continue</p>
           </div>
           {/* Google Sign-In */}
           <button
@@ -109,7 +109,7 @@ export default function SignInPageClient() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            <span className="font-medium text-gray-700">Mit Google anmelden</span>
+            <span className="font-medium text-gray-700">Sign in with Google</span>
           </button>
 
           {/* Divider */}
@@ -118,7 +118,7 @@ export default function SignInPageClient() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">oder</span>
+              <span className="px-4 bg-white text-gray-500">or</span>
             </div>
           </div>
 
@@ -126,14 +126,14 @@ export default function SignInPageClient() {
           <form onSubmit={handleEmailSignIn}>
             <div className="mb-4">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                E-Mail-Adresse
+                Email Address
               </label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="ihre@email.de"
+                placeholder="your@email.com"
                 required
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-theme-primary focus:ring-2 focus:ring-theme-primary/20 outline-none transition-colors"
               />
@@ -150,20 +150,19 @@ export default function SignInPageClient() {
               disabled={isLoading}
               className="w-full bg-theme-primary text-white font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Wird gesendet...' : 'Anmeldelink per E-Mail senden'}
+              {isLoading ? 'Sending...' : 'Send Sign-in Link via Email'}
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-500 mt-6">
-            Indem Sie sich anmelden, stimmen Sie unseren{' '}
-            <Link href="/nutzungsbedingungen" className="text-theme-primary hover:underline">
-              Nutzungsbedingungen
+            By signing in, you agree to our{' '}
+            <Link href="/terms-of-service" className="text-theme-primary hover:underline">
+              Terms of Service
             </Link>{' '}
-            und{' '}
-            <Link href="/datenschutz" className="text-theme-primary hover:underline">
-              Datenschutzrichtlinien
-            </Link>{' '}
-            zu.
+            and{' '}
+            <Link href="/privacy-policy" className="text-theme-primary hover:underline">
+              Privacy Policy
+            </Link>.
           </p>
         </div>
       </div>

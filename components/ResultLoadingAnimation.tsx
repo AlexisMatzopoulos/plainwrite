@@ -8,25 +8,25 @@ interface ResultLoadingAnimationProps {
 }
 
 const HUMANIZING_MESSAGES = [
-  'Text wird analysiert...',
-  'Sprachmuster werden optimiert...',
-  'Natürliche Formulierungen werden generiert...',
-  'Satzstrukturen werden angepasst...',
-  'Menschliche Schreibweise wird angewendet...',
-  'Stilistische Verbesserungen werden durchgeführt...',
-  'KI-Signaturen werden entfernt...',
-  'Textkohärenz wird optimiert...'
+  'Analyzing text...',
+  'Optimizing language patterns...',
+  'Generating natural phrasing...',
+  'Adjusting sentence structures...',
+  'Applying human writing style...',
+  'Making stylistic improvements...',
+  'Removing AI signatures...',
+  'Optimizing text coherence...'
 ]
 
 const AI_CHECKING_MESSAGES = [
-  'Text wird analysiert...',
-  'KI-Muster werden erkannt...',
-  'Sprachmodelle werden verglichen...',
-  'Textstruktur wird untersucht...',
-  'Statistische Analysen laufen...',
-  'Wahrscheinlichkeiten werden berechnet...',
-  'Detektoren werden abgefragt...',
-  'Ergebnisse werden zusammengestellt...'
+  'Analyzing text...',
+  'Detecting AI patterns...',
+  'Comparing language models...',
+  'Examining text structure...',
+  'Running statistical analysis...',
+  'Calculating probabilities...',
+  'Querying detectors...',
+  'Compiling results...'
 ]
 
 export default function ResultLoadingAnimation({
@@ -68,14 +68,14 @@ export default function ResultLoadingAnimation({
       className="relative p-8 min-h-[400px] flex flex-col items-center justify-center"
       role="status"
       aria-live="polite"
-      aria-label={isHumanizing ? "Schreibstil wird angewendet" : "Text wird auf KI geprüft"}
+      aria-label={isHumanizing ? "Applying writing style" : "Checking for AI"}
     >
       {/* Main content */}
       <div className="relative z-10 w-full max-w-lg">
         {/* Main heading */}
         <div className="text-center mb-8">
           <h3 className="text-xl font-semibold text-slate-800 mb-2">
-            {isHumanizing ? 'Schreibstil wird angewendet' : 'KI-Prüfung läuft'}
+            {isHumanizing ? 'Applying Writing Style' : 'AI Check Running'}
           </h3>
         </div>
 
@@ -100,8 +100,8 @@ export default function ResultLoadingAnimation({
       {/* Screen reader only text */}
       <span className="sr-only">
         {isHumanizing
-          ? 'Schreibstil wird angewendet. Bitte warten Sie einen Moment.'
-          : 'Ihr Text wird auf künstliche Intelligenz geprüft. Bitte warten Sie einen Moment.'}
+          ? 'Applying writing style. Please wait a moment.'
+          : 'Your text is being checked for artificial intelligence. Please wait a moment.'}
       </span>
     </div>
   )

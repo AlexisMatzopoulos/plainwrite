@@ -18,7 +18,7 @@ function CallbackContent() {
 
       if (!reference) {
         // Redirect with error
-        router.push(`${returnTo}?payment=error&message=${encodeURIComponent('Keine Transaktionsreferenz gefunden')}`)
+        router.push(`${returnTo}?payment=error&message=${encodeURIComponent('No transaction reference found')}`)
         return
       }
 
@@ -27,7 +27,7 @@ function CallbackContent() {
         const data = await response.json()
 
         if (!response.ok) {
-          throw new Error(data.error || 'Fehler bei der Verifizierung der Zahlung')
+          throw new Error(data.error || 'Error verifying payment')
         }
 
         // Success! Redirect with success params
@@ -51,7 +51,7 @@ function CallbackContent() {
         router.push(successUrl)
       } catch (err) {
         console.error('Verification error:', err)
-        const errorMessage = err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten'
+        const errorMessage = err instanceof Error ? err.message : 'An error occurred'
         router.push(`${returnTo}?payment=error&message=${encodeURIComponent(errorMessage)}`)
       }
     }
@@ -59,7 +59,7 @@ function CallbackContent() {
     if (status === 'authenticated') {
       verifyTransaction()
     } else if (status === 'unauthenticated') {
-      router.push('/?payment=error&message=' + encodeURIComponent('Sie müssen angemeldet sein'))
+      router.push('/?payment=error&message=' + encodeURIComponent('You must be signed in'))
     }
   }, [searchParams, router, status])
 
@@ -90,8 +90,8 @@ function CallbackContent() {
                 ></path>
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Zahlung wird verifiziert...</h2>
-            <p className="text-gray-600">Bitte warten Sie einen Moment</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Verifying payment...</h2>
+            <p className="text-gray-600">Please wait a moment</p>
           </>
         )}
       </div>
@@ -101,7 +101,7 @@ function CallbackContent() {
 
 export default function CallbackPageClient() {
   return (
-    <Suspense fallback={<div>Wird geladen...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <CallbackContent />
     </Suspense>
   )

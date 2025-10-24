@@ -63,15 +63,15 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
   const getStatusText = (status: string | null) => {
     switch (status) {
       case 'active':
-        return 'Aktiv'
+        return 'Active'
       case 'non-renewing':
-        return 'Läuft aus'
+        return 'Expiring'
       case 'attention':
-        return 'Zahlungsproblem'
+        return 'Payment Issue'
       case 'cancelled':
-        return 'Gekündigt'
+        return 'Cancelled'
       default:
-        return 'Inaktiv'
+        return 'Inactive'
     }
   }
 
@@ -84,11 +84,11 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
       if (response.ok && data.link) {
         window.location.href = data.link
       } else {
-        alert('Fehler beim Öffnen der Abonnementverwaltung')
+        alert('Error opening subscription management')
       }
     } catch (error) {
       console.error('Error managing subscription:', error)
-      alert('Fehler beim Öffnen der Abonnementverwaltung')
+      alert('Error opening subscription management')
     } finally {
       setManagingSubscription(false)
     }
@@ -110,14 +110,14 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
       const data = await response.json()
 
       if (response.ok) {
-        alert('Ihr Abonnement wird am Ende des Abrechnungszeitraums beendet.')
+        alert('Your subscription will end at the end of the billing period.')
         window.location.reload()
       } else {
-        alert(data.error || 'Fehler beim Kündigen des Abonnements')
+        alert(data.error || 'Error cancelling subscription')
       }
     } catch (error) {
       console.error('Error cancelling subscription:', error)
-      alert('Fehler beim Kündigen des Abonnements')
+      alert('Error cancelling subscription')
     } finally {
       setCancellingSubscription(false)
       setShowCancelConfirm(false)
@@ -143,7 +143,7 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
                 d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
               ></path>
             </svg>
-            <h2 className="text-xl font-semibold">Abonnement</h2>
+            <h2 className="text-xl font-semibold">Subscription</h2>
           </div>
           {profile.subscription_status && (
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(profile.subscription_status)}`}>
@@ -154,15 +154,15 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
       </div>
       <div className="p-6 pt-0">
         <p className="text-3xl font-bold">{subscriptionPlanDisplay}</p>
-        <p className="text-sm text-gray-500 mb-2">{wordsPerMonth.toLocaleString()} Wörter pro Monat</p>
+        <p className="text-sm text-gray-500 mb-2">{wordsPerMonth.toLocaleString()} Words per month</p>
         {profile.billing_period && (
           <p className="text-sm text-gray-600">
-            Abrechnung: {profile.billing_period === 'month' ? 'Monatlich' : 'Jährlich'}
+            Billing: {profile.billing_period === 'month' ? 'Monthly' : 'Annually'}
           </p>
         )}
         {profile.subscription_valid_until && (
           <p className="text-sm text-gray-600 mb-4">
-            Nächste Abrechnung: {new Date(profile.subscription_valid_until).toLocaleDateString('de-DE', {
+            Next billing: {new Date(profile.subscription_valid_until).toLocaleDateString('en-US', {
               day: '2-digit',
               month: '2-digit',
               year: 'numeric'
@@ -176,10 +176,10 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
         {profile.subscription_status === 'attention' && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
             <p className="text-sm text-red-800 font-medium">
-              ⚠️ Es gab ein Problem mit Ihrer letzten Zahlung.
+              ⚠️ There was a problem with your last payment.
             </p>
             <p className="text-sm text-red-700 mt-1">
-              Bitte aktualisieren Sie Ihre Zahlungsmethode, um den Service fortzusetzen.
+              Please update your payment method to continue the service.
             </p>
           </div>
         )}
@@ -192,13 +192,13 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
                 disabled={managingSubscription}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary/10 text-theme-primary hover:bg-theme-primary/20 rounded-[10px] text-[16px] w-full md:w-auto"
               >
-                {managingSubscription ? 'Wird geladen...' : 'Zahlungsmethode aktualisieren'}
+                {managingSubscription ? 'Loading...' : 'Update Payment Method'}
               </button>
               <button
                 onClick={() => setShowCancelConfirm(true)}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-red-50 text-red-600 hover:bg-red-100 rounded-[10px] text-[16px] w-full md:w-auto"
               >
-                Abonnement kündigen
+                Cancel Subscription
               </button>
             </>
           )}
@@ -209,15 +209,15 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
               disabled={managingSubscription}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary text-white hover:opacity-90 rounded-[10px] text-[16px] w-full md:w-auto"
             >
-              {managingSubscription ? 'Wird geladen...' : 'Zahlungsmethode aktualisieren'}
+              {managingSubscription ? 'Loading...' : 'Update Payment Method'}
             </button>
           )}
 
           <Link
-            href="/preise"
+            href="/pricing"
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary text-white hover:opacity-90 rounded-[10px] text-[16px] w-full md:w-auto"
           >
-            {profile.subscription_plan ? 'Abonnement upgraden' : 'Abonnement erhalten'}
+            {profile.subscription_plan ? 'Upgrade Subscription' : 'Get Subscription'}
           </Link>
         </div>
 
@@ -225,24 +225,24 @@ function SubscriptionCard({ profile }: { profile: Profile }) {
         {showCancelConfirm && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 max-w-md mx-4">
-              <h3 className="text-lg font-semibold mb-2">Abonnement kündigen?</h3>
+              <h3 className="text-lg font-semibold mb-2">Cancel Subscription?</h3>
               <p className="text-gray-600 mb-4">
-                Ihr Abonnement bleibt bis zum Ende des aktuellen Abrechnungszeitraums aktiv. Sie können
-                Ihre Dienste bis dahin weiterhin nutzen.
+                Your subscription will remain active until the end of the current billing period. You can
+                continue using your services until then.
               </p>
               <div className="flex gap-2 justify-end">
                 <button
                   onClick={() => setShowCancelConfirm(false)}
                   className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
                 >
-                  Abbrechen
+                  Cancel
                 </button>
                 <button
                   onClick={handleCancelSubscription}
                   disabled={cancellingSubscription}
                   className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
                 >
-                  {cancellingSubscription ? 'Wird gekündigt...' : 'Ja, kündigen'}
+                  {cancellingSubscription ? 'Cancelling...' : 'Yes, Cancel'}
                 </button>
               </div>
             </div>
@@ -325,7 +325,7 @@ export default function ProfilePageClient() {
                     <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
-                    <h1 className="text-2xl font-semibold">Konto</h1>
+                    <h1 className="text-2xl font-semibold">Account</h1>
                   </div>
                   <button
                     onClick={handleSignOut}
@@ -336,7 +336,7 @@ export default function ProfilePageClient() {
                       <polyline points="16 17 21 12 16 7"></polyline>
                       <line x1="21" x2="9" y1="12" y2="12"></line>
                     </svg>
-                    Abmelden
+                    Sign Out
                   </button>
                 </div>
               </div>
@@ -344,10 +344,10 @@ export default function ProfilePageClient() {
                 <div className="space-y-4">
                   <div>
                     <label className="text-sm text-gray-500">Name</label>
-                    <p className="text-lg font-medium">{session.user?.name || 'Benutzer'}</p>
+                    <p className="text-lg font-medium">{session.user?.name || 'User'}</p>
                   </div>
                   <div>
-                    <label className="text-sm text-gray-500">E-Mail</label>
+                    <label className="text-sm text-gray-500">Email</label>
                     <p className="text-lg font-medium">{session.user?.email}</p>
                   </div>
                 </div>
@@ -361,17 +361,17 @@ export default function ProfilePageClient() {
                   <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
                   </svg>
-                  <h2 className="text-xl font-semibold">Guthaben</h2>
+                  <h2 className="text-xl font-semibold">Balance</h2>
                 </div>
               </div>
               <div className="p-6 pt-0">
-                <p className="text-3xl font-bold">{totalBalance.toLocaleString()} Wörter</p>
+                <p className="text-3xl font-bold">{totalBalance.toLocaleString()} Words</p>
                 <p className="text-sm text-gray-500 mb-4">&nbsp;</p>
                 <a
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-full md:w-auto px-8 py-6 bg-theme-primary text-white hover:opacity-90 rounded-[10px] text-base"
-                  href="/preise"
+                  href="/pricing"
                 >
-                  Mehr Wörter erhalten
+                  Get More Words
                 </a>
               </div>
             </div>
@@ -384,12 +384,12 @@ export default function ProfilePageClient() {
                 <svg className="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                <h2 className="text-xl font-semibold">Kaufhistorie</h2>
+                <h2 className="text-xl font-semibold">Purchase History</h2>
               </div>
             </div>
             <div className="p-6 pt-0">
               {paymentHistory.length === 0 ? (
-                <p className="text-gray-500">Keine Zahlungshistorie gefunden.</p>
+                <p className="text-gray-500">No payment history found.</p>
               ) : (
                 <div className="space-y-3">
                   {paymentHistory.map((payment) => (

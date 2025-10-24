@@ -92,7 +92,7 @@ export default function PricingCard({
       {isPopular && (
         <div className="absolute top-6 right-4">
           <span className="bg-yellow-200 text-foreground px-3 py-1 rounded-md text-xs font-medium uppercase">
-            AM BELIEBTESTEN
+            MOST POPULAR
           </span>
         </div>
       )}
@@ -112,12 +112,12 @@ export default function PricingCard({
             <span className="text-sm text-muted-foreground self-center">
               {billingPeriod === 'year' ? (
                 <div>
-                  Pro Monat
+                  Per Month
                   <br />
-                  Jährlich abgerechnet
+                  Billed Annually
                 </div>
               ) : (
-                <div>Pro Monat</div>
+                <div>Per Month</div>
               )}
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function PricingCard({
             disabled={loading}
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-theme-primary bg-theme-primary-hover border"
           >
-            {loading ? 'Wird geladen...' : 'Abonnieren'}
+            {loading ? 'Loading...' : 'Subscribe'}
           </button>
           <hr className="mt-6 border-t border-slate-300" />
         </div>

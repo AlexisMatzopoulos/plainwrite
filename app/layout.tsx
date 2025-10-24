@@ -4,25 +4,25 @@ import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXTAUTH_URL || 'https://echtschreib.de'),
-  title: 'EchtSchreib: KI-Schreibstil-Umwandler - Akademisch, Kreativ, Formal, Casual',
-  description: 'Wandle deinen Text in jeden gewünschten Schreibstil um mit EchtSchreib. Wähle zwischen akademischem, kreativem, formellem oder lockerem Stil für perfekt angepasste Texte.',
+  title: 'EchtSchreib: AI Writing Style Converter - Academic, Creative, Formal, Casual',
+  description: 'Transform your text into any desired writing style with EchtSchreib. Choose between academic, creative, formal, or casual style for perfectly adapted texts.',
   openGraph: {
-    title: 'EchtSchreib: KI-Schreibstil-Umwandler - Akademisch, Kreativ, Formal, Casual',
-    description: 'Wandle deinen Text in jeden gewünschten Schreibstil um mit EchtSchreib. Wähle zwischen akademischem, kreativem, formellem oder lockerem Stil für perfekt angepasste Texte.',
+    title: 'EchtSchreib: AI Writing Style Converter - Academic, Creative, Formal, Casual',
+    description: 'Transform your text into any desired writing style with EchtSchreib. Choose between academic, creative, formal, or casual style for perfectly adapted texts.',
     images: [
       {
         url: '/images/opengraph-image.png',
         width: 1200,
         height: 800,
-        alt: 'EchtSchreib - Schreibstil-Umwandler',
+        alt: 'EchtSchreib - Writing Style Converter',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EchtSchreib: KI-Schreibstil-Umwandler - Akademisch, Kreativ, Formal, Casual',
-    description: 'Wandle deinen Text in jeden gewünschten Schreibstil um mit EchtSchreib. Wähle zwischen akademischem, kreativem, formellem oder lockerem Stil für perfekt angepasste Texte.',
+    title: 'EchtSchreib: AI Writing Style Converter - Academic, Creative, Formal, Casual',
+    description: 'Transform your text into any desired writing style with EchtSchreib. Choose between academic, creative, formal, or casual style for perfectly adapted texts.',
     images: ['/images/twitter-image.png'],
   },
 }
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de">
+    <html lang="en">
       <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
         <Providers>{children}</Providers>
       </body>

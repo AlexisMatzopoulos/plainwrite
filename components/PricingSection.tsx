@@ -10,93 +10,93 @@ export default function PricingSection() {
   const pricingData = {
     month: [
       {
-        name: 'Basis',
-        wordsPerMonth: '5.000 Wörter pro Monat',
+        name: 'Basic',
+        wordsPerMonth: '5,000 words per month',
         originalPrice: undefined,
         price: '€5.99',
         features: [
-          '500 Wörter pro Anfrage',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          '20 unterstützte Sprachen',
+          '500 words per request',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          '20 supported languages',
         ],
       },
       {
         name: 'Pro',
-        wordsPerMonth: '15.000 Wörter pro Monat',
+        wordsPerMonth: '15,000 words per month',
         originalPrice: undefined,
         price: '€19.99',
         isPopular: true,
         features: [
-          '1.500 Wörter pro Anfrage',
-          'Mein Schreibstil',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          'Über 50 unterstützte Sprachen',
-          'Unbegrenzte Grammatikprüfungen',
-          'Schnellmodus',
+          '1,500 words per request',
+          'My writing style',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          'Over 50 supported languages',
+          'Unlimited grammar checks',
+          'Fast mode',
         ],
       },
       {
         name: 'Ultra',
-        wordsPerMonth: '30.000 Wörter pro Monat',
+        wordsPerMonth: '30,000 words per month',
         originalPrice: undefined,
         price: '€39.99',
         features: [
-          '3.000 Wörter pro Anfrage',
-          'Mein Schreibstil',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          'Über 50 unterstützte Sprachen',
-          'Unbegrenzte Grammatikprüfungen',
-          'Schnellmodus',
-          'Prioritätssupport',
+          '3,000 words per request',
+          'My writing style',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          'Over 50 supported languages',
+          'Unlimited grammar checks',
+          'Fast mode',
+          'Priority support',
         ],
       },
     ],
     year: [
       {
-        name: 'Basis',
-        wordsPerMonth: '5.000 Wörter pro Monat',
+        name: 'Basic',
+        wordsPerMonth: '5,000 words per month',
         originalPrice: '€5.99',
         price: '€2.99',
         features: [
-          '500 Wörter pro Anfrage',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          '20 unterstützte Sprachen',
+          '500 words per request',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          '20 supported languages',
         ],
       },
       {
         name: 'Pro',
-        wordsPerMonth: '15.000 Wörter pro Monat',
+        wordsPerMonth: '15,000 words per month',
         originalPrice: '€19.99',
         price: '€9.99',
         isPopular: true,
         features: [
-          '1.500 Wörter pro Anfrage',
-          'Mein Schreibstil',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          'Über 50 unterstützte Sprachen',
-          'Unbegrenzte Grammatikprüfungen',
-          'Schnellmodus',
+          '1,500 words per request',
+          'My writing style',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          'Over 50 supported languages',
+          'Unlimited grammar checks',
+          'Fast mode',
         ],
       },
       {
         name: 'Ultra',
-        wordsPerMonth: '30.000 Wörter pro Monat',
+        wordsPerMonth: '30,000 words per month',
         originalPrice: '€39.99',
         price: '€19.99',
         features: [
-          '3.000 Wörter pro Anfrage',
-          'Mein Schreibstil',
-          'Plagiatsfrei',
-          'Fehlerfreie Umformulierung',
-          'Über 50 unterstützte Sprachen',
-          'Unbegrenzte Grammatikprüfungen',
-          'Schnellmodus',
-          'Prioritätssupport',
+          '3,000 words per request',
+          'My writing style',
+          'Plagiarism-free',
+          'Error-free rephrasing',
+          'Over 50 supported languages',
+          'Unlimited grammar checks',
+          'Fast mode',
+          'Priority support',
         ],
       },
     ],
@@ -111,7 +111,7 @@ export default function PricingSection() {
       <div className="lg:container mx-auto px-4 py-16">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-semibold text-[#0F172A] mb-6">
-            Flexible Preispläne für dich
+            Flexible pricing plans for you
           </h1>
 
           {/* Billing Toggle */}
@@ -125,7 +125,7 @@ export default function PricingSection() {
                     : 'hover:bg-slate-100'
                 }`}
               >
-                Monatlich
+                Monthly
               </button>
               <button
                 onClick={() => setBillingPeriod('year')}
@@ -135,9 +135,9 @@ export default function PricingSection() {
                     : 'hover:bg-slate-100'
                 }`}
               >
-                Jährlich
+                Yearly
                 <span className="text-xs text-foreground bg-yellow-200 font-medium rounded-md px-2 py-1 uppercase text-black">
-                  50% sparen
+                  Save 50%
                 </span>
               </button>
             </div>
@@ -163,21 +163,25 @@ export default function PricingSection() {
         {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-sm text-slate-950 font-semibold mb-2">
-            Benötigst du mehr?{' '}
+            Need more?{' '}
             <a href="mailto:echtschreib@gmail.com" className="text-emerald-500 underline">
-              Kontaktiere uns
+              Contact us
             </a>
           </p>
           <p className="text-sm text-slate-500">
-            Durch Klicken auf die Schaltfläche Abonnieren stimmst du unseren{' '}
+            By clicking the Subscribe button, you agree to our{' '}
             <Link href="/terms-of-service" className="underline">
-              Nutzungsbedingungen
-            </Link>{' '}
-            und{' '}
-            <Link href="/privacy-policy" className="underline">
-              Datenschutzrichtlinien
+              Terms of Service
             </Link>
-            {' '}zu.
+            ,{' '}
+            <Link href="/privacy-policy" className="underline">
+              Privacy Policy
+            </Link>
+            , and{' '}
+            <Link href="/refund-policy" className="underline">
+              Refund Policy
+            </Link>
+            .
           </p>
         </div>
       </div>

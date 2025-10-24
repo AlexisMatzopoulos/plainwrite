@@ -12,7 +12,7 @@ interface PaymentErrorModalProps {
 export default function PaymentErrorModal({
   isOpen,
   onClose,
-  message = 'Es gab ein Problem bei der Verarbeitung Ihrer Zahlung.'
+  message = 'There was a problem processing your payment.'
 }: PaymentErrorModalProps) {
   const router = useRouter()
   const [show, setShow] = useState(false)
@@ -32,7 +32,7 @@ export default function PaymentErrorModal({
 
   const handleRetry = () => {
     handleClose()
-    router.push('/preise')
+    router.push('/pricing')
   }
 
   if (!isOpen) return null
@@ -58,7 +58,7 @@ export default function PaymentErrorModal({
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-          aria-label="Schließen"
+          aria-label="Close"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -76,7 +76,7 @@ export default function PaymentErrorModal({
 
         {/* Content */}
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          Zahlung fehlgeschlagen
+          Payment Failed
         </h2>
         <p className="text-lg text-gray-600 mb-6">
           {message}
@@ -85,20 +85,20 @@ export default function PaymentErrorModal({
         {/* Error Details */}
         <div className="bg-red-50 rounded-xl p-6 mb-6 border border-red-100">
           <p className="text-sm text-gray-700 mb-3">
-            Mögliche Gründe:
+            Possible reasons:
           </p>
           <ul className="text-sm text-gray-600 text-left space-y-2">
             <li className="flex items-start gap-2">
               <span className="text-red-500 mt-0.5">•</span>
-              <span>Unzureichende Deckung</span>
+              <span>Insufficient funds</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-red-500 mt-0.5">•</span>
-              <span>Abgelehnte Karte</span>
+              <span>Card declined</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-red-500 mt-0.5">•</span>
-              <span>Technisches Problem</span>
+              <span>Technical issue</span>
             </li>
           </ul>
         </div>
@@ -109,19 +109,19 @@ export default function PaymentErrorModal({
             onClick={handleRetry}
             className="w-full bg-theme-primary text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-opacity"
           >
-            Erneut versuchen
+            Try Again
           </button>
           <button
             onClick={handleClose}
             className="w-full border-2 border-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-50 transition-colors"
           >
-            Später bezahlen
+            Pay Later
           </button>
         </div>
 
         {/* Support link */}
         <p className="mt-6 text-sm text-gray-500">
-          Probleme? Kontaktieren Sie uns:{' '}
+          Having issues? Contact us:{' '}
           <a href="mailto:echtschreib@gmail.com" className="text-theme-primary hover:underline">
             echtschreib@gmail.com
           </a>
