@@ -14,6 +14,7 @@ Before you begin:
 - [ ] Database ready (Supabase/Postgres)
 - [ ] All environment variables documented
 - [ ] Paddle account created and verified
+- [ ] Google OAuth authorized redirect URIs updated for new domain
 
 ---
 
@@ -75,8 +76,8 @@ NEXTAUTH_SECRET=your-secret-here
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-# Database
-DATABASE_URL=your-postgresql-url
+# Database (use port 6543 with pgbouncer for production)
+DATABASE_URL=your-postgresql-url?pgbouncer=true
 
 # Email (if using)
 EMAIL_SERVER_USER=your-email
