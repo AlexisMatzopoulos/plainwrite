@@ -86,13 +86,13 @@ export function HomeContent({ isLoggedIn }: HomeContentProps) {
         <div className="container mx-auto px-4">
           {/* Centered Hero Section Header (only show when not logged in) */}
           {!isLoggedIn && (
-            <div className="max-w-4xl mx-auto text-center py-12">
+            <div className="max-w-4xl mx-auto text-center py-6">
               <HeroSection isLoggedIn={isLoggedIn} />
             </div>
           )}
 
           {/* Main Text Editor - Takes Up Most of Screen */}
-          <div className="w-full max-w-7xl mx-auto py-8">
+          <div className="w-full max-w-7xl mx-auto py-4">
             {isLoggedIn ? (
               <AIHumanizerSection showResult={showResult} setShowResult={setShowResult} />
             ) : (
