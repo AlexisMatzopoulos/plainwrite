@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
           const result = await resend.emails.send({
             from: process.env.EMAIL_FROM || "onboarding@resend.dev",
             to: email,
-            subject: `Melden Sie sich bei EchtSchreib an - ${timestamp}`,
+            subject: `Melden Sie sich bei PlainWrite an - ${timestamp}`,
             html: `
               <!DOCTYPE html>
               <html>
@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
                 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f9fafb; margin: 0; padding: 0;">
                   <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="background-color: white; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); padding: 40px;">
-                      <h1 style="color: #1f2937; font-size: 24px; font-weight: 700; margin: 0 0 16px 0;">Anmelden bei EchtSchreib</h1>
+                      <h1 style="color: #1f2937; font-size: 24px; font-weight: 700; margin: 0 0 16px 0;">Anmelden bei PlainWrite</h1>
                       <p style="color: #6b7280; font-size: 16px; line-height: 1.5; margin: 0 0 24px 0;">
                         Klicken Sie auf die Schaltfläche unten, um sich bei Ihrem Konto anzumelden.
                       </p>
@@ -81,7 +81,7 @@ export const authOptions: NextAuthOptions = {
                 </body>
               </html>
             `,
-            text: `Melden Sie sich bei EchtSchreib an\n\nKlicken Sie auf den folgenden Link, um sich anzumelden:\n\n${url}\n\nWenn Sie diese E-Mail nicht angefordert haben, können Sie sie ignorieren.\n\nDieser Link läuft in 24 Stunden ab.`,
+            text: `Melden Sie sich bei PlainWrite an\n\nKlicken Sie auf den folgenden Link, um sich anzumelden:\n\n${url}\n\nWenn Sie diese E-Mail nicht angefordert haben, können Sie sie ignorieren.\n\nDieser Link läuft in 24 Stunden ab.`,
           })
 
           console.log('✅ Email sent successfully!', result)

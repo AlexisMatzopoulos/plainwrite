@@ -15,7 +15,7 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
   // For now, we'll just log. You can integrate with your email service
   console.log('📧 Sending subscription confirmation email:', {
     to: data.email,
-    subject: `Willkommen bei EchtSchreib ${data.planName}!`,
+    subject: `Willkommen bei PlainWrite ${data.planName}!`,
     template: 'subscription-confirmation',
     data,
   })
@@ -30,9 +30,9 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'EchtSchreib <noreply@echtschreib.com>',
+        from: 'PlainWrite <noreply@plainwrite.com>',
         to: [data.email],
-        subject: `Willkommen bei EchtSchreib ${data.planName}!`,
+        subject: `Willkommen bei PlainWrite ${data.planName}!`,
         html: getSubscriptionConfirmationHTML(data),
       }),
     })
@@ -45,7 +45,7 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
 export async function sendPaymentFailedEmail(email: string, planName: string) {
   console.log('📧 Sending payment failed email:', {
     to: email,
-    subject: 'Zahlungsproblem mit Ihrem EchtSchreib-Abonnement',
+    subject: 'Zahlungsproblem mit Ihrem PlainWrite-Abonnement',
     template: 'payment-failed',
   })
 }
@@ -53,7 +53,7 @@ export async function sendPaymentFailedEmail(email: string, planName: string) {
 export async function sendSubscriptionCancelledEmail(email: string, planName: string) {
   console.log('📧 Sending subscription cancelled email:', {
     to: email,
-    subject: 'Ihr EchtSchreib-Abonnement wurde gekündigt',
+    subject: 'Ihr PlainWrite-Abonnement wurde gekündigt',
     template: 'subscription-cancelled',
   })
 }
@@ -114,7 +114,7 @@ function getSubscriptionConfirmationHTML(data: SubscriptionEmailData): string {
     <body>
       <div class="container">
         <div class="header">
-          <h1 style="margin: 0;">Willkommen bei EchtSchreib!</h1>
+          <h1 style="margin: 0;">Willkommen bei PlainWrite!</h1>
         </div>
         <div class="content">
           <p>Hallo ${data.name},</p>
@@ -148,17 +148,17 @@ function getSubscriptionConfirmationHTML(data: SubscriptionEmailData): string {
           </ul>
 
           <p style="text-align: center; margin: 30px 0;">
-            <a href="https://echtschreib.com" style="background-color: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; display: inline-block;">
+            <a href="https://plainwrite.com" style="background-color: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; display: inline-block;">
               Jetzt loslegen
             </a>
           </p>
 
           <p>Bei Fragen stehen wir Ihnen jederzeit zur Verfügung.</p>
-          <p>Viel Erfolg mit EchtSchreib!</p>
+          <p>Viel Erfolg mit PlainWrite!</p>
         </div>
         <div class="footer">
-          <p>EchtSchreib<br>
-          <a href="mailto:echtschreib@gmail.com" style="color: #10b981;">echtschreib@gmail.com</a></p>
+          <p>PlainWrite<br>
+          <a href="mailto:PlainWrite@gmail.com" style="color: #10b981;">PlainWrite@gmail.com</a></p>
         </div>
       </div>
     </body>

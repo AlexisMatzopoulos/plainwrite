@@ -34,8 +34,8 @@ export default function Impressum() {
               </p>
               <p>
                 <span className="font-semibold">Email:</span>{' '}
-                <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-                  echtschreib@gmail.com
+                <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+                  PlainWrite@gmail.com
                 </a>
               </p>
             </div>

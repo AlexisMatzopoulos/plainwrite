@@ -6,7 +6,15 @@ import PricingSection from '@/components/PricingSection'
 import PaymentSuccessModal from '@/components/PaymentSuccessModal'
 import PaymentErrorModal from '@/components/PaymentErrorModal'
 
-export default function PricingPageClient() {
+/**
+ * PricingContent - Client Component for Interactivity
+ *
+ * Handles:
+ * - URL search params for payment status
+ * - Modal state management
+ * - Browser history manipulation
+ */
+export function PricingContent() {
   const searchParams = useSearchParams()
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [showErrorModal, setShowErrorModal] = useState(false)

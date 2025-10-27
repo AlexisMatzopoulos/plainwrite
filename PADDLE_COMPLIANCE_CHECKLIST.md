@@ -1,6 +1,6 @@
 # 🎯 PADDLE PAYMENT PROVIDER COMPLIANCE CHECKLIST
 
-## EchtSchreib - Domain Review Submission Guide
+## PlainWrite - Domain Review Submission Guide
 **Branch:** paddle-final
 **Date:** October 24, 2025
 **Status:** ✅ READY FOR SUBMISSION
@@ -83,7 +83,7 @@ All Paddle domain review requirements have been verified and implemented. Your s
 
 **Content includes:**
 - 30 comprehensive sections
-- Company name: "EchtSchreib"
+- Company name: "PlainWrite"
 - User rights and obligations
 - Payment terms
 - Service limitations
@@ -140,10 +140,10 @@ All Paddle domain review requirements have been verified and implemented. Your s
 **Location:** Terms of Service, Line 21
 
 **Company identification:**
-- Legal name: "EchtSchreib"
+- Legal name: "PlainWrite"
 - Clearly identified in introduction
 - Repeated throughout document
-- Contact email: echtschreib@gmail.com
+- Contact email: PlainWrite@gmail.com
 
 ---
 
@@ -185,7 +185,7 @@ Before submitting your domain to Paddle:
 - [x] Privacy Policy page created and linked
 - [x] Refund Policy page created and linked separately
 - [x] All policies accessible from footer navigation
-- [x] Company name "EchtSchreib" in Terms & Conditions
+- [x] Company name "PlainWrite" in Terms & Conditions
 - [x] All navigation links working correctly
 - [ ] Site deployed to new domain
 - [ ] SSL certificate installed (HTTPS working)
@@ -200,12 +200,12 @@ Before submitting your domain to Paddle:
 1. **Domain URL:** (Your new domain - to be deployed)
 2. **Pricing Screenshot:** Take screenshot of `/pricing` page
 3. **Product Type:** SaaS - AI Writing Tool
-4. **Product Ownership:** Original creator (EchtSchreib)
+4. **Product Ownership:** Original creator (PlainWrite)
 
 ### Questions Paddle May Ask:
 
 **Q: Are you the original creator of the product?**
-A: Yes, EchtSchreib is our original product.
+A: Yes, PlainWrite is our original product.
 
 **Q: Do you resell any third-party products?**
 A: No, this is our proprietary AI writing service.
@@ -223,8 +223,8 @@ A: New business - no previous processing statement available
 ### Pre-Deployment Checklist:
 
 1. **Choose your domain name**
-   - Recommended: Something related to EchtSchreib or AI writing
-   - Example: `echtschreib.com` or similar
+   - Recommended: Something related to PlainWrite or AI writing
+   - Example: `plainwrite.com` or similar
 
 2. **Set up hosting** (Recommended: Vercel for Next.js)
    ```bash
@@ -302,10 +302,10 @@ After deploying to new domain, verify:
 
 If Paddle requests additional information:
 - **Paddle Support:** sellers@paddle.com
-- **Your Email:** echtschreib@gmail.com
+- **Your Email:** PlainWrite@gmail.com
 
 **Potential document requests:**
-- Product ownership confirmation: You created EchtSchreib ✅
+- Product ownership confirmation: You created PlainWrite ✅
 - Reseller agreement: N/A - not reselling ✅
 - Test account: Can provide if needed
 - Processing statement: New business - not applicable ✅

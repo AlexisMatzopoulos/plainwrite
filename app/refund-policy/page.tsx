@@ -18,7 +18,7 @@ export default function RefundPolicy() {
       <main className="max-w-4xl space-y-8">
         <section className="space-y-4">
           <p>
-            This refund policy describes EchtSchreib's policies regarding refunds, cancellations, and subscription management.
+            This refund policy describes PlainWrite's policies regarding refunds, cancellations, and subscription management.
             By subscribing to our Services, you acknowledge and agree to the terms outlined below.
           </p>
         </section>
@@ -26,7 +26,7 @@ export default function RefundPolicy() {
         <section className="space-y-4">
           <h2 className="text-2xl font-bold">Non-Refundable Policy</h2>
           <p>
-            By subscribing to our Services, you acknowledge that EchtSchreib grants you immediate access to digital
+            By subscribing to our Services, you acknowledge that PlainWrite grants you immediate access to digital
             features and that usage begins immediately after purchase. This means that you waive your right to the
             standard 14-day withdrawal period. Due to the high costs of operating AI models and server resources, all
             payments are non-refundable, as resources are allocated and costs are incurred as soon as you begin using
@@ -37,7 +37,7 @@ export default function RefundPolicy() {
         <section className="space-y-4">
           <h2 className="text-2xl font-bold">Subscription Management</h2>
           <p>
-            EchtSchreib operates on a subscription model that is available monthly or annually. Subscriptions
+            PlainWrite operates on a subscription model that is available monthly or annually. Subscriptions
             automatically renew for the same period unless you cancel before the renewal date. You can manage or cancel
             your subscription at any time through the billing section of our website. Please note that cancellation does
             not entitle you to a refund or credit for payments already made.
@@ -74,8 +74,8 @@ export default function RefundPolicy() {
           <h2 className="text-2xl font-bold">Contact Us</h2>
           <p>
             If you have any questions or concerns about this refund policy, please contact us at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             .
           </p>
@@ -83,7 +83,7 @@ export default function RefundPolicy() {
       </main>
 
         <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
-          <p>EchtSchreib</p>
+          <p>PlainWrite</p>
           <p>Operated by: Alexis Matzopoulos</p>
           <p>
             This policy is effective as of the date stated above and forms part of our terms of service.

@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
       <main className="max-w-4xl space-y-8">
         <section className="space-y-4">
           <p>
-            EchtSchreib, operated by Alexis Matzopoulos ("we", "us" or "our"), operates the EchtSchreib website and
+            PlainWrite, operated by Alexis Matzopoulos ("we", "us" or "our"), operates the PlainWrite website and
             services (the "Services"). This privacy policy describes how we collect, use, and share information about you
             when you use our Services.
           </p>
@@ -232,13 +232,13 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-bold">11. Marketing Communications</h2>
           <p>
             By creating an account or providing your email address, you consent to receive
-            marketing communications from EchtSchreib, including newsletters, promotions, and product updates.
+            marketing communications from PlainWrite, including newsletters, promotions, and product updates.
           </p>
           <p>
             You can unsubscribe from these communications at any time by clicking the "Unsubscribe" link in a marketing email
             or by contacting us at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             . Please note that you will continue to receive essential service-related emails
             required for the operation of your account.
@@ -249,8 +249,8 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-bold">12. Contact Us</h2>
           <p>
             If you have any questions or concerns about this privacy policy, please contact us at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             .
           </p>
@@ -258,7 +258,7 @@ export default function PrivacyPolicy() {
       </main>
 
         <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
-          <p>EchtSchreib</p>
+          <p>PlainWrite</p>
           <p>
             This policy is effective as of the date stated above and forms part of our terms of service.
           </p>

@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
       <main className="max-w-4xl space-y-8">
         <section className="space-y-4">
           <p>
-            EchtSchreib („wir", „uns" oder „unser") betreibt die EchtSchreib-Website und -Dienste (die „Dienste").
+            PlainWrite („wir", „uns" oder „unser") betreibt die PlainWrite-Website und -Dienste (die „Dienste").
             Diese Datenschutzerklärung beschreibt, wie wir Informationen über dich sammeln, verwenden und weitergeben,
             wenn du unsere Dienste nutzt.
           </p>
@@ -238,13 +238,13 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-bold">11. Marketing-Kommunikation</h2>
           <p>
             Durch das Erstellen eines Kontos oder die Angabe deiner E-Mail-Adresse stimmst du dem Erhalt von
-            Marketing-Mitteilungen von EchtSchreib zu, einschließlich Newsletter, Werbeaktionen und Produkt-Updates.
+            Marketing-Mitteilungen von PlainWrite zu, einschließlich Newsletter, Werbeaktionen und Produkt-Updates.
           </p>
           <p>
             Du kannst diese Mitteilungen jederzeit abbestellen, indem du auf den Link „Abmelden" in einer Marketing-E-Mail
             klickst oder uns unter{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>{' '}
             kontaktierst. Bitte beachte, dass du weiterhin wesentliche servicebezogene E-Mails erhältst,
             die für den Betrieb deines Kontos erforderlich sind.
@@ -255,8 +255,8 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-bold">12. Kontaktiere uns</h2>
           <p>
             Wenn du Fragen oder Bedenken zu dieser Datenschutzerklärung hast, kontaktiere uns bitte unter{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             .
           </p>
@@ -264,7 +264,7 @@ export default function PrivacyPolicy() {
       </main>
 
         <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
-          <p>EchtSchreib</p>
+          <p>PlainWrite</p>
           <p>
             Diese Richtlinie ist ab dem oben genannten Datum wirksam und bildet einen Teil unserer Nutzungsbedingungen.
           </p>

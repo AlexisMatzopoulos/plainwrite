@@ -18,9 +18,9 @@ export default function TermsOfService() {
       <main className="max-w-4xl space-y-8">
         <section className="space-y-4">
           <p>
-            These terms of service are entered into between you ("you" or "your") and EchtSchreib, operated by
+            These terms of service are entered into between you ("you" or "your") and PlainWrite, operated by
             Alexis Matzopoulos ("Company", "we", "us" or "our"). These legal terms govern your access to and use of
-            our website and all associated products or services provided by EchtSchreib (together the "Services").
+            our website and all associated products or services provided by PlainWrite (together the "Services").
             By accessing or using our Services, you declare that you have read, understood, and accepted these legal terms.
           </p>
           <p>
@@ -298,7 +298,7 @@ export default function TermsOfService() {
           <h2 className="text-2xl font-bold">7. SUBSCRIPTION TERM AND TERMINATION</h2>
           <p>
             Your subscription to our Services is only valid for the period during which our operations remain active. We
-            do not guarantee that your subscription will run for a full year or for any specific period. If EchtSchreib
+            do not guarantee that your subscription will run for a full year or for any specific period. If PlainWrite
             ceases operations or is otherwise unable to provide the Services during your subscription term, your
             subscription will be terminated immediately without refund.
           </p>
@@ -308,8 +308,8 @@ export default function TermsOfService() {
           </p>
           <p>
             If you are dissatisfied with our Services at any time, please send us an email at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             .
           </p>
@@ -318,7 +318,7 @@ export default function TermsOfService() {
         <section id="prohibited-activities" className="space-y-4">
           <h2 className="text-2xl font-bold">8. PROHIBITED ACTIVITIES</h2>
           <p>
-            You may not use the Services for any purpose other than those provided by EchtSchreib. Prohibited conduct
+            You may not use the Services for any purpose other than those provided by PlainWrite. Prohibited conduct
             includes, but is not limited to:
           </p>
           <ul className="list-disc list-inside ml-4 space-y-2">
@@ -327,11 +327,11 @@ export default function TermsOfService() {
               directories without our written consent.
             </li>
             <li>
-              Fraud, deception, or misleading EchtSchreib or other users, including attempts to access sensitive account
+              Fraud, deception, or misleading PlainWrite or other users, including attempts to access sensitive account
               information such as passwords.
             </li>
             <li>Circumventing or disabling security features of our Services.</li>
-            <li>Disparaging or causing harm to EchtSchreib or the Services.</li>
+            <li>Disparaging or causing harm to PlainWrite or the Services.</li>
             <li>
               Using information obtained through our Services to harass, abuse, or harm another person.
             </li>
@@ -353,7 +353,7 @@ export default function TermsOfService() {
               protected content.
             </li>
             <li>
-              Any other activity that EchtSchreib deems, in its sole discretion, to be harmful, illegal, or inappropriate.
+              Any other activity that PlainWrite deems, in its sole discretion, to be harmful, illegal, or inappropriate.
             </li>
           </ul>
         </section>
@@ -365,7 +365,7 @@ export default function TermsOfService() {
             By submitting Contributions, you agree to the following:
           </p>
           <ul className="list-decimal list-inside ml-4 space-y-2">
-            <li>Your Contributions are not confidential and may be used by EchtSchreib.</li>
+            <li>Your Contributions are not confidential and may be used by PlainWrite.</li>
             <li>You are solely responsible for your Contributions and the consequences of their publication.</li>
             <li>
               Contributions must not infringe upon the intellectual property or other rights of third parties.
@@ -375,11 +375,11 @@ export default function TermsOfService() {
               offensive.
             </li>
             <li>
-              EchtSchreib reserves the right to remove, edit, or relocate Contributions that are deemed, in its sole
+              PlainWrite reserves the right to remove, edit, or relocate Contributions that are deemed, in its sole
               discretion, to be harmful or in violation of these legal terms.
             </li>
             <li>
-              You agree to hold EchtSchreib harmless for any damages or losses arising from your Contributions.
+              You agree to hold PlainWrite harmless for any damages or losses arising from your Contributions.
             </li>
           </ul>
         </section>
@@ -387,13 +387,13 @@ export default function TermsOfService() {
         <section id="contribution-license" className="space-y-4">
           <h2 className="text-2xl font-bold">10. CONTRIBUTION LICENSE</h2>
           <p>
-            By posting Contributions to our Services, you grant EchtSchreib an unlimited, perpetual, irrevocable,
+            By posting Contributions to our Services, you grant PlainWrite an unlimited, perpetual, irrevocable,
             worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, modify, publish, distribute,
             translate, display, and perform your Contributions in all media and for any purpose, including commercial
             purposes. You waive all moral rights with respect to your Contributions.
           </p>
           <p>
-            EchtSchreib does not claim ownership of your Contributions; you retain ownership but grant us this
+            PlainWrite does not claim ownership of your Contributions; you retain ownership but grant us this
             comprehensive license.
           </p>
         </section>
@@ -401,7 +401,7 @@ export default function TermsOfService() {
         <section id="third-party" className="space-y-4">
           <h2 className="text-2xl font-bold">11. THIRD-PARTY WEBSITES AND CONTENT</h2>
           <p>
-            Our Services may contain links to third-party websites or display third-party content. EchtSchreib does not
+            Our Services may contain links to third-party websites or display third-party content. PlainWrite does not
             control or endorse any third-party websites or content, and we are not responsible for their accuracy,
             legality, or content. All interactions with third-party websites or services are solely between you and the
             third party. You acknowledge that these legal terms no longer govern third-party websites or content once you
@@ -412,7 +412,7 @@ export default function TermsOfService() {
         <section id="advertisers" className="space-y-4">
           <h2 className="text-2xl font-bold">12. ADVERTISERS</h2>
           <p>
-            Advertisers may display their advertisements in our Services. EchtSchreib provides the space for such
+            Advertisers may display their advertisements in our Services. PlainWrite provides the space for such
             advertisements and has no responsibility for the content or practices of advertisers. Your interactions with
             advertisers are solely between you and the advertiser.
           </p>
@@ -420,7 +420,7 @@ export default function TermsOfService() {
 
         <section id="services-management" className="space-y-4">
           <h2 className="text-2xl font-bold">13. SERVICES MANAGEMENT</h2>
-          <p>EchtSchreib reserves the right to:</p>
+          <p>PlainWrite reserves the right to:</p>
           <ul className="list-decimal list-inside ml-4 space-y-2">
             <li>Monitor the Services for violations of these legal terms;</li>
             <li>
@@ -462,21 +462,21 @@ export default function TermsOfService() {
         <section id="term-termination" className="space-y-4">
           <h2 className="text-2xl font-bold">16. TERM AND TERMINATION</h2>
           <p>
-            These legal terms remain in full force and effect while you use our Services. EchtSchreib reserves the right,
+            These legal terms remain in full force and effect while you use our Services. PlainWrite reserves the right,
             at its sole discretion and without notice or liability, to deny access or terminate your account if you
             violate any provision of these legal terms or applicable law or regulation. If your account is terminated,
             you are not permitted to create a new account under another name or on behalf of another person or organization.
           </p>
-          <p>EchtSchreib may also take appropriate legal action against you if necessary.</p>
+          <p>PlainWrite may also take appropriate legal action against you if necessary.</p>
         </section>
 
         <section id="modifications" className="space-y-4">
           <h2 className="text-2xl font-bold">17. MODIFICATIONS AND INTERRUPTIONS</h2>
           <p>
-            EchtSchreib may change, modify, or remove the content of the Services at any time without notice. We are not
+            PlainWrite may change, modify, or remove the content of the Services at any time without notice. We are not
             obligated to update the information provided in our Services. We do not guarantee that our Services will be
             available at all times, and we may experience interruptions, delays, or errors from time to time. Under no
-            circumstances is EchtSchreib liable for losses, damages, or inconveniences caused by unavailability or
+            circumstances is PlainWrite liable for losses, damages, or inconveniences caused by unavailability or
             interruption of the Services.
           </p>
         </section>
@@ -485,7 +485,7 @@ export default function TermsOfService() {
           <h2 className="text-2xl font-bold">18. GOVERNING LAW</h2>
           <p>
             These legal terms and your use of the Services are governed by and construed in accordance with the laws of
-            the jurisdiction in which EchtSchreib operates, without regard to conflict of law provisions.
+            the jurisdiction in which PlainWrite operates, without regard to conflict of law provisions.
           </p>
         </section>
 
@@ -494,7 +494,7 @@ export default function TermsOfService() {
           <p>
             <span className="font-semibold">Informal Negotiations</span>
             <br />
-            Before initiating a formal dispute resolution procedure, you and EchtSchreib agree to attempt to resolve all
+            Before initiating a formal dispute resolution procedure, you and PlainWrite agree to attempt to resolve all
             disputes informally for at least thirty (30) days after one party has notified the other party in writing.
           </p>
           <p>
@@ -503,7 +503,7 @@ export default function TermsOfService() {
             If a dispute cannot be resolved informally, any unresolved dispute will be settled through binding arbitration
             in accordance with generally applicable rules. Arbitration will be conducted on an individual basis, and
             neither party may participate in a class, consolidated, or representative action. Should you initiate or
-            participate in a class or representative proceeding, EchtSchreib may immediately terminate your access to our
+            participate in a class or representative proceeding, PlainWrite may immediately terminate your access to our
             Services. Furthermore, any claim must be brought within two (2) years from the date on which the cause of
             action arose. Should any part of the arbitration clause be found invalid or unenforceable, the remainder
             shall remain in full force and effect.
@@ -513,7 +513,7 @@ export default function TermsOfService() {
         <section id="corrections" className="space-y-4">
           <h2 className="text-2xl font-bold">20. CORRECTIONS</h2>
           <p>
-            There may be errors, inaccuracies, or omissions in the information provided through our Services. EchtSchreib
+            There may be errors, inaccuracies, or omissions in the information provided through our Services. PlainWrite
             reserves the right to correct errors or update information at its sole discretion without prior notice.
           </p>
         </section>
@@ -522,12 +522,12 @@ export default function TermsOfService() {
           <h2 className="text-2xl font-bold">21. DISCLAIMER</h2>
           <p>
             THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. YOU AGREE THAT YOUR USE OF THE SERVICES
-            IS AT YOUR OWN RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, ECHTSCHREIB DISCLAIMS ALL WARRANTIES, EXPRESS
+            IS AT YOUR OWN RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, PlainWrite DISCLAIMS ALL WARRANTIES, EXPRESS
             OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
             NON-INFRINGEMENT.
           </p>
           <p>
-            ECHTSCHREIB DOES NOT GUARANTEE THAT THE SERVICES OR ANY CONTENT WILL BE ACCURATE, COMPLETE, OR UNINTERRUPTED,
+            PlainWrite DOES NOT GUARANTEE THAT THE SERVICES OR ANY CONTENT WILL BE ACCURATE, COMPLETE, OR UNINTERRUPTED,
             AND WE ARE NOT RESPONSIBLE FOR ERRORS, MISTAKES, OR INACCURACIES IN CONTENT. ANY RELIANCE ON THE SERVICES
             IS AT YOUR OWN RISK.
           </p>
@@ -536,10 +536,10 @@ export default function TermsOfService() {
         <section id="limitations" className="space-y-4">
           <h2 className="text-2xl font-bold">22. LIMITATIONS OF LIABILITY</h2>
           <p>
-            IN NO EVENT SHALL ECHTSCHREIB, ITS OFFICERS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR
+            IN NO EVENT SHALL PlainWrite, ITS OFFICERS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR
             INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR
             USE OF THE SERVICES, REGARDLESS OF WHETHER SUCH LIABILITY IS BASED ON CONTRACT, TORT, STRICT LIABILITY, OR
-            OTHERWISE, EVEN IF ECHTSCHREIB HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+            OTHERWISE, EVEN IF PlainWrite HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
           </p>
           <p>
             YOUR TOTAL LIABILITY, WHETHER UNDER CONTRACT, WARRANTY, TORT, OR OTHERWISE, SHALL NOT EXCEED THE AMOUNT YOU
@@ -551,7 +551,7 @@ export default function TermsOfService() {
         <section id="indemnification" className="space-y-4">
           <h2 className="text-2xl font-bold">23. INDEMNIFICATION</h2>
           <p>
-            You agree to defend, indemnify, and hold harmless EchtSchreib, its subsidiaries, affiliates, officers, agents,
+            You agree to defend, indemnify, and hold harmless PlainWrite, its subsidiaries, affiliates, officers, agents,
             and employees from all claims, liabilities, damages, losses, and expenses (including reasonable attorneys'
             fees and costs) arising out of or in any way connected with your access to or use of the Services, your
             Contributions, your breach of these legal terms, or your violation of the rights of third parties.
@@ -561,16 +561,16 @@ export default function TermsOfService() {
         <section id="user-data" className="space-y-4">
           <h2 className="text-2xl font-bold">24. USER DATA</h2>
           <p>
-            EchtSchreib maintains data that you transmit through our Services solely for the administration and operation
+            PlainWrite maintains data that you transmit through our Services solely for the administration and operation
             of the Services and for analytical purposes. While we regularly perform routine data backups, you are
-            responsible for all data you provide. EchtSchreib is not liable for any loss or damage to your data.
+            responsible for all data you provide. PlainWrite is not liable for any loss or damage to your data.
           </p>
         </section>
 
         <section id="electronic" className="space-y-4">
           <h2 className="text-2xl font-bold">25. ELECTRONIC COMMUNICATIONS, TRANSACTIONS AND SIGNATURES</h2>
           <p>
-            All communications, transactions, and signatures exchanged electronically between you and EchtSchreib are
+            All communications, transactions, and signatures exchanged electronically between you and PlainWrite are
             treated as if they were in writing. By using our Services, you agree to receive electronic communications,
             and you agree that all such communications satisfy any legal requirement that such communications be in writing.
           </p>
@@ -578,7 +578,7 @@ export default function TermsOfService() {
             <span className="font-semibold">Marketing and Communication</span>
             <br />
             By using our Services, you agree to receive marketing, billing, and service-related communications from
-            EchtSchreib using the email address and contact information you provide. If you wish to unsubscribe from
+            PlainWrite using the email address and contact information you provide. If you wish to unsubscribe from
             marketing communications, you may do so by following the instructions in those communications. Please note
             that unsubscribing from marketing communications does not affect your receipt of billing or essential
             service-related communications.
@@ -597,7 +597,7 @@ export default function TermsOfService() {
           <h2 className="text-2xl font-bold">27. MISCELLANEOUS</h2>
           <p>
             These legal terms, together with any additional policies we publish on the Services, constitute the entire
-            agreement between you and EchtSchreib. Our failure to enforce any provision of these legal terms does not
+            agreement between you and PlainWrite. Our failure to enforce any provision of these legal terms does not
             constitute a waiver of that provision. We may assign or transfer our rights and obligations herein without
             notice to you.
           </p>
@@ -611,14 +611,14 @@ export default function TermsOfService() {
         <section id="refunds" className="space-y-4">
           <h2 className="text-2xl font-bold">28. REFUNDS</h2>
           <p>
-            By subscribing to our Services, you acknowledge that EchtSchreib grants you immediate access to digital
+            By subscribing to our Services, you acknowledge that PlainWrite grants you immediate access to digital
             features and that usage begins immediately after purchase. This means that you waive your right to the
             standard 14-day withdrawal period. Due to the high costs of operating AI models and server resources, all
             payments are non-refundable, as resources are allocated and costs are incurred as soon as you begin using
             the Service.
           </p>
           <p>
-            EchtSchreib operates on a subscription model that is available monthly or annually. Subscriptions
+            PlainWrite operates on a subscription model that is available monthly or annually. Subscriptions
             automatically renew for the same period unless you cancel before the renewal date. You can manage or cancel
             your subscription at any time through the billing section of our website. Please note that cancellation does
             not entitle you to a refund or credit for payments already made.
@@ -643,13 +643,13 @@ export default function TermsOfService() {
           <h2 className="text-2xl font-bold">29. MARKETING COMMUNICATIONS</h2>
           <p>
             By creating an account or providing your email address, you agree to receive marketing communications from
-            EchtSchreib, including newsletters, promotions, and product updates.
+            PlainWrite, including newsletters, promotions, and product updates.
           </p>
           <p>
             You may unsubscribe from these communications at any time by clicking the "Unsubscribe" link in a marketing
             email or by contacting us at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             . Please note that you will continue to receive essential service-related emails that are necessary for the
             operation of your account.
@@ -661,8 +661,8 @@ export default function TermsOfService() {
           <p>
             For questions, concerns, or further information regarding these legal terms or the Services, please contact
             us by email at{' '}
-            <a href="mailto:echtschreib@gmail.com" className="text-blue-600 hover:underline">
-              echtschreib@gmail.com
+            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
+              PlainWrite@gmail.com
             </a>
             .
           </p>
@@ -676,10 +676,10 @@ export default function TermsOfService() {
       </main>
 
         <div className="max-w-4xl text-sm text-gray-500 space-y-1 mb-4 mt-4">
-          <p>EchtSchreib</p>
+          <p>PlainWrite</p>
           <p>Operated by: Alexis Matzopoulos</p>
           <p>
-            This document serves as a legally binding agreement between you and EchtSchreib regarding the use of our
+            This document serves as a legally binding agreement between you and PlainWrite regarding the use of our
             Services.
           </p>
         </div>

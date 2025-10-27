@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { analytics } from '@/lib/analytics'
 
-const CONSENT_KEY = 'echtschreib_analytics_consent'
+const CONSENT_KEY = 'PlainWrite_analytics_consent'
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)

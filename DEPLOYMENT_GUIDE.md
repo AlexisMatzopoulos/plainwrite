@@ -1,6 +1,6 @@
 # 🚀 DEPLOYMENT GUIDE FOR NEW DOMAIN
 
-## EchtSchreib - Step-by-Step Deployment Instructions
+## PlainWrite - Step-by-Step Deployment Instructions
 **Branch:** paddle-final
 **Target:** New production domain with Paddle integration
 

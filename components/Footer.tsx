@@ -19,7 +19,7 @@ export default function Footer() {
               Refund Policy
             </Link>
           </div>
-          <p className="text-sm font-bold">© 2025 EchtSchreib</p>
+          <p className="text-sm font-bold">© 2025 PlainWrite</p>
         </div>
       </div>
     </footer>

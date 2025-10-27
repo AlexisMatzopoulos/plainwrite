@@ -13,7 +13,7 @@ export default function CTASection() {
           Make Your Text Sound Human — Instantly
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto mb-8">
-          Transform robotic, AI-generated content into clear, natural writing that passes any AI detector. With EchtSchreib, you can humanize your text in seconds — no editing skills required.
+          Transform robotic, AI-generated content into clear, natural writing that passes any AI detector. With PlainWrite, you can humanize your text in seconds — no editing skills required.
         </p>
         <Link
           href="/api/auth/signin"

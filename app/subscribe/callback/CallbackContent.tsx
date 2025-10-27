@@ -1,11 +1,20 @@
 'use client'
 
-import { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { analytics } from '@/lib/analytics'
 
-function CallbackContent() {
+/**
+ * CallbackContent - Client Component for Payment Verification
+ *
+ * Handles:
+ * - Payment verification with API
+ * - Auth check via useSession
+ * - Redirect logic based on payment status
+ * - Analytics tracking
+ */
+export function CallbackContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { data: session, status } = useSession()
@@ -96,13 +105,5 @@ function CallbackContent() {
         )}
       </div>
     </div>
-  )
-}
-
-export default function CallbackPageClient() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <CallbackContent />
-    </Suspense>
   )
 }

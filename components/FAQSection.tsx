@@ -7,24 +7,24 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: 'Wie funktioniert EchtSchreib?',
+      question: 'Wie funktioniert PlainWrite?',
       answer:
-        'EchtSchreib verwendet fortschrittliche KI-Technologie, um deinen Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert deine Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
+        'PlainWrite verwendet fortschrittliche KI-Technologie, um deinen Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert deine Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
     },
     {
-      question: 'Umgeht EchtSchreib Turnitin und andere KI-Prüfer?',
+      question: 'Umgeht PlainWrite Turnitin und andere KI-Prüfer?',
       answer:
-        'Ja, EchtSchreib wurde speziell entwickelt, um deine Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
+        'Ja, PlainWrite wurde speziell entwickelt, um deine Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
     },
     {
-      question: 'Wie viel kostet EchtSchreib?',
+      question: 'Wie viel kostet PlainWrite?',
       answer:
-        'EchtSchreib bietet sowohl kostenlose als auch Premium-Pläne an. Kostenlose Nutzer erhalten eine begrenzte Anzahl von Wörtern pro Monat, während Premium-Pläne unbegrenzte Humanisierung mit erweiterten Funktionen bieten.',
+        'PlainWrite bietet sowohl kostenlose als auch Premium-Pläne an. Kostenlose Nutzer erhalten eine begrenzte Anzahl von Wörtern pro Monat, während Premium-Pläne unbegrenzte Humanisierung mit erweiterten Funktionen bieten.',
     },
     {
-      question: 'Welche Sprachen unterstützt EchtSchreib?',
+      question: 'Welche Sprachen unterstützt PlainWrite?',
       answer:
-        'Derzeit unterstützt EchtSchreib hauptsächlich Englisch. Wir arbeiten daran, in Zukunft Unterstützung für weitere Sprachen hinzuzufügen.',
+        'Derzeit unterstützt PlainWrite hauptsächlich Englisch. Wir arbeiten daran, in Zukunft Unterstützung für weitere Sprachen hinzuzufügen.',
     },
     {
       question: 'Ich möchte einen langen Aufsatz humanisieren. Ist das möglich?',

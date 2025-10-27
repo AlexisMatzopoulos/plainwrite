@@ -90,7 +90,7 @@ Since emails are currently logged to console, check terminal:
 📧 Sending subscription confirmation email:
 {
   to: 'your@email.com',
-  subject: 'Willkommen bei EchtSchreib Pro!',
+  subject: 'Willkommen bei PlainWrite Pro!',
   template: 'subscription-confirmation',
   data: { ... }
 }
@@ -101,7 +101,7 @@ Since emails are currently logged to console, check terminal:
 📧 Sending payment failed email:
 {
   to: 'your@email.com',
-  subject: 'Zahlungsproblem mit Ihrem EchtSchreib-Abonnement',
+  subject: 'Zahlungsproblem mit Ihrem PlainWrite-Abonnement',
   template: 'payment-failed'
 }
 ```

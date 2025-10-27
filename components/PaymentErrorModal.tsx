@@ -122,8 +122,8 @@ export default function PaymentErrorModal({
         {/* Support link */}
         <p className="mt-6 text-sm text-gray-500">
           Having issues? Contact us:{' '}
-          <a href="mailto:echtschreib@gmail.com" className="text-theme-primary hover:underline">
-            echtschreib@gmail.com
+          <a href="mailto:PlainWrite@gmail.com" className="text-theme-primary hover:underline">
+            PlainWrite@gmail.com
           </a>
         </p>
       </div>

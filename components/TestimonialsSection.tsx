@@ -6,17 +6,17 @@ export default function TestimonialsSection({ isLoggedIn = false }: Testimonials
   const testimonials = [
     {
       quote:
-        'EchtSchreib hat mir geholfen, KI-Text von ChatGPT in Sekunden zu humanisieren. Es ließ mein Schreiben echt klingen und bestand Turnitin problemlos. Dieses Tool hat meine Note gerettet.',
+        'PlainWrite hat mir geholfen, KI-Text von ChatGPT in Sekunden zu humanisieren. Es ließ mein Schreiben echt klingen und bestand Turnitin problemlos. Dieses Tool hat meine Note gerettet.',
       author: 'Julia K., Studentin',
     },
     {
       quote:
-        "Ich habe mehrere Tools ausprobiert, um KI-Detektoren zu umgehen, aber nichts ist mit EchtSchreib vergleichbar. Es ist schnell, präzise, und die kostenlose Humanisierungs-Funktion ist ein Lebensretter.",
+        "Ich habe mehrere Tools ausprobiert, um KI-Detektoren zu umgehen, aber nichts ist mit PlainWrite vergleichbar. Es ist schnell, präzise, und die kostenlose Humanisierungs-Funktion ist ein Lebensretter.",
       author: 'Liam R., Content-Autor',
     },
     {
       quote:
-        'Das Beste an EchtSchreib? Ich kann meinen Text humanisieren und KI-Entwürfe umschreiben, ohne Qualität zu verlieren. Es fühlt sich an, als hätte ein echter Redakteur es überarbeitet.',
+        'Das Beste an PlainWrite? Ich kann meinen Text humanisieren und KI-Entwürfe umschreiben, ohne Qualität zu verlieren. Es fühlt sich an, als hätte ein echter Redakteur es überarbeitet.',
       author: 'Sophie M., Freelancerin',
     },
   ]
