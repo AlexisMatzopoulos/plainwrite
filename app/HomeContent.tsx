@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import HeroSection from '@/components/HeroSection'
 import AIHumanizerSection from '@/components/AIHumanizerSection'
 import AIHumanizerLoggedOut from '@/components/AIHumanizerLoggedOut'
 import PaymentSuccessModal from '@/components/PaymentSuccessModal'
@@ -12,11 +13,11 @@ interface HomeContentProps {
 }
 
 /**
- * HomeContent - Client Component for Home Page (Simplified Centered Design)
+ * HomeContent - Client Component for Home Page (Centered Design)
  *
  * Handles client-side interactions:
  * - Payment modal display from URL params
- * - Centered, minimal layout with focus on the text editor
+ * - Centered layout with HeroSection as header and text box as main focus
  */
 export function HomeContent({ isLoggedIn }: HomeContentProps) {
   const searchParams = useSearchParams()
@@ -80,23 +81,18 @@ export function HomeContent({ isLoggedIn }: HomeContentProps) {
         message={errorMessage}
       />
 
-      {/* Centered, Minimal Layout - Text Box Takes Up Most of Screen */}
-      <main className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center bg-white px-4 py-8">
-        <div className="w-full max-w-7xl mx-auto">
-          {/* Optional: Simple centered heading */}
+      {/* Centered Layout with HeroSection as Header */}
+      <main className="w-full bg-white">
+        <div className="container mx-auto px-4">
+          {/* Centered Hero Section Header (only show when not logged in) */}
           {!isLoggedIn && (
-            <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-                Transform Your Writing
-              </h1>
-              <p className="text-lg text-gray-600">
-                Apply professional writing styles with AI
-              </p>
+            <div className="max-w-4xl mx-auto text-center py-12">
+              <HeroSection isLoggedIn={isLoggedIn} />
             </div>
           )}
 
           {/* Main Text Editor - Takes Up Most of Screen */}
-          <div className="w-full">
+          <div className="w-full max-w-7xl mx-auto py-8">
             {isLoggedIn ? (
               <AIHumanizerSection showResult={showResult} setShowResult={setShowResult} />
             ) : (

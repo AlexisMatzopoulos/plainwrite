@@ -54,7 +54,7 @@ export default function HeaderClient({
                 height={40}
               />
               <span className="font-bold hidden md:block" style={{ fontSize: 24, fontWeight: 'normal'}}>
-                Echt<span style={{ fontFamily: 'Strings, sans-serif', fontSize: 36, fontWeight:'lighter' }}>Schreib</span>
+                Plain<span style={{ fontFamily: 'Strings, sans-serif', fontSize: 36, fontWeight:'lighter' }}>Write</span>
               </span>
             </Link>
           </div>

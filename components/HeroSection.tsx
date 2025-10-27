@@ -51,10 +51,10 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
 
 
   return (
-    <section className="h-[80vh] flex flex-col">
-      <div className="flex flex-col h-full justify-between">
-        <div>
-          <h1 className="text-5xl font-bold text-theme-text mb-6">
+    <section className="flex flex-col">
+      <div className="flex flex-col justify-center items-center">
+        <div className="w-full">
+          <h1 className="text-4xl md:text-5xl font-bold text-theme-text mb-6 text-center">
             Writing that feels{' '}
             <span
               style={{
@@ -66,27 +66,27 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               {displayedText}
             </span>
           </h1>
-          <p className="text-slate-500 mb-6 text-lg">
+          <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
             Transform your text into any desired writing style. Our AI perfectly adapts your texts to academic, creative, formal, or casual requirements.
           </p>
 
-          {/* Key features summary */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-start gap-3">
+          {/* Key features summary - centered */}
+          <div className="flex flex-col gap-3 max-w-2xl mx-auto mb-8">
+            <div className="flex items-start gap-3 justify-center">
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="text-slate-600">Specially trained on German texts for natural results.</span>
             </div>
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 justify-center">
               <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="text-slate-600">Choose from various writing styles for every situation</span>
             </div>
           </div>
-         {/* Badges Section */}
-          <div className="flex gap-8 my-8 pt-8">
+         {/* Badges Section - centered */}
+          <div className="flex gap-8 my-8 pt-8 justify-center">
             {/* Training Data Badge */}
             <div className="flex">
               <div className="flex items-center">
@@ -181,11 +181,9 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
 
         </div>
 
-        {/* Bottom section with trusted users, CTA, and credit card text */}
-        <div className="bottom-section">
-          
- 
-        <div className="cta">
+        {/* Bottom section with CTA - centered */}
+        <div className="flex flex-col items-center mt-8">
+        <div className="flex flex-col items-center">
           {/* Trusted users section */}
           {/* <div className="flex items-center gap-3 mb-6">
             <div className="flex -space-x-2">
@@ -225,7 +223,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </button>
           )}
           {!isLoggedIn && (
-            <div className="text-sm mt-2" style={{ color: 'rgb(100, 116, 139)' }}>
+            <div className="text-sm mt-2 text-center" style={{ color: 'rgb(100, 116, 139)' }}>
               No credit card required
             </div>
           )}
