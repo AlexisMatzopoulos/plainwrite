@@ -53,7 +53,39 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
     <section className="flex flex-col">
       <div className="flex flex-col justify-center items-center">
         <div className="w-full">
-          {/* Badge Above Header - reduced margins/padding */}
+          <h1 className="text-4xl md:text-5xl font-bold text-theme-text mb-6 text-center">
+            Writing that feels{' '}
+            <span
+              style={{
+                fontFamily: 'Strings, sans-serif',
+                fontWeight: 'lighter',
+                fontSize: '3.5rem'
+              }}
+            >
+              {displayedText}
+            </span>
+          </h1>
+          <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
+            Transform your text into any desired writing style. Our proprietary writing engine ensures your writing sounds perfect in every context.
+          </p>
+
+          {/*
+          <div className="flex flex-col gap-3 max-w-2xl mx-auto mb-8">
+            <div className="flex items-start gap-3 justify-center">
+              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-slate-600">Specially trained on German texts for natural results.</span>
+            </div>
+            <div className="flex items-start gap-3 justify-center">
+              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-slate-600">Choose from various writing styles for every situation</span>
+            </div>
+          </div>
+          */}
+          {/* Badge in original position - below text */}
           <div className="flex justify-center mb-4">
             {/* Training Data Badge */}
             <div className="flex">
@@ -88,39 +120,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               </div>
             </div>
           </div>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-theme-text mb-6 text-center">
-            Writing that feels{' '}
-            <span
-              style={{
-                fontFamily: 'Strings, sans-serif',
-                fontWeight: 'lighter',
-                fontSize: '3.5rem'
-              }}
-            >
-              {displayedText}
-            </span>
-          </h1>
-          <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
-            Transform your text into any desired writing style. Our proprietary writing engine ensures your writing sounds perfect in every context.
-          </p>
-
-          {/*
-          <div className="flex flex-col gap-3 max-w-2xl mx-auto mb-8">
-            <div className="flex items-start gap-3 justify-center">
-              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-slate-600">Specially trained on German texts for natural results.</span>
-            </div>
-            <div className="flex items-start gap-3 justify-center">
-              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-slate-600">Choose from various writing styles for every situation</span>
-            </div>
-          </div>
-          */}
 
         </div>
 
