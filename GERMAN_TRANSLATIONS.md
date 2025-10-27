@@ -1,9 +1,9 @@
-# German Translations for Echtschrift
+# German Translations for PlainWrite
 
 ## Brand & Company
-- Natural Write → Echtschrift
-- PlainWrite@gmail.com → kontakt@echtschrift.de
-- naturalwrite.com → echtschrift.de
+- Natural Write → PlainWrite
+- PlainWrite@gmail.com → kontakt@plainwrite.com
+- naturalwrite.com → plainwrite.com
 
 ## Common UI Elements
 - Log in → Anmelden
@@ -33,7 +33,7 @@
 - IP Checker → IP-Prüfer
 
 ## Footer & Legal
-- "Natural Write is not a tool for academic dishonesty or cheating" → "Echtschrift ist kein Werkzeug für akademische Unehrlichkeit oder Betrug"
+- "Natural Write is not a tool for academic dishonesty or cheating" → "PlainWrite ist kein Werkzeug für akademische Unehrlichkeit oder Betrug"
 - Read more → Mehr erfahren
 - Product → Produkt
 - Resources → Ressourcen
@@ -42,10 +42,10 @@
 ## Hero Section
 - "Trusted by 350,000+ users" → "Vertraut von über 100.000 Nutzern"
 - "Humanize AI Text & Outsmart AI Detectors" → "KI-Texte humanisieren & KI-Detektoren überlisten"
-- "Natural Write converts your AI-generated content into fully humanized, undetectable writing - ensuring it passes every AI detection tool" → "Echtschrift verwandelt Ihre KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren"
+- "Natural Write converts your AI-generated content into fully humanized, undetectable writing - ensuring it passes every AI detection tool" → "PlainWrite verwandelt Ihre KI-generierten Inhalte in vollständig humanisierte, nicht erkennbare Texte – und stellt sicher, dass sie jeden KI-Detektor passieren"
 
 ## Features Section
-- "Why Choose Natural Write?" → "Warum Echtschrift wählen?"
+- "Why Choose Natural Write?" → "Warum PlainWrite wählen?"
 - "Advanced AI Detection Bypass" → "Fortgeschrittene KI-Erkennungsumgehung"
 - "Our technology ensures your content passes all major AI detection tools" → "Unsere Technologie stellt sicher, dass Ihre Inhalte alle gängigen KI-Erkennungstools passieren"
 - "Natural Human Writing" → "Natürliches menschliches Schreiben"
@@ -112,7 +112,7 @@
 
 ## CTA Section
 - "Ready to Humanize Your AI Content?" → "Bereit, Ihre KI-Inhalte zu humanisieren?"
-- "Join thousands of users who trust Natural Write for undetectable AI content" → "Schließen Sie sich Tausenden von Nutzern an, die Echtschrift für nicht erkennbare KI-Inhalte vertrauen"
+- "Join thousands of users who trust Natural Write for undetectable AI content" → "Schließen Sie sich Tausenden von Nutzern an, die PlainWrite für nicht erkennbare KI-Inhalte vertrauen"
 
 ## Profile Page
 - "Account Settings" → "Kontoeinstellungen"
