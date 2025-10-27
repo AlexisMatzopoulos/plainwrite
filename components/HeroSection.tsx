@@ -85,12 +85,10 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </div>
           </div>
           */}
-          {/* Badges in original position - below text */}
+          {/* Badges commented out for now
           <div className="flex gap-8 justify-center mb-4">
-            {/* Training Data Badge */}
             <div className="flex">
               <div className="flex items-center">
-                {/* Left Wreath */}
                 <div className="flex-shrink-0 flex items-center justify-center">
                   <Image
                     src="/svg/left_wreath.svg"
@@ -100,7 +98,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                   />
                 </div>
 
-                {/* Content */}
                 <div className="flex items-center justify-center px-2">
                   <div className="text-center">
                     <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trained on</div>
@@ -108,7 +105,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                   </div>
                 </div>
 
-                {/* Right Wreath */}
                 <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
                   <Image
                     src="/svg/left_wreath.svg"
@@ -120,10 +116,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               </div>
             </div>
 
-            {/* Trusted By Badge */}
             <div className="flex">
               <div className="flex items-center">
-                {/* Left Wreath */}
                 <div className="flex-shrink-0 flex items-center justify-center">
                   <Image
                     src="/svg/left_wreath.svg"
@@ -133,7 +127,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                   />
                 </div>
 
-                {/* Content */}
                 <div className="flex items-center justify-center px-2">
                   <div className="text-center">
                     <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trusted by</div>
@@ -141,7 +134,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                   </div>
                 </div>
 
-                {/* Right Wreath */}
                 <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
                   <Image
                     src="/svg/left_wreath.svg"
@@ -153,6 +145,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               </div>
             </div>
           </div>
+          */}
 
         </div>
 

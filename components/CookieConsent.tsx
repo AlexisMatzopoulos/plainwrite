@@ -36,7 +36,7 @@ export function CookieConsent() {
   if (!showBanner) return null
 
   return (
-    <div className="fixed bottom-4 right-4 max-w-md bg-white border-2 border-gray-200 rounded-xl shadow-2xl z-50 animate-fade-in">
+    <div className="fixed bottom-4 left-4 max-w-md bg-white border-2 border-gray-200 rounded-xl shadow-2xl z-50 animate-fade-in">
       <div className="px-6 py-6">
         <div className="flex flex-col gap-4">
           <div>
