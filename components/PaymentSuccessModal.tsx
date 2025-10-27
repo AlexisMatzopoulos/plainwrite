@@ -98,7 +98,7 @@ export default function PaymentSuccessModal({
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-          aria-label="Schließen"
+          aria-label="Close"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -143,10 +143,10 @@ export default function PaymentSuccessModal({
 
         {/* Content */}
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          Herzlichen Glückwunsch!
+          Congratulations!
         </h2>
         <p className="text-lg text-gray-600 mb-6">
-          Ihr {planDisplay}-Plan ist jetzt aktiv
+          Your {planDisplay} Plan is now active
         </p>
 
         {/* Plan Details */}
@@ -160,16 +160,16 @@ export default function PaymentSuccessModal({
             </p>
           </div>
           <p className="text-2xl font-bold text-green-700 mb-2">
-            {words.toLocaleString()} Wörter
+            {words.toLocaleString()} Words
           </p>
           <p className="text-sm text-gray-600">
-            {billingPeriod === 'year' ? 'pro Monat (jährlich abgerechnet)' : 'pro Monat'}
+            {billingPeriod === 'year' ? 'per month (billed annually)' : 'per month'}
           </p>
         </div>
 
         {/* Email confirmation */}
         <p className="text-sm text-gray-500 mb-6">
-          Eine Bestätigung wurde an Ihre E-Mail gesendet
+          A confirmation has been sent to your email
         </p>
 
         {/* CTA Button */}
@@ -177,7 +177,7 @@ export default function PaymentSuccessModal({
           onClick={handleClose}
           className="w-full bg-theme-primary text-white font-semibold py-3 px-6 rounded-xl hover:opacity-90 transition-opacity"
         >
-          Jetzt loslegen →
+          Get Started →
         </button>
 
         {/* Secondary link */}
@@ -185,7 +185,7 @@ export default function PaymentSuccessModal({
           onClick={() => window.open('/profile', '_blank')}
           className="mt-3 text-sm text-gray-500 hover:text-gray-700 transition-colors"
         >
-          Rechnung ansehen
+          View Invoice
         </button>
       </div>
 

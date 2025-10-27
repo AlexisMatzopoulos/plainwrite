@@ -1,6 +1,6 @@
 # PostHog Analytics Setup Guide
 
-PostHog has been **fully integrated** into your EchtSchreib application following the official Next.js setup. The integration is **ready to use** with your PostHog project!
+PostHog has been **fully integrated** into your PlainWrite application following the official Next.js setup. The integration is **ready to use** with your PostHog project!
 
 ## ✅ What's Already Set Up
 
@@ -195,7 +195,7 @@ Create custom dashboards with:
 Users can:
 - Accept or reject tracking via the banner
 - Change preference anytime in browser localStorage
-- Key: `echtschreib_analytics_consent`
+- Key: `PlainWrite_analytics_consent`
 
 ### Data Retention
 Configure in PostHog:

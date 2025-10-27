@@ -10,19 +10,19 @@ export default function CTASection() {
     >
       <div className="lg:container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-slate-950 mb-4">
-          Lass deinen Text menschlich klingen — sofort
+          Make Your Text Sound Human — Instantly
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto mb-8">
-          Verwandle roboterhafte, KI-generierte Inhalte in klares, natürliches Schreiben, das jeden KI-Detektor besteht. Mit EchtSchreib kannst du deinen Text in Sekunden humanisieren — keine Bearbeitungsfähigkeiten erforderlich.
+          Transform robotic, AI-generated content into clear, natural writing that passes any AI detector. With PlainWrite, you can humanize your text in seconds — no editing skills required.
         </p>
         <Link
           href="/api/auth/signin"
           className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-12 px-8 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
         >
-          Kostenlos starten
+          Get Started Free
         </Link>
         <div className="mt-4 text-sm text-slate-500">
-          500 Wörter kostenlos. Keine Kreditkarte erforderlich
+          500 words free. No credit card required
         </div>
       </div>
     </div>

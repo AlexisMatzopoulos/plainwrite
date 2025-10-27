@@ -1,4 +1,4 @@
-# Production Setup for echtschrift.de
+# Production Setup for plainwrite.com
 
 ## Step 1: Add Production Domain to Google OAuth
 
@@ -17,16 +17,16 @@
 Add both HTTP and HTTPS (keep localhost for development):
 ```
 http://localhost:3000
-https://echtschrift.de
-https://www.echtschrift.de
+https://plainwrite.com
+https://www.plainwrite.com
 ```
 
 **Authorized redirect URIs:**
 Add production callbacks (keep localhost for development):
 ```
 http://localhost:3000/api/auth/callback/google
-https://echtschrift.de/api/auth/callback/google
-https://www.echtschrift.de/api/auth/callback/google
+https://plainwrite.com/api/auth/callback/google
+https://www.plainwrite.com/api/auth/callback/google
 ```
 
 ### 1.4 Save Changes
@@ -56,15 +56,15 @@ Follow the prompts:
 - Set up and deploy? **Y**
 - Which scope? (Choose your account)
 - Link to existing project? **N**
-- Project name: **echtschrift** (or any name)
+- Project name: **PlainWrite** (or any name)
 - Directory: **./**
 - Override settings? **N**
 
 ### 2.4 Add Domain in Vercel Dashboard
 1. Go to your project on [vercel.com](https://vercel.com)
 2. Click on **Settings** → **Domains**
-3. Add `echtschrift.de`
-4. Add `www.echtschrift.de`
+3. Add `plainwrite.com`
+4. Add `www.plainwrite.com`
 5. Follow DNS instructions to point your domain to Vercel
 
 ---
@@ -86,7 +86,7 @@ DATABASE_URL=your-database-connection-string
 OPENAI_API_KEY=your-openai-api-key
 
 # NextAuth - IMPORTANT: Change NEXTAUTH_URL to your domain!
-NEXTAUTH_URL=https://echtschrift.de
+NEXTAUTH_URL=https://plainwrite.com
 NEXTAUTH_SECRET=your-nextauth-secret
 
 # Google OAuth - Same credentials as localhost
@@ -95,7 +95,7 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 ```
 
 **Important Notes:**
-- Set `NEXTAUTH_URL` to `https://echtschrift.de` (NOT localhost!)
+- Set `NEXTAUTH_URL` to `https://plainwrite.com` (NOT localhost!)
 - Use the **same** Google OAuth credentials (Client ID and Secret)
 - Select **Production** for all variables
 
@@ -107,7 +107,7 @@ vercel --prod
 
 ---
 
-## Step 4: Configure DNS for echtschrift.de
+## Step 4: Configure DNS for plainwrite.com
 
 You need to point your domain to Vercel's servers.
 
@@ -116,7 +116,7 @@ You need to point your domain to Vercel's servers.
 1. Go to your domain registrar's DNS settings
 2. Add these records:
 
-**For root domain (echtschrift.de):**
+**For root domain (plainwrite.com):**
 - Type: **A**
 - Name: **@**
 - Value: **76.76.21.21** (Vercel's IP)
@@ -134,7 +134,7 @@ You need to point your domain to Vercel's servers.
 
 Once DNS is propagated and deployment is complete:
 
-1. Visit `https://echtschrift.de`
+1. Visit `https://plainwrite.com`
 2. Click "Try for free" or "Log in"
 3. Sign in with Google
 4. Should work perfectly! ✅
@@ -156,9 +156,9 @@ Once DNS is propagated and deployment is complete:
 ## Troubleshooting
 
 ### "redirect_uri_mismatch" error on production
-- Make sure you added `https://echtschrift.de/api/auth/callback/google` to Google OAuth
+- Make sure you added `https://plainwrite.com/api/auth/callback/google` to Google OAuth
 - Wait 5-10 minutes after saving in Google Cloud Console
-- Check that `NEXTAUTH_URL` in Vercel is set to `https://echtschrift.de`
+- Check that `NEXTAUTH_URL` in Vercel is set to `https://plainwrite.com`
 
 ### Login works but profile not loading
 - Check that `DATABASE_URL` is set correctly in Vercel
@@ -166,7 +166,7 @@ Once DNS is propagated and deployment is complete:
 
 ### "Invalid NEXTAUTH_URL" error
 - Make sure `NEXTAUTH_URL` uses `https://` not `http://`
-- Should be `https://echtschrift.de` without trailing slash
+- Should be `https://plainwrite.com` without trailing slash
 
 ### Images not loading
 - Check `next.config.js` has Google images configured (already done)
@@ -209,7 +209,7 @@ npm start
 
 | Variable | Local Value | Production Value |
 |----------|-------------|------------------|
-| `NEXTAUTH_URL` | `http://localhost:3000` | `https://echtschrift.de` |
+| `NEXTAUTH_URL` | `http://localhost:3000` | `https://plainwrite.com` |
 | `NEXTAUTH_SECRET` | Same | Same |
 | `GOOGLE_CLIENT_ID` | Same | Same |
 | `GOOGLE_CLIENT_SECRET` | Same | Same |
@@ -237,7 +237,7 @@ After successful deployment:
    - Verify SSL certificate is active
 
 3. **Optional improvements:**
-   - Set up custom email (hello@echtschrift.de)
+   - Set up custom email (hello@plainwrite.com)
    - Add analytics (Google Analytics, Plausible)
    - Set up monitoring (Sentry, LogRocket)
    - Configure CDN for images

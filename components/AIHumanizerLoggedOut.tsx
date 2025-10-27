@@ -7,11 +7,11 @@ import { useRouter } from 'next/navigation'
 export default function AIHumanizerLoggedOut() {
   const router = useRouter()
   const [text, setText] = useState('')
-  const [selectedStyle, setSelectedStyle] = useState('Akademisch')
+  const [selectedStyle, setSelectedStyle] = useState('Academic')
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
-  const writingStyles = ['Akademisch', 'Kreativ', 'Formal', 'Locker']
+  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
 
   const handlePasteClick = async () => {
     try {
@@ -28,17 +28,17 @@ export default function AIHumanizerLoggedOut() {
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           {/* Header with word count */}
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Dein Text</h2>
+            <h2 className="font-semibold">Your Text</h2>
             <div className="flex items-center">
               <span className="text-sm text-gray-500">
-                {wordCount} / {maxWords} Wörter
+                {wordCount} / {maxWords} Words
               </span>
             </div>
           </div>
 
           {/* Writing Style Selector */}
           <div className="px-4 pb-3">
-            <label className="text-sm text-gray-600 mb-2 block">Schreibstil wählen:</label>
+            <label className="text-sm text-gray-600 mb-2 block">Choose writing style:</label>
             <div className="flex gap-2 flex-wrap">
               {writingStyles.map((style) => (
                 <button
@@ -61,7 +61,7 @@ export default function AIHumanizerLoggedOut() {
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Füge hier deinen Text ein..."
+              placeholder="Paste your text here..."
               className="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 w-full h-full border-none outline-none focus:outline-none resize-none"
             />
             {!text && (
@@ -74,7 +74,7 @@ export default function AIHumanizerLoggedOut() {
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(var(--color-primary-rgb), 0.1)'}
                 >
                   <Clipboard className="h-4 w-4" />
-                  Text einfügen
+                  Paste Text
                 </button>
               </div>
             )}
@@ -89,7 +89,7 @@ export default function AIHumanizerLoggedOut() {
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
                 disabled={wordCount === 0}
               >
-                Auf KI prüfen
+                Check AI
               </button> */}
               <button
                 onClick={() => wordCount > 0 && router.push('/signin')}
@@ -97,7 +97,7 @@ export default function AIHumanizerLoggedOut() {
                 disabled={wordCount === 0}
               >
                 <Sparkles className="h-4 w-4 mr-2" />
-                Schreibstil anwenden
+                Apply Style
               </button>
             </div>
           </div>

@@ -4,19 +4,22 @@ export default function Footer() {
   return (
     <footer className="py-6 bg-white text-slate-500 border-t border-slate-300">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0 font-bold">© 2025 EchtSchreib</p>
+        <div className="flex flex-col items-center justify-center space-y-4">
           <div className="flex space-x-6">
-            {/* <Link href="/impressum" className="text-sm hover:underline">
-              Impressum
+            {/* <Link href="/imprint" className="text-sm hover:underline">
+              Imprint
             </Link> */}
-            <Link href="/datenschutz" className="text-sm hover:underline">
-              Datenschutz
+            <Link href="/privacy-policy" className="text-sm hover:underline">
+              Privacy Policy
             </Link>
-            <Link href="/nutzungsbedingungen" className="text-sm hover:underline">
-              Nutzungsbedingungen
+            <Link href="/terms-of-service" className="text-sm hover:underline">
+              Terms of Service
+            </Link>
+            <Link href="/refund-policy" className="text-sm hover:underline">
+              Refund Policy
             </Link>
           </div>
+          <p className="text-sm font-bold">© 2025 PlainWrite</p>
         </div>
       </div>
     </footer>

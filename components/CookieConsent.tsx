@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { analytics } from '@/lib/analytics'
 
-const CONSENT_KEY = 'echtschreib_analytics_consent'
+const CONSENT_KEY = 'PlainWrite_analytics_consent'
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
@@ -36,36 +36,36 @@ export function CookieConsent() {
   if (!showBanner) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl z-50 animate-fade-in">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex-1">
-            <h3 className="text-base font-semibold text-gray-900 mb-2">Cookie-Einstellungen</h3>
+    <div className="fixed bottom-4 right-4 max-w-md bg-white border-2 border-gray-200 rounded-xl shadow-2xl z-50 animate-fade-in">
+      <div className="px-6 py-6">
+        <div className="flex flex-col gap-4">
+          <div>
+            <h3 className="text-base font-semibold text-gray-900 mb-2">Cookie Settings</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Wir verwenden Cookies und ähnliche Technologien, um die Nutzung unserer Website zu analysieren und zu verbessern.
-              Weitere Informationen finden Sie in unserer{' '}
+              We use cookies and similar technologies to analyze and improve the use of our website.
+              For more information, see our{' '}
               <a
-                href="/datenschutz"
+                href="/privacy-policy"
                 className="text-theme-primary hover:underline font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Datenschutzerklärung
+                Privacy Policy
               </a>.
             </p>
           </div>
-          <div className="flex gap-3 shrink-0">
+          <div className="flex gap-3">
             <button
               onClick={rejectCookies}
-              className="px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors"
+              className="flex-1 px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors"
             >
-              Ablehnen
+              Decline
             </button>
             <button
               onClick={acceptCookies}
-              className="px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
+              className="flex-1 px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
             >
-              Akzeptieren
+              Accept
             </button>
           </div>
         </div>

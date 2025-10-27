@@ -37,7 +37,7 @@ export default function HeaderClient({
 
   const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 500
-  const balanceDisplay = hasUnlimitedAccess ? '∞' : `${totalBalance} Wörter`
+  const balanceDisplay = hasUnlimitedAccess ? '∞' : `${totalBalance} Words`
   const userInitial = userName?.charAt(0).toUpperCase() || userEmail?.charAt(0).toUpperCase() || 'U'
 
   return (
@@ -49,7 +49,7 @@ export default function HeaderClient({
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/images/echtschreb_logo_compressed.png"
-                alt="EchtSchreib Logo"
+                alt="PlainWrite Logo"
                 width={40}
                 height={40}
               />
@@ -61,11 +61,11 @@ export default function HeaderClient({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 ml-8">
-            <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
-              Kontakt
+            <Link href="mailto:PlainWrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+              Contact
             </Link>
-            <Link href="/preise" className="text-sm font-medium text-slate-700 hover:underline">
-              Preise
+            <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
+              Pricing
             </Link>
           </nav>
 
@@ -82,14 +82,14 @@ export default function HeaderClient({
                         {profile.subscription_plan.toUpperCase()}
                       </span>
                     )}
-                    <span>Guthaben: {balanceDisplay}</span>
+                    <span>Balance: {balanceDisplay}</span>
                   </div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/preise"
+                      href="/pricing"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                     >
-                      Mehr Wörter kaufen
+                      Buy More Words
                     </Link>
                   )}
                   <Link
@@ -137,13 +137,13 @@ export default function HeaderClient({
                   onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
-                  Anmelden
+                  Sign In
                 </button>
                 <button
                   onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
-                  Kostenlos testen
+                  Try for Free
                 </button>
               </div>
             )}
@@ -159,13 +159,13 @@ export default function HeaderClient({
                       {profile.subscription_plan.toUpperCase()}
                     </span>
                   )}
-                  <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
+                  <div className="text-sm text-center">Balance: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/preise"
+                      href="/pricing"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                     >
-                      Mehr Wörter kaufen
+                      Buy More Words
                     </Link>
                   )}
                 </div>
@@ -239,13 +239,13 @@ export default function HeaderClient({
                 onClick={() => router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 text-slate-700 hover:bg-slate-100 rounded-lg"
               >
-                Anmelden
+                Sign In
               </button>
               <button
                 onClick={() => router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-4 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
               >
-                Kostenlos testen
+                Try for Free
               </button>
               <button
                 className="inline-flex items-center justify-center h-10 w-10"
@@ -282,10 +282,10 @@ export default function HeaderClient({
                       {profile.subscription_plan.substring(0, 3).toUpperCase()}
                     </span>
                   )}
-                  <div className="text-sm text-center">Guthaben: {balanceDisplay}</div>
+                  <div className="text-sm text-center">Balance: {balanceDisplay}</div>
                   {!hasUnlimitedAccess && (
                     <Link
-                      href="/preise"
+                      href="/pricing"
                       className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-md px-3 bg-theme-primary text-white bg-theme-primary-hover"
                     >
                       <svg
@@ -340,13 +340,13 @@ export default function HeaderClient({
                   onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 text-slate-700 hover:bg-slate-100 rounded-lg"
                 >
-                  Anmelden
+                  Sign In
                 </button>
                 <button
                   onClick={() => router.push('/signin')}
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 px-3 bg-theme-primary text-white bg-theme-primary-hover rounded-lg"
                 >
-                  Kostenlos testen
+                  Try Free
                 </button>
               </div>
 
@@ -390,24 +390,24 @@ export default function HeaderClient({
             {isLoggedIn && (
               <>
                 <Link href="/history" className="text-sm font-medium text-slate-700 hover:underline md:hidden">
-                  Verlauf
+                  History
                 </Link>
                 <Link href="/profile" className="text-sm font-medium text-slate-700 hover:underline md:hidden">
-                  Konto
+                  Account
                 </Link>
                 <button
                   onClick={() => signOut()}
                   className="text-sm font-medium text-slate-700 hover:underline md:hidden"
                 >
-                  Abmelden
+                  Sign Out
                 </button>
               </>
             )}
-            <Link href="mailto:echtschreib@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
-              Kontakt
+            <Link href="mailto:PlainWrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+              Contact
             </Link>
-            <Link href="/preise" className="text-sm font-medium text-slate-700 hover:underline">
-              Preise
+            <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
+              Pricing
             </Link>
           </nav>
         </div>
