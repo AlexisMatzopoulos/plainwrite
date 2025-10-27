@@ -85,8 +85,8 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </div>
           </div>
           */}
-          {/* Badge in original position - below text */}
-          <div className="flex justify-center mb-4">
+          {/* Badges in original position - below text */}
+          <div className="flex gap-8 justify-center mb-4">
             {/* Training Data Badge */}
             <div className="flex">
               <div className="flex items-center">
@@ -105,6 +105,39 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                   <div className="text-center">
                     <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trained on</div>
                     <div style={{ fontWeight: 500, fontSize: '16px', color: '#FFCE00' }}>700,000+ documents</div>
+                  </div>
+                </div>
+
+                {/* Right Wreath */}
+                <div className="flex-shrink-0 flex items-center justify-center" style={{ transform: 'scaleX(-1)' }}>
+                  <Image
+                    src="/svg/left_wreath.svg"
+                    alt=""
+                    width={30}
+                    height={70}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Trusted By Badge */}
+            <div className="flex">
+              <div className="flex items-center">
+                {/* Left Wreath */}
+                <div className="flex-shrink-0 flex items-center justify-center">
+                  <Image
+                    src="/svg/left_wreath.svg"
+                    alt=""
+                    width={30}
+                    height={70}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex items-center justify-center px-2">
+                  <div className="text-center">
+                    <div style={{ fontWeight: 700, fontSize: '28px', lineHeight: '100%', color: '#FFCE00' }}>Trusted by</div>
+                    <div style={{ fontWeight: 500, fontSize: '16px', color: '#FFCE00' }}>300,000+ professionals</div>
                   </div>
                 </div>
 
