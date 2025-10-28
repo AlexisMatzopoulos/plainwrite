@@ -29,7 +29,18 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [isLoadingResult, setIsLoadingResult] = useState(false)
   const [isFastMode, setIsFastMode] = useState(false)
 
-  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
+  const writingStyles = [
+    'Academic',
+    'Professional',
+    'Creative',
+    'Formal',
+    'Casual',
+    'Technical',
+    'Conversational',
+    'Persuasive',
+    'Narrative',
+    'Simple'
+  ]
 
   const countWords = (text: string) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length

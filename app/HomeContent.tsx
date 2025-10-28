@@ -64,7 +64,7 @@ export function HomeContent() {
       // Clean URL params
       window.history.replaceState({}, '', window.location.pathname)
     } else if (paymentStatus === 'error') {
-      const message = searchParams.get('message') || 'Es gab ein Problem bei der Verarbeitung Ihrer Zahlung.'
+      const message = searchParams.get('message') || 'There was a problem processing your payment.'
       setErrorMessage(decodeURIComponent(message))
       setShowErrorModal(true)
 

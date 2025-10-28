@@ -11,7 +11,18 @@ export default function AIHumanizerLoggedOut() {
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
-  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
+  const writingStyles = [
+    'Academic',
+    'Professional',
+    'Creative',
+    'Formal',
+    'Casual',
+    'Technical',
+    'Conversational',
+    'Persuasive',
+    'Narrative',
+    'Simple'
+  ]
 
   const handlePasteClick = async () => {
     try {

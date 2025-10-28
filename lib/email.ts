@@ -15,7 +15,7 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
   // For now, we'll just log. You can integrate with your email service
   console.log('📧 Sending subscription confirmation email:', {
     to: data.email,
-    subject: `Willkommen bei PlainWrite ${data.planName}!`,
+    subject: `Welcome to PlainWrite ${data.planName}!`,
     template: 'subscription-confirmation',
     data,
   })
@@ -32,7 +32,7 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
       body: JSON.stringify({
         from: 'PlainWrite <noreply@plainwrite.com>',
         to: [data.email],
-        subject: `Willkommen bei PlainWrite ${data.planName}!`,
+        subject: `Welcome to PlainWrite ${data.planName}!`,
         html: getSubscriptionConfirmationHTML(data),
       }),
     })
@@ -45,7 +45,7 @@ export async function sendSubscriptionConfirmationEmail(data: SubscriptionEmailD
 export async function sendPaymentFailedEmail(email: string, planName: string) {
   console.log('📧 Sending payment failed email:', {
     to: email,
-    subject: 'Zahlungsproblem mit Ihrem PlainWrite-Abonnement',
+    subject: 'Payment Issue with Your PlainWrite Subscription',
     template: 'payment-failed',
   })
 }
@@ -53,7 +53,7 @@ export async function sendPaymentFailedEmail(email: string, planName: string) {
 export async function sendSubscriptionCancelledEmail(email: string, planName: string) {
   console.log('📧 Sending subscription cancelled email:', {
     to: email,
-    subject: 'Ihr PlainWrite-Abonnement wurde gekündigt',
+    subject: 'Your PlainWrite Subscription Has Been Cancelled',
     template: 'subscription-cancelled',
   })
 }
@@ -114,47 +114,47 @@ function getSubscriptionConfirmationHTML(data: SubscriptionEmailData): string {
     <body>
       <div class="container">
         <div class="header">
-          <h1 style="margin: 0;">Willkommen bei PlainWrite!</h1>
+          <h1 style="margin: 0;">Welcome to PlainWrite!</h1>
         </div>
         <div class="content">
-          <p>Hallo ${data.name},</p>
-          <p>Vielen Dank für Ihr Abonnement! Wir freuen uns, Sie an Bord zu haben.</p>
+          <p>Hello ${data.name},</p>
+          <p>Thank you for subscribing! We're excited to have you on board.</p>
 
           <div class="plan-details">
-            <h3 style="margin-top: 0;">Ihre Abonnementdetails:</h3>
+            <h3 style="margin-top: 0;">Your Subscription Details:</h3>
             <div class="detail-row">
               <span><strong>Plan:</strong></span>
               <span>${data.planName}</span>
             </div>
             <div class="detail-row">
-              <span><strong>Wörter pro Monat:</strong></span>
+              <span><strong>Words per Month:</strong></span>
               <span>${data.wordsLimit.toLocaleString()}</span>
             </div>
             <div class="detail-row">
-              <span><strong>Abrechnung:</strong></span>
-              <span>${data.billingPeriod === 'month' ? 'Monatlich' : 'Jährlich'}</span>
+              <span><strong>Billing:</strong></span>
+              <span>${data.billingPeriod === 'month' ? 'Monthly' : 'Yearly'}</span>
             </div>
             <div class="detail-row">
-              <span><strong>Betrag:</strong></span>
-              <span>€${(data.amount / 100).toFixed(2)}</span>
+              <span><strong>Amount:</strong></span>
+              <span>$${(data.amount / 100).toFixed(2)}</span>
             </div>
           </div>
 
-          <p>Sie können jetzt:</p>
+          <p>You can now:</p>
           <ul>
-            <li>Ihre Texte in verschiedene Schreibstile umwandeln</li>
-            <li>Bis zu ${data.wordsLimit.toLocaleString()} Wörter pro Monat verarbeiten</li>
-            <li>Alle Premium-Funktionen nutzen</li>
+            <li>Transform your texts into various writing styles</li>
+            <li>Process up to ${data.wordsLimit.toLocaleString()} words per month</li>
+            <li>Access all premium features</li>
           </ul>
 
           <p style="text-align: center; margin: 30px 0;">
             <a href="https://plainwrite.com" style="background-color: #10b981; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; display: inline-block;">
-              Jetzt loslegen
+              Get Started
             </a>
           </p>
 
-          <p>Bei Fragen stehen wir Ihnen jederzeit zur Verfügung.</p>
-          <p>Viel Erfolg mit PlainWrite!</p>
+          <p>If you have any questions, we're here to help anytime.</p>
+          <p>Best of luck with PlainWrite!</p>
         </div>
         <div class="footer">
           <p>PlainWrite<br>

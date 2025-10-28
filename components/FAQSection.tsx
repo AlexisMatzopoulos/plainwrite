@@ -7,49 +7,49 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: 'Wie funktioniert PlainWrite?',
+      question: 'How does PlainWrite work?',
       answer:
-        'PlainWrite verwendet fortschrittliche KI-Technologie, um deinen Text in einem natürlicheren, menschlicheren Stil umzuschreiben. Es analysiert Muster, nach denen KI-Detektoren suchen, und strukturiert deine Inhalte um, um sie zu umgehen, während die ursprüngliche Bedeutung erhalten bleibt.',
+        'PlainWrite uses advanced AI technology to rewrite your text in a more natural, human-like style. It analyzes patterns that AI detectors look for and restructures your content to bypass them while preserving the original meaning.',
     },
     {
-      question: 'Umgeht PlainWrite Turnitin und andere KI-Prüfer?',
+      question: 'Does PlainWrite bypass Turnitin and other AI checkers?',
       answer:
-        'Ja, PlainWrite wurde speziell entwickelt, um deine Inhalte durch KI-Erkennungstools wie Turnitin, GPTZero, ZeroGPT, Copyleaks und andere zu bringen. Unser System wird regelmäßig aktualisiert, um sich an neue Erkennungsmethoden anzupassen.',
+        'Yes, PlainWrite is specifically designed to help your content pass AI detection tools like Turnitin, GPTZero, ZeroGPT, Copyleaks, and others. Our system is regularly updated to adapt to new detection methods.',
     },
     {
-      question: 'Wie viel kostet PlainWrite?',
+      question: 'How much does PlainWrite cost?',
       answer:
-        'PlainWrite bietet sowohl kostenlose als auch Premium-Pläne an. Kostenlose Nutzer erhalten eine begrenzte Anzahl von Wörtern pro Monat, während Premium-Pläne unbegrenzte Humanisierung mit erweiterten Funktionen bieten.',
+        'PlainWrite offers both free and premium plans. Free users receive a limited number of words per month, while premium plans offer unlimited humanization with advanced features.',
     },
     {
-      question: 'Welche Sprachen unterstützt PlainWrite?',
+      question: 'What languages does PlainWrite support?',
       answer:
-        'Derzeit unterstützt PlainWrite hauptsächlich Englisch. Wir arbeiten daran, in Zukunft Unterstützung für weitere Sprachen hinzuzufügen.',
+        'Currently, PlainWrite primarily supports English. We are working on adding support for more languages in the future.',
     },
     {
-      question: 'Ich möchte einen langen Aufsatz humanisieren. Ist das möglich?',
+      question: 'I want to humanize a long essay. Is that possible?',
       answer:
-        'Ja! Du kannst Aufsätze jeder Länge humanisieren. Premium-Nutzer haben Zugang zu unbegrenzter Wortanzahl, was es einfach macht, längere Dokumente zu humanisieren.',
+        'Yes! You can humanize essays of any length. Premium users have access to unlimited word count, making it easy to humanize longer documents.',
     },
     {
-      question: 'Ich habe mein Wortlimit erreicht. Wie kann ich es erweitern?',
+      question: 'I\'ve reached my word limit. How can I increase it?',
       answer:
-        'Du kannst auf einen Premium-Plan upgraden, um mehr Wörter oder unbegrenzten Zugang zu erhalten. Besuche unsere Preisseite, um verfügbare Optionen zu sehen.',
+        'You can upgrade to a premium plan to get more words or unlimited access. Visit our pricing page to see available options.',
     },
     {
-      question: 'Kann ich frühere Humanisierungen sehen?',
+      question: 'Can I see my previous humanizations?',
       answer:
-        'Ja, alle deine früheren Humanisierungen werden in deinem Konto-Verlauf gespeichert. Du kannst jederzeit von deinem Dashboard darauf zugreifen.',
+        'Yes, all your previous humanizations are saved in your account history. You can access them anytime from your dashboard.',
     },
     {
-      question: 'Wie kündige ich mein Abonnement?',
+      question: 'How do I cancel my subscription?',
       answer:
-        'Du kannst dein Abonnement jederzeit in deinen Kontoeinstellungen kündigen. Dein Zugang bleibt bis zum Ende deines Abrechnungszeitraums bestehen.',
+        'You can cancel your subscription anytime in your account settings. Your access will remain active until the end of your billing period.',
     },
     {
-      question: 'Bestraft Google KI-generierte Inhalte?',
+      question: 'Does Google penalize AI-generated content?',
       answer:
-        'Googles Fokus liegt auf der Inhaltsqualität, nicht darauf, ob sie KI-generiert sind. Humanisierte Inhalte schneiden jedoch tendenziell besser ab, da sie natürlicher lesen und Leser effektiver ansprechen.',
+        'Google\'s focus is on content quality, not whether it\'s AI-generated. However, humanized content tends to perform better as it reads more naturally and engages readers more effectively.',
     },
   ]
 
