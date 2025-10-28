@@ -1,30 +1,21 @@
-import { Suspense } from 'react'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { HomeContent } from './HomeContent'
 
 /**
- * Home Page - Async Server Component (Next.js 15 Pattern)
+ * Home Page - Server Component with Client-Side Auth (Next.js 15 Pattern)
  *
- * This page follows the official Next.js 15 pattern:
- * - Fetches auth status on the server
- * - Eliminates loading skeleton (auth check is instant server-side)
- * - Passes isLoggedIn as prop to client component
- * - Client component handles UI state and interactivity
+ * This page follows Next.js 15 best practices:
+ * - Server component for fast initial render
+ * - Client components handle auth state via useSession
+ * - No blocking server-side database queries
+ * - Progressive enhancement with loading states
  */
-export default async function Home() {
-  // Server-side auth check (Next.js docs: "Server Components support promises")
-  const session = await getServerSession(authOptions)
-  const isLoggedIn = !!session?.user
-
+export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Suspense fallback={<div>Wird geladen...</div>}>
-        <HomeContent isLoggedIn={isLoggedIn} />
-      </Suspense>
+      <HomeContent />
       <Footer />
     </div>
   )

@@ -5,6 +5,13 @@ import { useSearchParams } from 'next/navigation'
 import HeroSection from '@/components/HeroSection'
 import AIHumanizerSection from '@/components/AIHumanizerSection'
 import AIHumanizerLoggedOut from '@/components/AIHumanizerLoggedOut'
+import DetectorsSection from '@/components/DetectorsSection'
+import StepsSection from '@/components/StepsSection'
+import FeaturesSection from '@/components/FeaturesSection'
+import UniversitiesSection from '@/components/UniversitiesSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import CTASection from '@/components/CTASection'
+import FAQSection from '@/components/FAQSection'
 import PaymentSuccessModal from '@/components/PaymentSuccessModal'
 import PaymentErrorModal from '@/components/PaymentErrorModal'
 
@@ -13,11 +20,12 @@ interface HomeContentProps {
 }
 
 /**
- * HomeContent - Client Component for Home Page (Centered Design)
+ * HomeContent - Client Component for Home Page (Bypass AI Version - Centered Layout)
  *
  * Handles client-side interactions:
  * - Payment modal display from URL params
  * - Centered layout with HeroSection as header and text box as main focus
+ * - Full marketing sections below
  */
 export function HomeContent({ isLoggedIn }: HomeContentProps) {
   const searchParams = useSearchParams()
@@ -100,6 +108,15 @@ export function HomeContent({ isLoggedIn }: HomeContentProps) {
             )}
           </div>
         </div>
+
+        {/* Marketing Sections */}
+        <StepsSection />
+        <FeaturesSection />
+        <DetectorsSection />
+        <UniversitiesSection />
+        <TestimonialsSection />
+        {!isLoggedIn && <CTASection />}
+        <FAQSection />
       </main>
     </>
   )
