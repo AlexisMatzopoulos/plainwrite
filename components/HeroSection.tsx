@@ -2,51 +2,14 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
-const adjectives = ['professional', 'creative', 'formal', 'personal']
-
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const router = useRouter()
-  const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState('')
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [typingSpeed, setTypingSpeed] = useState(150)
-
-  useEffect(() => {
-    const currentAdjective = adjectives[currentAdjectiveIndex]
-
-    const handleTyping = () => {
-      if (!isDeleting) {
-        // Typing forward
-        if (displayedText.length < currentAdjective.length) {
-          setDisplayedText(currentAdjective.slice(0, displayedText.length + 1))
-          setTypingSpeed(150)
-        } else {
-          // Finished typing, wait then start deleting
-          setTimeout(() => setIsDeleting(true), 2000)
-        }
-      } else {
-        // Deleting
-        if (displayedText.length > 0) {
-          setDisplayedText(currentAdjective.slice(0, displayedText.length - 1))
-          setTypingSpeed(75)
-        } else {
-          // Finished deleting, move to next adjective
-          setIsDeleting(false)
-          setCurrentAdjectiveIndex((prev) => (prev + 1) % adjectives.length)
-        }
-      }
-    }
-
-    const timer = setTimeout(handleTyping, typingSpeed)
-    return () => clearTimeout(timer)
-  }, [displayedText, isDeleting, currentAdjectiveIndex, typingSpeed])
 
 
   return (
@@ -62,7 +25,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
                 fontSize: '3.5rem'
               }}
             >
-              {displayedText}
+              formal
             </span>
           </h1>
           <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
