@@ -1,44 +1,37 @@
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
-import { prisma } from '@/lib/prisma'
-import { redirect } from 'next/navigation'
+'use client'
+
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+import { useProfileStore } from '@/store/profileStore'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { AccountCard } from './AccountCard'
 import { SubscriptionCard } from './SubscriptionCard'
 
 /**
- * Profile Page - Async Server Component (Next.js 15 Pattern)
+ * Profile Page - Client Component
  *
- * This page follows the official Next.js 15 data fetching pattern:
- * - Fetches data on the server using async/await
- * - Queries database directly (no API layer needed)
- * - Passes data down to client components as props
- * - Handles auth server-side with redirects
+ * Reads profile data from Zustand store (already loaded by ProfileInitializer)
+ * - No loading states needed - data is already in memory
+ * - Instant navigation from other pages
+ * - Updates automatically via optimistic updates in the store
  */
-export default async function ProfilePage() {
-  // Fetch session on the server (Next.js docs: "query your database directly")
-  const session = await getServerSession(authOptions)
+export default function ProfilePage() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  const { profile } = useProfileStore()
 
-  // Server-side redirect for unauthenticated users
-  if (!session?.user?.email) {
-    redirect('/signin')
-  }
-
-  // Direct database query (Next.js docs: "skip the API layer")
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: { profile: true },
-  })
-
-  // Handle edge case - user not found
-  if (!user) {
-    redirect('/signin')
-  }
+  // Client-side redirect for unauthenticated users only
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/signin')
+    }
+  }, [status, router])
 
   // Calculate total balance
-  const totalBalance = user.profile
-    ? user.profile.words_balance + user.profile.extra_words_balance
+  const totalBalance = profile
+    ? profile.words_balance + profile.extra_words_balance
     : 0
 
   return (
@@ -49,8 +42,8 @@ export default async function ProfilePage() {
           {/* Account and Balance Cards - 2 Column Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <AccountCard
-              userName={session.user.name ?? null}
-              userEmail={session.user.email}
+              userName={session?.user?.name ?? null}
+              userEmail={session?.user?.email ?? ''}
               wordsBalance={totalBalance}
             />
           </div>
@@ -71,7 +64,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Subscription Card */}
-          <SubscriptionCard profile={user.profile} />
+          <SubscriptionCard profile={profile} />
         </div>
       </main>
       <Footer />

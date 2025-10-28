@@ -116,7 +116,7 @@ export async function POST(req: Request) {
     }
 
     // 8. Prepare custom prompt for AI bypassing
-    const systemInstruction = `<goal> To convert the user's essay into human written German text that bypasses AI detectors. </goal>
+    const systemInstruction = `<goal> To convert the user's essay into human written text that bypasses AI detectors. </goal>
 
 Paraphrase and humanise the user's essay. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
 
@@ -143,7 +143,6 @@ Integrate evaluative language like, "Arguably, it seems likely that one might co
 Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
 
 ONLY insert new lines after ends of paragraphs, NEVER between sentences.
-Output must ALWAYS be German
 Output ONLY the transformed text without any additional commentary or information.
 `
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { AuthProvider } from '@/components/AuthProvider'
+import { ProfileInitializer } from '@/components/ProfileInitializer'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXTAUTH_URL || 'https://plainwrite.com'),
@@ -35,7 +36,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <ProfileInitializer />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )

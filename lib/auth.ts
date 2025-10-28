@@ -94,13 +94,12 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id
-      }
+    async jwt({ token, user, account }) {
+      // Initial sign in - store user ID in token
+      if (user) {
+        token.id = user.id
 
-      // Create profile for new users (after user is created in DB)
-      if (user?.id) {
+        // Create profile for new users on first sign in
         await prisma.profile.upsert({
           where: { user_id: user.id },
           update: {}, // Don't update if profile exists
@@ -115,7 +114,13 @@ export const authOptions: NextAuthOptions = {
           },
         })
       }
-
+      return token
+    },
+    async session({ session, token }) {
+      // Add user ID from token to session
+      if (session.user && token.id) {
+        session.user.id = token.id as string
+      }
       return session
     },
   },
@@ -123,6 +128,7 @@ export const authOptions: NextAuthOptions = {
     signIn: "/signin",
   },
   session: {
-    strategy: "database",
+    strategy: "jwt", // Use JWT instead of database - much faster!
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
 }
