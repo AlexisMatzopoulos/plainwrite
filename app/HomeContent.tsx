@@ -183,13 +183,13 @@ export function HomeContent() {
         </div>
 
         {/* Marketing Sections */}
-        <StepsSection />
+        {/* <StepsSection />
         <FeaturesSection />
         <DetectorsSection />
         <UniversitiesSection />
         <TestimonialsSection />
         {!isLoggedIn && <CTASection />}
-        <FAQSection />
+        <FAQSection /> */}
       </main>
     </>
   )
