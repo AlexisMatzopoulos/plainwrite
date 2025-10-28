@@ -3,7 +3,7 @@
 ## Brand & Company
 - Natural Write → PlainWrite
 - support@plainwrite.com → kontakt@plainwrite.com
-- naturalwrite.com → plainwrite.com
+- plainwrite.com → plainwrite.com
 
 ## Common UI Elements
 - Log in → Anmelden

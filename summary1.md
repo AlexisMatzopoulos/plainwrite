@@ -19,7 +19,7 @@ Natural Write is an AI Humanizer web application built with Next.js 15, TypeScri
 ## Project Structure
 
 ```
-naturalwrite/
+plainwrite/
 ├── app/
 │   ├── layout.tsx           # Root layout with metadata
 │   ├── page.tsx             # Homepage (with auth state logic)

@@ -79,7 +79,7 @@ You'll see a popup with your credentials:
 
 ## Step 7: Add Credentials to .env File
 
-1. Open `/Users/alexismatzopoulos/naturalwrite/.env`
+1. Open `/Users/alexismatzopoulos/plainwrite/.env`
 
 2. Replace the placeholder values:
    ```env

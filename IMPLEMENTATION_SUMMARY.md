@@ -276,7 +276,7 @@ npm run dev
 ## 📚 File Structure
 
 ```
-naturalwrite/
+plainwrite/
 ├── app/
 │   ├── api/
 │   │   ├── humanize/route.ts       ✅ COMPLETE (needs AI integration)

@@ -61,7 +61,7 @@ npm run dev
 ## Project Structure
 
 ```
-naturalwrite/
+plainwrite/
 ├── app/
 │   ├── globals.css          # Global styles with Tailwind
 │   ├── layout.tsx            # Root layout component

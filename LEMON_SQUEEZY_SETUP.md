@@ -18,7 +18,7 @@ This guide walks you through setting up Lemon Squeezy for subscription payments 
 2. Go to **Settings** → **Stores**
 3. Configure your store details:
    - Store name: "Natural Write"
-   - Store URL: https://naturalwrite.com
+   - Store URL: https://plainwrite.com
    - Currency: USD (or your preferred currency)
    - Email settings for customer receipts
 
@@ -148,7 +148,7 @@ Webhooks notify your app when payments occur, subscriptions renew, etc.
 1. In Lemon Squeezy dashboard, go to **Settings** → **Webhooks**
 2. Click **Create Webhook**
 3. Configure:
-   - **URL**: `https://naturalwrite.com/api/webhooks/lemonsqueezy`
+   - **URL**: `https://plainwrite.com/api/webhooks/lemonsqueezy`
    - **Events to listen for**:
      - `order_created` - When a customer completes checkout
      - `subscription_created` - New subscription

@@ -226,7 +226,7 @@ User hasn't specified which AI service to use. Options:
 
 ## Files Structure
 ```
-naturalwrite/
+plainwrite/
 ├── app/
 │   ├── api/
 │   │   ├── auth/[...nextauth]/route.ts ✅
