@@ -23,15 +23,31 @@ export async function GET() {
       },
     })
 
-    if (!user || !user.profile) {
+    if (!user) {
       return NextResponse.json(
-        { error: "Profile not found" },
+        { error: "User not found" },
         { status: 404 }
       )
     }
 
+    // Create profile if it doesn't exist (lazy creation for new users)
+    let profile = user.profile
+    if (!profile) {
+      profile = await prisma.profile.create({
+        data: {
+          user_id: user.id,
+          words_balance: 500,
+          extra_words_balance: 0,
+          words_limit: 500,
+          words_per_request: 500,
+          subscription_canceled: false,
+          subscription_paused: false,
+        },
+      })
+    }
+
     return NextResponse.json({
-      profile: user.profile,
+      profile: profile,
       role: user.role
     })
   } catch (error) {
