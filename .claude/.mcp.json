@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "prisma": {
+      "command": "npx",
+      "args": ["-y", "prisma", "mcp"]
+    },
+    "supabase": {
+      "url": "https://mcp.supabase.com/mcp?project_ref=mduwmutebmietckwzbqx"
+    }
+  }
+}
