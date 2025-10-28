@@ -24,12 +24,8 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [insufficientBalance, setInsufficientBalance] = useState(false)
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
-  const [selectedStyle, setSelectedStyle] = useState('Academic')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
-  const [isFastMode, setIsFastMode] = useState(false)
-
-  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
 
   const countWords = (text: string) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length
@@ -45,13 +41,12 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
   const handleHumanize = async () => {
     if (!inputText.trim()) {
-      setError('Please enter text to apply the writing style')
+      setError('Bitte gib Text ein, der humanisiert werden soll')
       return
     }
 
     // Track conversion start
     analytics.track('text_conversion_started', {
-      style: selectedStyle,
       word_count: wordCount,
     })
 
@@ -71,8 +66,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         },
         body: JSON.stringify({
           text: inputText,
-          style: selectedStyle,
-          mode: isFastMode ? 'fast' : 'accurate',
         }),
       })
 
@@ -84,7 +77,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
         // Track conversion failure
         analytics.track('text_conversion_failed', {
-          style: selectedStyle,
           word_count: wordCount,
           error: data.error,
         })
@@ -94,7 +86,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
           setInsufficientBalance(true)
           await refreshProfile() // Refresh profile to get updated balance
         } else {
-          setError(data.error || 'Failed to apply writing style')
+          setError(data.error || 'Humanisierung fehlgeschlagen')
         }
         setIsLoadingResult(false) // Hide loading animation on error
         return
@@ -105,7 +97,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       const decoder = new TextDecoder()
 
       if (!reader) {
-        throw new Error('Failed to read response stream')
+        throw new Error('Response-Stream konnte nicht gelesen werden')
       }
 
       let accumulatedText = ''
@@ -136,14 +128,13 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
       // Track successful conversion
       analytics.track('text_conversion_completed', {
-        style: selectedStyle,
         word_count: wordsProcessed,
       })
 
       // Refresh profile from server to ensure accuracy
       await refreshProfile()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
     } finally {
       setIsHumanizing(false)
     }
@@ -153,7 +144,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
     const textToCheck = outputText || inputText
 
     if (!textToCheck.trim()) {
-      setError('Please enter text to be checked')
+      setError('Bitte gib Text ein, der überprüft werden soll')
       return
     }
 
@@ -186,13 +177,13 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'AI check failed')
+        throw new Error(data.error || 'KI-Prüfung fehlgeschlagen')
       }
 
       setAiScore(data.aiScore)
       setIsLoadingResult(false) // Hide loading animation when results arrive
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred')
+      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
       setIsLoadingResult(false) // Hide loading animation on error
     } finally {
       setIsCheckingAI(false)
@@ -207,11 +198,10 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
       // Track copy action
       analytics.track('copy_result', {
-        style: selectedStyle,
         word_count: countWords(outputText),
       })
     } catch (err) {
-      setError('Failed to copy text')
+      setError('Text konnte nicht kopiert werden')
     }
   }
 
@@ -231,78 +221,17 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Your Text</h2>
+            <h2 className="font-semibold">Dein Text</h2>
             <div className="flex items-center">
               <span className="text-sm text-gray-500">
-                {wordCount} / {wordLimitDisplay} Words
+                {wordCount} / {wordLimitDisplay} Wörter
               </span>
-            </div>
-          </div>
-
-          {/* Speed Mode Toggle */}
-          <div className="px-4 pb-3 border-b border-gray-100">
-            <label className="text-sm text-gray-600 mb-2 block">Processing speed:</label>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsFastMode(false)}
-                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  !isFastMode
-                    ? 'bg-theme-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
-                    <path d="M12 2v10l7.07 7.07"/>
-                  </svg>
-                  Accurate
-                </div>
-              </button>
-              <button
-                onClick={() => setIsFastMode(true)}
-                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isFastMode
-                    ? 'bg-theme-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
-                  </svg>
-                  Fast
-                </div>
-              </button>
-            </div>
-          </div>
-
-          {/* Writing Style Selector */}
-          <div className="px-4 pb-3">
-            <label className="text-sm text-gray-600 mb-2 block">Choose writing style:</label>
-            <div className="flex gap-2 flex-wrap">
-              {writingStyles.map((style) => (
-                <button
-                  key={style}
-                  onClick={() => {
-                    setSelectedStyle(style)
-                    analytics.track('style_selected', { style })
-                  }}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedStyle === style
-                      ? 'bg-theme-primary text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {style}
-                </button>
-              ))}
             </div>
           </div>
 
           <div className="px-4 flex-1 relative flex">
             <textarea
-              placeholder="Paste your text here..."
+              placeholder="Füge hier deinen Text ein..."
               className="w-full h-full border-none outline-none focus:outline-none resize-none ms-0 ps-0 text-sm"
               value={inputText}
               onChange={handleInputChange}
@@ -311,14 +240,14 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
           <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
             <div className="flex gap-2 w-full sm:w-auto">
-              {/* <button
+              <button
                 onClick={handleCheckAI}
                 disabled={isCheckingAI}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
               >
-                {isCheckingAI ? 'Checking...' : 'Check AI'}
-              </button> */}
+                {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
+              </button>
               <button
                 onClick={handleHumanize}
                 disabled={isHumanizing}
@@ -342,7 +271,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                   <path d="M4 17v2"></path>
                   <path d="M5 18H3"></path>
                 </svg>
-                {isHumanizing ? 'Applying style...' : 'Apply Style'}
+                {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
               </button>
             </div>
           </div>
@@ -353,7 +282,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4">
             <h2 className="font-semibold flex items-center justify-between">
-              <div>Result</div>
+              <div>Ergebnis</div>
               {aiScore !== null && (
                 <div className="px-4 flex items-center mb-2">
                   <svg
@@ -372,7 +301,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                     <path d="m9 11 3 3L22 4"></path>
                   </svg>
                   <span className={`text-sm font-medium ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
-                    {aiScore}% AI detected
+                    {aiScore}% KI erkannt
                   </span>
                 </div>
               )}
@@ -387,16 +316,16 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             ) : insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
-                  You need more words to apply the writing style
+                  Du brauchst mehr Wörter, um den Text zu humanisieren
                 </div>
                 <div className="text-slate-950 mb-2">
-                  Current balance: {totalBalance}/{wordsLimit}
+                  Aktuelles Guthaben: {totalBalance}/{wordsLimit}
                 </div>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-theme-primary bg-theme-primary-hover text-white rounded-md px-4"
                 >
-                  Buy More Credits
+                  Mehr Credits kaufen
                 </Link>
               </div>
             ) : showingAIResults && aiScore !== null ? (
@@ -432,16 +361,16 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                       <div className={`text-5xl font-bold ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
                         {aiScore}%
                       </div>
-                      <div className="text-sm text-slate-500 mt-1">AI detected</div>
+                      <div className="text-sm text-slate-500 mt-1">KI erkannt</div>
                     </div>
                   </div>
 
                   {/* Status text */}
                   <div className="text-xl font-semibold text-slate-700 mb-2">
-                    {aiScore < 30 ? 'Minimal AI detected' : aiScore < 60 ? 'Possibly AI' : 'Likely AI'}
+                    {aiScore < 30 ? 'Minimale KI erkannt' : aiScore < 60 ? 'Möglicherweise KI' : 'Wahrscheinlich KI'}
                   </div>
                   <div className="text-sm text-slate-500">
-                    The text has been checked for AI-generated content
+                    Der Text wurde auf KI-generierte Inhalte geprüft
                   </div>
                 </div>
               </div>
@@ -456,7 +385,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 </div>
 
                 <div className="mt-auto px-4 py-3 flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{countWords(outputText)} Words</span>
+                  <span className="text-sm text-gray-500">{countWords(outputText)} Wörter</span>
                   <button
                     onClick={handleCopy}
                     disabled={!outputText}
@@ -479,7 +408,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                           <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                           <path d="m9 11 3 3L22 4"></path>
                         </svg>
-                        <span className="text-green-500">Copied!</span>
+                        <span className="text-green-500">Kopiert!</span>
                       </>
                     ) : (
                       <svg

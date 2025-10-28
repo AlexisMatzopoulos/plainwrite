@@ -5,6 +5,13 @@ import { useSearchParams } from 'next/navigation'
 import HeroSection from '@/components/HeroSection'
 import AIHumanizerSection from '@/components/AIHumanizerSection'
 import AIHumanizerLoggedOut from '@/components/AIHumanizerLoggedOut'
+import DetectorsSection from '@/components/DetectorsSection'
+import StepsSection from '@/components/StepsSection'
+import FeaturesSection from '@/components/FeaturesSection'
+import UniversitiesSection from '@/components/UniversitiesSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import CTASection from '@/components/CTASection'
+import FAQSection from '@/components/FAQSection'
 import PaymentSuccessModal from '@/components/PaymentSuccessModal'
 import PaymentErrorModal from '@/components/PaymentErrorModal'
 
@@ -13,15 +20,16 @@ interface HomeContentProps {
 }
 
 /**
- * HomeContent - Client Component for Home Page (Centered Design)
+ * HomeContent - Client Component for Home Page (Bypass AI Version)
  *
  * Handles client-side interactions:
  * - Payment modal display from URL params
- * - Centered layout with HeroSection as header and text box as main focus
+ * - Two-column layout with HeroSection and text input
+ * - Full marketing sections below
  */
 export function HomeContent({ isLoggedIn }: HomeContentProps) {
   const searchParams = useSearchParams()
-  const [showResult, setShowResult] = useState(isLoggedIn)
+  const [showResult, setShowResult] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [showErrorModal, setShowErrorModal] = useState(false)
   const [paymentDetails, setPaymentDetails] = useState({
@@ -30,15 +38,6 @@ export function HomeContent({ isLoggedIn }: HomeContentProps) {
     period: ''
   })
   const [errorMessage, setErrorMessage] = useState('')
-
-  // Automatically show result panel when user is logged in
-  useEffect(() => {
-    if (isLoggedIn) {
-      setShowResult(true)
-    } else {
-      setShowResult(false)
-    }
-  }, [isLoggedIn])
 
   // Check for payment status in URL params
   useEffect(() => {
@@ -81,25 +80,31 @@ export function HomeContent({ isLoggedIn }: HomeContentProps) {
         message={errorMessage}
       />
 
-      {/* Centered Layout with HeroSection as Header */}
-      <main className="w-full bg-white">
-        <div className="container mx-auto px-4">
-          {/* Centered Hero Section Header (only show when not logged in) */}
-          {!isLoggedIn && (
-            <div className="max-w-4xl mx-auto text-center py-6">
-              <HeroSection isLoggedIn={isLoggedIn} />
+      <main className="w-full relative overflow-hidden bg-white">
+        {/* Hero + Text Input Section */}
+        <div className="w-full">
+          <div className="container mx-auto px-4 py-16 relative z-10">
+            <div className={`grid grid-cols-1 gap-8 items-stretch transition-all duration-500 ${showResult ? '' : 'lg:grid-cols-2'}`}>
+              {(!isLoggedIn || !showResult) && (
+                <div className={`h-full transition-all duration-500 ${showResult ? 'opacity-0 -translate-x-full absolute' : 'opacity-100 translate-x-0'}`}>
+                  <HeroSection isLoggedIn={isLoggedIn} />
+                </div>
+              )}
+              <div className={`h-full ${showResult ? '' : 'lg:pl-8'}`}>
+                {isLoggedIn ? <AIHumanizerSection showResult={showResult} setShowResult={setShowResult} /> : <AIHumanizerLoggedOut />}
+              </div>
             </div>
-          )}
-
-          {/* Main Text Editor - Takes Up Most of Screen */}
-          <div className="w-full max-w-7xl mx-auto py-4">
-            {isLoggedIn ? (
-              <AIHumanizerSection showResult={showResult} setShowResult={setShowResult} />
-            ) : (
-              <AIHumanizerLoggedOut />
-            )}
           </div>
         </div>
+
+        {/* Marketing Sections */}
+        <StepsSection />
+        <FeaturesSection />
+        <DetectorsSection />
+        <UniversitiesSection />
+        <TestimonialsSection />
+        {!isLoggedIn && <CTASection />}
+        <FAQSection />
       </main>
     </>
   )

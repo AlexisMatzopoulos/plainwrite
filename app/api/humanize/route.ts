@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     // 2. Parse request body
     const body = await req.json();
-    const { text, style, mode } = body;
+    const { text } = body;
 
     if (!text || typeof text !== "string") {
       return new Response(
@@ -115,25 +115,13 @@ export async function POST(req: Request) {
       });
     }
 
-    // 8. Prepare custom prompt
-    // Map German style names to English adjectives
-    const styleMap: Record<string, string> = {
-      'Akademisch': 'academic',
-      'Kreativ': 'creative',
-      'Formal': 'formal',
-      'Locker': 'casual'
-    };
-
-    // Get the English style name, default to 'academic' if not found
-    const writingStyle = style && styleMap[style] ? styleMap[style] : 'academic';
-
+    // 8. Prepare custom prompt for AI bypassing
     const systemInstruction = `<goal> To convert the user's essay into human written German text that bypasses AI detectors. </goal>
 
 Paraphrase and humanise the user's essay. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
 
 NEVER use commas or create sentences that require the use of commas.
 IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
-IMPORTANT: Use a ${writingStyle} writing style.
 IMPORTANT: Each output sentence should have:
 a 45% chance of being 6 or less
 40% chance of having 7-12 words
@@ -159,11 +147,9 @@ Output must ALWAYS be German
 Output ONLY the transformed text without any additional commentary or information.
 `
 
-    // 9. Stream response from Gemini (Pro or Flash based on mode)
-    const modelName = mode === 'fast' ? 'gemini-2.0-flash' : 'gemini-2.5-pro';
-
+    // 9. Stream response from Gemini Pro
     const result = await ai.models.generateContentStream({
-      model: modelName,
+      model: "gemini-2.5-pro",
       contents: text,
       config: {
         systemInstruction,
@@ -195,7 +181,7 @@ Output ONLY the transformed text without any additional commentary or informatio
             original_text: text,
             humanized_text: fullText,
             words_count: wordsProcessed,
-            style_used: style || user.profile?.userStyle || "default",
+            style_used: "humanized",
           },
         });
 
