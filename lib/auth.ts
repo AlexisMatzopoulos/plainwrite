@@ -16,7 +16,7 @@ console.log('🔍 DIRECT_URL exists:', !!process.env.DIRECT_URL)
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export const authOptions: NextAuthOptions = {
-  debug: true, // Enable debug logging
+  debug: false, // Disable debug logging for performance
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
