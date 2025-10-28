@@ -27,6 +27,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [selectedStyle, setSelectedStyle] = useState('Academic')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
+  const [isFastMode, setIsFastMode] = useState(false)
 
   const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
 
@@ -71,6 +72,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         body: JSON.stringify({
           text: inputText,
           style: selectedStyle,
+          mode: isFastMode ? 'fast' : 'accurate',
         }),
       })
 
@@ -234,6 +236,44 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
               <span className="text-sm text-gray-500">
                 {wordCount} / {wordLimitDisplay} Words
               </span>
+            </div>
+          </div>
+
+          {/* Speed Mode Toggle */}
+          <div className="px-4 pb-3 border-b border-gray-100">
+            <label className="text-sm text-gray-600 mb-2 block">Processing speed:</label>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsFastMode(false)}
+                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  !isFastMode
+                    ? 'bg-theme-primary text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                    <path d="M12 2v10l7.07 7.07"/>
+                  </svg>
+                  Accurate
+                </div>
+              </button>
+              <button
+                onClick={() => setIsFastMode(true)}
+                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isFastMode
+                    ? 'bg-theme-primary text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                  Fast
+                </div>
+              </button>
             </div>
           </div>
 

@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     // 2. Parse request body
     const body = await req.json();
-    const { text, style } = body;
+    const { text, style, mode } = body;
 
     if (!text || typeof text !== "string") {
       return new Response(
@@ -159,9 +159,11 @@ Output must ALWAYS be German
 Output ONLY the transformed text without any additional commentary or information.
 `
 
-    // 9. Stream response from Gemini 2.5 Pro
+    // 9. Stream response from Gemini (Pro or Flash based on mode)
+    const modelName = mode === 'fast' ? 'gemini-2.0-flash' : 'gemini-2.5-pro';
+
     const result = await ai.models.generateContentStream({
-      model: "gemini-2.5-pro",
+      model: modelName,
       contents: text,
       config: {
         systemInstruction,
