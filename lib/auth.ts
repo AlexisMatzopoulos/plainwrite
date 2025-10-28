@@ -99,20 +99,8 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id
 
-        // Create profile for new users on first sign in
-        await prisma.profile.upsert({
-          where: { user_id: user.id },
-          update: {}, // Don't update if profile exists
-          create: {
-            user_id: user.id,
-            words_balance: 500,
-            extra_words_balance: 0,
-            words_limit: 500,
-            words_per_request: 500,
-            subscription_canceled: false,
-            subscription_paused: false,
-          },
-        })
+        // Don't block OAuth callback with DB queries!
+        // Profile will be created lazily by ProfileInitializer
       }
       return token
     },
