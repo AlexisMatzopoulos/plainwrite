@@ -61,7 +61,7 @@ export default function HeaderClient({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 ml-8">
-            <Link href="mailto:PlainWrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+            <Link href="mailto:support@plainwrite.com" className="text-sm font-medium text-slate-700 hover:underline">
               Contact
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">
@@ -403,7 +403,7 @@ export default function HeaderClient({
                 </button>
               </>
             )}
-            <Link href="mailto:PlainWrite@gmail.com" className="text-sm font-medium text-slate-700 hover:underline">
+            <Link href="mailto:support@plainwrite.com" className="text-sm font-medium text-slate-700 hover:underline">
               Contact
             </Link>
             <Link href="/pricing" className="text-sm font-medium text-slate-700 hover:underline">

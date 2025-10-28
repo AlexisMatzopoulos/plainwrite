@@ -158,7 +158,7 @@ function getSubscriptionConfirmationHTML(data: SubscriptionEmailData): string {
         </div>
         <div class="footer">
           <p>PlainWrite<br>
-          <a href="mailto:PlainWrite@gmail.com" style="color: #10b981;">PlainWrite@gmail.com</a></p>
+          <a href="mailto:support@plainwrite.com" style="color: #10b981;">support@plainwrite.com</a></p>
         </div>
       </div>
     </body>

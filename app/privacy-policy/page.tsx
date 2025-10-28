@@ -237,8 +237,8 @@ export default function PrivacyPolicy() {
           <p>
             You can unsubscribe from these communications at any time by clicking the "Unsubscribe" link in a marketing email
             or by contacting us at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             . Please note that you will continue to receive essential service-related emails
             required for the operation of your account.
@@ -249,8 +249,8 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-bold">12. Contact Us</h2>
           <p>
             If you have any questions or concerns about this privacy policy, please contact us at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             .
           </p>

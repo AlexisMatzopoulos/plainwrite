@@ -143,7 +143,7 @@ All Paddle domain review requirements have been verified and implemented. Your s
 - Legal name: "PlainWrite"
 - Clearly identified in introduction
 - Repeated throughout document
-- Contact email: PlainWrite@gmail.com
+- Contact email: support@plainwrite.com
 
 ---
 
@@ -302,7 +302,7 @@ After deploying to new domain, verify:
 
 If Paddle requests additional information:
 - **Paddle Support:** sellers@paddle.com
-- **Your Email:** PlainWrite@gmail.com
+- **Your Email:** support@plainwrite.com
 
 **Potential document requests:**
 - Product ownership confirmation: You created PlainWrite ✅

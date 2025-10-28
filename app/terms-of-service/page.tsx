@@ -308,8 +308,8 @@ export default function TermsOfService() {
           </p>
           <p>
             If you are dissatisfied with our Services at any time, please send us an email at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             .
           </p>
@@ -648,8 +648,8 @@ export default function TermsOfService() {
           <p>
             You may unsubscribe from these communications at any time by clicking the "Unsubscribe" link in a marketing
             email or by contacting us at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             . Please note that you will continue to receive essential service-related emails that are necessary for the
             operation of your account.
@@ -661,8 +661,8 @@ export default function TermsOfService() {
           <p>
             For questions, concerns, or further information regarding these legal terms or the Services, please contact
             us by email at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             .
           </p>

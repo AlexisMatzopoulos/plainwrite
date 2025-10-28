@@ -66,7 +66,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
             </span>
           </h1>
           <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
-            Transform your text into any desired writing style. Our proprietary writing engine ensures your writing sounds perfect in every context.
+            Transform your text instantly. Our writing engine ensures your get your message across, the right way.
           </p>
 
           {/*
@@ -187,7 +187,7 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               onClick={() => router.push('/signin')}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors h-10 py-8 px-16 bg-theme-primary bg-theme-primary-hover text-white text-lg rounded-[14px]"
             >
-              Get Started Free
+              Try For Free
             </button>
           )}
           {!isLoggedIn && (

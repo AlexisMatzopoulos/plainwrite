@@ -74,8 +74,8 @@ export default function RefundPolicy() {
           <h2 className="text-2xl font-bold">Contact Us</h2>
           <p>
             If you have any questions or concerns about this refund policy, please contact us at{' '}
-            <a href="mailto:PlainWrite@gmail.com" className="text-blue-600 hover:underline">
-              PlainWrite@gmail.com
+            <a href="mailto:support@plainwrite.com" className="text-blue-600 hover:underline">
+              support@plainwrite.com
             </a>
             .
           </p>

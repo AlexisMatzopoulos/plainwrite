@@ -2,7 +2,7 @@
 
 ## Brand & Company
 - Natural Write → PlainWrite
-- PlainWrite@gmail.com → kontakt@plainwrite.com
+- support@plainwrite.com → kontakt@plainwrite.com
 - naturalwrite.com → plainwrite.com
 
 ## Common UI Elements
