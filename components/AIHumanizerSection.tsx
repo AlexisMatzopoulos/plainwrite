@@ -41,7 +41,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
   const handleHumanize = async () => {
     if (!inputText.trim()) {
-      setError('Bitte gib Text ein, der humanisiert werden soll')
+      setError('Please enter text to humanize')
       return
     }
 
@@ -86,7 +86,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
           setInsufficientBalance(true)
           await refreshProfile() // Refresh profile to get updated balance
         } else {
-          setError(data.error || 'Humanisierung fehlgeschlagen')
+          setError(data.error || 'Humanization failed')
         }
         setIsLoadingResult(false) // Hide loading animation on error
         return
@@ -97,7 +97,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       const decoder = new TextDecoder()
 
       if (!reader) {
-        throw new Error('Response-Stream konnte nicht gelesen werden')
+        throw new Error('Failed to read response stream')
       }
 
       let accumulatedText = ''
@@ -134,7 +134,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       // Refresh profile from server to ensure accuracy
       await refreshProfile()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setIsHumanizing(false)
     }
@@ -144,7 +144,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
     const textToCheck = outputText || inputText
 
     if (!textToCheck.trim()) {
-      setError('Bitte gib Text ein, der überprüft werden soll')
+      setError('Please enter text to be checked')
       return
     }
 
@@ -177,13 +177,13 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'KI-Prüfung fehlgeschlagen')
+        throw new Error(data.error || 'AI check failed')
       }
 
       setAiScore(data.aiScore)
       setIsLoadingResult(false) // Hide loading animation when results arrive
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten')
+      setError(err instanceof Error ? err.message : 'An error occurred')
       setIsLoadingResult(false) // Hide loading animation on error
     } finally {
       setIsCheckingAI(false)
@@ -201,7 +201,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         word_count: countWords(outputText),
       })
     } catch (err) {
-      setError('Text konnte nicht kopiert werden')
+      setError('Failed to copy text')
     }
   }
 
@@ -221,17 +221,17 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         {/* Input Panel */}
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4 flex justify-between items-center">
-            <h2 className="font-semibold">Dein Text</h2>
+            <h2 className="font-semibold">Your Text</h2>
             <div className="flex items-center">
               <span className="text-sm text-gray-500">
-                {wordCount} / {wordLimitDisplay} Wörter
+                {wordCount} / {wordLimitDisplay} Words
               </span>
             </div>
           </div>
 
           <div className="px-4 flex-1 relative flex">
             <textarea
-              placeholder="Füge hier deinen Text ein..."
+              placeholder="Paste your text here..."
               className="w-full h-full border-none outline-none focus:outline-none resize-none ms-0 ps-0 text-sm"
               value={inputText}
               onChange={handleInputChange}
@@ -246,7 +246,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
               >
-                {isCheckingAI ? 'Wird geprüft...' : 'KI prüfen'}
+                {isCheckingAI ? 'Checking...' : 'Check AI'}
               </button>
               <button
                 onClick={handleHumanize}
@@ -271,7 +271,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                   <path d="M4 17v2"></path>
                   <path d="M5 18H3"></path>
                 </svg>
-                {isHumanizing ? 'Wird humanisiert...' : 'Humanisieren'}
+                {isHumanizing ? 'Humanizing...' : 'Humanize'}
               </button>
             </div>
           </div>
@@ -282,7 +282,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         <div className="bg-white rounded-[16px] overflow-hidden flex flex-col h-full" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
           <div className="p-4">
             <h2 className="font-semibold flex items-center justify-between">
-              <div>Ergebnis</div>
+              <div>Result</div>
               {aiScore !== null && (
                 <div className="px-4 flex items-center mb-2">
                   <svg
@@ -301,7 +301,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                     <path d="m9 11 3 3L22 4"></path>
                   </svg>
                   <span className={`text-sm font-medium ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
-                    {aiScore}% KI erkannt
+                    {aiScore}% AI detected
                   </span>
                 </div>
               )}
@@ -316,16 +316,16 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             ) : insufficientBalance ? (
               <div className="flex-1 flex flex-col items-center justify-center px-4">
                 <div className="text-slate-950 font-medium mb-0 text-center">
-                  Du brauchst mehr Wörter, um den Text zu humanisieren
+                  You need more words to humanize the text
                 </div>
                 <div className="text-slate-950 mb-2">
-                  Aktuelles Guthaben: {totalBalance}/{wordsLimit}
+                  Current balance: {totalBalance}/{wordsLimit}
                 </div>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-10 py-2 mt-4 bg-theme-primary bg-theme-primary-hover text-white rounded-md px-4"
                 >
-                  Mehr Credits kaufen
+                  Buy More Credits
                 </Link>
               </div>
             ) : showingAIResults && aiScore !== null ? (
@@ -361,16 +361,16 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                       <div className={`text-5xl font-bold ${aiScore < 30 ? 'text-green-500' : aiScore < 60 ? 'text-yellow-500' : 'text-red-500'}`}>
                         {aiScore}%
                       </div>
-                      <div className="text-sm text-slate-500 mt-1">KI erkannt</div>
+                      <div className="text-sm text-slate-500 mt-1">AI detected</div>
                     </div>
                   </div>
 
                   {/* Status text */}
                   <div className="text-xl font-semibold text-slate-700 mb-2">
-                    {aiScore < 30 ? 'Minimale KI erkannt' : aiScore < 60 ? 'Möglicherweise KI' : 'Wahrscheinlich KI'}
+                    {aiScore < 30 ? 'Minimal AI detected' : aiScore < 60 ? 'Possibly AI' : 'Likely AI'}
                   </div>
                   <div className="text-sm text-slate-500">
-                    Der Text wurde auf KI-generierte Inhalte geprüft
+                    The text has been checked for AI-generated content
                   </div>
                 </div>
               </div>
@@ -385,7 +385,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 </div>
 
                 <div className="mt-auto px-4 py-3 flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{countWords(outputText)} Wörter</span>
+                  <span className="text-sm text-gray-500">{countWords(outputText)} Words</span>
                   <button
                     onClick={handleCopy}
                     disabled={!outputText}

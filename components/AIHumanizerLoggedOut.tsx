@@ -7,11 +7,9 @@ import { useRouter } from 'next/navigation'
 export default function AIHumanizerLoggedOut() {
   const router = useRouter()
   const [text, setText] = useState('')
-  const [selectedStyle, setSelectedStyle] = useState('Academic')
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
-  const writingStyles = ['Academic', 'Creative', 'Formal', 'Casual']
 
   const handlePasteClick = async () => {
     try {
@@ -33,26 +31,6 @@ export default function AIHumanizerLoggedOut() {
               <span className="text-sm text-gray-500">
                 {wordCount} / {maxWords} Words
               </span>
-            </div>
-          </div>
-
-          {/* Writing Style Selector */}
-          <div className="px-4 pb-3">
-            <label className="text-sm text-gray-600 mb-2 block">Choose writing style:</label>
-            <div className="flex gap-2 flex-wrap">
-              {writingStyles.map((style) => (
-                <button
-                  key={style}
-                  onClick={() => setSelectedStyle(style)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedStyle === style
-                      ? 'bg-theme-primary text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {style}
-                </button>
-              ))}
             </div>
           </div>
 
@@ -83,21 +61,21 @@ export default function AIHumanizerLoggedOut() {
           {/* Footer with buttons */}
           <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
             <div className="flex gap-2 w-full sm:w-auto">
-              {/* <button
+              <button
                 onClick={() => wordCount > 0 && router.push('/signin')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border-theme-primary"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border border-theme-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
                 disabled={wordCount === 0}
               >
                 Check AI
-              </button> */}
+              </button>
               <button
                 onClick={() => wordCount > 0 && router.push('/signin')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={wordCount === 0}
               >
                 <Sparkles className="h-4 w-4 mr-2" />
-                Apply Style
+                Humanize
               </button>
             </div>
           </div>
