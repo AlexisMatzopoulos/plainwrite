@@ -4,21 +4,21 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 interface Profile {
-  id: string
+  id?: string
   words_balance: number
   extra_words_balance: number
   words_limit: number
-  words_per_request: number
-  subscription_plan: string | null
-  subscription_status: string | null
-  subscription_canceled: boolean
-  subscription_paused: boolean
-  subscription_valid_until: Date | null
-  paystack_customer_code: string | null
-  paystack_subscription_code: string | null
-  paystack_authorization_code: string | null
-  paystack_plan_code: string | null
-  billing_period: string | null
+  words_per_request?: number
+  subscription_plan?: string | null
+  subscription_status?: string | null
+  subscription_canceled?: boolean
+  subscription_paused?: boolean
+  subscription_valid_until?: string | null
+  paystack_customer_code?: string | null
+  paystack_subscription_code?: string | null
+  paystack_authorization_code?: string | null
+  paystack_plan_code?: string | null
+  billing_period?: string | null
 }
 
 export function SubscriptionCard({ profile }: { profile: Profile | null }) {
