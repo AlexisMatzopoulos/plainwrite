@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/components/AuthProvider'
 
 interface AccountCardProps {
   userName: string | null
@@ -12,8 +13,11 @@ interface AccountCardProps {
 export function AccountCard({ userName, userEmail, wordsBalance }: AccountCardProps) {
   const router = useRouter()
   const supabase = createClient()
+  const { setSigningOut } = useAuth()
 
   const handleSignOut = async () => {
+    // Immediately set signing out state to show loading skeleton
+    setSigningOut(true)
     await supabase.auth.signOut()
     // Use window.location.href for a full page reload to clear all state
     window.location.href = '/'

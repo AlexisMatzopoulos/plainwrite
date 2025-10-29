@@ -71,7 +71,7 @@ export default function SignInPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+          <div className="bg-white rounded-2xl p-8 text-center" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -174,7 +174,7 @@ export default function SignInPage() {
               disabled={isLoading}
               className="w-full bg-theme-primary text-white font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Sending...' : 'Send Sign-in Link via Email'}
+              {isLoading ? 'Sending...' : 'Sign In'}
             </button>
           </form>
 

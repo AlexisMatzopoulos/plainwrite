@@ -15,7 +15,7 @@ export default function PricingSection() {
         originalPrice: undefined,
         price: '€5.99',
         features: [
-          '500 words per request',
+          'Up to 500 words per request',
           'Error-free rephrasing',
           'Fast mode',
         ],
@@ -27,11 +27,10 @@ export default function PricingSection() {
         price: '€19.99',
         isPopular: true,
         features: [
-          '1,500 words per request',
+          'Up to 1,500 words per request',
           'Error-free rephrasing',
-          'Unlimited grammar checks',
           'Fast mode',
-          'Accurate mode',
+          'Pro mode, with WRTLM-5',
         ],
       },
       {
@@ -40,11 +39,10 @@ export default function PricingSection() {
         originalPrice: undefined,
         price: '€39.99',
         features: [
-          '3,000 words per request',
+          'Up to 3,000 words per request',
           'Error-free rephrasing',
-          'Unlimited grammar checks',
           'Fast mode',
-          'Accurate mode',
+          'Pro mode, with WRTLM-5',
         ],
       },
     ],
@@ -55,7 +53,7 @@ export default function PricingSection() {
         originalPrice: '€5.99',
         price: '€2.99',
         features: [
-          '500 words per request',
+          'Up to 500 words per request',
           'Error-free rephrasing',
           'Fast mode',
         ],
@@ -67,11 +65,10 @@ export default function PricingSection() {
         price: '€9.99',
         isPopular: true,
         features: [
-          '1,500 words per request',
+          'Up to 1,500 words per request',
           'Error-free rephrasing',
-          'Unlimited grammar checks',
           'Fast mode',
-          'Accurate mode',
+          'Pro mode, with WRTLM-5',
         ],
       },
       {
@@ -80,11 +77,10 @@ export default function PricingSection() {
         originalPrice: '€39.99',
         price: '€19.99',
         features: [
-          '3,000 words per request',
+          'Up to 3,000 words per request',
           'Error-free rephrasing',
-          'Unlimited grammar checks',
           'Fast mode',
-          'Accurate mode',
+          'Pro mode, with WRTLM-5',
         ],
       },
     ],
@@ -104,13 +100,13 @@ export default function PricingSection() {
 
           {/* Billing Toggle */}
           <div className="w-fit mx-auto">
-            <div className="h-13 items-center justify-center rounded-[14px] p-1 text-muted-foreground grid w-[360px] grid-cols-2 bg-slate-100 border-2 border-slate-200">
+            <div className="h-13 items-center justify-center rounded-[14px] p-1 grid w-[360px] grid-cols-2 bg-theme-primary border-2 border-theme-primary">
               <button
                 onClick={() => setBillingPeriod('month')}
                 className={`inline-flex items-center justify-center whitespace-nowrap rounded-[10px] px-3 py-1.5 text-sm font-medium transition-all ${
                   billingPeriod === 'month'
-                    ? 'bg-theme-primary text-white shadow-sm'
-                    : 'hover:bg-slate-100'
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-white hover:bg-white/10'
                 }`}
               >
                 Monthly
@@ -119,8 +115,8 @@ export default function PricingSection() {
                 onClick={() => setBillingPeriod('year')}
                 className={`justify-center whitespace-nowrap rounded-[10px] px-3 py-1.5 text-sm font-medium transition-all flex items-center gap-1 ${
                   billingPeriod === 'year'
-                    ? 'bg-theme-primary text-white shadow-sm'
-                    : 'hover:bg-slate-100'
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-white hover:bg-white/10'
                 }`}
               >
                 Yearly

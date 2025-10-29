@@ -3,29 +3,66 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 interface HeroSectionProps {
   isLoggedIn?: boolean
 }
 
+const adjectives = ['naturally', 'professionally', 'authentically', 'simply']
+
 export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
   const router = useRouter()
+  const [currentAdjectiveIndex, setCurrentAdjectiveIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState(adjectives[0])
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [typingSpeed, setTypingSpeed] = useState(150)
 
+  useEffect(() => {
+    const currentAdjective = adjectives[currentAdjectiveIndex]
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayedText.length < currentAdjective.length) {
+          setDisplayedText(currentAdjective.slice(0, displayedText.length + 1))
+          setTypingSpeed(150)
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        // Deleting
+        if (displayedText.length > 0) {
+          setDisplayedText(currentAdjective.slice(0, displayedText.length - 1))
+          setTypingSpeed(75)
+        } else {
+          // Finished deleting, move to next adjective
+          setIsDeleting(false)
+          setCurrentAdjectiveIndex((prev) => (prev + 1) % adjectives.length)
+        }
+      }
+    }
+
+    const timer = setTimeout(handleTyping, typingSpeed)
+    return () => clearTimeout(timer)
+  }, [displayedText, isDeleting, currentAdjectiveIndex, typingSpeed])
 
   return (
     <section className="flex flex-col">
       <div className="flex flex-col justify-center items-center">
         <div className="w-full">
           <h1 className="text-4xl md:text-5xl font-bold text-theme-text mb-6 text-center">
-            Writing that feels{' '}
+            Write {' '}
             <span
               style={{
-                fontFamily: 'Strings, sans-serif',
+                fontFamily: 'var(--font-strings), sans-serif',
                 fontWeight: 'lighter',
-                fontSize: '3.5rem'
+                fontSize: '5rem'
               }}
             >
-              formal
+              {displayedText}
+              <span className="animate-blink-cursor">|</span>
             </span>
           </h1>
           <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">

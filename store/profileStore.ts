@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 export interface Profile {
   id?: string
@@ -34,10 +35,12 @@ interface ProfileStore {
   reset: () => void
 }
 
-export const useProfileStore = create<ProfileStore>((set, get) => ({
-  profile: null,
-  userRole: 'USER',
-  isInitialized: false,
+export const useProfileStore = create<ProfileStore>()(
+  persist(
+    (set, get) => ({
+      profile: null,
+      userRole: 'USER',
+      isInitialized: false,
 
   setProfile: (profile) => set({ profile }),
 
@@ -94,4 +97,16 @@ export const useProfileStore = create<ProfileStore>((set, get) => ({
       isInitialized: false
     })
   },
-}))
+    }),
+    {
+      name: 'profile-storage', // localStorage key
+      storage: createJSONStorage(() => localStorage),
+      // Only persist the data we need, not internal state flags initially
+      partialize: (state) => ({
+        profile: state.profile,
+        userRole: state.userRole,
+        // Don't persist isInitialized - let it be false on reload so we refetch
+      }),
+    }
+  )
+)

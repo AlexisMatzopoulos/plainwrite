@@ -12,13 +12,7 @@ body {
   overscroll-behavior-y: none;
 }
 
-@font-face {
-  font-family: 'Strings';
-  src: url('/fonts/strings-free.regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* Font loaded via Next.js localFont in layout.tsx */
 
 :root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;

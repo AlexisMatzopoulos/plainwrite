@@ -29,58 +29,8 @@ export default function PricingCard({
   const [loading, setLoading] = useState(false)
 
   const handleSubscribe = async () => {
-    if (!user) {
-      // Redirect to sign in
-      router.push('/signin')
-      return
-    }
-
-    // Track payment initiation
-    analytics.track('payment_initiated', {
-      plan: name,
-      billing_period: billingPeriod,
-    })
-
-    setLoading(true)
-
-    try {
-      // Convert plan name to tier
-      const planTier = name.toLowerCase() as 'basis' | 'pro' | 'ultra'
-
-      // Get current page URL to return to after payment
-      const callbackUrl = `${window.location.origin}/subscribe/callback?returnTo=${encodeURIComponent(window.location.href)}`
-
-      // Initialize Paystack transaction
-      const response = await fetch('/api/paystack/initialize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          planTier,
-          billingPeriod,
-          callbackUrl,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        analytics.track('payment_failed', {
-          plan: name,
-          billing_period: billingPeriod,
-          error: data.error,
-        })
-        throw new Error(data.error || 'Failed to initialize payment')
-      }
-
-      // Redirect to Paystack checkout
-      window.location.href = data.authorization_url
-    } catch (error) {
-      console.error('Error initializing subscription:', error)
-      alert('Failed to start subscription process. Please try again.')
-      setLoading(false)
-    }
+    // Paystack checkout temporarily disabled - transitioning to Paddle
+    return
   }
 
   return (
@@ -126,10 +76,10 @@ export default function PricingCard({
         <div className="pt-6">
           <button
             onClick={handleSubscribe}
-            disabled={loading}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-theme-primary bg-theme-primary-hover border"
+            disabled={true}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-gray-400 border cursor-not-allowed"
           >
-            {loading ? 'Loading...' : 'Subscribe'}
+            Coming Soon
           </button>
           <hr className="mt-6 border-t border-slate-300" />
         </div>

@@ -32,7 +32,7 @@ export function SubscriptionCard({ profile }: { profile: Profile | null }) {
 
   const subscriptionPlanDisplay = profile.subscription_plan
     ? profile.subscription_plan.charAt(0).toUpperCase() + profile.subscription_plan.slice(1) + '-Plan'
-    : 'Basis-Plan'
+    : 'Free Plan'
 
   const wordsPerMonth = profile.words_limit || 5000
 

@@ -10,13 +10,13 @@ import { useProfileStore } from '@/store/profileStore'
 
 export default function Header() {
   const router = useRouter()
-  const { user, loading } = useAuth()
+  const { user, loading, signingOut, setSigningOut } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { profile, userRole, isInitialized } = useProfileStore()
   const supabase = createClient()
 
-  const isLoggedIn = !loading && !!user
-  const isLoading = loading || (isLoggedIn && !isInitialized)
+  const isLoggedIn = !loading && !signingOut && !!user
+  const isLoading = loading || signingOut || (isLoggedIn && !isInitialized)
 
   const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 0
@@ -28,6 +28,8 @@ export default function Header() {
   const userInitial = userName?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || 'U'
 
   const handleSignOut = async () => {
+    // Immediately set signing out state to show loading skeleton
+    setSigningOut(true)
     await supabase.auth.signOut()
     // Use window.location.href for a full page reload to clear all state
     window.location.href = '/'
@@ -47,7 +49,7 @@ export default function Header() {
                 height={40}
               />
               <span className="font-bold hidden md:block" style={{ fontSize: 24, fontWeight: 'normal'}}>
-                Plain<span style={{ fontFamily: 'Strings, sans-serif', fontSize: 36, fontWeight:'lighter' }}>Write</span>
+                Plain<span style={{ fontFamily: 'var(--font-strings), sans-serif', fontSize: 36, fontWeight:'lighter' }}>Write</span>
               </span>
             </Link>
           </div>

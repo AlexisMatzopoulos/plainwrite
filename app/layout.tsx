@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import './globals.css'
 import { AuthProvider } from '@/components/AuthProvider'
 import { ProfileInitializer } from '@/components/ProfileInitializer'
+
+const stringsFont = localFont({
+  src: '../public/fonts/strings-free.regular.otf',
+  variable: '--font-strings',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXTAUTH_URL || 'https://plainwrite.com'),
@@ -34,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={stringsFont.variable}>
       <body className="font-sans antialiased bg-white min-h-screen flex flex-col">
         <AuthProvider>
           <ProfileInitializer />

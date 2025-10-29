@@ -21,11 +21,15 @@ import { Suspense } from 'react'
 type AuthContextType = {
   user: User | null
   loading: boolean
+  signingOut: boolean
+  setSigningOut: (value: boolean) => void
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
+  signingOut: false,
+  setSigningOut: () => {},
 })
 
 export const useAuth = () => {
@@ -39,6 +43,7 @@ export const useAuth = () => {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
+  const [signingOut, setSigningOut] = useState(false)
   const supabase = createClient()
 
   useEffect(() => {
@@ -59,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [supabase])
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, signingOut, setSigningOut }}>
       <Suspense fallback={null}>
         <PostHogProvider>
           {children}
