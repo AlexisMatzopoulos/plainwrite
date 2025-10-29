@@ -100,9 +100,9 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl p-8" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
+        <div className="bg-white rounded-xl border border-gray-200 p-8">
           {/* Header inside the card */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-block">
@@ -113,7 +113,7 @@ export default function SignInPage() {
           {/* Google Sign-In */}
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 px-6 py-3 border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors mb-6"
+            className="w-full flex items-center justify-center gap-3 px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors mb-6"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -159,7 +159,7 @@ export default function SignInPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-theme-primary focus:ring-2 focus:ring-theme-primary/20 outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-theme-primary focus:ring-2 focus:ring-theme-primary/20 outline-none transition-colors"
               />
             </div>
 
@@ -172,7 +172,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-theme-primary text-white font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-theme-primary text-white font-medium py-3 px-6 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Sending...' : 'Sign In'}
             </button>

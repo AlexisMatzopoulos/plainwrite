@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="relative">
-      <div className=" py-2 border-b border-slate-300">
+      <div className="py-2 border-b border-gray-200">
         <div className="w-full max-w-7xl mx-auto px-4 flex items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -403,7 +403,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-slate-100 border-b border-slate-300 transition-all duration-300 ease-in-out z-50 ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-gray-50 border-b border-gray-200 transition-all duration-300 ease-in-out z-50 ${
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
