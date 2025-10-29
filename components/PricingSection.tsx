@@ -13,7 +13,7 @@ export default function PricingSection() {
         name: 'Basic',
         wordsPerMonth: '5,000 words per month',
         originalPrice: undefined,
-        price: '€5.99',
+        price: '$5.99',
         features: [
           'Up to 500 words per request',
           'Error-free rephrasing',
@@ -24,7 +24,7 @@ export default function PricingSection() {
         name: 'Pro',
         wordsPerMonth: '15,000 words per month',
         originalPrice: undefined,
-        price: '€19.99',
+        price: '$19.99',
         isPopular: true,
         features: [
           'Up to 1,500 words per request',
@@ -37,7 +37,7 @@ export default function PricingSection() {
         name: 'Ultra',
         wordsPerMonth: '30,000 words per month',
         originalPrice: undefined,
-        price: '€39.99',
+        price: '$39.99',
         features: [
           'Up to 3,000 words per request',
           'Error-free rephrasing',
@@ -51,8 +51,8 @@ export default function PricingSection() {
       {
         name: 'Basic',
         wordsPerMonth: '5,000 words per month',
-        originalPrice: '€5.99',
-        price: '€2.99',
+        originalPrice: '$5.99',
+        price: '$2.99',
         features: [
           'Up to 500 words per request',
           'Error-free rephrasing',
@@ -62,8 +62,8 @@ export default function PricingSection() {
       {
         name: 'Pro',
         wordsPerMonth: '15,000 words per month',
-        originalPrice: '€19.99',
-        price: '€9.99',
+        originalPrice: '$19.99',
+        price: '$9.99',
         isPopular: true,
         features: [
           'Up to 1,500 words per request',
@@ -75,8 +75,8 @@ export default function PricingSection() {
       {
         name: 'Ultra',
         wordsPerMonth: '30,000 words per month',
-        originalPrice: '€39.99',
-        price: '€19.99',
+        originalPrice: '$39.99',
+        price: '$19.99',
         features: [
           'Up to 3,000 words per request',
           'Error-free rephrasing',
