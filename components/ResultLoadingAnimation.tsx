@@ -37,7 +37,6 @@ export default function ResultLoadingAnimation({
   const messages = isHumanizing ? HUMANIZING_MESSAGES : AI_CHECKING_MESSAGES
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
-  const [displayProgress, setDisplayProgress] = useState(0)
 
   // Rotate messages every 5 seconds (8 messages × 5s = 40s total)
   useEffect(() => {
@@ -48,21 +47,6 @@ export default function ResultLoadingAnimation({
     return () => clearInterval(messageInterval)
   }, [messages.length])
 
-  // Animate progress bar
-  // Target: 85% in 30 seconds, then slowly edge to 95% over remaining time
-  useEffect(() => {
-    const progressInterval = setInterval(() => {
-      setDisplayProgress((prev) => {
-        // After 85%, go very slowly (0.05% per 100ms = ~20 seconds to reach 95%)
-        if (prev >= 85) return Math.min(prev + 0.05, 95)
-        // Before 85%, increment to reach it in ~30 seconds (0.283% per 100ms)
-        return prev + 0.283
-      })
-    }, 100)
-
-    return () => clearInterval(progressInterval)
-  }, [])
-
   return (
     <div
       className="relative p-8 min-h-[400px] flex flex-col items-center justify-center"
@@ -72,21 +56,23 @@ export default function ResultLoadingAnimation({
     >
       {/* Main content */}
       <div className="relative z-10 w-full max-w-lg">
+        {/* Professional Spinner */}
+        <div className="flex justify-center mb-8">
+          <div className="relative">
+            {/* Outer rotating ring */}
+            <div className="w-16 h-16 border-4 border-gray-200 border-t-theme-primary rounded-full animate-spin"></div>
+            {/* Inner pulsing dot */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="w-3 h-3 bg-theme-primary rounded-full animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+
         {/* Main heading */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <h3 className="text-xl font-semibold text-slate-800 mb-2">
             {isHumanizing ? 'Applying Writing Style' : 'AI Check Running'}
           </h3>
-        </div>
-
-        {/* Progress bar */}
-        <div className="mb-6">
-          <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 transition-all duration-300 ease-out"
-              style={{ width: `${Math.min(displayProgress, 95)}%` }}
-            />
-          </div>
         </div>
 
         {/* Rotating technical message */}

@@ -251,44 +251,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             </div>
           </div>
 
-          {/* Speed Mode Toggle */}
-          <div className="px-4 pb-3 border-b border-gray-100">
-            <label className="text-sm text-gray-600 mb-2 block">Processing speed:</label>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsFastMode(false)}
-                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  !isFastMode
-                    ? 'bg-theme-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
-                    <path d="M12 2v10l7.07 7.07"/>
-                  </svg>
-                  Accurate
-                </div>
-              </button>
-              <button
-                onClick={() => setIsFastMode(true)}
-                className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isFastMode
-                    ? 'bg-theme-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
-                  </svg>
-                  Fast
-                </div>
-              </button>
-            </div>
-          </div>
-
           {/* Writing Style Selector */}
           <div className="px-4 pb-3">
             <label className="text-sm text-gray-600 mb-2 block">Choose writing style:</label>
@@ -321,7 +283,27 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             />
           </div>
 
-          <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
+          <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            {/* Mode Toggle Switch - Bottom Left */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-gray-600 font-medium">Lite</span>
+              <button
+                onClick={() => setIsFastMode(!isFastMode)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 ${
+                  isFastMode ? 'bg-gray-300' : 'bg-theme-primary'
+                }`}
+                role="switch"
+                aria-checked={!isFastMode}
+              >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    isFastMode ? 'translate-x-6' : 'translate-x-1'
+                  }`}
+                />
+              </button>
+              <span className="text-sm text-gray-600 font-medium">Pro</span>
+            </div>
+
             <div className="flex gap-2 w-full sm:w-auto">
               {/* <button
                 onClick={handleCheckAI}

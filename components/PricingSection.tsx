@@ -98,8 +98,8 @@ export default function PricingSection() {
     >
       <div className="lg:container mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-semibold text-[#0F172A] mb-6">wh
-            Flexible pricing plans for you
+          <h1 className="text-4xl font-semibold text-[#0F172A] mb-6">
+            Pricing
           </h1>
 
           {/* Billing Toggle */}
