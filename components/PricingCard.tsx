@@ -51,25 +51,21 @@ export default function PricingCard({
         <div className="tracking-tight text-3xl font-semibold text-[#0F172A]">{name}</div>
         <div className="text-sm text-theme-primary">{wordsPerMonth}</div>
 
-        <div className="mt-2 space-y-1 flex items-end gap-4">
-          <div className="flex items-baseline lg:items-baseline md:items-center gap-4 flex-row lg:flex-row md:flex-col w-full flex-grow">
+        <div className="mt-2 space-y-1">
+          <div className="flex items-baseline gap-2">
             {originalPrice && (
-              <div className="text-sm text-muted-foreground">
-                <span className="line-through">{originalPrice}</span>
-              </div>
+              <span className="text-sm text-muted-foreground line-through">
+                {originalPrice}
+              </span>
             )}
             <span className="text-4xl font-bold text-[#0F172A]">{price}</span>
-            <span className="text-sm text-muted-foreground self-center">
-              {billingPeriod === 'year' ? (
-                <div>
-                  Per Month
-                  <br />
-                  Billed Annually
-                </div>
-              ) : (
-                <div>Per Month</div>
-              )}
-            </span>
+          </div>
+          <div className="text-sm text-muted-foreground">
+            {billingPeriod === 'year' ? (
+              <>Per Month, Billed Annually</>
+            ) : (
+              <>Per Month</>
+            )}
           </div>
         </div>
 
@@ -77,7 +73,7 @@ export default function PricingCard({
           <button
             onClick={handleSubscribe}
             disabled={true}
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-gray-400 border cursor-not-allowed"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full rounded-[14px] py-8 text-white text-lg bg-theme-primary border cursor-not-allowed"
           >
             Coming Soon
           </button>

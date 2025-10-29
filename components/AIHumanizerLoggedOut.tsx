@@ -8,6 +8,7 @@ export default function AIHumanizerLoggedOut() {
   const router = useRouter()
   const [text, setText] = useState('')
   const [selectedStyle, setSelectedStyle] = useState('Original')
+  const [isFastMode, setIsFastMode] = useState(true)
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
@@ -92,17 +93,24 @@ export default function AIHumanizerLoggedOut() {
             )}
           </div>
 
-          {/* Footer with buttons */}
-          <div className="p-4 flex flex-col sm:flex-row justify-end items-start sm:items-center">
-            <div className="flex gap-2 w-full sm:w-auto">
-              {/* <button
-                onClick={() => wordCount > 0 && router.push('/signin')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border h-9 rounded-[10px] px-4 w-full sm:w-auto text-theme-primary border-theme-primary"
-                style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)' }}
-                disabled={wordCount === 0}
+          {/* Footer with toggle and buttons */}
+          <div className="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            {/* Fast Mode Toggle - Bottom Left */}
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">
+                {isFastMode ? 'Fast' : 'Pro'}
+              </span>
+              <button
+                disabled
+                className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 cursor-default opacity-50"
+                title="Pro mode requires a Pro or Ultra subscription"
               >
-                Check AI
-              </button> */}
+                <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-1" />
+              </button>
+            </div>
+
+            {/* Action Buttons - Right Side */}
+            <div className="flex gap-2 w-full sm:w-auto">
               <button
                 onClick={() => wordCount > 0 && router.push('/signin')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 bg-theme-primary bg-theme-primary-hover text-white rounded-[10px] px-4 w-full sm:w-auto"

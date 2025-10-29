@@ -69,19 +69,19 @@ export default function SignInPage() {
 
   if (emailSent) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-2xl p-8 text-center" style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' }}>
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
+            <div className="w-16 h-16 bg-green-50 border border-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Email Sent!</h2>
-            <p className="text-gray-600 mb-6">
-              We sent a sign-in link to <strong>{email}</strong>.
+            <h2 className="text-2xl font-semibold text-gray-900 mb-3">Email Sent!</h2>
+            <p className="text-gray-600 mb-2">
+              We sent a sign-in link to <span className="font-medium text-gray-900">{email}</span>.
             </p>
-            <p className="text-gray-500 text-sm mb-6">
+            <p className="text-gray-500 text-sm mb-8">
               Click the link in the email to sign in. The link is valid for 24 hours.
             </p>
             <button
@@ -89,7 +89,7 @@ export default function SignInPage() {
                 setEmailSent(false)
                 setEmail('')
               }}
-              className="px-5 py-2.5 text-sm font-medium text-black bg-theme-primary rounded-xl hover:bg-theme-primary-hover transition-colors"
+              className="px-6 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Use Different Email
             </button>

@@ -32,6 +32,7 @@ export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryEntry[] | null>(null)
   const [totalCount, setTotalCount] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
   // Auth check - redirect if not logged in
   useEffect(() => {
@@ -66,36 +67,61 @@ export default function HistoryPage() {
     }
   }
 
-  // Show loading state while checking auth
-  if (loading) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="w-full flex-1">
-          <HistorySkeleton />
-        </main>
-        <Footer />
-      </div>
-    )
-  }
-
   // Don't render if not authenticated (will redirect)
-  if (!user) {
+  if (!loading && !user) {
     return null
   }
 
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="w-full flex-1">
-        {isLoading || !history ? (
-          <HistorySkeleton />
-        ) : (
-          <HistoryList
-            initialHistory={history}
-            totalCount={totalCount}
-          />
-        )}
+      <main className="w-full flex-1 bg-gray-50">
+        <div className="w-full max-w-7xl mx-auto px-4 py-8">
+          {/* Page Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-semibold text-gray-900">History</h1>
+            <p className="text-gray-500 mt-1">View and manage your text transformations</p>
+          </div>
+
+          {/* Search Bar - Always visible */}
+          <div className="mb-6">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search history..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                disabled={loading || isLoading}
+                className="w-full px-4 py-2.5 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent bg-white text-sm disabled:bg-gray-50 disabled:cursor-wait"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          {/* History List or Skeleton */}
+          {loading || isLoading || !history ? (
+            <HistoryItemsSkeleton />
+          ) : (
+            <HistoryList
+              initialHistory={history}
+              totalCount={totalCount}
+              searchTerm={searchTerm}
+            />
+          )}
+        </div>
       </main>
       <Footer />
     </div>
@@ -103,67 +129,51 @@ export default function HistoryPage() {
 }
 
 /**
- * HistorySkeleton - Loading state that matches the HistoryList structure
+ * HistoryItemsSkeleton - Loading state for history entries only
  */
-function HistorySkeleton() {
+function HistoryItemsSkeleton() {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-6xl">
-      {/* Title Section - Always visible */}
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold mb-2 text-theme-text">History</h1>
-        <p className="text-slate-500 text-lg">Find all your humanized texts here</p>
-      </div>
+    <div className="space-y-4">
+      {[1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+        >
+          <div className="p-6">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-4">
+              <div className="flex-1 space-y-2">
+                <div className="h-4 w-40 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
+              </div>
+              <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
+            </div>
 
-      {/* Search Bar Skeleton */}
-      <div className="mb-8">
-        <div className="relative max-w-2xl mx-auto">
-          <div className="w-full h-12 bg-gray-200 rounded-[14px] animate-pulse"></div>
-        </div>
-      </div>
-
-      {/* History List Skeleton */}
-      <div className="space-y-6">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="bg-white rounded-[16px] shadow-lg overflow-hidden"
-          >
-            <div className="p-6">
-              {/* Header */}
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex-1 space-y-2">
-                  <div className="h-4 w-40 bg-gray-200 rounded animate-pulse"></div>
-                  <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
+            {/* Content boxes */}
+            <div className="space-y-4">
+              {/* Original Text Box */}
+              <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <div className="h-4 w-24 bg-gray-200 rounded animate-pulse mb-3"></div>
+                <div className="space-y-2">
+                  <div className="h-3 w-full bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 w-5/6 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 w-4/6 bg-gray-200 rounded animate-pulse"></div>
                 </div>
-                <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
               </div>
 
-              {/* Content boxes */}
-              <div className="space-y-4">
-                {/* Original Text Box */}
-                <div className="border border-slate-200 rounded-[10px] p-4 bg-slate-50">
-                  <div className="h-5 w-28 bg-gray-200 rounded animate-pulse mb-3"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-5/6 bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-4/6 bg-gray-200 rounded animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Humanized Text Box */}
-                <div className="border rounded-[10px] p-4" style={{ borderColor: 'rgba(var(--color-primary-rgb), 0.3)', backgroundColor: 'rgba(var(--color-primary-rgb), 0.05)' }}>
-                  <div className="h-5 w-32 bg-gray-200 rounded animate-pulse mb-3"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-5/6 bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-4/6 bg-gray-200 rounded animate-pulse"></div>
-                  </div>
+              {/* Result Text Box */}
+              <div className="border border-gray-200 rounded-lg p-4 bg-white">
+                <div className="h-4 w-20 bg-gray-200 rounded animate-pulse mb-3"></div>
+                <div className="space-y-2">
+                  <div className="h-3 w-full bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 w-5/6 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 w-4/6 bg-gray-200 rounded animate-pulse"></div>
                 </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }

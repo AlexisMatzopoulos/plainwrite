@@ -15,6 +15,7 @@ interface HistoryEntry {
 interface HistoryListProps {
   initialHistory: HistoryEntry[]
   totalCount: number
+  searchTerm: string
 }
 
 /**
@@ -27,10 +28,9 @@ interface HistoryListProps {
  * - Delete entries
  * - Expand/collapse text
  */
-export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
+export function HistoryList({ initialHistory, totalCount, searchTerm }: HistoryListProps) {
   const router = useRouter()
   const [history, setHistory] = useState<HistoryEntry[]>(initialHistory)
-  const [searchTerm, setSearchTerm] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -123,45 +123,13 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-6xl">
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold mb-2 text-theme-text">History</h1>
-        <p className="text-slate-500 text-lg">Find all your humanized texts here</p>
-      </div>
-
-      {/* Search Bar */}
-      <div className="mb-8">
-        <div className="relative max-w-2xl mx-auto">
-          <input
-            type="text"
-            placeholder="Search your history..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 pl-12 border border-slate-300 rounded-[14px] focus:outline-none focus:ring-2 focus:ring-theme-primary bg-white shadow-sm"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
-      </div>
-
+    <>
       {/* History List */}
       {filteredHistory.length === 0 ? (
-        <div className="bg-white rounded-[16px] shadow-lg p-12 text-center">
+        <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-16 w-16 mx-auto text-slate-400 mb-4"
+            className="h-12 w-12 mx-auto text-gray-400 mb-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -173,56 +141,44 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
             />
           </svg>
-          <h3 className="text-xl font-semibold text-slate-700 mb-2">
-            {searchTerm ? 'No results found' : 'No entries yet'}
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            {searchTerm ? 'No results found' : 'No history yet'}
           </h3>
-          <p className="text-slate-500">
+          <p className="text-gray-500 text-sm">
             {searchTerm
-              ? 'Try a different search term'
-              : 'Humanize your first text to see it here'}
+              ? 'Try adjusting your search'
+              : 'Your text transformations will appear here'}
           </p>
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4">
           {filteredHistory.map((entry) => (
             <div
               key={entry.id}
-              className="bg-white rounded-[16px] shadow-lg overflow-hidden"
+              className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors"
             >
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-slate-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span className="text-sm text-slate-500">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-sm text-gray-500">
                         {formatDate(entry.createdAt)}
                       </span>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
-                      <span>{entry.words_count} Words</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-sm text-gray-500">{entry.words_count} words</span>
                       {entry.style_used && entry.style_used !== 'default' && (
-                        <span className="px-2 py-1 rounded" style={{ backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)', color: 'var(--color-primary)' }}>
-                          {entry.style_used}
-                        </span>
+                        <>
+                          <span className="text-gray-300">•</span>
+                          <span className="text-xs font-medium px-2 py-1 rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
+                            {entry.style_used}
+                          </span>
+                        </>
                       )}
                     </div>
                   </div>
                   <button
                     onClick={() => handleDelete(entry.id)}
-                    className="text-red-500 hover:text-red-700 p-2"
+                    className="text-gray-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-colors"
                     aria-label="Delete"
                   >
                     <svg
@@ -243,20 +199,20 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                 </div>
 
                 {/* Text Content */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {/* Original Text */}
-                  <div className="border border-slate-200 rounded-[10px] p-4 bg-slate-50">
+                  <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="font-semibold text-slate-700">Original Text</h3>
+                      <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide">Input</h4>
                       <button
                         onClick={() => handleCopy(entry.original_text, entry.id, 'original')}
-                        className="text-slate-500 hover:text-slate-700 p-1"
+                        className="text-gray-400 hover:text-gray-700 p-1 rounded hover:bg-gray-200 transition-colors"
                         aria-label="Copy"
                       >
                         {copiedId === `${entry.id}-original` ? (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-emerald-500"
+                            className="h-4 w-4 text-green-600"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -271,7 +227,7 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                         ) : (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
+                            className="h-4 w-4"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -286,26 +242,26 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                         )}
                       </button>
                     </div>
-                    <p className="text-sm text-slate-600 whitespace-pre-wrap">
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
                       {expandedId === entry.id
                         ? entry.original_text
                         : truncateText(entry.original_text)}
                     </p>
                   </div>
 
-                  {/* Humanized Text */}
-                  <div className="border rounded-[10px] p-4" style={{ borderColor: 'rgba(var(--color-primary-rgb), 0.3)', backgroundColor: 'rgba(var(--color-primary-rgb), 0.05)' }}>
+                  {/* Result Text */}
+                  <div className="border border-gray-200 rounded-lg p-4 bg-white">
                     <div className="flex justify-between items-center mb-2">
-                      <h3 className="font-semibold text-slate-700">Humanized Text</h3>
+                      <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide">Output</h4>
                       <button
                         onClick={() => handleCopy(entry.humanized_text, entry.id, 'humanized')}
-                        className="text-slate-500 hover:text-slate-700 p-1"
+                        className="text-gray-400 hover:text-gray-700 p-1 rounded hover:bg-gray-100 transition-colors"
                         aria-label="Copy"
                       >
                         {copiedId === `${entry.id}-humanized` ? (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-emerald-500"
+                            className="h-4 w-4 text-green-600"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -320,7 +276,7 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                         ) : (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
+                            className="h-4 w-4"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -335,7 +291,7 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                         )}
                       </button>
                     </div>
-                    <p className="text-sm text-slate-600 whitespace-pre-wrap">
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
                       {expandedId === entry.id
                         ? entry.humanized_text
                         : truncateText(entry.humanized_text)}
@@ -347,7 +303,7 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
                 {(entry.original_text.length > 200 || entry.humanized_text.length > 200) && (
                   <button
                     onClick={() => toggleExpand(entry.id)}
-                    className="mt-4 text-theme-primary hover:opacity-80 text-sm font-medium flex items-center gap-1"
+                    className="mt-4 text-gray-600 hover:text-gray-900 text-sm font-medium flex items-center gap-1 transition-colors"
                   >
                     {expandedId === entry.id ? (
                       <>
@@ -400,22 +356,22 @@ export function HistoryList({ initialHistory, totalCount }: HistoryListProps) {
           <button
             onClick={() => fetchHistoryPage(currentPage - 1)}
             disabled={currentPage === 1 || loading}
-            className="px-6 py-2 border border-slate-300 rounded-[10px] hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 font-medium bg-white shadow-sm"
+            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 font-medium bg-white transition-colors"
           >
             Previous
           </button>
-          <span className="px-4 py-2 text-slate-600 font-medium">
+          <span className="px-4 py-2 text-gray-600 font-medium">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => fetchHistoryPage(currentPage + 1)}
             disabled={currentPage === totalPages || loading}
-            className="px-6 py-2 border border-slate-300 rounded-[10px] hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 font-medium bg-white shadow-sm"
+            className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 font-medium bg-white transition-colors"
           >
             Next
           </button>
         </div>
       )}
-    </div>
+    </>
   )
 }

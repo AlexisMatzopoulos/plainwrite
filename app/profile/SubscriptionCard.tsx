@@ -114,80 +114,80 @@ export function SubscriptionCard({ profile }: { profile: Profile | null }) {
   }
 
   return (
-    <div className="border text-card-foreground bg-white rounded-[16px] shadow-lg">
-      <div className="flex flex-col space-y-1.5 p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg
-              className="w-6 h-6 text-gray-500"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-              ></path>
-            </svg>
-            <h2 className="text-xl font-semibold">Subscription</h2>
-          </div>
-          {profile.subscription_status && (
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(profile.subscription_status)}`}>
-              {getStatusText(profile.subscription_status)}
-            </span>
-          )}
-        </div>
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      {/* Header */}
+      <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+        <h2 className="text-lg font-semibold text-gray-900">Subscription</h2>
+        {profile.subscription_status && (
+          <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(profile.subscription_status)}`}>
+            {getStatusText(profile.subscription_status)}
+          </span>
+        )}
       </div>
-      <div className="p-6 pt-0">
-        <p className="text-3xl font-bold">{subscriptionPlanDisplay}</p>
-        <p className="text-sm text-gray-500 mb-2">{wordsPerMonth.toLocaleString()} Words per month</p>
+
+      {/* Content */}
+      <div className="p-6">
+        <div className="mb-6">
+          <p className="text-2xl font-bold text-gray-900 mb-1">{subscriptionPlanDisplay}</p>
+          <p className="text-sm text-gray-500">{wordsPerMonth.toLocaleString()} words per month</p>
+        </div>
+
         {profile.billing_period && (
-          <p className="text-sm text-gray-600">
-            Billing: {profile.billing_period === 'month' ? 'Monthly' : 'Annually'}
-          </p>
-        )}
-        {profile.subscription_valid_until && (
-          <p className="text-sm text-gray-600 mb-4">
-            Next billing: {new Date(profile.subscription_valid_until).toLocaleDateString('en-US', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
-            })}
-          </p>
-        )}
-        {!profile.subscription_valid_until && profile.billing_period && (
-          <div className="mb-4"></div>
+          <div className="mb-4 pb-4 border-b border-gray-200">
+            <div className="text-sm">
+              <span className="text-gray-500">Billing: </span>
+              <span className="text-gray-900 font-medium">
+                {profile.billing_period === 'month' ? 'Monthly' : 'Annually'}
+              </span>
+            </div>
+            {profile.subscription_valid_until && (
+              <div className="text-sm mt-1">
+                <span className="text-gray-500">Next billing: </span>
+                <span className="text-gray-900 font-medium">
+                  {new Date(profile.subscription_valid_until).toLocaleDateString('en-US', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  })}
+                </span>
+              </div>
+            )}
+          </div>
         )}
 
         {profile.subscription_status === 'attention' && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <p className="text-sm text-red-800 font-medium">
-              ⚠️ There was a problem with your last payment.
-            </p>
-            <p className="text-sm text-red-700 mt-1">
-              Please update your payment method to continue the service.
-            </p>
+          <div className="bg-red-50 border border-red-100 rounded-lg p-4 mb-6">
+            <div className="flex gap-3">
+              <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+              <div>
+                <p className="text-sm text-red-900 font-medium">
+                  Payment Failed
+                </p>
+                <p className="text-sm text-red-700 mt-1">
+                  Please update your payment method to continue your subscription.
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
-        <div className="flex gap-2 flex-col md:flex-row">
+        <div className="flex gap-3 flex-col sm:flex-row">
           {profile.paystack_subscription_code && profile.subscription_status === 'active' && (
             <>
               <button
                 onClick={handleUpdatePaymentMethod}
                 disabled={managingSubscription}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary/10 text-theme-primary hover:bg-theme-primary/20 rounded-[10px] text-[16px] w-full md:w-auto"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 rounded-lg transition-colors disabled:opacity-50"
               >
-                {managingSubscription ? 'Loading...' : 'Update Payment Method'}
+                {managingSubscription ? 'Loading...' : 'Update Payment'}
               </button>
               <button
                 onClick={() => setShowCancelConfirm(true)}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-red-50 text-red-600 hover:bg-red-100 rounded-[10px] text-[16px] w-full md:w-auto"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors"
               >
-                Cancel Subscription
+                Cancel
               </button>
             </>
           )}
@@ -196,7 +196,7 @@ export function SubscriptionCard({ profile }: { profile: Profile | null }) {
             <button
               onClick={handleUpdatePaymentMethod}
               disabled={managingSubscription}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary text-white hover:opacity-90 rounded-[10px] text-[16px] w-full md:w-auto"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-theme-primary hover:opacity-90 rounded-lg transition-opacity disabled:opacity-50"
             >
               {managingSubscription ? 'Loading...' : 'Update Payment Method'}
             </button>
@@ -204,32 +204,32 @@ export function SubscriptionCard({ profile }: { profile: Profile | null }) {
 
           <Link
             href="/pricing"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-6 bg-theme-primary text-white hover:opacity-90 rounded-[10px] text-[16px] w-full md:w-auto"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-theme-primary hover:opacity-90 rounded-lg transition-opacity"
           >
-            {profile.subscription_plan ? 'Upgrade Subscription' : 'Get Subscription'}
+            {profile.subscription_plan ? 'Upgrade Plan' : 'Get Started'}
           </Link>
         </div>
 
         {/* Cancel Confirmation Modal */}
         {showCancelConfirm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 max-w-md mx-4">
-              <h3 className="text-lg font-semibold mb-2">Cancel Subscription?</h3>
-              <p className="text-gray-600 mb-4">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-xl shadow-2xl p-6 max-w-md w-full">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Cancel Subscription?</h3>
+              <p className="text-gray-600 text-sm mb-6">
                 Your subscription will remain active until the end of the current billing period. You can
-                continue using your services until then.
+                continue using all features until then.
               </p>
-              <div className="flex gap-2 justify-end">
+              <div className="flex gap-3 justify-end">
                 <button
                   onClick={() => setShowCancelConfirm(false)}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                 >
-                  Cancel
+                  Keep Subscription
                 </button>
                 <button
                   onClick={handleCancelSubscription}
                   disabled={cancellingSubscription}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
+                  className="px-4 py-2 text-sm font-medium bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors"
                 >
                   {cancellingSubscription ? 'Cancelling...' : 'Yes, Cancel'}
                 </button>

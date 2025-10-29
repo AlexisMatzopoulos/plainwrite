@@ -38,7 +38,7 @@ export default function Header() {
   return (
     <header className="relative">
       <div className=" py-2 border-b border-slate-300">
-        <div className="lg:container mx-auto px-4 flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-4 flex items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2">

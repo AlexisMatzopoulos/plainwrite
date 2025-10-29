@@ -29,6 +29,10 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [isLoadingResult, setIsLoadingResult] = useState(false)
   const [isFastMode, setIsFastMode] = useState(false)
 
+  // Check if user has pro/ultra subscription (not free plan)
+  const hasProAccess = profile?.subscription_plan &&
+    (profile.subscription_plan === 'pro' || profile.subscription_plan === 'ultra')
+
   const writingStyles = [
     'Original',
     'Academic',
@@ -288,12 +292,15 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             <div className="flex items-center gap-3">
               <span className="text-sm text-gray-600 font-medium">Lite</span>
               <button
-                onClick={() => setIsFastMode(!isFastMode)}
+                onClick={() => hasProAccess && setIsFastMode(!isFastMode)}
+                disabled={!hasProAccess}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 ${
+                  !hasProAccess ? 'bg-gray-300 cursor-default opacity-50' :
                   isFastMode ? 'bg-gray-300' : 'bg-theme-primary'
                 }`}
                 role="switch"
                 aria-checked={!isFastMode}
+                title={!hasProAccess ? 'Pro mode requires a Pro or Ultra subscription' : ''}
               >
                 <span
                   className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -301,7 +308,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                   }`}
                 />
               </button>
-              <span className="text-sm text-gray-600 font-medium">Pro</span>
+              <span className={`text-sm font-medium ${!hasProAccess ? 'text-gray-400' : 'text-gray-600'}`}>Pro</span>
             </div>
 
             <div className="flex gap-2 w-full sm:w-auto">

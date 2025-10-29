@@ -65,28 +65,28 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               <span className="animate-blink-cursor">|</span>
             </span>
           </h1>
-          <p className="text-slate-500 mb-6 text-lg text-center max-w-3xl mx-auto">
-            Transform your text instantly. Our writing engine ensures your get your message across, the right way.
+          <p className="text-gray-600 mb-8 text-lg text-center max-w-3xl mx-auto">
+            Transform your text instantly. Our writing engine ensures you get your message across, the right way.
           </p>
 
           <div className="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto mb-8 justify-center">
             <div className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg className="w-5 h-5 text-theme-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-              <span className="text-slate-600">Instantly refine your writing style and tone</span>
+              <span className="text-gray-700">Instantly refine your writing style and tone</span>
             </div>
             <div className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg className="w-5 h-5 text-theme-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-              <span className="text-slate-600">Make your content flow naturally and read smoothly</span>
+              <span className="text-gray-700">Make your content flow naturally and read smoothly</span>
             </div>
             <div className="flex items-start gap-2">
-              <svg className="w-5 h-5 text-theme-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg className="w-5 h-5 text-theme-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-              <span className="text-slate-600">Perfect for emails, articles, social posts, and more</span>
+              <span className="text-gray-700">Perfect for emails, articles, social posts, and more</span>
             </div>
           </div>
           {/* Badges commented out for now
