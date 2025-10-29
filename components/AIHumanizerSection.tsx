@@ -24,12 +24,13 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [insufficientBalance, setInsufficientBalance] = useState(false)
   const [aiScore, setAiScore] = useState<number | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
-  const [selectedStyle, setSelectedStyle] = useState('Academic')
+  const [selectedStyle, setSelectedStyle] = useState('Original')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
   const [isFastMode, setIsFastMode] = useState(false)
 
   const writingStyles = [
+    'Original',
     'Academic',
     'Professional',
     'Creative',

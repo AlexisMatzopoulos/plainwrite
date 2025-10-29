@@ -7,11 +7,12 @@ import { useRouter } from 'next/navigation'
 export default function AIHumanizerLoggedOut() {
   const router = useRouter()
   const [text, setText] = useState('')
-  const [selectedStyle, setSelectedStyle] = useState('Academic')
+  const [selectedStyle, setSelectedStyle] = useState('Original')
 
   const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length
   const maxWords = 500
   const writingStyles = [
+    'Original',
     'Academic',
     'Professional',
     'Creative',
