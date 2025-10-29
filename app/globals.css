@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable overscroll/rubber band effect */
+html {
+  overscroll-behavior: none;
+}
+
+body {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+
 @font-face {
   font-family: 'Strings';
   src: url('/fonts/strings-free.regular.otf') format('opentype');
