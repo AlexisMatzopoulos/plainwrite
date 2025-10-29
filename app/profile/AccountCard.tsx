@@ -1,6 +1,7 @@
 'use client'
 
-import { signOut } from 'next-auth/react'
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
 
 interface AccountCardProps {
   userName: string | null
@@ -9,8 +10,13 @@ interface AccountCardProps {
 }
 
 export function AccountCard({ userName, userEmail, wordsBalance }: AccountCardProps) {
-  const handleSignOut = () => {
-    signOut({ callbackUrl: '/' })
+  const router = useRouter()
+  const supabase = createClient()
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    // Use window.location.href for a full page reload to clear all state
+    window.location.href = '/'
   }
 
   return (

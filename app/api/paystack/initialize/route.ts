@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { getAuthenticatedUser } from '@/lib/supabase/auth-helpers'
 import { PAYSTACK_CONFIG, getPlanConfig, type PlanTier, type BillingPeriod } from '@/lib/paystack-config'
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser()
 
-    if (!session || !session.user?.email) {
+    if (error || !authUser || !dbUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
@@ -39,12 +38,12 @@ export async function POST(req: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: session.user.email,
+        email: authUser.email,
         amount: plan.amount * 100, // Paystack expects amount in kobo (smallest currency unit)
         plan: plan.code,
         callback_url: callbackUrl || `${process.env.NEXTAUTH_URL}/subscribe/callback`,
         metadata: {
-          user_email: session.user.email,
+          user_email: authUser.email,
           plan_tier: planTier,
           billing_period: billingPeriod,
         },

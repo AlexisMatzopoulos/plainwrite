@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { analytics } from '@/lib/analytics'
 
 /**
@@ -10,14 +10,14 @@ import { analytics } from '@/lib/analytics'
  *
  * Handles:
  * - Payment verification with API
- * - Auth check via useSession
+ * - Auth check via Supabase Auth
  * - Redirect logic based on payment status
  * - Analytics tracking
  */
 export function CallbackContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const { user, loading } = useAuth()
   const [verifying, setVerifying] = useState(true)
 
   useEffect(() => {

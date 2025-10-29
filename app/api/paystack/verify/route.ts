@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { getAuthenticatedUser } from '@/lib/supabase/auth-helpers'
 import { PAYSTACK_CONFIG, getPlanByCode } from '@/lib/paystack-config'
 import { prisma } from '@/lib/prisma'
-import { sendSubscriptionConfirmationEmail } from '@/lib/email'
 
 export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser()
 
-    if (!session || !session.user?.email) {
+    if (error || !authUser || !dbUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
@@ -64,7 +62,7 @@ export async function GET(req: NextRequest) {
 
     // Get user profile
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { email: authUser.email },
       include: { profile: true },
     })
 
@@ -107,16 +105,16 @@ export async function GET(req: NextRequest) {
       },
     })
 
-    // Send subscription confirmation email
-    await sendSubscriptionConfirmationEmail({
-      email: user.email!,
-      name: user.name || 'Kunde',
-      planName: planConfig.name,
-      planTier: planConfig.tier,
-      billingPeriod: planConfig.period,
-      wordsLimit: planConfig.wordsLimit,
-      amount: transaction.amount,
-    })
+    // TODO: Re-implement subscription confirmation email
+    // await sendSubscriptionConfirmationEmail({
+    //   email: user.email!,
+    //   name: user.name || 'Kunde',
+    //   planName: planConfig.name,
+    //   planTier: planConfig.tier,
+    //   billingPeriod: planConfig.period,
+    //   wordsLimit: planConfig.wordsLimit,
+    //   amount: transaction.amount,
+    // })
 
     return NextResponse.json({
       success: true,

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { getAuthenticatedUser } from "@/lib/supabase/auth-helpers";
+;
 import { prisma } from "@/lib/prisma";
 
 export async function DELETE(
@@ -12,8 +12,8 @@ export async function DELETE(
     const { id } = await params;
 
     // 2. Verify authentication
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser();
+    if (error || !authUser || !dbUser) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
@@ -22,7 +22,7 @@ export async function DELETE(
 
     // 3. Get user
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { email: authUser.email },
     });
 
     if (!user) {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from './AuthProvider'
 import { useRouter } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
 
@@ -25,11 +25,11 @@ export default function PricingCard({
   billingPeriod,
 }: PricingCardProps) {
   const router = useRouter()
-  const { data: session } = useSession()
+  const { user } = useAuth()
   const [loading, setLoading] = useState(false)
 
   const handleSubscribe = async () => {
-    if (!session) {
+    if (!user) {
       // Redirect to sign in
       router.push('/signin')
       return

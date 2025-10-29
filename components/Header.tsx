@@ -3,23 +3,35 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { useSession, signOut } from 'next-auth/react'
+import { useAuth } from './AuthProvider'
+import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useProfileStore } from '@/store/profileStore'
 
 export default function Header() {
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const { user, loading } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { profile, userRole, isInitialized } = useProfileStore()
+  const supabase = createClient()
 
-  const isLoggedIn = status === 'authenticated'
-  const isLoading = status === 'loading' || (isLoggedIn && !isInitialized)
+  const isLoggedIn = !loading && !!user
+  const isLoading = loading || (isLoggedIn && !isInitialized)
 
   const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 0
   const balanceDisplay = hasUnlimitedAccess ? '∞' : `${totalBalance} Words`
-  const userInitial = session?.user?.name?.charAt(0).toUpperCase() || session?.user?.email?.charAt(0).toUpperCase() || 'U'
+
+  // Get user metadata from Supabase user object
+  const userName = user?.user_metadata?.name || user?.user_metadata?.full_name
+  const userImage = user?.user_metadata?.avatar_url || user?.user_metadata?.picture
+  const userInitial = userName?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || 'U'
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    // Use window.location.href for a full page reload to clear all state
+    window.location.href = '/'
+  }
 
   return (
     <header className="relative">
@@ -105,9 +117,9 @@ export default function Header() {
                     </svg>
                   </Link>
                   <Link href="/profile" aria-label="View profile">
-                    {session?.user?.image ? (
+                    {userImage ? (
                       <Image
-                        src={session.user.image}
+                        src={userImage}
                         alt="Profile"
                         width={40}
                         height={40}
@@ -194,9 +206,9 @@ export default function Header() {
                   </svg>
                 </Link>
                 <Link href="/profile" aria-label="View profile">
-                  {session?.user?.image ? (
+                  {userImage ? (
                     <Image
-                      src={session.user.image}
+                      src={userImage}
                       alt="Profile"
                       width={40}
                       height={40}
@@ -404,7 +416,7 @@ export default function Header() {
                   Account
                 </Link>
                 <button
-                  onClick={() => signOut()}
+                  onClick={handleSignOut}
                   className="text-sm font-medium text-slate-700 hover:underline md:hidden"
                 >
                   Sign Out

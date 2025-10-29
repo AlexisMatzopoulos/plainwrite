@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { getAuthenticatedUser } from '@/lib/supabase/auth-helpers'
 import { prisma } from '@/lib/prisma'
 
 /**
@@ -28,9 +27,9 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const session = await getServerSession(authOptions)
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser()
 
-    if (!session?.user?.id) {
+    if (error || !authUser || !dbUser) {
       return NextResponse.json(
         { error: 'You must be logged in' },
         { status: 401 }
@@ -45,7 +44,7 @@ export async function POST(request: NextRequest) {
       // No body provided, use defaults
     }
 
-    const targetUserId = body.userId || session.user.id
+    const targetUserId = body.userId || dbUser.id
     const resetBalance = body.resetBalance !== false // Default to true
 
     // Find the profile
@@ -118,9 +117,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const session = await getServerSession(authOptions)
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser()
 
-    if (!session?.user?.id) {
+    if (error || !authUser || !dbUser) {
       return NextResponse.json(
         { error: 'You must be logged in' },
         { status: 401 }
@@ -132,7 +131,6 @@ export async function GET(request: NextRequest) {
         user: {
           select: {
             email: true,
-            name: true,
           }
         }
       },
@@ -144,7 +142,6 @@ export async function GET(request: NextRequest) {
     const userList = profiles.map(p => ({
       userId: p.user_id,
       email: p.user.email,
-      name: p.user.name,
       subscription_plan: p.subscription_plan,
       subscription_status: p.subscription_status,
       words_balance: p.words_balance,

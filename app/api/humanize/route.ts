@@ -1,5 +1,4 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { getAuthenticatedUser } from "@/lib/supabase/auth-helpers";
 import { prisma } from "@/lib/prisma";
 import { countWords } from "@/lib/wordCounter";
 import { GoogleGenAI } from "@google/genai";
@@ -11,8 +10,9 @@ const ai = new GoogleGenAI({
 export async function POST(req: Request) {
   try {
     // 1. Verify authentication
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser();
+
+    if (error || !authUser || !dbUser) {
       return new Response(
         JSON.stringify({ error: "Unauthorized" }),
         { status: 401, headers: { "Content-Type": "application/json" } }
@@ -30,17 +30,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. Get user and profile
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-      select: {
-        id: true,
-        role: true,
-        profile: true,
-      },
-    });
-
-    if (!user || !user.profile) {
+    // 3. Check profile exists
+    if (!dbUser.profile) {
       return new Response(
         JSON.stringify({ error: "User profile not found" }),
         { status: 404, headers: { "Content-Type": "application/json" } }
@@ -48,10 +39,10 @@ export async function POST(req: Request) {
     }
 
     // Check if user has unlimited access (ADMIN or TESTER role)
-    const hasUnlimitedAccess = user.role === 'ADMIN' || user.role === 'TESTER';
+    const hasUnlimitedAccess = dbUser.role === 'ADMIN' || dbUser.role === 'TESTER';
 
-    console.log('User email:', session.user.email);
-    console.log('User role:', user.role);
+    console.log('User email:', authUser.email);
+    console.log('User role:', dbUser.role);
     console.log('Has unlimited access:', hasUnlimitedAccess);
 
     // 4. Count words in input text
@@ -65,10 +56,10 @@ export async function POST(req: Request) {
     }
 
     // 5. Check words_per_request limit (skip for ADMIN/TESTER users)
-    if (!hasUnlimitedAccess && wordsProcessed > user.profile.words_per_request) {
+    if (!hasUnlimitedAccess && wordsProcessed > dbUser.profile.words_per_request) {
       return new Response(
         JSON.stringify({
-          error: `Text exceeds your limit of ${user.profile.words_per_request} words per request. Your text has ${wordsProcessed} words.`,
+          error: `Text exceeds your limit of ${dbUser.profile.words_per_request} words per request. Your text has ${wordsProcessed} words.`,
         }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
@@ -76,7 +67,7 @@ export async function POST(req: Request) {
 
     // 6. Check sufficient balance (skip for ADMIN/TESTER users)
     const totalBalance =
-      user.profile.words_balance + user.profile.extra_words_balance;
+      dbUser.profile.words_balance + dbUser.profile.extra_words_balance;
 
     if (!hasUnlimitedAccess && totalBalance < wordsProcessed) {
       return new Response(
@@ -90,24 +81,24 @@ export async function POST(req: Request) {
     }
 
     // 7. Deduct words from balance immediately (skip for ADMIN/TESTER users)
-    let newWordsBalance = user.profile.words_balance;
-    let newExtraWordsBalance = user.profile.extra_words_balance;
+    let newWordsBalance = dbUser.profile.words_balance;
+    let newExtraWordsBalance = dbUser.profile.extra_words_balance;
 
     if (!hasUnlimitedAccess) {
       let remainingWords = wordsProcessed;
 
-      if (user.profile.words_balance >= remainingWords) {
-        newWordsBalance = user.profile.words_balance - remainingWords;
+      if (dbUser.profile.words_balance >= remainingWords) {
+        newWordsBalance = dbUser.profile.words_balance - remainingWords;
       } else {
-        const fromMainBalance = user.profile.words_balance;
+        const fromMainBalance = dbUser.profile.words_balance;
         remainingWords -= fromMainBalance;
         newWordsBalance = 0;
-        newExtraWordsBalance = user.profile.extra_words_balance - remainingWords;
+        newExtraWordsBalance = dbUser.profile.extra_words_balance - remainingWords;
       }
 
       // Update balance in database
       await prisma.profile.update({
-        where: { user_id: user.id },
+        where: { user_id: dbUser.id },
         data: {
           words_balance: newWordsBalance,
           extra_words_balance: newExtraWordsBalance,
@@ -185,11 +176,11 @@ IMPORTANT: The user has selected text be written in a different style. Specifica
         // Save to history after streaming completes
         await prisma.history.create({
           data: {
-            user_id: user.id,
+            user_id: dbUser.id,
             original_text: text,
             humanized_text: fullText,
             words_count: wordsProcessed,
-            style_used: style || user.profile?.userStyle || "default",
+            style_used: style || dbUser.profile?.userStyle || "default",
           },
         });
 

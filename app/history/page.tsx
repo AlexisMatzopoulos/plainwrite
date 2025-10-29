@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -27,7 +27,7 @@ interface HistoryEntry {
  * Only the actual history entries wait for data fetch
  */
 export default function HistoryPage() {
-  const { data: session, status } = useSession()
+  const { user, loading } = useAuth()
   const router = useRouter()
   const [history, setHistory] = useState<HistoryEntry[] | null>(null)
   const [totalCount, setTotalCount] = useState(0)
@@ -35,17 +35,17 @@ export default function HistoryPage() {
 
   // Auth check - redirect if not logged in
   useEffect(() => {
-    if (status === 'unauthenticated') {
+    if (!loading && !user) {
       router.push('/signin')
     }
-  }, [status, router])
+  }, [user, loading, router])
 
   // Fetch initial history data
   useEffect(() => {
-    if (status === 'authenticated') {
+    if (!loading && user) {
       fetchHistory()
     }
-  }, [status])
+  }, [user, loading])
 
   const fetchHistory = async () => {
     try {
@@ -67,7 +67,7 @@ export default function HistoryPage() {
   }
 
   // Show loading state while checking auth
-  if (status === 'loading') {
+  if (loading) {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -80,7 +80,7 @@ export default function HistoryPage() {
   }
 
   // Don't render if not authenticated (will redirect)
-  if (status !== 'authenticated') {
+  if (!user) {
     return null
   }
 

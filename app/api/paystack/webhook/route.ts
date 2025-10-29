@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getPlanByCode } from '@/lib/paystack-config'
-import { sendPaymentFailedEmail, sendSubscriptionCancelledEmail } from '@/lib/email'
 import crypto from 'crypto'
 
 // Verify Paystack webhook signature
@@ -193,7 +192,7 @@ async function handleInvoicePaymentFailed(data: any) {
 
     // Send payment failed email notification
     const planName = user.profile?.subscription_plan || 'Unknown'
-    await sendPaymentFailedEmail(customer.email, planName)
+    // TODO: Re-implement email - await sendPaymentFailedEmail(customer.email, planName)
   } catch (error) {
     console.error('Error handling invoice.payment_failed:', error)
   }
@@ -257,7 +256,7 @@ async function handleSubscriptionDisable(data: any) {
 
     // Send cancellation confirmation email
     const planName = profile.subscription_plan || 'Unknown'
-    await sendSubscriptionCancelledEmail(profile.user.email!, planName)
+    // TODO: Re-implement email - await sendSubscriptionCancelledEmail(profile.user.email!, planName)
   } catch (error) {
     console.error('Error handling subscription.disable:', error)
   }

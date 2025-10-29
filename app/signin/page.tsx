@@ -1,28 +1,30 @@
 'use client'
 
 import { useState } from 'react'
-import { signIn } from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 /**
  * Sign In Page - Client Component
  *
- * This page is correctly a Client Component because it needs:
+ * This page uses Supabase Auth for authentication:
  * - Form state management (useState)
- * - NextAuth signIn function (client-side)
+ * - Supabase Auth client for sign-in operations
  * - URL search params (useSearchParams)
  *
- * No server-side data fetching needed for this page.
+ * Supports Google OAuth and Email Magic Links
  */
 export default function SignInPage() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [error, setError] = useState('')
 
-  const callbackUrl = searchParams.get('callbackUrl') || '/'
+  const supabase = createClient()
+  const next = searchParams.get('next') || '/'
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,26 +32,39 @@ export default function SignInPage() {
     setError('')
 
     try {
-      const result = await signIn('email', {
+      const { error } = await supabase.auth.signInWithOtp({
         email,
-        redirect: false,
-        callbackUrl,
+        options: {
+          emailRedirectTo: `${window.location.origin}/api/auth/callback`,
+        },
       })
 
-      if (result?.error) {
+      if (error) {
         setError('There was a problem sending the email. Please try again.')
+        console.error('Sign in error:', error)
       } else {
         setEmailSent(true)
       }
     } catch (err) {
       setError('There was a problem sending the email. Please try again.')
+      console.error('Sign in error:', err)
     } finally {
       setIsLoading(false)
     }
   }
 
-  const handleGoogleSignIn = () => {
-    signIn('google', { callbackUrl })
+  const handleGoogleSignIn = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/api/auth/callback`,
+      },
+    })
+
+    if (error) {
+      setError('There was a problem signing in with Google. Please try again.')
+      console.error('Google sign in error:', error)
+    }
   }
 
   if (emailSent) {

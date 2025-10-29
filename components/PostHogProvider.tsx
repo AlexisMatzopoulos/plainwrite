@@ -3,22 +3,23 @@
 import { useEffect } from 'react'
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider } from 'posthog-js/react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from './AuthProvider'
 
 function PostHogIdentifier() {
-  const { data: session } = useSession()
+  const { user } = useAuth()
 
   // Identify user when they sign in
   useEffect(() => {
-    if (session?.user?.email) {
-      posthog.identify(session.user.email, {
-        email: session.user.email,
-        name: session.user.name,
+    if (user?.email) {
+      const userName = user.user_metadata?.name || user.user_metadata?.full_name
+      posthog.identify(user.email, {
+        email: user.email,
+        name: userName,
       })
     } else {
       posthog.reset() // Clear identity when logged out
     }
-  }, [session])
+  }, [user])
 
   return null
 }

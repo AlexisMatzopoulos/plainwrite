@@ -1,41 +1,49 @@
 import { NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/prisma"
 
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
 
-    if (!session?.user?.id) {
+    if (authError || !user) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
       )
     }
 
-    const user = await prisma.user.findUnique({
+    // Find or create user in database
+    let dbUser = await prisma.user.findUnique({
       where: {
-        id: session.user.id,
+        id: user.id,
       },
       include: {
         profile: true,
       },
     })
 
-    if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      )
+    // Create user if they don't exist (first time sign in)
+    if (!dbUser) {
+      dbUser = await prisma.user.create({
+        data: {
+          id: user.id,
+          email: user.email,
+          role: 'USER',
+        },
+        include: {
+          profile: true,
+        },
+      })
     }
 
     // Create profile if it doesn't exist (lazy creation for new users)
-    let profile = user.profile
+    let profile = dbUser.profile
     if (!profile) {
       profile = await prisma.profile.create({
         data: {
-          user_id: user.id,
+          user_id: dbUser.id,
           words_balance: 500,
           extra_words_balance: 0,
           words_limit: 500,
@@ -48,7 +56,7 @@ export async function GET() {
 
     return NextResponse.json({
       profile: profile,
-      role: user.role
+      role: dbUser.role
     })
   } catch (error) {
     console.error("Error fetching profile:", error)
@@ -61,9 +69,10 @@ export async function GET() {
 
 export async function PATCH(request: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
 
-    if (!session?.user?.id) {
+    if (authError || !user) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
@@ -87,7 +96,7 @@ export async function PATCH(request: Request) {
 
     const profile = await prisma.profile.update({
       where: {
-        user_id: session.user.id,
+        user_id: user.id,
       },
       data: updateData,
     })

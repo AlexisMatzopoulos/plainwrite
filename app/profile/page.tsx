@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@/components/AuthProvider'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useProfileStore } from '@/store/profileStore'
@@ -16,23 +16,28 @@ import { SubscriptionCard } from './SubscriptionCard'
  * - No loading states needed - data is already in memory
  * - Instant navigation from other pages
  * - Updates automatically via optimistic updates in the store
+ * - Uses Supabase Auth for session management
  */
 export default function ProfilePage() {
-  const { data: session, status } = useSession()
+  const { user, loading } = useAuth()
   const router = useRouter()
   const { profile } = useProfileStore()
 
   // Client-side redirect for unauthenticated users only
   useEffect(() => {
-    if (status === 'unauthenticated') {
+    if (!loading && !user) {
       router.push('/signin')
     }
-  }, [status, router])
+  }, [user, loading, router])
 
   // Calculate total balance
   const totalBalance = profile
     ? profile.words_balance + profile.extra_words_balance
     : 0
+
+  // Get user metadata
+  const userName = user?.user_metadata?.name || user?.user_metadata?.full_name
+  const userEmail = user?.email ?? ''
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -42,8 +47,8 @@ export default function ProfilePage() {
           {/* Account and Balance Cards - 2 Column Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <AccountCard
-              userName={session?.user?.name ?? null}
-              userEmail={session?.user?.email ?? ''}
+              userName={userName ?? null}
+              userEmail={userEmail}
               wordsBalance={totalBalance}
             />
           </div>

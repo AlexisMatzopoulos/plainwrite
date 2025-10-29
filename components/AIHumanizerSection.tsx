@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from './AuthProvider'
 import Link from 'next/link'
 import ResultLoadingAnimation from './ResultLoadingAnimation'
 import { useProfileStore } from '@/store/profileStore'
@@ -13,7 +13,7 @@ interface AIHumanizerSectionProps {
 }
 
 export default function AIHumanizerSection({ showResult, setShowResult }: AIHumanizerSectionProps) {
-  const { data: session } = useSession()
+  const { user } = useAuth()
   const { profile, userRole, updateBalance, refreshProfile } = useProfileStore()
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')

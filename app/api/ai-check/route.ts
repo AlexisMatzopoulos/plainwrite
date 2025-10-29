@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { getAuthenticatedUser } from "@/lib/supabase/auth-helpers";
 
 // ZeroGPT API Integration
 async function detectAIContent(text: string): Promise<{
@@ -67,8 +66,8 @@ async function detectAIContent(text: string): Promise<{
 export async function POST(req: Request) {
   try {
     // 1. Verify authentication (optional - you may want to allow unauthenticated checks)
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser();
+    if (error || !authUser || !dbUser) {
       return NextResponse.json(
         { error: "Unauthorized. Please sign in to use AI detection." },
         { status: 401 }

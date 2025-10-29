@@ -1,20 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { getAuthenticatedUser } from '@/lib/supabase/auth-helpers'
 import { PAYSTACK_CONFIG } from '@/lib/paystack-config'
 import { prisma } from '@/lib/prisma'
 
 export async function GET(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const { user: authUser, dbUser, error } = await getAuthenticatedUser()
 
-    if (!session || !session.user?.email) {
+    if (error || !authUser || !dbUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     // Get user profile with subscription code
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
+      where: { email: authUser.email },
       include: { profile: true },
     })
 

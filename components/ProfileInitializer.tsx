@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from './AuthProvider'
 import { useProfileStore } from '@/store/profileStore'
 
 /**
@@ -12,23 +12,24 @@ import { useProfileStore } from '@/store/profileStore'
  * - Fetches profile data once when user logs in
  * - Populates Zustand store for use across the app
  * - Avoids blocking server-side rendering
+ * - Uses Supabase Auth for session management
  */
 export function ProfileInitializer() {
-  const { data: session, status } = useSession()
+  const { user, loading } = useAuth()
   const { profile, isInitialized, initialize, reset } = useProfileStore()
 
   useEffect(() => {
     // Reset store when user logs out
-    if (status === 'unauthenticated') {
+    if (!loading && !user) {
       reset()
       return
     }
 
     // Only fetch if user is authenticated and store isn't initialized
-    if (status === 'authenticated' && !isInitialized) {
+    if (!loading && user && !isInitialized) {
       fetchProfile()
     }
-  }, [status, isInitialized])
+  }, [user, loading, isInitialized])
 
   const fetchProfile = async () => {
     try {
