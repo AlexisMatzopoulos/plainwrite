@@ -16,9 +16,8 @@ export default function PricingSection() {
         price: '€5.99',
         features: [
           '500 words per request',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          '20 supported languages',
+          'Fast mode',
         ],
       },
       {
@@ -29,12 +28,10 @@ export default function PricingSection() {
         isPopular: true,
         features: [
           '1,500 words per request',
-          'My writing style',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          'Over 50 supported languages',
           'Unlimited grammar checks',
           'Fast mode',
+          'Accurate mode',
         ],
       },
       {
@@ -44,13 +41,10 @@ export default function PricingSection() {
         price: '€39.99',
         features: [
           '3,000 words per request',
-          'My writing style',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          'Over 50 supported languages',
           'Unlimited grammar checks',
           'Fast mode',
-          'Priority support',
+          'Accurate mode',
         ],
       },
     ],
@@ -62,9 +56,8 @@ export default function PricingSection() {
         price: '€2.99',
         features: [
           '500 words per request',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          '20 supported languages',
+          'Fast mode',
         ],
       },
       {
@@ -75,12 +68,10 @@ export default function PricingSection() {
         isPopular: true,
         features: [
           '1,500 words per request',
-          'My writing style',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          'Over 50 supported languages',
           'Unlimited grammar checks',
           'Fast mode',
+          'Accurate mode',
         ],
       },
       {
@@ -90,13 +81,10 @@ export default function PricingSection() {
         price: '€19.99',
         features: [
           '3,000 words per request',
-          'My writing style',
-          'Plagiarism-free',
           'Error-free rephrasing',
-          'Over 50 supported languages',
           'Unlimited grammar checks',
           'Fast mode',
-          'Priority support',
+          'Accurate mode',
         ],
       },
     ],
@@ -108,7 +96,7 @@ export default function PricingSection() {
     <div
       className="w-full bg-white"
     >
-      <div className="lg:container mx-auto px-4 py-16">
+      <div className="lg:container mx-auto px-4 py-12">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-semibold text-[#0F172A] mb-6">
             Flexible pricing plans for you
