@@ -89,13 +89,8 @@ export default function TermsOfService() {
               </a>
             </li>
             <li>
-              <a href="#user-generated" className="text-blue-600 hover:underline">
-                USER-GENERATED CONTRIBUTIONS
-              </a>
-            </li>
-            <li>
-              <a href="#contribution-license" className="text-blue-600 hover:underline">
-                CONTRIBUTION LICENSE
+              <a href="#acceptable-use" className="text-blue-600 hover:underline">
+                ACCEPTABLE USE POLICY
               </a>
             </li>
             <li>
@@ -358,48 +353,87 @@ export default function TermsOfService() {
           </ul>
         </section>
 
-        <section id="user-generated" className="space-y-4">
-          <h2 className="text-2xl font-bold">9. USER-GENERATED CONTRIBUTIONS</h2>
+        <section id="acceptable-use" className="space-y-4">
+          <h2 className="text-2xl font-bold">9. ACCEPTABLE USE POLICY</h2>
           <p>
-            Our Services may allow you to post or submit content, comments, reviews, or other materials ("Contributions").
-            By submitting Contributions, you agree to the following:
+            PlainWrite is a writing improvement software tool designed to help users refine their own writing,
+            improve clarity, and adapt tone for different audiences. Our Services are intended for legitimate
+            writing assistance purposes only.
           </p>
-          <ul className="list-decimal list-inside ml-4 space-y-2">
-            <li>Your Contributions are not confidential and may be used by PlainWrite.</li>
-            <li>You are solely responsible for your Contributions and the consequences of their publication.</li>
+          <p>
+            <span className="font-semibold">Prohibited Uses:</span>
+            <br />
+            You expressly agree that you will NOT use PlainWrite for any of the following purposes:
+          </p>
+          <ul className="list-disc list-inside ml-4 space-y-2">
             <li>
-              Contributions must not infringe upon the intellectual property or other rights of third parties.
+              <span className="font-semibold">Academic Dishonesty:</span> Submitting content generated or modified
+              by PlainWrite as your own original work in academic settings, including but not limited to essays,
+              assignments, exams, theses, or dissertations, where such submission would violate your institution's
+              academic integrity policies.
             </li>
             <li>
-              Your Contributions must not contain material that is unlawful, harmful, defamatory, obscene, or otherwise
-              offensive.
+              <span className="font-semibold">Plagiarism or Copyright Infringement:</span> Using PlainWrite to
+              disguise plagiarized content, modify copyrighted works without permission, or circumvent plagiarism
+              detection systems for fraudulent purposes.
             </li>
             <li>
-              PlainWrite reserves the right to remove, edit, or relocate Contributions that are deemed, in its sole
-              discretion, to be harmful or in violation of these legal terms.
+              <span className="font-semibold">Fraudulent Representation:</span> Presenting AI-generated or
+              AI-modified content as wholly original human-written work in contexts where such misrepresentation
+              would be deceptive, fraudulent, or contrary to applicable rules or regulations.
             </li>
             <li>
-              You agree to hold PlainWrite harmless for any damages or losses arising from your Contributions.
+              <span className="font-semibold">Violation of Third-Party Terms:</span> Using PlainWrite in any manner
+              that violates the terms of service, acceptable use policies, or academic integrity policies of
+              educational institutions, employers, publishers, or other third parties.
+            </li>
+            <li>
+              <span className="font-semibold">Unethical or Illegal Content Creation:</span> Creating content that
+              promotes illegal activities, hate speech, harassment, misinformation, or other harmful or unethical
+              purposes.
             </li>
           </ul>
-        </section>
-
-        <section id="contribution-license" className="space-y-4">
-          <h2 className="text-2xl font-bold">10. CONTRIBUTION LICENSE</h2>
           <p>
-            By posting Contributions to our Services, you grant PlainWrite an unlimited, perpetual, irrevocable,
-            worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, modify, publish, distribute,
-            translate, display, and perform your Contributions in all media and for any purpose, including commercial
-            purposes. You waive all moral rights with respect to your Contributions.
+            <span className="font-semibold">Your Responsibilities:</span>
+            <br />
+            You are solely responsible for:
+          </p>
+          <ul className="list-disc list-inside ml-4 space-y-2">
+            <li>
+              Ensuring your use of PlainWrite complies with all applicable laws, regulations, and institutional
+              policies, including academic integrity policies.
+            </li>
+            <li>
+              Obtaining all necessary permissions before using PlainWrite to modify or refine third-party content.
+            </li>
+            <li>
+              Properly disclosing your use of AI-assisted writing tools where required by your institution,
+              employer, publisher, or other applicable authority.
+            </li>
+            <li>
+              Verifying that content processed through PlainWrite does not infringe upon intellectual property
+              rights of others.
+            </li>
+          </ul>
+          <p>
+            <span className="font-semibold">Enforcement:</span>
+            <br />
+            PlainWrite reserves the right to investigate suspected violations of this Acceptable Use Policy. If we
+            determine, in our sole discretion, that you have violated this policy, we may immediately suspend or
+            terminate your account, refuse service, and pursue any available legal remedies. Violation of this
+            policy constitutes a material breach of these Terms of Service.
           </p>
           <p>
-            PlainWrite does not claim ownership of your Contributions; you retain ownership but grant us this
-            comprehensive license.
+            <span className="font-semibold">Intended Use:</span>
+            <br />
+            PlainWrite is designed for legitimate uses such as improving professional communications, refining
+            marketing copy, enhancing blog posts and articles, polishing business documents, and developing
+            personal writing skills. We encourage users to employ our Services ethically and responsibly.
           </p>
         </section>
 
         <section id="third-party" className="space-y-4">
-          <h2 className="text-2xl font-bold">11. THIRD-PARTY WEBSITES AND CONTENT</h2>
+          <h2 className="text-2xl font-bold">10. THIRD-PARTY WEBSITES AND CONTENT</h2>
           <p>
             Our Services may contain links to third-party websites or display third-party content. PlainWrite does not
             control or endorse any third-party websites or content, and we are not responsible for their accuracy,
@@ -410,7 +444,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="advertisers" className="space-y-4">
-          <h2 className="text-2xl font-bold">12. ADVERTISERS</h2>
+          <h2 className="text-2xl font-bold">11. ADVERTISERS</h2>
           <p>
             Advertisers may display their advertisements in our Services. PlainWrite provides the space for such
             advertisements and has no responsibility for the content or practices of advertisers. Your interactions with
@@ -419,7 +453,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="services-management" className="space-y-4">
-          <h2 className="text-2xl font-bold">13. SERVICES MANAGEMENT</h2>
+          <h2 className="text-2xl font-bold">12. SERVICES MANAGEMENT</h2>
           <p>PlainWrite reserves the right to:</p>
           <ul className="list-decimal list-inside ml-4 space-y-2">
             <li>Monitor the Services for violations of these legal terms;</li>
@@ -440,7 +474,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="privacy-policy" className="space-y-4">
-          <h2 className="text-2xl font-bold">14. PRIVACY POLICY</h2>
+          <h2 className="text-2xl font-bold">13. PRIVACY POLICY</h2>
           <p>
             Your privacy is important to us. Please read our Privacy Policy, which describes how we collect, use, store,
             and share your information. By using our Services, you agree that our Privacy Policy governs our use of your
@@ -449,7 +483,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="copyright" className="space-y-4">
-          <h2 className="text-2xl font-bold">15. COPYRIGHT INFRINGEMENTS</h2>
+          <h2 className="text-2xl font-bold">14. COPYRIGHT INFRINGEMENTS</h2>
           <p>
             We respect the intellectual property rights of others. If you believe that material provided through our
             Services infringes a copyright that you own or control, please notify us promptly using the contact
@@ -460,7 +494,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="term-termination" className="space-y-4">
-          <h2 className="text-2xl font-bold">16. TERM AND TERMINATION</h2>
+          <h2 className="text-2xl font-bold">15. TERM AND TERMINATION</h2>
           <p>
             These legal terms remain in full force and effect while you use our Services. PlainWrite reserves the right,
             at its sole discretion and without notice or liability, to deny access or terminate your account if you
@@ -471,7 +505,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="modifications" className="space-y-4">
-          <h2 className="text-2xl font-bold">17. MODIFICATIONS AND INTERRUPTIONS</h2>
+          <h2 className="text-2xl font-bold">16. MODIFICATIONS AND INTERRUPTIONS</h2>
           <p>
             PlainWrite may change, modify, or remove the content of the Services at any time without notice. We are not
             obligated to update the information provided in our Services. We do not guarantee that our Services will be
@@ -482,7 +516,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="governing-law" className="space-y-4">
-          <h2 className="text-2xl font-bold">18. GOVERNING LAW</h2>
+          <h2 className="text-2xl font-bold">17. GOVERNING LAW</h2>
           <p>
             These legal terms and your use of the Services are governed by and construed in accordance with the laws of
             the jurisdiction in which PlainWrite operates, without regard to conflict of law provisions.
@@ -490,7 +524,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="dispute-resolution" className="space-y-4">
-          <h2 className="text-2xl font-bold">19. DISPUTE RESOLUTION</h2>
+          <h2 className="text-2xl font-bold">18. DISPUTE RESOLUTION</h2>
           <p>
             <span className="font-semibold">Informal Negotiations</span>
             <br />
@@ -511,7 +545,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="corrections" className="space-y-4">
-          <h2 className="text-2xl font-bold">20. CORRECTIONS</h2>
+          <h2 className="text-2xl font-bold">19. CORRECTIONS</h2>
           <p>
             There may be errors, inaccuracies, or omissions in the information provided through our Services. PlainWrite
             reserves the right to correct errors or update information at its sole discretion without prior notice.
@@ -519,7 +553,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="disclaimer" className="space-y-4">
-          <h2 className="text-2xl font-bold">21. DISCLAIMER</h2>
+          <h2 className="text-2xl font-bold">20. DISCLAIMER</h2>
           <p>
             THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. YOU AGREE THAT YOUR USE OF THE SERVICES
             IS AT YOUR OWN RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, PlainWrite DISCLAIMS ALL WARRANTIES, EXPRESS
@@ -534,7 +568,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="limitations" className="space-y-4">
-          <h2 className="text-2xl font-bold">22. LIMITATIONS OF LIABILITY</h2>
+          <h2 className="text-2xl font-bold">21. LIMITATIONS OF LIABILITY</h2>
           <p>
             IN NO EVENT SHALL PlainWrite, ITS OFFICERS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR
             INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR
@@ -549,7 +583,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="indemnification" className="space-y-4">
-          <h2 className="text-2xl font-bold">23. INDEMNIFICATION</h2>
+          <h2 className="text-2xl font-bold">22. INDEMNIFICATION</h2>
           <p>
             You agree to defend, indemnify, and hold harmless PlainWrite, its subsidiaries, affiliates, officers, agents,
             and employees from all claims, liabilities, damages, losses, and expenses (including reasonable attorneys'
@@ -559,7 +593,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="user-data" className="space-y-4">
-          <h2 className="text-2xl font-bold">24. USER DATA</h2>
+          <h2 className="text-2xl font-bold">23. USER DATA</h2>
           <p>
             PlainWrite maintains data that you transmit through our Services solely for the administration and operation
             of the Services and for analytical purposes. While we regularly perform routine data backups, you are
@@ -568,7 +602,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="electronic" className="space-y-4">
-          <h2 className="text-2xl font-bold">25. ELECTRONIC COMMUNICATIONS, TRANSACTIONS AND SIGNATURES</h2>
+          <h2 className="text-2xl font-bold">24. ELECTRONIC COMMUNICATIONS, TRANSACTIONS AND SIGNATURES</h2>
           <p>
             All communications, transactions, and signatures exchanged electronically between you and PlainWrite are
             treated as if they were in writing. By using our Services, you agree to receive electronic communications,
@@ -586,7 +620,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="california" className="space-y-4">
-          <h2 className="text-2xl font-bold">26. CALIFORNIA USERS AND RESIDENTS</h2>
+          <h2 className="text-2xl font-bold">25. CALIFORNIA USERS AND RESIDENTS</h2>
           <p>
             If you are a California resident and have concerns regarding unresolved issues with our Services, you may
             contact the appropriate consumer support unit as provided by the relevant state authorities.
@@ -594,7 +628,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="miscellaneous" className="space-y-4">
-          <h2 className="text-2xl font-bold">27. MISCELLANEOUS</h2>
+          <h2 className="text-2xl font-bold">26. MISCELLANEOUS</h2>
           <p>
             These legal terms, together with any additional policies we publish on the Services, constitute the entire
             agreement between you and PlainWrite. Our failure to enforce any provision of these legal terms does not
@@ -609,7 +643,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="refunds" className="space-y-4">
-          <h2 className="text-2xl font-bold">28. REFUNDS</h2>
+          <h2 className="text-2xl font-bold">27. REFUNDS</h2>
           <p>
             By subscribing to our Services, you acknowledge that PlainWrite grants you immediate access to digital
             features and that usage begins immediately after purchase. This means that you waive your right to the
@@ -640,7 +674,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="marketing-communications" className="space-y-4">
-          <h2 className="text-2xl font-bold">29. MARKETING COMMUNICATIONS</h2>
+          <h2 className="text-2xl font-bold">28. MARKETING COMMUNICATIONS</h2>
           <p>
             By creating an account or providing your email address, you agree to receive marketing communications from
             PlainWrite, including newsletters, promotions, and product updates.
@@ -657,7 +691,7 @@ export default function TermsOfService() {
         </section>
 
         <section id="contact-us" className="space-y-4">
-          <h2 className="text-2xl font-bold">30. CONTACT US</h2>
+          <h2 className="text-2xl font-bold">29. CONTACT US</h2>
           <p>
             For questions, concerns, or further information regarding these legal terms or the Services, please contact
             us by email at{' '}
