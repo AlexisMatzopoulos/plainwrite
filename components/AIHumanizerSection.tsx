@@ -27,7 +27,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
   const [selectedStyle, setSelectedStyle] = useState('Original')
   const [showingAIResults, setShowingAIResults] = useState(false)
   const [isLoadingResult, setIsLoadingResult] = useState(false)
-  const [isFastMode, setIsFastMode] = useState(false)
+  const [isFastMode, setIsFastMode] = useState(true)
 
   // Check if user has pro/ultra subscription (not free plan)
   const hasProAccess = profile?.subscription_plan &&
