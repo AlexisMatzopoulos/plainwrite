@@ -346,7 +346,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             <h2 className="font-semibold text-gray-900 flex items-center justify-between">
               <div>Result</div>
               {aiScore !== null && (
-                <div className="px-4 flex items-center mb-2">
+                <div className="px-4 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -368,6 +368,11 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 </div>
               )}
             </h2>
+          </div>
+
+          {/* Spacer to match Input panel's style selector height */}
+          <div className="px-4 pt-4 pb-3" style={{ minHeight: '84px' }}>
+            {/* Empty spacer for alignment */}
           </div>
 
           <div className="flex-1 flex flex-col" style={{ minHeight: '400px' }}>
@@ -446,7 +451,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                   />
                 </div>
 
-                <div className="mt-auto px-4 py-3 border-t border-gray-200 flex justify-between items-center">
+                <div className="mt-auto p-4 border-t border-gray-200 flex justify-between items-center">
                   <span className="text-sm text-gray-500">{countWords(outputText)} Words</span>
                   <button
                     onClick={handleCopy}
