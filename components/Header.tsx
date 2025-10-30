@@ -29,11 +29,11 @@ export default function Header() {
   const userImage = user?.user_metadata?.avatar_url || user?.user_metadata?.picture
   const userInitial = userName?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || 'U'
 
-  const handleSignOut = async () => {
-    // Immediately set signing out state to show loading skeleton
+  const handleSignOut = () => {
+    // Immediately redirect - sign out happens in background
     setSigningOut(true)
-    await supabase.auth.signOut()
-    // Use window.location.href for a full page reload to clear all state
+    supabase.auth.signOut()
+    // Immediately redirect for instant sign out experience
     window.location.href = '/'
   }
 

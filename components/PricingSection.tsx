@@ -151,7 +151,7 @@ export default function PricingSection() {
           <p className="text-sm text-slate-950 font-semibold mb-2">
             Need more?{' '}
             <a href="mailto:support@plainwrite.com" className="text-emerald-500 underline">
-              Contact us
+              Get in touch
             </a>
           </p>
           <p className="text-sm text-slate-500">

@@ -62,7 +62,6 @@ export default function HeroSection({ isLoggedIn = false }: HeroSectionProps) {
               }}
             >
               {displayedText}
-              <span className="animate-blink-cursor">|</span>
             </span>
           </h1>
           <p className="text-gray-600 mb-8 text-lg text-center max-w-3xl mx-auto">
