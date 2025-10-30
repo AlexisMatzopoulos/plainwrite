@@ -56,16 +56,33 @@ export default function ResultLoadingAnimation({
     >
       {/* Main content */}
       <div className="relative z-10 w-full max-w-lg">
-        {/* Professional Spinner */}
-        <div className="flex justify-center mb-8">
-          <div className="relative">
-            {/* Outer rotating ring */}
-            <div className="w-16 h-16 border-4 border-gray-200 border-t-theme-primary rounded-full animate-spin"></div>
-            {/* Inner pulsing dot */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="w-3 h-3 bg-theme-primary rounded-full animate-pulse"></div>
-            </div>
-          </div>
+        {/* Three-dot typing animation */}
+        <div className="flex justify-center items-center gap-2 mb-8">
+          <style jsx>{`
+            @keyframes bounce {
+              0%, 60%, 100% {
+                transform: translateY(0);
+              }
+              30% {
+                transform: translateY(-10px);
+              }
+            }
+            .dot {
+              animation: bounce 1.4s infinite ease-in-out;
+            }
+            .dot:nth-child(1) {
+              animation-delay: 0s;
+            }
+            .dot:nth-child(2) {
+              animation-delay: 0.2s;
+            }
+            .dot:nth-child(3) {
+              animation-delay: 0.4s;
+            }
+          `}</style>
+          <div className="dot w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="dot w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="dot w-3 h-3 bg-yellow-500 rounded-full"></div>
         </div>
 
         {/* Main heading */}

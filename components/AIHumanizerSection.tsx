@@ -80,7 +80,8 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
     setOutputText('') // Clear previous output
 
     try {
-      const response = await fetch('/api/humanize', {
+      const endpoint = isFastMode ? '/api/humanize/fast' : '/api/humanize/pro';
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +89,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         body: JSON.stringify({
           text: inputText,
           style: selectedStyle,
-          mode: isFastMode ? 'fast' : 'accurate',
         }),
       })
 
@@ -342,8 +342,8 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
         {/* Output Panel - Only show after user interaction */}
         {showResult && (
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col h-full">
-          <div className="p-4 border-b border-gray-200">
-            <h2 className="font-semibold text-gray-900 flex items-center justify-between">
+          <div className="p-4 flex justify-between items-center border-b border-gray-200">
+            <h2 className="font-semibold text-gray-900 flex items-center">
               <div>Result</div>
               {aiScore !== null && (
                 <div className="px-4 flex items-center">
@@ -368,11 +368,11 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 </div>
               )}
             </h2>
-          </div>
-
-          {/* Spacer to match Input panel's style selector height */}
-          <div className="px-4 pt-4 pb-3" style={{ minHeight: '84px' }}>
-            {/* Empty spacer for alignment */}
+            <div className="flex items-center">
+              <span className="text-sm text-gray-500">
+                {countWords(outputText)} Words
+              </span>
+            </div>
           </div>
 
           <div className="flex-1 flex flex-col" style={{ minHeight: '400px' }}>
@@ -443,7 +443,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
               </div>
             ) : (
               <>
-                <div className="px-4 flex-1 relative flex">
+                <div className="px-4 pt-4 flex-1 relative flex">
                   <textarea
                     readOnly
                     className="w-full h-full border-none outline-none focus:outline-none resize-none ms-0 ps-0 text-sm bg-white"
@@ -451,8 +451,7 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                   />
                 </div>
 
-                <div className="mt-auto p-4 border-t border-gray-200 flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{countWords(outputText)} Words</span>
+                <div className="mt-auto p-4 border-t border-gray-200 flex justify-end items-center">
                   <button
                     onClick={handleCopy}
                     disabled={!outputText}

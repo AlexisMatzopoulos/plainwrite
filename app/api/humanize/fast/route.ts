@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     // 2. Parse request body
     const body = await req.json();
-    const { text, style, mode } = body;
+    const { text, style } = body;
 
     if (!text || typeof text !== "string") {
       return new Response(
@@ -149,11 +149,9 @@ Output ONLY the transformed text without any additional commentary or informatio
 IMPORTANT: The user has selected text be written in a different style. Specifically: ${writingStyle}. EXTREMELY IMPORTANT that our output clearly adheres to this style request.
 `
 
-    // 9. Stream response from Gemini (Pro or Flash based on mode)
-    const modelName = mode === 'fast' ? 'gemini-flash-latest' : 'gemini-2.5-pro';
-
+    // 9. Stream response from Gemini Flash
     const result = await ai.models.generateContentStream({
-      model: modelName,
+      model: 'gemini-flash-latest',
       contents: text,
       config: {
         systemInstruction,
@@ -206,7 +204,7 @@ IMPORTANT: The user has selected text be written in a different style. Specifica
       },
     });
   } catch (error) {
-    console.error("Error in /api/humanize:", error);
+    console.error("Error in /api/humanize/fast:", error);
     return new Response(
       JSON.stringify({ error: "Internal server error" }),
       { status: 500, headers: { "Content-Type": "application/json" } }
