@@ -137,10 +137,6 @@ Additionally:
 
 Use transitions that feel organic rather than formulaic, e.g. at the same time, by this logic, in this regard, instead of standard connectors.
 
-Use transitions that feel organic rather than formulaic, e.g. "at the same time", "by this logic", "in this regard", instead of standard connectors.
-
-Integrate evaluative language like, "Arguably, it seems likely that one might contend."
-
 Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
 
 ONLY insert new lines after ends of paragraphs, NEVER between sentences.
