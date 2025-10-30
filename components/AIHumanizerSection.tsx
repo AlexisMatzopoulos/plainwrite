@@ -255,8 +255,17 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
             </div>
           </div>
 
+          <div className="px-4 pt-4 flex-1 relative flex">
+            <textarea
+              placeholder="Paste your text here..."
+              className="w-full h-full border-none outline-none focus:outline-none resize-none ms-0 ps-0 text-sm"
+              value={inputText}
+              onChange={handleInputChange}
+            />
+          </div>
+
           {/* Writing Style Selector */}
-          <div className="px-4 pt-4 pb-3">
+          <div className="px-4 pt-3 pb-3">
             <label className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 block">Choose writing style</label>
             <div className="flex gap-2 flex-wrap">
               {writingStyles.map((style) => (
@@ -276,15 +285,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
                 </button>
               ))}
             </div>
-          </div>
-
-          <div className="px-4 flex-1 relative flex">
-            <textarea
-              placeholder="Paste your text here..."
-              className="w-full h-full border-none outline-none focus:outline-none resize-none ms-0 ps-0 text-sm"
-              value={inputText}
-              onChange={handleInputChange}
-            />
           </div>
 
           <div className="p-4 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
