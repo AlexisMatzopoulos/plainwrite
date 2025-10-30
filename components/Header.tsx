@@ -12,11 +12,13 @@ export default function Header() {
   const router = useRouter()
   const { user, loading, signingOut, setSigningOut } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { profile, userRole, isInitialized } = useProfileStore()
+  const { profile, userRole } = useProfileStore()
   const supabase = createClient()
 
   const isLoggedIn = !loading && !signingOut && !!user
-  const isLoading = loading || signingOut || (isLoggedIn && !isInitialized)
+
+  // Show balance immediately if profile data is available (from localStorage cache)
+  const showBalance = isLoggedIn && profile !== null
 
   const hasUnlimitedAccess = userRole === 'ADMIN' || userRole === 'TESTER'
   const totalBalance = profile ? profile.words_balance + profile.extra_words_balance : 0
@@ -72,12 +74,7 @@ export default function Header() {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-4">
                   <div className="hidden md:flex items-center gap-2">
-                    {isLoading ? (
-                      <>
-                        <div className="h-6 w-16 bg-gray-200 rounded animate-pulse"></div>
-                        <div className="h-5 w-24 bg-gray-200 rounded animate-pulse"></div>
-                      </>
-                    ) : (
+                    {showBalance ? (
                       <>
                         {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
                           <span className="px-2 py-1 rounded-md text-xs font-medium bg-theme-primary text-white">
@@ -85,6 +82,11 @@ export default function Header() {
                           </span>
                         )}
                         <span>Balance: {balanceDisplay}</span>
+                      </>
+                    ) : (
+                      <>
+                        <div className="h-6 w-16 bg-gray-200 rounded animate-pulse"></div>
+                        <div className="h-5 w-24 bg-gray-200 rounded animate-pulse"></div>
                       </>
                     )}
                   </div>
@@ -158,12 +160,7 @@ export default function Header() {
             <>
               <div className="hidden sm:flex lg:hidden items-center justify-center md:justify-end flex-1">
                 <div className="flex items-center justify-center gap-3">
-                  {isLoading ? (
-                    <>
-                      <div className="h-6 w-16 bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-5 w-24 bg-gray-200 rounded animate-pulse"></div>
-                    </>
-                  ) : (
+                  {showBalance ? (
                     <>
                       {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
                         <span className="px-2 py-1 rounded-md text-xs font-medium bg-theme-primary text-white">
@@ -179,6 +176,11 @@ export default function Header() {
                           Buy More Words
                         </Link>
                       )}
+                    </>
+                  ) : (
+                    <>
+                      <div className="h-6 w-16 bg-gray-200 rounded animate-pulse"></div>
+                      <div className="h-5 w-24 bg-gray-200 rounded animate-pulse"></div>
                     </>
                   )}
                 </div>
@@ -290,12 +292,7 @@ export default function Header() {
             <>
               <div className="flex sm:hidden items-center justify-center flex-1">
                 <div className="flex items-center justify-center gap-2">
-                  {isLoading ? (
-                    <>
-                      <div className="h-5 w-12 bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-5 w-20 bg-gray-200 rounded animate-pulse"></div>
-                    </>
-                  ) : (
+                  {showBalance ? (
                     <>
                       {profile?.subscription_plan && profile.subscription_plan !== 'basis' && (
                         <span className="px-1.5 py-0.5 rounded-md text-xs font-medium bg-theme-primary text-white">
@@ -325,6 +322,11 @@ export default function Header() {
                           </svg>
                         </Link>
                       )}
+                    </>
+                  ) : (
+                    <>
+                      <div className="h-5 w-12 bg-gray-200 rounded animate-pulse"></div>
+                      <div className="h-5 w-20 bg-gray-200 rounded animate-pulse"></div>
                     </>
                   )}
                 </div>
