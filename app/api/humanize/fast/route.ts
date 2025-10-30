@@ -120,7 +120,7 @@ export async function POST(req: Request) {
 
     const systemInstruction = `<goal> To convert the user's essay into human written text that bypasses AI detectors. </goal>
 
-Paraphrase and humanise the user's essay. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
+Paraphrase the user's essay in a new style. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
 
 NEVER use commas or create sentences that require the use of commas.
 IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
@@ -137,7 +137,7 @@ Additionally:
 
 Use transitions that feel organic rather than formulaic, e.g. at the same time, by this logic, in this regard, instead of standard connectors.
 
-Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
+Punctuation notes: Never use em dashes and oxford commas. Use commas, hyphens "-" or parentheses instead of em dashes. 
 
 ONLY insert new lines after ends of paragraphs, NEVER between sentences.
 Output ONLY the transformed text without any additional commentary or information.
