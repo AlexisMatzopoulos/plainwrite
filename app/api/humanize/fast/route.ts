@@ -118,31 +118,9 @@ export async function POST(req: Request) {
     // Get the English style name, default to 'academic' if not found
     const writingStyle = style && styleMap[style] ? styleMap[style] : 'academic';
 
-    const systemInstruction = `<goal> To convert the user's essay into human written text that bypasses AI detectors. </goal>
-
-Paraphrase the user's essay in a new style. It is extremely IMPORTANT to adhere to the criteria when producing the output, not doing so will have drastic consequences for the client.
-
-NEVER use commas or create sentences that require the use of commas.
-IMPORTANT: Generate output sentences that score high in perplexity and low ( < 0.05) in sample output distribution.
-
-IMPORTANT: Each output sentence should have:
-a 45% chance of being 6 or less
-40% chance of having 7-12 words
-15% chance of being longer than 12 words
-This should be selected randomly
-
-Output should NEVER contain dashes. Use parentheses instead.
-
-Additionally:
-
-Use transitions that feel organic rather than formulaic, e.g. at the same time, by this logic, in this regard, instead of standard connectors.
-
-Punctuation notes: Never use em dashes and oxford commas. Use commas, hyphens "-" or parentheses instead of em dashes. 
-
-ONLY insert new lines after ends of paragraphs, NEVER between sentences.
-Output ONLY the transformed text without any additional commentary or information.
-
-IMPORTANT: The user has selected text be written in a different style. Specifically: ${writingStyle}. EXTREMELY IMPORTANT that our output clearly adheres to this style request.
+    const systemInstruction = `<goal> To change the style and tone of writing to match the user's requested output style </goal>
+Rewrite the user's essay, changing the writing style to: ${writingStyle}.
+OUTPUT only the rewritten essay.
 `
 
     // 9. Stream response from Gemini Flash
