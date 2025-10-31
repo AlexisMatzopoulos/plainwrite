@@ -135,7 +135,6 @@ Output should NEVER contain dashes. Use parentheses instead.
 
 Additionally:
 
-Use transitions that feel organic rather than formulaic, e.g. at the same time, by this logic, in this regard, instead of standard connectors.
 
 Punctuation notes. Use commas or parentheses instead of em dashes. Never use em dashes. Always favor parentheses.
 
@@ -147,7 +146,7 @@ IMPORTANT: The user has selected text be written in a different style. Specifica
 
     // 9. Stream response from Gemini Flash
     const result = await ai.models.generateContentStream({
-      model: 'gemini-flash-latest',
+      model: 'gemini-flash-lite-latest',
       contents: text,
       config: {
         systemInstruction,
