@@ -146,7 +146,7 @@ IMPORTANT: The user has selected text be written in a different style. Specifica
 
     // 9. Stream response from Gemini Flash
     const result = await ai.models.generateContentStream({
-      model: 'gemini-flash-lite-latest',
+      model: 'gemini-flash-latest',
       contents: text,
       config: {
         systemInstruction,
