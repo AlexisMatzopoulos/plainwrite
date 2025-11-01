@@ -35,7 +35,6 @@ export default function AIHumanizerSection({ showResult, setShowResult }: AIHuma
 
   const writingStyles = [
     'Original',
-    'Academic',
     'Professional',
     'Creative',
     'Formal',

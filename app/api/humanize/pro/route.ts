@@ -107,28 +107,21 @@ export async function POST(req: Request) {
     }
 
     // 8. Prepare custom prompt
-    // Map German style names to English adjectives
-    const styleMap: Record<string, string> = {
-      'Akademisch': 'academic',
-      'Kreativ': 'creative',
-      'Formal': 'formal',
-      'Locker': 'casual'
-    };
+    const writingStyle = style ? style.toLowerCase() : 'original';
 
-    // Get the English style name, default to 'academic' if not found
-    const writingStyle = style && styleMap[style] ? styleMap[style] : 'academic';
-
-    const systemInstruction = `<goal> To change the style and tone of writing to match the user's requested output style </goal>
+    const prompt = `<goal> To change the style and tone of writing to match the user's requested output style </goal>
 Rewrite the user's essay, changing the writing style to: ${writingStyle}.
 OUTPUT only the rewritten essay.
-`
+
+<text>
+${text}
+</text>`
 
     // 9. Stream response from Gemini Pro
     const result = await ai.models.generateContentStream({
       model: 'gemini-2.5-pro',
-      contents: text,
+      contents: prompt,
       config: {
-        systemInstruction,
         temperature: 1,
       },
     });
