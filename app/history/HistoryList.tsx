@@ -39,27 +39,29 @@ export function HistoryList({ initialHistory, totalCount, searchTerm }: HistoryL
   const itemsPerPage = 10
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Do you really want to delete this entry?')) {
-      return
-    }
+    // Optimistically remove from UI immediately
+    const previousHistory = [...history]
+    const previousTotal = total
+
+    setHistory(history.filter(entry => entry.id !== id))
+    setTotal(prev => prev - 1)
 
     try {
       const response = await fetch(`/api/history/${id}`, {
         method: 'DELETE',
       })
 
-      if (response.ok) {
-        // Remove from local state
-        setHistory(history.filter(entry => entry.id !== id))
-        setTotal(prev => prev - 1)
-        // Refresh the page to get updated server data
-        router.refresh()
-      } else {
-        alert('Error deleting entry')
+      if (!response.ok) {
+        // Rollback on error
+        setHistory(previousHistory)
+        setTotal(previousTotal)
+        console.error('Error deleting entry')
       }
     } catch (error) {
+      // Rollback on error
+      setHistory(previousHistory)
+      setTotal(previousTotal)
       console.error('Error deleting history entry:', error)
-      alert('Error deleting entry')
     }
   }
 
