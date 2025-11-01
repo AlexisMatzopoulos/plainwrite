@@ -39,10 +39,13 @@ export function HomeContent() {
     period: ''
   })
   const [errorMessage, setErrorMessage] = useState('')
+  const [hasAuthCookies, setHasAuthCookies] = useState(false)
 
   // Detect if user likely has a session by checking for auth cookies
   // This helps show the correct skeleton during loading
-  const hasAuthCookies = typeof document !== 'undefined' && document.cookie.includes('sb-')
+  useEffect(() => {
+    setHasAuthCookies(document.cookie.includes('sb-'))
+  }, [])
 
   // Automatically show result panel when user is logged in
   useEffect(() => {
