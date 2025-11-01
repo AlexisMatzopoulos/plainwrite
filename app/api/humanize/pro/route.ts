@@ -111,7 +111,12 @@ export async function POST(req: Request) {
 
     const prompt = `<goal> To change the style and tone of writing to match the user's requested output style </goal>
 Rewrite the user's essay, changing the writing style to: ${writingStyle}.
-OUTPUT only the rewritten essay.
+
+IMPORTANT:
+- OUTPUT only the rewritten essay in plain text
+- Do NOT use markdown formatting
+- Do NOT include placeholders like [Your Name], [Insert X], or any text the user needs to fill in later
+- Provide complete, ready-to-use text
 
 <text>
 ${text}
